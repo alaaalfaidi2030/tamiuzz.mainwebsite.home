@@ -1,0 +1,316 @@
+.footer-container {
+  /* variables */
+
+  --gradient-footer-color: linear-gradient(90deg, transparent, white);
+  --gradient-footer-color-ltr: linear-gradient(-90deg, transparent, white);
+
+  background: var(--primary-color);
+  color: white;
+  padding: 60px 0 20px;
+  margin-top: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: white;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-title::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 70%;
+  height: 2px;
+  background: var(--gradient-footer-color);
+  border-radius: 2px;
+}
+
+body[dir="ltr"] .footer-title::after {
+  left: 0;
+  right: 70%;
+  background: var(--gradient-footer-color-ltr);
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1rem;
+  opacity: 0.9;
+  transition: all 0.3s ease;
+}
+.contact-item span::after {
+  content: "";
+  display: block;
+  width: 0;
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  border-radius: 10px;
+  z-index: -1;
+  background-color: transparent;
+  transition-property: width, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.contact-item span:hover::after {
+  width: 100%;
+  background: var(--secondary-color) !important;
+}
+
+.contact-item span:hover {
+  opacity: 1;
+  transform: translateX(-3px);
+}
+
+.contact-icon {
+  font-size: 1.1rem;
+  color: #e49d23;
+  width: 20px;
+  text-align: center;
+}
+
+.email-subscribe {
+  display: flex;
+  margin-top: 1rem;
+  border-radius: 25px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.email-input {
+  flex: 1;
+  padding: 12px 16px;
+  border: none;
+  outline: none;
+  font-size: 0.95rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  backdrop-filter: blur(10px);
+}
+
+.email-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.email-submit {
+  padding: 12px 16px;
+  background: linear-gradient(135deg, #e49d23, #fbbf24);
+  border: none;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 0;
+  right: auto;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -ms-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+}
+body[dir="ltr"] .email-submit {
+  left: auto;
+  right: 0;
+}
+
+.email-submit:hover {
+  background: linear-gradient(135deg, #fbbf24, #e49d23);
+  transform: translateX(2px);
+}
+.quick-links {
+  width: 50%;
+  margin: auto;
+}
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-link {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+}
+
+.footer-link:hover {
+  color: #e49d23;
+  transform: translateX(-5px);
+  -webkit-transform: translateX(-5px);
+  -moz-transform: translateX(-5px);
+  -ms-transform: translateX(-5px);
+  -o-transform: translateX(-5px);
+}
+
+.footer-link span {
+  font-size: 0.8rem;
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.footer-link:hover span {
+  opacity: 1;
+  transform: translateX(-3px);
+  -webkit-transform: translateX(-3px);
+  -moz-transform: translateX(-3px);
+  -ms-transform: translateX(-3px);
+  -o-transform: translateX(-3px);
+}
+
+.company-logo {
+  margin-bottom: 1.5rem;
+}
+.company-logo img {
+  width: 100%;
+}
+
+.company-description {
+  font-size: 1rem;
+  width: 80%;
+  line-height: 1.3rem;
+  margin: auto;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  color: white;
+  border: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition-property: background-color, transform, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover::before {
+  opacity: 1;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #e1306c, #fd1d1d, #fcb045);
+}
+
+.social-link.facebook:hover {
+  background: linear-gradient(45deg, #1877f2, #42a5f5);
+}
+
+.social-link.twitter:hover {
+  background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+}
+
+.social-link.youtube:hover {
+  background: linear-gradient(45deg, #ff0000, #cc0000);
+}
+
+.footer-bottom {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+}
+
+.copyright {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.footer-bottom-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-bottom-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: #e49d23;
+}
+@media (max-width: 768px) {
+  .quick-links {
+    width: 100%;
+  }
+  .copyright {
+    text-align: center;
+    margin-top: 0.6rem;
+  }
+  .footer-bottom {
+    flex-direction: column;
+    align-items: center;
+  }
+}

@@ -1,0 +1,229 @@
+import { motion } from 'framer-motion';
+import style from './Hero.module.css';
+import heroBackground from '../../assets/Images/Home/Hero_background.jpg'; // Assuming you have a background image
+import shapeImg from "../../assets/Images/Home/shape-img.png"
+import shapeImg1 from "../../assets/Images/Home/shape-img-1.png"
+import shapeImg2 from "../../assets/Images/Home/shape-img-2.png"
+import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
+const Hero = () => {
+    const { t } = useTranslation();
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 0.8,
+                staggerChildren: 0.3
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 50 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
+
+
+    return (
+        <div className={style.heroSection}
+            style={
+                {
+                    backgroundImage: `url(${heroBackground})`,
+                }
+            }>
+            {/* Animated Background Elements */}
+            <motion.img
+
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1, delay: 0.5 }}
+
+                src={shapeImg} className={'position-absolute w-50 end-0 ' + style.decroImage} />
+
+            <div  >
+                <div className="container-fluid">
+                    <div className={`row align-items-center h-100 py-5  ${style.mainContent} `}>
+
+                        {/* Right Side - Content */}
+                        <div className="col-lg-6 col-xl-7 mb-5 mb-lg-0">
+
+                            {/* decoration icons */}
+
+                            <motion.img
+
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1, delay: 0.5 }}
+                                src={shapeImg1} className={'position-absolute ms-5  ' + style.decroImage} style={{
+                                    bottom: '75%',
+                                }} />
+
+                            <motion.img
+
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                transition={{ duration: 1, delay: 0.5 }}
+                                src={shapeImg2} className={'position-absolute ms-5  ' + style.decroImage} style={{
+                                    top: '70%',
+                                    right: '10%',
+                                }} />
+
+                            <motion.div
+                                className="px-5"
+                                variants={containerVariants}
+                                initial="hidden"
+                                animate="visible"
+                            >
+                                <motion.h1
+                                    className="fw-bold mb-4 "
+                                    variants={itemVariants}
+                                    style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)' }}
+                                >
+                                    <span className={style.gradientText}>
+                                        {t("hero_title")}
+                                    </span>
+                                    <br />
+                                    <span className={style.orangeText}> {t("hero_subtitle")}</span>
+                                </motion.h1>
+
+                                <motion.p
+                                    className={"lead mb-4 text-light " + style.heroDescription} 
+                                    variants={itemVariants}
+                                >
+                                    نقدم حلولاً مبتكرة تساعد الشركات على النمو والتطور في العصر الرقمي
+                                    <br />
+                                    مع أحدث التقنيات وأفضل الممارسات في التطوير
+                                </motion.p>
+
+                                <motion.div
+                                    className={"d-flex flex-row gap-3 mb-5 "+style.btnContainer}
+                                    variants={itemVariants}
+                                >
+                                    <Link
+                                        className={style.ctaButton + " btn-web btn-web-secondary  "}>
+                                        أطلب عرض سعر
+                                    </Link>
+
+                                    <button
+                                        className={style.secondaryButton + " btn-web"}
+                                    >
+                                        استكشف خدماتنا
+                                    </button>
+                                </motion.div>
+
+                            </motion.div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="position-absolute bottom-0 start-0 end-0">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,149.3C480,128,600,128,720,154.7C840,181,960,235,1080,234.7C1200,235,1320,181,1380,154.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>            </div>
+        </div>
+    );
+};
+
+export default Hero;
+{/* Left Side - Laptop Image */ }
+/**
+ * 
+<div className="col-lg-6 col-xl-5">
+    <motion.div
+        className={style.laptopContainer}
+        initial={{ opacity: 0, x: 100 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 1, delay: 0.5 }}
+    >
+        <motion.div
+            animate={{
+                y: [-10, 10, -10],
+            }}
+            transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut"
+            }}
+        >
+            <div className="position-relative">
+                 <div
+                                            className="bg-dark rounded-4 p-4 shadow-lg"
+                                            style={{
+                                                background: 'linear-gradient(135deg, #2c3e50 0%, #34495e 100%)',
+                                                aspectRatio: '16/10'
+                                            }}
+                                        >
+                                        <div
+                                                className="bg-primary rounded-3 h-100 position-relative"
+                                                style={{
+                                                    background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                                                    overflow: 'hidden'
+                                                }}
+                                            >
+                                                <div className="position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                                                    <div className="text-center text-white">
+                                                        <i className="fas fa-laptop-code fa-4x mb-3 opacity-50"></i>
+                                                        <h5 className="mb-2">حلول برمجية متطورة</h5>
+                                                        <p className="small opacity-75">تطوير وتصميم احترافي</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+ 
+                 <motion.div
+                                            className={"position-absolute " + style.floatingElement}
+                                            style={{
+
+                                                top: '10%',
+                                                left: '-10%',
+                                                transform: 'rotate(-10deg)'
+                                            }}
+                                            animate={{
+                                                y: [-5, 5, -5],
+                                                rotate: [-10, -5, -10]
+                                            }}
+                                            transition={{
+                                                duration: 2,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                        >
+                                            <i className="fas fa-rocket text-warning me-2"></i>
+                                            <span className="small">أداء سريع</span>
+                                        </motion.div> 
+
+                 <motion.div
+                                            className={"position-absolute " +
+                                                style.floatingElement}
+                                            style={{
+                                                bottom: '10%',
+                                                right: '-10%',
+                                                transform: 'rotate(10deg)'
+                                            }}
+                                            animate={{
+                                                y: [5, -5, 5],
+                                                rotate: [10, 15, 10]
+                                            }}
+                                            transition={{
+                                                duration: 2.5,
+                                                repeat: Infinity,
+                                                ease: "easeInOut"
+                                            }}
+                                        >
+                                            <i className="fas fa-shield-alt text-success me-2"></i>
+                                            <span className="small">أمان عالي</span>
+                                        </motion.div> 
+            </div>
+        </motion.div>
+
+    </motion.div>
+</div>
+    */

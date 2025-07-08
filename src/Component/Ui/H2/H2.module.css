@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  direction: rtl;
+}
+
+.line {
+  flex: 1;
+  height: 2px;
+  max-width: 20px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--primary-color) 50%,
+    transparent 100%
+  );
+  margin: 0 ;
+}
+
+.heading {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--primary-color);
+  margin: 0;
+  white-space: nowrap;
+  padding: 0 1rem;
+}
+
+.arrow {
+  color: var(--primary-color);
+  font-size: 1.2rem;
+  margin: 0rem;
+}

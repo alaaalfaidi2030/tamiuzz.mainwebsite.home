@@ -1,0 +1,109 @@
+.navbar-container {
+  background-color: var(--primary-color);
+  transition-property: height;
+  transition-duration: 0.3s;
+}
+.navbar-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 3rem;
+  color: white;
+  font-size: 20px;
+  transition-property: opacity;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+}
+
+.navbar-top .phone-email a {
+  position: relative;
+  z-index: 1;
+}
+.navbar-top .phone-email a::after {
+  content: "";
+  display: block;
+  width: 0;
+  background-color: transparent;
+  position: absolute;
+  bottom: 0;
+  top: 0;
+  border-radius: 10px;
+  z-index: -1;
+  background-color: transparent;
+  transition-property: width, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+}
+.navbar-top .phone-email a:hover::after {
+  width: 100%;
+  background: var(--secondary-color);
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 35px;
+  height: 35px;
+  margin: 0 5px;
+  border-radius: 12px;
+  color: white;
+  border: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition-property: background-color, transform, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-in-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.social-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.social-link:hover::before {
+  opacity: 1;
+}
+
+.social-link:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.social-link.instagram:hover {
+  background: linear-gradient(45deg, #e1306c, #fd1d1d, #fcb045);
+}
+
+.social-link.facebook:hover {
+  background: linear-gradient(45deg, #1877f2, #42a5f5);
+}
+
+.social-link.twitter:hover {
+  background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+}
+
+.social-link.youtube:hover {
+  background: linear-gradient(45deg, #ff0000, #cc0000);
+}
+
+@media (max-width: 768px) {
+  .navbar-top {
+    font-size: 14px;
+    align-items: center;
+    justify-content: center;
+  }
+}
