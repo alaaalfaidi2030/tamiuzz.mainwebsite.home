@@ -14,7 +14,7 @@
 }
 
 .list-links .middle-part a {
-  color: var(--nav-text-color);
+  color: var(--Text-color);
   text-align: center;
   font-size: 1.3em;
   font-weight: 700;

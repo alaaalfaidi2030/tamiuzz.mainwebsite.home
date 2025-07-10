@@ -9,11 +9,10 @@ html {
   --primary-color-hover: #1e3a8a;
   --bg-color: #fff;
   --lite: #e0f2fe;
-  --Text:#082f49;
+  --Text-color:#082f49;
 
   /* navbar */
   --nav-bg-color: var(--bg-color);
-  --nav-text-color: #082f49;
 
   /* Footer */
 }

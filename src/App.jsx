@@ -11,6 +11,7 @@ import FAQ from './Routes/FAQ/FAQ'
 import Articles from './Routes/Articles/Articles'
 import Policy from "./Routes/Policy/Policy"
 import Support from './Routes/Support/Support'
+import Solutions from './Routes/Solutions/Solutions'
 
 function App() {
   const router = createBrowserRouter([
@@ -34,9 +35,12 @@ function App() {
       }, {
         path: "policy",
         element: <Policy />
-      },{
-        path:"support",
-        element:<Support/>
+      }, {
+        path: "support",
+        element: <Support />
+      }, {
+        path: "solutions",
+        element: <Solutions />
       }]
     }
   ])

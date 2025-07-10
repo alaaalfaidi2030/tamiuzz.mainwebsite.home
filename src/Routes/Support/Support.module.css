@@ -2,7 +2,11 @@
   direction: rtl;
   padding: 2rem;
 }
-.contact p {
+.contact{
+  display: flex;
+  
+}
+.contact a {
   font-size: 18px;
   color: var(--primary-color);
   margin: 10px 0;

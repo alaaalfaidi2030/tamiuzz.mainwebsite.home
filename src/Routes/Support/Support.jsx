@@ -7,9 +7,17 @@ import styles from './support.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import TextArea from '../../Component/Ui/Textarea/Textarea';
+import { phoneAndEmail } from '../../Utilies/data';
+import { motion } from 'framer-motion';
 
 export default function Support() {
     const { t } = useTranslation();
+    const validationSchema = Yup.object({
+        name: Yup.string().required('الاسم مطلوب'),
+        email: Yup.string().email('بريد غير صالح').required('البريد مطلوب'),
+        phone: Yup.string().required('رقم الهاتف مطلوب'),
+        message: Yup.string().required('الرسالة مطلوبة'),
+    });
 
     const formik = useFormik({
         initialValues: {
@@ -18,12 +26,7 @@ export default function Support() {
             phone: '',
             message: '',
         },
-        validationSchema: Yup.object({
-            name: Yup.string().required('الاسم مطلوب'),
-            email: Yup.string().email('بريد غير صالح').required('البريد مطلوب'),
-            phone: Yup.string().required('رقم الهاتف مطلوب'),
-            message: Yup.string().required('الرسالة مطلوبة'),
-        }),
+        validationSchema: validationSchema,
         onSubmit: (values) => {
             console.log('Form Submitted', values);
         },
@@ -49,27 +52,34 @@ export default function Support() {
                                 onChange={formik.handleChange}
                             />
 
-                            <div className="d-flex gap-3 w-100">
-                                <TextInput
-                                    label="رقم الهاتف"
-                                    name="phone"
-                                    placeholder="+2345667788"
-                                    required
-                                    value={formik.values.phone}
-                                    onChange={formik.handleChange}
-                                />
-                                <TextInput
-                                    label="البريد الالكتروني"
-                                    name="email"
-                                    placeholder="info@example.com"
-                                    required
-                                    value={formik.values.email}
-                                    onChange={formik.handleChange}
-                                />
+                            <div className="row g-3" >
+                                <div className="col-md-6 ">
+
+                                    <TextInput
+                                        label="رقم الهاتف"
+                                        name="phone"
+                                        placeholder="+2345667788"
+                                        required
+                                        value={formik.values.phone}
+                                        onChange={formik.handleChange}
+                                    />
+                                </div>
+                                <div className="col-md-6 ">
+
+                                    <TextInput
+                                        label="البريد الالكتروني"
+                                        name="email"
+                                        placeholder="info@example.com"
+                                        required
+                                        value={formik.values.email}
+                                        onChange={formik.handleChange}
+                                    />
+                                </div>
+
                             </div>
 
                             <div className={styles.textareaWrapper}>
-                               
+
                                 <TextArea
                                     label={
                                         "رسالتك"
@@ -96,12 +106,23 @@ export default function Support() {
 
                             <div className={styles.contact}>
                                 <h2 className={styles.formTitle}>{t('how can we help')}</h2>
-                                <p>
-                                    <strong>Info@Example.Com</strong> 📧
-                                </p>
-                                <p>
-                                    <strong>+208-6666-0112</strong> 📞
-                                </p>
+                                
+                                {
+                                    phoneAndEmail.map((item, idx) => (
+                                        <motion.a
+                                            key={idx}
+                                            href={item.link}
+                                            initial={{ opacity: 0, y: -100 }}
+                                            animate={{ opacity: 1, y: 0 }}
+                                            transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                            className={styles["contact-item"]}
+                                        >
+                                            <i className={`fa-solid ${item.icon} ${styles["contact-icon"]}`}></i>
+                                            <span dir='ltr'>{item.text}</span>
+                                        </motion.a>
+                                    ))
+
+                                }
                             </div>
                         </div>
                     </div>

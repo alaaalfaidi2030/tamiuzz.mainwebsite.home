@@ -1,0 +1,47 @@
+.cardContainer {
+  background: linear-gradient(90deg, var(--lite) 70%, transparent 30%);
+}
+.cardContainer:nth-child(odd) {
+  background: linear-gradient(-90deg, var(--lite) 70%, transparent 30%);
+}
+
+body[dir="ltr"] .cardContainer {
+  background: linear-gradient(-90deg, var(--lite) 70%, transparent 30%);
+}
+
+body[dir="ltr"] .cardContainer:nth-child(odd) {
+  background: linear-gradient(90deg, var(--lite) 70%, transparent 30%);
+}
+
+.cardContainer:nth-child(odd) div:nth-child(1) {
+  order: 1;
+}
+
+.imageWrapper {
+  text-align: center;
+}
+.imageWrapper img {
+  object-fit: cover;
+  width: 100%;
+}
+.cardContainer h3 {
+  color: var(--primary-color);
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 32px; /* 100% */
+  text-transform: capitalize;
+}
+.cardContainer p {
+  color: var(--Text-color);
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 32px;
+}
+.cardContainer a {
+  width: fit-content;
+  transition: all ease-in-out 0.3s;
+  -webkit-transition: all ease-in-out 0.3s;
+  -moz-transition: all ease-in-out 0.3s;
+  -ms-transition: all ease-in-out 0.3s;
+  -o-transition: all ease-in-out 0.3s;
+}
