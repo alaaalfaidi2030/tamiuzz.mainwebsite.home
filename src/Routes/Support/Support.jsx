@@ -7,18 +7,74 @@ import styles from './support.module.css';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import TextArea from '../../Component/Ui/Textarea/Textarea';
-import { phoneAndEmail } from '../../Utilies/data';
+import { baseURL, phoneAndEmail } from '../../Utilies/data';
 import { motion } from 'framer-motion';
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 export default function Support() {
     const { t } = useTranslation();
-    const validationSchema = Yup.object({
-        name: Yup.string().required('الاسم مطلوب'),
-        email: Yup.string().email('بريد غير صالح').required('البريد مطلوب'),
-        phone: Yup.string().required('رقم الهاتف مطلوب'),
-        message: Yup.string().required('الرسالة مطلوبة'),
+    const validationSchema = Yup.object().shape({
+        name: Yup.string()
+            .min(3, t("Must be 3 characters or more"))
+            .required(t("Required")),
+
+        email: Yup.string()
+            .email(t("Invalid email address"))
+            .required(t("Required")),
+
+        phone: Yup.string().required(t("Required")),
+
+        message: Yup.string()
+            .min(10, t("Must be 10 characters or more"))
+            .required(t("Required")),
     });
 
+
+
+    // send message to the server
+
+    const sendMessage = async (values) => {
+        let userData = JSON.stringify({
+            Name: values.name,
+            Email: values.email,
+            Phone: values.phonNumber,
+            Message: values.message,
+        });
+
+        setResponseFlag(true);
+
+        try {
+            const { data } = await axios.post(baseURL + "/contact-us", data, config);
+
+
+            if (data.code && data.code === 200) {
+                Swal.fire({
+                    title: t("Success"),
+                    text: t("message sent successfully"),
+                    icon: "success",
+                    button: t("Ok"),
+                });
+            } else {
+                Swal.fire({
+                    title: t("Error"),
+                    text: t("Something went wrong, please try again later"),
+                    icon: "error",
+                    button: t("Ok"),
+                });
+            }
+        } catch (error) {
+            console.error("There was an error sending the message:", error);
+            Swal.fire({
+                title: t("Error"),
+                text: t("Something went wrong, please try again later"),
+                icon: "error",
+                button: t("Ok"),
+            });
+        } finally {
+            setResponseFlag(false);
+        }
+    };
     const formik = useFormik({
         initialValues: {
             name: '',
@@ -27,9 +83,7 @@ export default function Support() {
             message: '',
         },
         validationSchema: validationSchema,
-        onSubmit: (values) => {
-            console.log('Form Submitted', values);
-        },
+        onSubmit: sendMessage
     });
 
     return (

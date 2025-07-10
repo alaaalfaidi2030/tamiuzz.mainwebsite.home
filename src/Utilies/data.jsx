@@ -1,4 +1,4 @@
-export const baseURL = "https://api.hosoun.com/";
+export const baseURL = "https://api.Tamuizz.com/";
 export const phoneAndEmail = [
   {
     icon: "fa-solid fa-envelope",
