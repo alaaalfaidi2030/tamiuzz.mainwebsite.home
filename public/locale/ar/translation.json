@@ -14,6 +14,10 @@
 
   "Top Articles": "أهم المقالات",
 
+  "talk with us":"تحدث معنا",
+
+
+
   "contact_us": "تواصل معنا",
   "email_placeholder": "البريد الإلكتروني",
   "email_description": "يرجى إدخال عنوان بريدك الإلكتروني لتلقي آخر الأخبار والتحديثات.",
@@ -21,6 +25,6 @@
   "faq": "الأسئلة الشائعة",
   "company_description": "شركة تميــّز هــي شركه تقنيــة رائــدة في الملكــة العربيــة الســعودية والــشرق الاوســط، تهـدف إلى تقديـم حلـول تقنيـة ذكيـة تلـبي احتياجـات الـشركات والمؤسسـات والأفـراد",
   "copyright": "All Copyright 2024 by",
-  "terms_condition": "Terms & Condition",
-  "privacy_policy": "Privacy Policy"
+  "terms_condition": "الشروط والاحكام",
+  "privacy_policy": "سياسة الخصوصية"
 }

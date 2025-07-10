@@ -6,6 +6,7 @@ import ScrollToTop from "../Ui/ScrollToTop/ScrollToTop.jsx"
 
 import Navbar from '../Navbar/Navbar'
 import Footer from "../Footer/Footer.jsx";
+import TextInput from "../Ui/TextInput/TextInput.jsx";
 
 export default function RoutLayout() {
     const { isMobile } = useContext(IsMobileContext);

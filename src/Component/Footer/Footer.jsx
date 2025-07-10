@@ -136,9 +136,9 @@ const Footer = () => {
                             <a href="#terms" >
                                 {t("terms_condition")}
                             </a>
-                            <a href="#privacy">
+                            <Link to ="policy">
                                 {t("privacy_policy")}
-                            </a>
+                            </Link>
                         </div>
                         <p className={style["copyright"]}>
                             © {t("copyright")} Tamuizz

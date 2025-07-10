@@ -11,10 +11,8 @@ export default function Heading({ pageName }) {
     return (
         <div className={"d-flex justify-content-center align-items-center flex-column " + style.heading} style={{
             backgroundImage: `url(${headingBackground})`,
-
         }}>
-
-            <h2  >
+            <h2 >
                 عن شركة تميز
             </h2>
             <p>

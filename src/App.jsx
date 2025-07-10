@@ -9,6 +9,8 @@ import i18n from './i18n'
 import Home from './Routes/Home/Home'
 import FAQ from './Routes/FAQ/FAQ'
 import Articles from './Routes/Articles/Articles'
+import Policy from "./Routes/Policy/Policy"
+import Support from './Routes/Support/Support'
 
 function App() {
   const router = createBrowserRouter([
@@ -28,7 +30,13 @@ function App() {
         element: <FAQ />
       }, {
         path: "articles",
-        element: <Articles/>
+        element: <Articles />
+      }, {
+        path: "policy",
+        element: <Policy />
+      },{
+        path:"support",
+        element:<Support/>
       }]
     }
   ])
