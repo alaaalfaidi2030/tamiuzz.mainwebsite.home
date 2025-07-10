@@ -44,6 +44,7 @@ export default function Support() {
                         <form onSubmit={formik.handleSubmit} className={styles.form}>
 
                             <TextInput
+                                idx={0}
                                 label="الاسم"
                                 name="name"
                                 placeholder="الاسم"
@@ -56,6 +57,7 @@ export default function Support() {
                                 <div className="col-md-6 ">
 
                                     <TextInput
+                                        idx={1}
                                         label="رقم الهاتف"
                                         name="phone"
                                         placeholder="+2345667788"
@@ -67,6 +69,7 @@ export default function Support() {
                                 <div className="col-md-6 ">
 
                                     <TextInput
+                                        idx={2}
                                         label="البريد الالكتروني"
                                         name="email"
                                         placeholder="info@example.com"
@@ -81,10 +84,8 @@ export default function Support() {
                             <div className={styles.textareaWrapper}>
 
                                 <TextArea
-                                    label={
-                                        "رسالتك"
-
-                                    }
+                                    idx={3}
+                                    label={"رسالتك"}
                                     id="message"
                                     name="message"
                                     placeholder="اكتب رسالتك"
@@ -100,30 +101,27 @@ export default function Support() {
                             </button>
                         </form>
                     </div>
-                    <div className="col-md-6 d-flex justify-content-center">
+                    <div className={"col-md-6 d-flex justify-content-center " + styles.info}>
 
-                        <div className={styles.info}>
+                        <div className={styles.contact}>
+                            <h2 className={styles.formTitle}>{t('how can we help')}</h2>
 
-                            <div className={styles.contact}>
-                                <h2 className={styles.formTitle}>{t('how can we help')}</h2>
-                                
-                                {
-                                    phoneAndEmail.map((item, idx) => (
-                                        <motion.a
-                                            key={idx}
-                                            href={item.link}
-                                            initial={{ opacity: 0, y: -100 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            transition={{ duration: 0.5, delay: idx * 0.1 }}
-                                            className={styles["contact-item"]}
-                                        >
-                                            <i className={`fa-solid ${item.icon} ${styles["contact-icon"]}`}></i>
-                                            <span dir='ltr'>{item.text}</span>
-                                        </motion.a>
-                                    ))
+                            {
+                                phoneAndEmail.map((item, idx) => (
+                                    <motion.a
+                                        key={idx}
+                                        href={item.link}
+                                        initial={{ opacity: 0, y: -100 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.5, delay: idx * 0.1 }}
+                                        className={styles["contact-item"]}
+                                    >
+                                        <i className={`fa-solid ${item.icon} ${styles["contact-icon"]}`}></i>
+                                        <span dir='ltr'>{item.text}</span>
+                                    </motion.a>
+                                ))
 
-                                }
-                            </div>
+                            }
                         </div>
                     </div>
                 </div>
