@@ -1,17 +1,16 @@
 import { createContext, useEffect, useState, Suspense } from "react";
-import ApiManager from "../Utilies/ApiManager";
 import HomeLoading from "../Component/Ui/HomeLoading/HomeLoading";
+import axios from "axios";
+import { baseURL, getHeaders } from "../Utilies/data";
 const authContext = createContext();
 function AuthProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
   // this token is for student who register
-  const [onlineToken, setOnlineToken] = useState(null);
   const [isRegistered, setIsRegistered] = useState(null);
   const [user, setUser] = useState(() => {
     const savedUser = localStorage.getItem("user");
     return savedUser ? JSON.parse(savedUser) : null;
   });
-  const [onlineUser, setOnlineUser] = useState(null);
   const [loading, setLoading] = useState(true);
   /**
    * this function check if the session is still valid or not
@@ -37,7 +36,9 @@ function AuthProvider({ children }) {
    */
   const getCurrentUserData = async (token) => {
     try {
-      const { data } = await ApiManager.getProfile(token);
+      const { data } = await axios.get(`${baseURL}/auth/current`, {
+        headers: getHeaders(token),
+      });
       if (data.code == 200) {
         setUser(data.data);
         localStorage.setItem("user", JSON.stringify(data.data));
@@ -45,35 +46,6 @@ function AuthProvider({ children }) {
       setLoading(false);
     } catch (error) {
       setLoading(false);
-    }
-  };
-  /**
-   * this function get online User Token
-   * @param {string} onlineToken
-   * @returns {void}
-   */
-  /**
-   * 
-   *  "OnlineUser": {
-    "id": "bf275e1a-340e-49d2-888a-35622be875ed",
-    "name": "Ahmed Alaa Elsaadani",
-    "level": "رياض أطفال 1",
-    "schoolLevel": 1,
-    "phone": "+20 01033487865",
-    "email": "ahmedalaaelsaadani0@gmail.com",
-    "countryId": 43,
-    "countryCode": "EG"
-  }} onlineToken 
-   */
-  const getOnlineUserData = async (onlineToken) => {
-    try {
-      const { data } = await ApiManager.getOnlineStudentInfo(onlineToken);
-      if (data.code == 200) {
-        setOnlineUser(data.data);
-      } else setOnlineToken(null);
-    } catch (error) {
-      console.error(error);
-      setOnlineToken(null);
     }
   };
 
@@ -95,7 +67,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     // else setLoading(true);
     let timeOutIdx;
-    
+
     if (isRegistered) getCurrentUserData(token);
     else {
       setLoading(true);
@@ -104,10 +76,6 @@ function AuthProvider({ children }) {
     return () => clearTimeout(timeOutIdx);
   }, [isRegistered]);
 
-  useEffect(() => {
-    if (onlineToken) getOnlineUserData(onlineToken);
-    else setOnlineUser(null);
-  }, [onlineToken]);
 
   return (
     <>
@@ -122,10 +90,6 @@ function AuthProvider({ children }) {
               isRegistered,
               user,
               setUser,
-              onlineUser,
-              onlineToken,
-              setOnlineUser,
-              setOnlineToken,
               loading, // this is for the loading state but i don't use it yet
             }}
           >
@@ -154,7 +118,13 @@ export function endACurrentSession() {
 }
 async function isUserSession(token) {
   if (token) {
-    const { data } = await ApiManager.checkIfSessionValid(token);
+    const { data } = await axios.post(
+      baseURL + "/auth/validate",
+      {},
+      {
+        headers: getHeaders(token),
+      }
+    );
 
     if (data.code === 200) {
       localStorage.setItem("token", token);

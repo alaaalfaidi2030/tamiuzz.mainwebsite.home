@@ -15,7 +15,12 @@
   "Top Articles": "أهم المقالات",
 
   "talk with us": "تحدث معنا",
-  "how can we help": "كيف نساعدك؟",
+  "contact with us": "تواصل معنا",
+  "how can we help": "كيف يمكننا مساعدتك؟",
+  "send": "إرسال",
+
+  "about tamuizz": "عن شركة تميز",
+  "we present our services in the best way": "نلتزم بتقديم خدماتنا بأعلى معايير الجوده",
 
   "contact_us": "تواصل معنا",
   "email_placeholder": "البريد الإلكتروني",
@@ -25,5 +30,25 @@
   "company_description": "شركة تميــّز هــي شركه تقنيــة رائــدة في الملكــة العربيــة الســعودية والــشرق الاوســط، تهـدف إلى تقديـم حلـول تقنيـة ذكيـة تلـبي احتياجـات الـشركات والمؤسسـات والأفـراد",
   "copyright": "All Copyright 2024 by",
   "terms_condition": "الشروط والاحكام",
-  "privacy_policy": "سياسة الخصوصية"
+  "privacy_policy": "سياسة الخصوصية",
+  "form": {
+    "name": "الأسم",
+    "phone": "رقم الهاتف",
+    "email": "البريد الالكترونى",
+    "message": "الرسالة",
+    "message_placeholder": "اكتب رسالتك هنا"
+  },
+  "success": {
+    "Success": "تم بنجاح",
+    "message sent successfully": "تم إرسال الرسالة بنجاح",
+    "OK": "تمام"
+  },
+  "errors": {
+    "Error": "حدث خطأ",
+    "Must be 3 characters or more": "يجب أن تكون 3 أحرف أو أكثر",
+    "Required": "مطلوب",
+    "Invalid email address": "هذا البريد الإلكتروني غير صالح",
+    "Must be 10 characters or more": "يجب أن تكون 10 أحرف أو أكثر",
+    "Something went wrong, please try again later": "حدث خطأ ما، يرجى المحاولة مرة أخرى في وقت لاحق"
+  }
 }

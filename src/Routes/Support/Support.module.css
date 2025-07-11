@@ -1,6 +1,5 @@
 .supportSection {
-  direction: rtl;
-  padding: 2rem;
+ padding: 2rem;
 }
 .contact {
   display: flex;
@@ -20,66 +19,17 @@
   transition-duration: 0.3s;
 }
 
-.form {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
 
-.formTitle {
+.titleHeading {
   font-size: 24px;
   color: var(--primary-color);
   font-weight: 700;
   margin-bottom: 1rem;
 }
 
-.textareaWrapper {
-  display: flex;
-  flex-direction: column;
-}
 
-.textarea {
-  background-color: #eff3ff;
-  border: 1px solid #eff3ff;
-  border-radius: 10px;
-  padding: 1rem;
-  font-size: 16px;
-  color: var(--primary-color);
-  min-height: 120px;
-  resize: none;
-}
-
-.label {
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  color: var(--primary-color);
-  font-family: "IBM Plex Sans Arabic", sans-serif;
-}
-
-.button {
-  background-color: #eaf3ff;
-  color: var(--primary-color);
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  align-self: flex-start;
-  transition: background-color 0.3s;
-  -webkit-transition: background-color 0.3s;
-  -moz-transition: background-color 0.3s;
-  -ms-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
-}
-
-.button:hover {
-  background-color: #d9e9ff;
-}
 @media screen and (max-width: 991px) {
-  .info{
+  .info {
     order: -1;
   }
   .contact {
@@ -88,9 +38,7 @@
     justify-content: space-between;
     gap: 20px;
   }
-  .contact h2{
+  .contact h2 {
     display: none;
-
-  
   }
 }

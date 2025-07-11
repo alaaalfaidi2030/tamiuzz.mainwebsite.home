@@ -1,4 +1,15 @@
-export const baseURL = "https://api.Tamuizz.com/";
+import i18n from "../i18n";
+
+export const baseURL = "https://api-landing.tamiuzz.com";
+
+export const getHeaders = (token) => {
+
+  return {
+    "Content-Type": "application/json",
+    Authorization: token ? `Bearer ${token}` : undefined,
+    XLanguage: i18n.language,
+  };
+};
 export const phoneAndEmail = [
   {
     icon: "fa-solid fa-envelope",

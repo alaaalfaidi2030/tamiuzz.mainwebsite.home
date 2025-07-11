@@ -53,7 +53,6 @@ export default function TextInput({ idx = 0, label, name, required = false, plac
                 placeholder={placeholder}
                 value={value}
                 onChange={onChange}
-                required={required}
             />
             {
                 error && touched &&

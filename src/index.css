@@ -9,7 +9,7 @@ html {
   --primary-color-hover: #1e3a8a;
   --bg-color: #fff;
   --lite: #e0f2fe;
-  --Text-color:#082f49;
+  --Text-color: #082f49;
 
   /* navbar */
   --nav-bg-color: var(--bg-color);
@@ -44,6 +44,16 @@ button {
 button:active {
   scale: 0.9;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: gray;
+  color: white;
+}
+button:disabled:hover {
+  background-color: gray !important;
+  color: white !important;
+}
 .btn-web {
   padding: 10px 20px;
   border-radius: 5px;
@@ -56,12 +66,6 @@ button:active {
 .btn-web:active {
   scale: 0.9;
 }
-.btn-web:disabled {
-  border: 1px solid var(--primary-color);
-  background-color: transparent;
-  color: var(--primary-color);
-  cursor: not-allowed;
-}
 .btn-web-secondary {
   background-color: var(--secondary-color);
   color: #fff;
@@ -72,6 +76,19 @@ button:active {
   color: var(--secondary-color);
 }
 
+/* 
+////////////////override swal ////////////
+ */
+.swal2-confirm {
+  background-color: var(--secondary-color);
+  color: #fff;
+  border: 1px solid var(--secondary-color);
+}
+
+.swal2-confirm:hover {
+  background-color: transparent;
+  color: var(--secondary-color);
+}
 /* 
 //////////selection///////////
 */

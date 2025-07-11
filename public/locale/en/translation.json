@@ -5,25 +5,50 @@
   "articles": "Articles",
   "support": "Support",
   "about-us": "About Us",
-  "nav_lang": "English",
-  "shopping now": "Shopping Now",
+  "nav_lang": "Arabic",
+  "shopping now": "Shop Now",
 
   "hero_title": "Integrated Software Solutions",
-  "hero_subtitle": "For the Success of Your Business",
-  "aboutHomeHeading": "What Sets Us Apart",
+  "hero_subtitle": "For Your Business Success",
+  "aboutHomeHeading": "What Distinguishes Us Most",
 
   "Top Articles": "Top Articles",
 
-  "talk with us": "Talk with us",
-  "how can we help": "how can we help?",
+  "talk with us": "Talk with Us",
+  "contact with us": "Contact Us",
+  "how can we help": "How Can We Help You?",
+  "send": "Send",
+
+  "about tamuizz": "About Tamuizz Company",
+  "we present our services in the best way": "We Are Committed to Providing Our Services at the Highest Quality Standards",
 
   "contact_us": "Contact Us",
-  "email_placeholder": "Email",
-  "email_description": "Please enter your email address to receive our latest news and updates.",
+  "email_placeholder": "Email Address",
+  "email_description": "Please enter your email address to receive the latest news and updates.",
   "quick_links": "Quick Links",
-  "faq": "FAQ",
-  "company_description": "Tamuizz is a leading technology company in the Kingdom of Saudi Arabia and the Middle East, aiming to provide smart technological solutions that meet the needs of companies, institutions, and individuals.",
+  "faq": "FAQs",
+  "company_description": "Tamuizz is a leading tech company in Saudi Arabia and the Middle East, aiming to provide smart technological solutions that meet the needs of companies, institutions, and individuals.",
   "copyright": "All Copyright 2024 by",
-  "terms_condition": "Terms & Condition",
-  "privacy_policy": "Privacy Policy"
+  "terms_condition": "Terms & Conditions",
+  "privacy_policy": "Privacy Policy",
+  "form": {
+    "name": "Name",
+    "phone": "Phone Number",
+    "email": "Email",
+    "message": "Message",
+    "message_placeholder": "Write your message here"
+  },
+  "success": {
+    "Success": "Success",
+    "message sent successfully": "Message Sent Successfully",
+    "OK": "OK"
+  },
+  "errors": {
+    "Error": "An Error Occurred",
+    "Must be 3 characters or more": "Must Be 3 Characters or More",
+    "Required": "Required",
+    "Invalid email address": "Invalid Email Address",
+    "Must be 10 characters or more": "Must Be 10 Characters or More",
+    "Something went wrong, please try again later": "Something Went Wrong, Please Try Again Later"
+  }
 }

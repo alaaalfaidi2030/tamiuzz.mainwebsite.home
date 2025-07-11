@@ -52,7 +52,6 @@ export default function TextArea({ idx, label, name, required = false, placehold
             value={value}
             onChange={onChange}
             className={`${styles.textarea}`}
-            required={required}
         />
         {
             error && touched &&

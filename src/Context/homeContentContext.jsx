@@ -1,5 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
-import ApiManager from "../Utilies/ApiManager";
+import axios from "axios";
+import { baseURL, getHeaders } from "../Utilies/data";
 export const HomeContentContext = createContext();
 function HomeContentProvider({ children }) {
   const [homeContent, setHomeContent] = useState(null);
@@ -8,7 +9,9 @@ function HomeContentProvider({ children }) {
   const getData = async () => {
     setIsLoading(true);
     try {
-      let { data } = await ApiManager.getHomeData();
+      let { data } = await axios.get(baseURL + "/home", {
+        headers: getHeaders(),
+      });
       setHomeContent(data.data);
       setIsLoading(false);
     } catch (error) {

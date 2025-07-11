@@ -1,10 +1,32 @@
 import React from 'react';
 import styles from './ArticleCard.module.css';
-// import { FaUser, FaTag } from 'react-icons/fa';
+import { delay, motion } from 'framer-motion'; // Import motion
 
-export default function ArticleCard({ image, date, month, title, author, category, description, link }) {
+export default function ArticleCard({ idx = 0, image, date, month, title, author, category, description, link }) {
+    // Define animation variants for the card
+    const cardVariants = {
+        hidden: { opacity: 0, y: 50 }, // Starts invisible and slightly below
+        visible: {
+            opacity: 1,
+            y: 0, // Moves to its original position
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 10,
+                duration: 0.5,
+                delay: (idx * 0.1) < 1 ? idx * 0.1 : 0.1,
+
+            }
+        },
+
+    };
+
     return (
-        <div className={styles.card + " col-md-4"}>
+        <motion.div
+            className={styles.card + " col-md-4"}
+            variants={cardVariants}
+            initial="hidden"
+            animate="visible"  >
             <div className={styles.imageWrapper}>
                 <img src={image} alt="article image" className={styles.image} />
                 <div className={styles.dateBadge}>
@@ -15,12 +37,12 @@ export default function ArticleCard({ image, date, month, title, author, categor
             <div className={styles.content}>
                 <div className={styles.meta}>
                     <span className={styles.author}>
-                        <i class="fa-solid fa-user"></i>{author}</span>
-                    <span className={styles.category}><i class="fa-solid fa-tag"></i>{category}</span>
+                        <i className="fa-solid fa-user"></i>{author}</span>
+                    <span className={styles.category}><i className="fa-solid fa-tag"></i>{category}</span>
                 </div>
                 <p className={styles.description}>{description}</p>
                 <a href={link} className={styles.link}>اطلع على المزيد →</a>
             </div>
-        </div>
+        </motion.div>
     );
 }

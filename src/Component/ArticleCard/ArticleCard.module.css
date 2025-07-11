@@ -3,11 +3,25 @@
   max-width: 370px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0,0,0,0.06);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
   background: #fff;
   display: flex;
   flex-direction: column;
   direction: rtl;
+  transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
+  -webkit-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
+  -moz-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
+  -ms-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
+  -o-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
+}
+
+.card:hover {
+  transform: translateY(-5px) scale(1.03) !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+  -webkit-transform: translateY(-5px) scale(1.03) !important;
+  -moz-transform: translateY(-5px) scale(1.03) !important;
+  -ms-transform: translateY(-5px) scale(1.03) !important;
+  -o-transform: translateY(-5px) scale(1.03) !important;
 }
 
 .imageWrapper {
@@ -58,8 +72,8 @@
   flex-wrap: wrap;
   margin-bottom: 8px;
 }
-.meta i{
-    color: var(--primary-color);
+.meta i {
+  color: var(--primary-color);
 }
 
 .meta span {

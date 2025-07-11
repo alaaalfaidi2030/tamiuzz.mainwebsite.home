@@ -117,7 +117,7 @@ function Articles() {
                     {
 
                         articlesData.map((article, idx) => (
-                            <ArticleCard key={idx} {...article} image={sampleImg} />
+                            <ArticleCard idx={idx} key={idx} {...article} image={sampleImg} />
                         ))
                     }
                 </div>

@@ -8,7 +8,7 @@ export default function Policy() {
 
     return (
         <section className={style.privacySection }>
-            <Heading pageName={t("privacy_policy")} />
+            <Heading pageName={"privacy_policy"} />
 
             <div className={style.policyContent}>
                 <p>
