@@ -3,6 +3,7 @@ import Heading from '../../Component/Ui/Heading/Heading'
 import { useTranslation } from 'react-i18next'
 import H3 from '../../Component/Ui/H3/H3'
 import SolutionCard from '../../Component/SolutionCard/SolutionCard'
+import ContactSection from '../../Component/ContactSection/ContactSection'
 
 export default function Solutions() {
     const { t } = useTranslation()
@@ -50,7 +51,7 @@ export default function Solutions() {
             "imageUrl": "/images/web-dev.jpg",
             "description": "حلول متكاملة لتطوير الواجهة الأمامية والخلفية للمواقع الإلكترونية."
         }, */}
-                <H3 text="نحن نقدم أفضل الحلول" />
+                <H3 text={t("solutionPage.solution_title")} />
 
                 {
                     solutions.map((service, idx) => <SolutionCard key={idx} {...service} />
@@ -59,6 +60,8 @@ export default function Solutions() {
                 }
 
             </div>
+
+            <ContactSection />
         </section>
     )
 }

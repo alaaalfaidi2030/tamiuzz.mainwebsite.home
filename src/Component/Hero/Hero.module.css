@@ -6,8 +6,32 @@
   background-size: 100% 100%;
   background-position: center;
   position: relative;
+  z-index: 1;
   padding-bottom: 3rem;
 }
+body[dir="ltr"] .heroSection {
+  transform: scaleX(-1) !important;
+  -webkit-transform: scaleX(-1) !important;
+  -moz-transform: scaleX(-1) !important;
+  -ms-transform: scaleX(-1) !important;
+  -o-transform: scaleX(-1) !important;
+}
+
+body[dir="ltr"] .contentContainer {
+  transform: scaleX(-1) !important;
+  -webkit-transform: scaleX(-1) !important;
+  -moz-transform: scaleX(-1) !important;
+  -ms-transform: scaleX(-1) !important;
+  -o-transform: scaleX(-1) !important;
+}
+body[dir="ltr"] .mainContent {
+  background: linear-gradient(
+    -90deg,
+    rgba(5, 26, 108, 0) 14.74%,
+    #0a2ea4bd 70.82%
+  );
+}
+
 .mainContent {
   min-height: 110vh;
   background: linear-gradient(
@@ -19,7 +43,7 @@
 h1 {
   font-size: 3.5rem;
   font-weight: 700;
-  line-height: 1.5;
+  line-height: 1.2;
   margin-bottom: 1rem;
 }
 .gradientText {
@@ -95,7 +119,7 @@ h1 {
   }
   .btnContainer * {
     font-size: 0.8rem;
-justify-content: center;
+    justify-content: center;
     margin: 0 auto;
   }
 }

@@ -12,6 +12,8 @@ import Articles from './Routes/Articles/Articles'
 import Policy from "./Routes/Policy/Policy"
 import Support from './Routes/Support/Support'
 import Solutions from './Routes/Solutions/Solutions'
+import Services from './Routes/Services/Services'
+import AboutUs from './Routes/AboutUs/AboutUs'
 
 function App() {
   const router = createBrowserRouter([
@@ -41,7 +43,16 @@ function App() {
       }, {
         path: "solutions",
         element: <Solutions />
-      }]
+      }, {
+        path: "services",
+        element: <Services />
+      },
+      {
+        path: "about-us",
+        element: <AboutUs />
+      }
+
+      ]
     }
   ])
 

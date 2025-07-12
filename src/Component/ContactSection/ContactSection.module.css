@@ -1,0 +1,37 @@
+.container {
+  background-color: var(--primary-color);
+}
+.container label,
+.container span {
+  color: white;
+}
+.imageWrapper {
+  position: relative;
+}
+.container img {
+  top: -90px;
+}
+.container input:focus,
+.container input:focus-within,
+.container input:focus-visible,
+.container textarea:focus,
+.container textarea:focus-within,
+.container textarea:focus-visible {
+  border-bottom-color: var(--secondary-color);
+  outline: none;
+  box-shadow: 0 0 0 0.25rem #e49d2346 !important;
+}
+
+@media screen and (max-width: 991px) {
+  .imageWrapper {
+    position: static;
+  }
+  .container {
+    position: relative;
+  }
+  .container img {
+    width: 92px !important;
+    top: 10px;
+    left: 0;
+  }
+}

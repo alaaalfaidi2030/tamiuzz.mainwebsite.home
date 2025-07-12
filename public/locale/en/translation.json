@@ -5,29 +5,74 @@
   "articles": "Articles",
   "support": "Support",
   "about-us": "About Us",
-  "nav_lang": "Arabic",
+  "nav_lang": "العربية",
   "shopping now": "Shop Now",
 
   "hero_title": "Integrated Software Solutions",
   "hero_subtitle": "For Your Business Success",
-  "aboutHomeHeading": "What Distinguishes Us Most",
+  "homePage": {
+    "aboutHomeHeading": "What Sets Us Apart",
+    "aboutSectionTitle": "We can provide excellent services to clients",
+    "aboutSectionDescription": "Tamayuz Company is a leading technology company in Saudi Arabia and the Middle East, aiming to provide smart technical solutions that meet the needs of companies, institutions, and individuals.",
+    "itConsulting": "IT Consulting",
+    "appDevelopment": "Application Development",
+    "cyberSecurity": "Cyber Security",
+    "itManagement": "IT Management",
+    "uiUxDesign": "UI/UX Design",
+    "dataAnalysis": "Data Analysis",
+    "databaseSecurity": "Database Security",
+    "digitalMarketing": "Digital Marketing",
+    "servicesDetailsButton": "Our Services Details",
+    "projectsCount": "600",
+    "projectsLabel": "Project",
+    "clientsCount": "+6,561",
+    "clientsLabel": "Satisfied Clients",
+    "aboutImageAlt": "About Tamayuz Company"
+  },
 
   "Top Articles": "Top Articles",
 
-  "talk with us": "Talk with Us",
+  "talk with us": "Talk to Us",
   "contact with us": "Contact Us",
   "how can we help": "How Can We Help You?",
   "send": "Send",
 
   "about tamuizz": "About Tamuizz Company",
-  "we present our services in the best way": "We Are Committed to Providing Our Services at the Highest Quality Standards",
+  "we present our services in the best way": "We are committed to providing our services at the highest quality standards",
+
+  "aboutSection": {
+    "about-us-page-name": "About Us",
+    "why-are-we-special": "Why Are We Special?",
+    "about-us-intro-paragraph": "We are a Saudi company specialized in software and providing innovative digital solutions. Our team includes top designers and developers who build high-quality applications and websites that serve various sectors.",
+    "request-quote-button": "Request a Quote",
+    "tech-enhancement-heading": "We Enhance Business Success Through Technology",
+    "our-goals-heading": "Our Goals",
+    "our-goals-paragraph": "We aim to solve problems and provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
+    "our-vision-heading": "Our Vision",
+    "our-vision-paragraph": "We aim to solve problems and provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
+    "about-us-image-alt": "Our Team",
+    "our-branches-heading": "Our Branches",
+    "riyadh": "Riyadh",
+    "riyadh-address": "3303 Al Urubah Road, Al Sulaymaniyah District, 18480",
+    "dammam": "Dammam",
+    "dammam-address": "Telecom District, Othman Bin Affan Street, Third Floor",
+    "cairo": "Cairo",
+    "cairo-address": "3303 Al Urubah Road, Al Sulaymaniyah District, 18480"
+  },
+
+  "solutionPage":{
+    "solution_title": "We Offer the Best Solutions",
+    "read more":"read more"
+  },
+
+  "why are we special": "What Sets Us Apart",
 
   "contact_us": "Contact Us",
   "email_placeholder": "Email Address",
   "email_description": "Please enter your email address to receive the latest news and updates.",
   "quick_links": "Quick Links",
   "faq": "FAQs",
-  "company_description": "Tamuizz is a leading tech company in Saudi Arabia and the Middle East, aiming to provide smart technological solutions that meet the needs of companies, institutions, and individuals.",
+  "company_description": "Tamuizz is a leading tech company in the Kingdom of Saudi Arabia and the Middle East, aiming to provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
   "copyright": "All Copyright 2024 by",
   "terms_condition": "Terms & Conditions",
   "privacy_policy": "Privacy Policy",
@@ -45,10 +90,10 @@
   },
   "errors": {
     "Error": "An Error Occurred",
-    "Must be 3 characters or more": "Must Be 3 Characters or More",
+    "Must be 3 characters or more": "Must be 3 characters or more",
     "Required": "Required",
     "Invalid email address": "Invalid Email Address",
-    "Must be 10 characters or more": "Must Be 10 Characters or More",
-    "Something went wrong, please try again later": "Something Went Wrong, Please Try Again Later"
+    "Must be 10 characters or more": "Must be 10 characters or more",
+    "Something went wrong, please try again later": "Something went wrong, please try again later"
   }
 }

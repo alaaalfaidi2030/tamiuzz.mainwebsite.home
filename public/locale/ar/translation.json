@@ -5,12 +5,31 @@
   "articles": "المقالات",
   "support": "الدعم",
   "about-us": "من نحن",
-  "nav_lang": "العربية",
+  "nav_lang": "English",
   "shopping now": "تسوق الآن",
 
   "hero_title": "حلول برمجية متكاملة",
   "hero_subtitle": "لنجاح أعمالك",
-  "aboutHomeHeading": "أكثر ما يميزنا",
+
+  "homePage": {
+    "aboutHomeHeading": "أكثر ما يميزنا",
+    "aboutSectionTitle": "يمكننا تقديم خدمات مميزة للعملاء",
+    "aboutSectionDescription": "شركة تميز هي شركة تقنية رائدة في المملكة العربية السعودية والشرق الأوسط، تهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد.",
+    "itConsulting": "استشارات تكنولوجيا المعلومات",
+    "appDevelopment": "تطوير التطبيقات",
+    "cyberSecurity": "الأمن السيبراني",
+    "itManagement": "إدارة تكنولوجيا المعلومات",
+    "uiUxDesign": "تصميم واجهة وتجربة المستخدم",
+    "dataAnalysis": "تحليل البيانات",
+    "databaseSecurity": "أمن قاعدة البيانات",
+    "digitalMarketing": "التسوق الرقمي",
+    "servicesDetailsButton": "تفاصيل خدماتنا",
+    "projectsCount": "600",
+    "projectsLabel": "مشروع",
+    "clientsCount": "+6,561",
+    "clientsLabel": "عملاء راضون",
+    "aboutImageAlt": "عن شركة تميز"
+  },
 
   "Top Articles": "أهم المقالات",
 
@@ -21,6 +40,34 @@
 
   "about tamuizz": "عن شركة تميز",
   "we present our services in the best way": "نلتزم بتقديم خدماتنا بأعلى معايير الجوده",
+
+  "aboutSection": {
+    "about-us-page-name": "من نحن",
+    "why-are-we-special": "لماذا نحن مميزون؟",
+    "about-us-intro-paragraph": "نحن شركة سعودية متخصصة في مجال البرمجيات وتقديم الحلول الرقمية المبتكرة. فريقنا يضم نخبة من المصممين والمطورين المتخصصين في بناء تطبيقات ومواقع عالية الجودة تخدم مختلف القطاعات.",
+    "request-quote-button": "أطلب عرض سعر",
+    "tech-enhancement-heading": "نحن نعزز نجاح أعمالنا باستخدام التكنولوجيا",
+    "our-goals-heading": "أهدافنا",
+    "our-goals-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد",
+    "our-vision-heading": "رؤيتنا",
+    "our-vision-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد",
+    "about-us-image-alt": "فريقنا",
+    "our-branches-heading": "فروعنا",
+    "riyadh": "الرياض",
+    "riyadh-address": "3303 طريق العروبة، حي السليمانية 18480",
+    "dammam": "الدمام",
+    "dammam-address": "حي الاتصالات، شارع عثمان بن عفان، الدور الثالث",
+    "cairo": "القاهرة",
+    "cairo-address": "3303 طريق العروبة، حي السليمانية 18480"
+  },
+
+  "solutionPage":{
+    "solution_title": "نحن نقدم أفضل الحلول",
+    "read more":"أطلع على المزيد"
+  },
+
+
+  "why are we special": "أكثر ما يميزنا",
 
   "contact_us": "تواصل معنا",
   "email_placeholder": "البريد الإلكتروني",
