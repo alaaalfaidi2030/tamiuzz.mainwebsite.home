@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState, Suspense } from "react";
+import { createContext, useEffect, useState } from "react";
 import HomeLoading from "../Component/Ui/HomeLoading/HomeLoading";
 import axios from "axios";
 import { baseURL, getHeaders } from "../Utilies/data";
@@ -82,20 +82,18 @@ function AuthProvider({ children }) {
       {loading ? (
         <HomeLoading />
       ) : (
-        <Suspense fallback={<HomeLoading />}>
-          <authContext.Provider
-            value={{
-              token,
-              setToken,
-              isRegistered,
-              user,
-              setUser,
-              loading, // this is for the loading state but i don't use it yet
-            }}
-          >
-            {children}
-          </authContext.Provider>
-        </Suspense>
+        <authContext.Provider
+          value={{
+            token,
+            setToken,
+            isRegistered,
+            user,
+            setUser,
+            loading, // this is for the loading state but i don't use it yet
+          }}
+        >
+          {children}
+        </authContext.Provider>
       )}
     </>
   );

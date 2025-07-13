@@ -76,7 +76,7 @@ export default function SolutionCard({
                     <motion.h3 variants={textItemVariants}>{title}</motion.h3>
                     <motion.p variants={textItemVariants}>{shortDescription}...</motion.p>
                     <motion.div variants={textItemVariants}> {/* Wrap link in motion.div */}
-                        <Link className='btn-web btn-web-secondary' to={"/solutions/" + urlPath}> {t("solutionPage.read more")}</Link>
+                        <Link className='btn-web btn-web-secondary' to={"/solutions/" + urlPath}> {t("read more")}</Link>
                     </motion.div>
                 </div>
             </motion.div>

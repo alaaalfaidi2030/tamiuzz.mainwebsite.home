@@ -40,7 +40,7 @@ export default function ArticleDetails() {
 
             {
                 articleDetails.sections.map((section, idx) =>
-                    <div className="row">
+                    <div key={idx} className="row">
                         <p >{section.content}</p>
                         {
                             section.imageUrl && <div className="w-100">

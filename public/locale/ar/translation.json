@@ -10,6 +10,7 @@
 
   "hero_title": "حلول برمجية متكاملة",
   "hero_subtitle": "لنجاح أعمالك",
+  "read more": "أطلع على المزيد",
 
   "homePage": {
     "aboutHomeHeading": "أكثر ما يميزنا",
@@ -33,7 +34,7 @@
 
   "Top Articles": "أهم المقالات",
 
-  "article details":"تفاصيل المقال",
+  "article details": "تفاصيل المقال",
 
   "talk with us": "تحدث معنا",
   "contact with us": "تواصل معنا",
@@ -64,13 +65,14 @@
   },
 
   "solutionPage": {
-    "solution_title": "نحن نقدم أفضل الحلول",
-    "read more": "أطلع على المزيد"
+    "solution_title": "نحن نقدم أفضل الحلول"
   },
 
   "solution details": "تفاصيل الحلول",
 
   "why are we special": "أكثر ما يميزنا",
+
+  "ServicesSubTitle": "نحن نقدم أفضل جوده",
 
   "contact_us": "تواصل معنا",
   "email_placeholder": "البريد الإلكتروني",
