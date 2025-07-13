@@ -14,6 +14,8 @@ import Support from './Routes/Support/Support'
 import Solutions from './Routes/Solutions/Solutions'
 import Services from './Routes/Services/Services'
 import AboutUs from './Routes/AboutUs/AboutUs'
+import SolutionDetails from './Routes/SolutionDetails/SolutionDetails'
+import ArticleDetails from './Routes/ArticleDetails/ArticleDetails'
 
 function App() {
   const router = createBrowserRouter([
@@ -31,10 +33,16 @@ function App() {
       {
         path: "faq",
         element: <FAQ />
-      }, {
+      },
+      {
         path: "articles",
         element: <Articles />
       }, {
+        path: "articles/:id",
+        element: <ArticleDetails />
+
+      }
+        , {
         path: "policy",
         element: <Policy />
       }, {
@@ -43,6 +51,9 @@ function App() {
       }, {
         path: "solutions",
         element: <Solutions />
+      }, {
+        path: "solutions/:id",
+        element: <SolutionDetails />
       }, {
         path: "services",
         element: <Services />

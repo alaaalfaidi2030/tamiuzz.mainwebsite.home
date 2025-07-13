@@ -53,7 +53,7 @@ export default function SolutionCard({
     return (
         <>
             <motion.div
-                className={"row my-5 py-3 " + style.cardContainer}
+                className={"row my-5  " + style.cardContainer}
                 variants={cardContainerVariants}
                 initial="hidden"
                 animate="visible"
@@ -66,14 +66,17 @@ export default function SolutionCard({
                         className={style["imageWrapper"]}
                         variants={imageWrapperVariants}
                     >
-                        <img src={imageUrl || AboutImage} alt={title} />
+                        <img src={
+                            // imageUrl ||
+                            AboutImage
+                        } alt={title} />
                     </motion.div>
                 </div>
                 <div className="col-md-6 d-flex justify-content-center gap-3 flex-column">
                     <motion.h3 variants={textItemVariants}>{title}</motion.h3>
                     <motion.p variants={textItemVariants}>{shortDescription}...</motion.p>
                     <motion.div variants={textItemVariants}> {/* Wrap link in motion.div */}
-                        <Link className='btn-web btn-web-secondary' to={"/solution/" + urlPath}> {t("solutionPage.read more")}</Link>
+                        <Link className='btn-web btn-web-secondary' to={"/solutions/" + urlPath}> {t("solutionPage.read more")}</Link>
                     </motion.div>
                 </div>
             </motion.div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ArticleCard.module.css';
 import { delay, motion } from 'framer-motion'; // Import motion
+import { Link } from 'react-router-dom';
 
 export default function ArticleCard({ idx = 0, image, date, month, title, author, category, description, link }) {
     // Define animation variants for the card
@@ -41,7 +42,7 @@ export default function ArticleCard({ idx = 0, image, date, month, title, author
                     <span className={styles.category}><i className="fa-solid fa-tag"></i>{category}</span>
                 </div>
                 <p className={styles.description}>{description}</p>
-                <a href={link} className={styles.link}>اطلع على المزيد →</a>
+                <Link to={link} className={styles.link}>اطلع على المزيد →</Link>
             </div>
         </motion.div>
     );

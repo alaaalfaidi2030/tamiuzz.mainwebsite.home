@@ -1,0 +1,5 @@
+.content p {
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--primary-color);
+}

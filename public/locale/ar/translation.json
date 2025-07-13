@@ -33,6 +33,8 @@
 
   "Top Articles": "أهم المقالات",
 
+  "article details":"تفاصيل المقال",
+
   "talk with us": "تحدث معنا",
   "contact with us": "تواصل معنا",
   "how can we help": "كيف يمكننا مساعدتك؟",
@@ -61,11 +63,12 @@
     "cairo-address": "3303 طريق العروبة، حي السليمانية 18480"
   },
 
-  "solutionPage":{
+  "solutionPage": {
     "solution_title": "نحن نقدم أفضل الحلول",
-    "read more":"أطلع على المزيد"
+    "read more": "أطلع على المزيد"
   },
 
+  "solution details": "تفاصيل الحلول",
 
   "why are we special": "أكثر ما يميزنا",
 
