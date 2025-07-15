@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ServiceCard.module.css';
-import { delay, motion } from 'framer-motion'; // Import motion
+import { motion } from 'framer-motion'; // Import motion
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -26,25 +26,23 @@ export default function ServiceCard({ idx = 0, imageUrl, iconUrl, title, path, d
     };
 
     return (
-        <motion.div
-            className={styles.ServiceCard }
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"  >
-            {/* <div className={styles.imageWrapper}>
-                <img src={image} alt="article image" className={styles.image} />
-                <div className={styles.dateBadge}>
-                    <span className={styles.day}>{date}</span>
-                    <span className={styles.month}>{month}</span>
+        <Link className={styles.ServiceCard} to={`/services/${path}`}>
+            <motion.div
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible" >
+                <div className={styles.imageWrapper}>
+                    <img src={iconUrl} alt="icon image" className={styles.image} />
+
                 </div>
-            </div> */}
-            <div className={styles.content}>
-                <h4>
-                    {title}
-                </h4>
-                <p className={styles.description}>{description}</p>
-                <Link to={`/services/${path}`} className={styles.link}>{t("read more")} →</Link>
-            </div>
-        </motion.div>
+                <div className={styles.content}>
+                    <h4>
+                        {title}
+                    </h4>
+                    <p className={styles.description}>{description}</p>
+                    <Link to={`/services/${path}`} className={styles.link}>{t("read more")} →</Link>
+                </div>
+            </motion.div>
+        </Link>
     );
 }

@@ -54,3 +54,21 @@
 .link:hover {
   color: #d48800;
 }
+.imageWrapper {
+  width: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin: 0px 15px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, transparent 30%, #f3f7fb 30%);
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+.imageWrapper img {
+  width: 90px;
+  aspect-ratio: 1/ 1;
+}

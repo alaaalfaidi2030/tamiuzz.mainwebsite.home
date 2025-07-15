@@ -106,6 +106,11 @@ export default function AboutSection() {
                     <img src={AboutImage} alt={t("homePage.aboutImageAlt")} className={style.image} />
                 </motion.div>
             </motion.div>
+
+            <div className="OurPartners">
+
+                <H2 text={"homePage.MoreThanOneHundredBrands" } />
+            </div>
         </section>
     );
 }

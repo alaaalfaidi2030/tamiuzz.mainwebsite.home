@@ -16,6 +16,8 @@ import Services from './Routes/Services/Services'
 import AboutUs from './Routes/AboutUs/AboutUs'
 import SolutionDetails from './Routes/SolutionDetails/SolutionDetails'
 import ArticleDetails from './Routes/ArticleDetails/ArticleDetails'
+import ServiceDetails from './Routes/ServiceDetails/ServiceDetails'
+import Error404 from './Routes/Error404/Error404'
 
 function App() {
   const router = createBrowserRouter([
@@ -59,12 +61,19 @@ function App() {
         element: <Services />
       },
       {
+        path: "services/:id",
+        element: <ServiceDetails />
+
+      },
+      {
         path: "about-us",
         element: <AboutUs />
       }
 
-      ]
+      ],
+      errorElement: <Error404 />
     }
+
   ])
 
   useEffect(() => {
