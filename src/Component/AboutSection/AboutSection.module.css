@@ -101,3 +101,9 @@
   font-size: 2rem;
   color: #f4a424;
 }
+
+.logoPartner {
+  width: 120px;
+  height: 120px;
+  border: 2px solid var(--primary-color);
+}

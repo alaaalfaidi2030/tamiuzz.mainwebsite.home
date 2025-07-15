@@ -6,9 +6,21 @@ import style from './AboutSection.module.css';
 import { motion } from 'framer-motion'; // Assuming you might add animations later
 import { Link } from 'react-router-dom';
 
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules"; import "swiper/css";
+
 export default function AboutSection() {
     const { t } = useTranslation();
 
+
+    const clients = [
+        { id: 1, src: "/images/clients/logo1.png", alt: "Logo 1" },
+        { id: 2, src: "/images/clients/logo2.png", alt: "Logo 2" },
+        { id: 3, src: "/images/clients/logo3.png", alt: "Logo 3" },
+        { id: 4, src: "/images/clients/logo4.png", alt: "Logo 4" },
+        { id: 5, src: "/images/clients/logo5.png", alt: "Logo 5" },
+        { id: 6, src: "/images/clients/logo6.png", alt: "Logo 6" },
+    ];
     // You can define animation variants here if you decide to add them
     // For now, let's focus on i18n
     const containerVariants = {
@@ -109,7 +121,32 @@ export default function AboutSection() {
 
             <div className="OurPartners">
 
-                <H2 text={"homePage.MoreThanOneHundredBrands" } />
+                <H2 text={t("homePage.MoreThanOneHundredBrands")} />
+
+                <div className="container my-5" dir="rtl">
+                    <Swiper
+                        spaceBetween={30}
+                        loop={true}
+                        autoplay={{
+                            delay: 2000,
+                            disableOnInteraction: false,
+                        }}
+                        breakpoints={{
+                            320: { slidesPerView: 2 },
+                            768: { slidesPerView: 3 },
+                            1024: { slidesPerView: 5 },
+                        }}
+                        modules={[Autoplay]}
+                    >
+                        {clients.map((client) => (
+                            <SwiperSlide key={client.id}>
+                                <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle "+style.logoPartner}>
+                                    <img src={client.src} alt={client.alt} className="client-logo" />
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </div>
         </section>
     );
