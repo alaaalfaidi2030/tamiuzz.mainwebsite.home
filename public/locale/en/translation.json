@@ -7,6 +7,7 @@
   "about-us": "About Us",
   "nav_lang": "العربية",
   "shopping now": "Shop Now",
+  "read more": "read more",
 
   "hero_title": "Integrated Software Solutions",
   "hero_subtitle": "For Your Business Success",
@@ -28,10 +29,14 @@
     "clientsCount": "+6,561",
     "clientsLabel": "Satisfied Clients",
     "aboutImageAlt": "About Tamayuz Company",
-    "MoreThanOneHundredBrands": "More than 100 brands trust us"
+    "MoreThanOneHundredBrands": "More than 100 brands trust us",
+    "what are we doing?": "what are we doing?",
+    "what are we doing?_desc": "Providing solutions and enhancing customer service performance by establishing contact centers equipped with global technologies and advanced cloud services for institutions and companies, along with a cloud communication system.",
+    "follow our newest articles": "Follow our newest articles",
+    "keep in touch with us": "stay in touch with us"
   },
 
-  "serviceDetails":"service details",
+  "serviceDetails": "service details",
 
   "Top Articles": "Top Articles",
 
@@ -63,12 +68,13 @@
     "cairo-address": "3303 Al Urubah Road, Al Sulaymaniyah District, 18480"
   },
 
-  "solutionPage":{
-    "solution_title": "We Offer the Best Solutions",
-    "read more":"read more"
+  "solutionPage": {
+    "solution_title": "We Offer the Best Solutions"
   },
 
   "solution details": "Solution details",
+
+  "ServicesSubTitle": "We Offer the Best Solutions",
 
   "why are we special": "What Sets Us Apart",
 

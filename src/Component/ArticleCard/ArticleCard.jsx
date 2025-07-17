@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './ArticleCard.module.css';
 import { delay, motion } from 'framer-motion'; // Import motion
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 export default function ArticleCard({ idx = 0, image, date, month, title, author, category, description, link }) {
     // Define animation variants for the card
@@ -21,7 +22,7 @@ export default function ArticleCard({ idx = 0, image, date, month, title, author
         },
 
     };
-
+    const { t } = useTranslation()
     return (
         <motion.div
             className={styles.card + " col-md-4"}
@@ -42,7 +43,7 @@ export default function ArticleCard({ idx = 0, image, date, month, title, author
                     <span className={styles.category}><i className="fa-solid fa-tag"></i>{category}</span>
                 </div>
                 <p className={styles.description}>{description}</p>
-                <Link to={link} className={styles.link}>اطلع على المزيد →</Link>
+                <Link to={link} className={styles.link}>{t("read more")} →</Link>
             </div>
         </motion.div>
     );

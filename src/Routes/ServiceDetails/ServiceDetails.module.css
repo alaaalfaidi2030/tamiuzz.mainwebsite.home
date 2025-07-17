@@ -1,6 +1,7 @@
 .indexingPart {
   background-color: var(--lite);
-  padding: 20px;
+  padding: 30px 20px;
+  padding-top: 0;
   display: flex;
   flex-direction: column;
   /* flex-wrap: wrap; */
@@ -10,14 +11,37 @@
   -moz-border-radius: 15px;
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
-   max-height: 50vh !important; 
-  overflow-y: auto; 
+  max-height: 50vh !important;
+  overflow-y: auto;
+
 }
+
+.indexingPart::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  margin: 0px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.indexingPart::-webkit-scrollbar-thumb {
+  background-color: #bde3fc;
+}
+
 .indexingPart h3 {
   width: 100%;
   text-align: center;
+  position: sticky;
+  background-color: var(--lite);
+  top: 0;
+  padding: 15px 0;
+  border-bottom: white 2px solid;
+
 }
-.indexingPart button {
+
+.indexingPart button.option {
   color: var(--primary-color);
   background-color: white;
   padding: 20px 20px;
@@ -33,22 +57,27 @@
   -ms-border-radius: 15px;
   -o-border-radius: 15px;
 }
-.indexingPart button:hover {
+
+.indexingPart button.option:hover {
   background-color: #384bff;
   color: white;
 }
-.indexingPart button.active {
+
+.indexingPart button.option.active {
   background-color: #384bff;
   color: white;
 }
+
 .imageWrapper {
   width: 100%;
   max-height: 300px;
   min-height: 250px;
 }
+
 .imageWrapper img {
   width: 100%;
 }
+
 .info h4 {
   font-weight: 700;
   font-style: Bold;
@@ -57,15 +86,33 @@
   color: var(--primary-color);
   text-transform: capitalize;
 }
+
 .info p {
-  font-family: IBM Plex Sans Arabic;
   font-weight: 400;
-  font-style: Regular;
   font-size: 32px;
-  leading-trim: NONE;
   line-height: 48px;
-  letter-spacing: 0px;
-  text-align: right;
   text-transform: capitalize;
   color: var(--text);
+}
+
+@media screen and (max-width: 991px) {
+  .indexingPart {
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+    width: 40%;
+    left: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .indexingPart {
+    width: 70%;
+  }
 }

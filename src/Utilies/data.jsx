@@ -14,12 +14,14 @@ export const phoneAndEmail = [
   {
     icon: "fa-solid fa-envelope",
     text: "info@tamiuzz.com",
-    link: "mailto:info@tamiuzz.com"
+    link: "mailto:info@tamiuzz.com",
+    title:"form.email"
   },
   {
     icon: "fa-solid fa-phone",
     text: "966 544 277 172",
     link: "https://wa.me/966544277172",
+    title:"contact_us"
   },
 ]
 export const socialMedia = [

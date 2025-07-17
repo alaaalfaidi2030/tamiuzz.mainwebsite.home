@@ -7,7 +7,7 @@ import { motion } from 'framer-motion'; // Assuming you might add animations lat
 import { Link } from 'react-router-dom';
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay } from "swiper/modules"; import "swiper/css";
+import { Autoplay } from "swiper/modules";
 
 export default function AboutSection() {
     const { t } = useTranslation();
@@ -140,7 +140,7 @@ export default function AboutSection() {
                     >
                         {clients.map((client) => (
                             <SwiperSlide key={client.id}>
-                                <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle "+style.logoPartner}>
+                                <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle " + style.logoPartner}>
                                     <img src={client.src} alt={client.alt} className="client-logo" />
                                 </div>
                             </SwiperSlide>
