@@ -49,11 +49,13 @@ const Hero = () => {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1, delay: 0.5 }}
 
-                src={shapeImg} className={'position-absolute w-50 end-0 ' + style.decroImage} />
+                src={shapeImg} className={'position-absolute end-0 ' + style.decroImage} />
 
             <div className={style.contentContainer} >
                 <div className="container-fluid" >
-                    <div className={`row align-items-center h-100 py-5  ${style.mainContent} `}>
+                    <div className={`row py-5  ${style.mainContent} `}
+                    
+                    >
 
                         {/* Right Side - Content */}
                         <div className="col-lg-8 col-xl-9 mb-5 mb-lg-0">
@@ -77,21 +79,21 @@ const Hero = () => {
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 1, delay: 0.5 }}
                                 src={shapeImg2} className={'position-absolute ms-5  ' + style.decroImage} style={{
-                                    top: '75%',
+                                    top: '65%',
                                     // right: i18n.language == "ar" ? '10%' : "auto",
                                     // left: i18n.language == "ar" ? 'auto' : "10%"
                                 }} />
 
                             <motion.div
-                                className="px-5"
+                                className={"px-5 "+style.heading}
                                 variants={containerVariants}
                                 initial="hidden"
                                 animate="visible"
+                                
                             >
                                 <motion.h1
-                                    className="fw-bold mb-4 "
+                                    className="fw-bold mb-4  "
                                     variants={itemVariants}
-                                    style={{ fontSize: 'clamp(2.5rem, 8vw, 5rem)' }}
                                 >
                                     <span className={style.gradientText}>
                                         {t("hero_title")}

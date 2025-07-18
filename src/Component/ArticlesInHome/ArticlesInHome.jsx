@@ -167,7 +167,7 @@ function ArticlesSlider({ articles }) {
             </Swiper>
 
             {/* 🔽 Custom Navigation Buttons Below */}
-            <div className="d-flex justify-content-center gap-3 mt-4">
+            <div className={"d-flex justify-content-center gap-3 mt-4 "+style.buttonContainer}>
                 <button
                     ref={prevRef}
                     className="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"

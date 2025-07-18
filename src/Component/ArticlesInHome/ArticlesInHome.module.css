@@ -9,4 +9,6 @@
 
 }
 
- 
+ body[dir="ltr"] .buttonContainer{
+    flex-direction: row-reverse;
+ }

@@ -3,12 +3,13 @@
   color: white;
   overflow: hidden;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-size: cover;
   background-position: center;
   position: relative;
   z-index: 1;
   padding-bottom: 3rem;
 }
+
 body[dir="ltr"] .heroSection {
   transform: scaleX(-1) !important;
   -webkit-transform: scaleX(-1) !important;
@@ -24,39 +25,47 @@ body[dir="ltr"] .contentContainer {
   -ms-transform: scaleX(-1) !important;
   -o-transform: scaleX(-1) !important;
 }
+
 body[dir="ltr"] .mainContent {
-  background: linear-gradient(
-    -90deg,
-    rgba(5, 26, 108, 0) 14.74%,
-    #0a2ea4bd 70.82%
-  );
+  background: linear-gradient(-90deg,
+      rgba(5, 26, 108, 0) 14.74%,
+      #0a2ea4bd 70.82%);
 }
 
 .mainContent {
-  min-height: 110vh;
-  background: linear-gradient(
-    90deg,
-    rgba(5, 26, 108, 0) 14.74%,
-    #0a2ea4bd 70.82%
-  );
+  min-height: 100vh;
+  background: linear-gradient(90deg,
+      rgba(5, 26, 108, 0) 14.74%,
+      #0a2ea4bd 70.82%);
 }
+
+.heading {
+  height: 75vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 h1 {
   font-size: 3.5rem;
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 1rem;
 }
+
 .gradientText {
   background: linear-gradient(135deg, #ffffff 0%, #bbdefb 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
 .orangeText {
   color: #ff9800;
 }
+
 .heroDescription {
-  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-size: 1.5rem;
   line-height: 1.6;
 }
 
@@ -73,10 +82,12 @@ h1 {
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
 }
+
 .ctaButton:hover {
   scale: 1.05;
   box-shadow: 0 15px 35px rgba(255, 152, 0, 0.4);
 }
+
 .secondaryButton {
   border-radius: 10px;
   background-color: var(--lite);
@@ -90,6 +101,7 @@ h1 {
   z-index: 9;
   transition: all 0.3s ease-in-out;
 }
+
 .secondaryButton:hover {
   scale: 1.05;
   background-color: rgba(255, 255, 255, 0.1);
@@ -103,20 +115,39 @@ h1 {
     background-position: top center;
     text-align: center;
   }
+
   .heroSection svg {
     display: none;
   }
+
   .mainContent {
-    min-height: auto;
+    min-height: 100vh;
+    align-items: center;
   }
+
+  .heading {
+    height: auto;
+    padding:0 12px !important;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
   .heroDescription {
     font-size: 1.2rem;
     line-height: 1.4;
+    font-weight: bold;
     margin-bottom: 1rem;
   }
+
   .decroImage {
     display: none;
   }
+.btnContainer{
+  width: 70%;
+  margin: auto;
+}
   .btnContainer * {
     font-size: 0.8rem;
     justify-content: center;

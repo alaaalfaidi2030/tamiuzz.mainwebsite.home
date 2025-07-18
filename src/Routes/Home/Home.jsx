@@ -4,6 +4,7 @@ import AboutSection from '../../Component/AboutSection/AboutSection'
 import HowWeWork from '../../Component/HowWeWork/HowWeWork'
 import WhatWeAreDoing from '../../Component/WhatWeAreDoing/WhatWeAreDoing'
 import ArticlesInHome from '../../Component/ArticlesInHome/ArticlesInHome'
+import Testimonials from '../../Component/Testimonials/Testimonials'
 
 export default function Home() {
     return (
@@ -12,6 +13,7 @@ export default function Home() {
             <AboutSection />
             <WhatWeAreDoing />
             {/* <HowWeWork /> */}
+            <Testimonials />
             <ArticlesInHome />
         </>
     )

@@ -1,0 +1,16 @@
+.Testimonials {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.heading * {
+    color: white;
+}
+
+.heading div div {
+    background: linear-gradient(90deg,
+            transparent 0%,
+            white 50%,
+            transparent 100%);
+}
