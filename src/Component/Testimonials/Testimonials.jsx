@@ -7,51 +7,9 @@ import { useTranslation } from 'react-i18next'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules'
 import TestimonialCard from '../TestimonialCard/TestimonialCard'
-export default function Testimonials() {
+export default function Testimonials({rates}) {
     const { t } = useTranslation();
-    const testimonials = [
-        {
-            image: '/assets/images/users/user1.png',
-            name: 'Albert Flores',
-            role: 'Medical Assistant',
-            rating: 4,
-            text: 'Consectetur adipiscing elit. Integer nunc viverra laoreet est the porta pretium metus aliquam eget maecenas porta is nunc viverra Aenean pulvinar maximus leo'
-        },
-        {
-            image: '/assets/images/users/user2.png',
-            name: 'Darlene Robertson',
-            role: 'UI/UX Designer',
-            rating: 5,
-            text: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.'
-        },
-        {
-            image: '/assets/images/users/user3.png',
-            name: 'Jacob Jones',
-            role: 'Network Engineer',
-            rating: 3,
-            text: 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Cras ultricies ligula sed magna dictum porta.'
-        }, {
-            image: '/assets/images/users/user1.png',
-            name: 'Albert Flores',
-            role: 'Medical Assistant',
-            rating: 4,
-            text: 'Consectetur adipiscing elit. Integer nunc viverra laoreet est the porta pretium metus aliquam eget maecenas porta is nunc viverra Aenean pulvinar maximus leo'
-        },
-        {
-            image: '/assets/images/users/user2.png',
-            name: 'Darlene Robertson',
-            role: 'UI/UX Designer',
-            rating: 5,
-            text: 'Vestibulum ac diam sit amet quam vehicula elementum sed sit amet dui. Sed porttitor lectus nibh. Nulla quis lorem ut libero malesuada feugiat.'
-        },
-        {
-            image: '/assets/images/users/user3.png',
-            name: 'Jacob Jones',
-            role: 'Network Engineer',
-            rating: 3,
-            text: 'Curabitur non nulla sit amet nisl tempus convallis quis ac lectus. Cras ultricies ligula sed magna dictum porta.'
-        }
-    ];
+    
     return (
         <div className={"my-2 " + style.Testimonials} style={{
             backgroundImage: `url(${img})`
@@ -80,7 +38,7 @@ export default function Testimonials() {
                             disableOnInteraction: false,
                         }}
                     >
-                        {testimonials.map((item, idx) => (
+                        {rates?.map((item, idx) => (
                             <SwiperSlide key={idx} >
                                 <TestimonialCard {...item} />
                             </SwiperSlide>

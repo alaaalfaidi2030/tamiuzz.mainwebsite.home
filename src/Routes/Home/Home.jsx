@@ -10,17 +10,26 @@ import Spinner from '../../Component/Ui/Spinner/Spinner'
 
 export default function Home() {
     const { homeContent, isLoading, } = useContext(HomeContentContext)
+
     if (isLoading)
         return <Spinner sectionFlag />
     else return (
         <>
 
             <Hero />
-            <AboutSection />
-            <WhatWeAreDoing />
+            {homeContent.counter && homeContent.logos &&
+                < AboutSection counter={homeContent.counter} logos={homeContent.logos} />
+            }
+            {homeContent.solutions &&
+                <WhatWeAreDoing solutions={homeContent.solutions} />
+            }
             {/* <HowWeWork /> */}
-            <Testimonials />
-            <ArticlesInHome />
+            {homeContent.rates &&
+                <Testimonials rates={homeContent.rates} />}
+            {
+                homeContent.blogs &&
+                <ArticlesInHome blogs={homeContent.blogs} />
+            }
         </>
     )
 }

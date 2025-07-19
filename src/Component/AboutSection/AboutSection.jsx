@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
-export default function AboutSection() {
+export default function AboutSection({ counter, logos }) {
     const { t } = useTranslation();
 
 
@@ -60,7 +60,7 @@ export default function AboutSection() {
                 className={style.container}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }} 
+                viewport={{ once: true, amount: 0.2 }}
                 variants={containerVariants}
             >
                 <motion.div className={style.content} variants={containerVariants}> {/* Nested for staggered children */}
@@ -99,7 +99,7 @@ export default function AboutSection() {
                                 <i className="fa-solid fa-diagram-project "></i>
                             </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
-                                <h4>{t("homePage.projectsCount")}</h4>
+                                <h4>{counter.projects}</h4>
                                 <p>{t("homePage.projectsLabel")}</p>
                             </div>
                         </motion.div>
@@ -108,7 +108,7 @@ export default function AboutSection() {
                                 <i className="fa-solid fa-users"></i>
                             </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
-                                <h4>{t("homePage.clientsCount")}</h4>
+                                <h4>{counter.clients}</h4>
                                 <p>{t("homePage.clientsLabel")}</p>
                             </div>
                         </motion.div>
@@ -138,10 +138,10 @@ export default function AboutSection() {
                         }}
                         modules={[Autoplay]}
                     >
-                        {clients.map((client) => (
-                            <SwiperSlide key={client.id}>
+                        {logos.map((logo, idx) => (
+                            <SwiperSlide key={idx}>
                                 <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle " + style.logoPartner}>
-                                    <img src={client.src} alt={client.alt} className="client-logo" />
+                                    <img src={logo.imageUrl} alt={logo.name} className="client-logo" />
                                 </div>
                             </SwiperSlide>
                         ))}

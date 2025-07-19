@@ -7,7 +7,7 @@ export const getHeaders = (token) => {
   return {
     "Content-Type": "application/json",
     Authorization: token ? `Bearer ${token}` : undefined,
-    XLanguage: i18n.language,
+    "Accept-Language": i18n.language,
   };
 };
 export const phoneAndEmail = [
@@ -15,13 +15,13 @@ export const phoneAndEmail = [
     icon: "fa-solid fa-envelope",
     text: "info@tamiuzz.com",
     link: "mailto:info@tamiuzz.com",
-    title:"form.email"
+    title: "form.email"
   },
   {
     icon: "fa-solid fa-phone",
     text: "966 544 277 172",
     link: "https://wa.me/966544277172",
-    title:"contact_us"
+    title: "contact_us"
   },
 ]
 export const socialMedia = [
