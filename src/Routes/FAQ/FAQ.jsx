@@ -10,6 +10,7 @@ import { baseURL } from '../../Utilies/data';
 import { useEffect } from 'react';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
+import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp';
 
 function FAQ() {
     const { t } = useTranslation();
@@ -23,10 +24,10 @@ function FAQ() {
         try {
             setLoading(true)
             setErrorFlag(false)
-            setFaq(null);
+            setFaq([]);
             const { data } = await axios.get(baseURL + "/faqs");
             if (data.success && data.data && data.data.length !== 0) {
-                setFaq(data.data.data);
+                setFaq(data.data);
                 setLoading(false)
             } else {
                 setFaq([]);
@@ -74,13 +75,8 @@ function FAQ() {
                         viewport={{ once: true, amount: 0.25 }}
                     >{
                             errorFlag ?
+                            <ErrorComp/>
 
-                                <div className="row fw-bold ">
-                                    <p className='text-center alert alert-warning w-75 rounded-4 m-auto fs-1'>
-                                        {t("errors.Something went wrong, please try again later")}
-
-                                    </p>
-                                </div>
                                 :
                                 <div className="container">
                                     {faq.length == 0 ?

@@ -1,6 +1,5 @@
 import React from 'react';
 import style from "./SolutionCard.module.css";
-import AboutImage from '../../assets/Images/Home/about-img.png';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Import motion
 import { useTranslation } from 'react-i18next';
@@ -67,8 +66,7 @@ export default function SolutionCard({
                         variants={imageWrapperVariants}
                     >
                         <img src={
-                            // imageUrl ||
-                            AboutImage
+                            imageUrl
                         } alt={title} />
                     </motion.div>
                 </div>

@@ -1,59 +1,84 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Heading from '../../Component/Ui/Heading/Heading'
 import { useTranslation } from 'react-i18next'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import H3 from '../../Component/Ui/H3/H3';
 import style from "./ArticleDetails.module.css"
+import axios from 'axios';
+import Spinner from '../../Component/Ui/Spinner/Spinner';
+import { baseURL } from '../../Utilies/data';
+import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
 
 export default function ArticleDetails() {
     const { t } = useTranslation();
     const { id } = useParams()
-    const [articleDetails, setArticleDetails] = useState({
+    const navigate = useNavigate();
+    const [articleDetails, setArticleDetails] = useState(null)
+    const [noDataFounded, setNoDataFounded] = useState(false)
+    const [loading, setLoading] = useState(true)
 
-        "sections": [
-            {
-                "title": "حدد أهدافك",
-                "content": "ابدأ بتحديد أهداف واقعية.",
-                "imageUrl": null
+
+    const getArticlesDetails = async () => {
+        try {
+            setLoading(true)
+            setNoDataFounded(false)
+            setArticleDetails(null);
+            const { data } = await axios.get(baseURL + "/blog/" + id);
+            if (data.success && data.data && data.data.length !== 0) {
+                setArticleDetails(data.data);
+                setLoading(false)
+            } else {
+                setArticleDetails(null);
+                setLoading(false)
             }
-        ],
-        "time": "2025-05-27T11:17:56.1488557",
-        "tags": [
-            "تحفيز",
-            "تطوير"
-        ],
-        "urlPath": "personal-growth",
-        "title": "نصائح للنمو الشخصي",
-        "imageUrl": "/images/blogs/growth.jpg",
-        "author": "ياسين"
+        } catch (error) {
+            setLoading(false)
+            setNoDataFounded(true)
+        }
+    };
 
-    })
+    useEffect(() => {
+        getArticlesDetails()
+    }, [])
+    useEffect(() => {
+        if (!id) {
+            navigate("/articles")
+        }
+
+    }, [])
+
     return (<>
 
         <Heading pageName={t("article details")} />
 
-        <div className="my-5">
-            <H3 text={articleDetails.title} />
-        </div>
-
         <div className={"container " + style.content}>
+            {(!loading) ?
+                noDataFounded ?
 
-            {
-                articleDetails.sections.map((section, idx) =>
-                    <div key={idx} className="row">
-                        <p >{section.content}</p>
+                    <NoDataFounded /> : <>
+
+                        <div className="my-5">
+                            <H3 text={articleDetails.title} />
+                        </div>
+
+
                         {
-                            section.imageUrl && <div className="w-100">
-                                <img src={section.imageUrl} alt={section.title} />
+                            articleDetails?.sections?.map((section, idx) =>
+                                <div key={idx} className="row">
+                                    <p >{section.content}</p>
+                                    {
+                                        section.imageUrl && <div className="w-100">
+                                            <img src={section.imageUrl} alt={section.title} />
 
-                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            )
                         }
+                    </> : <Spinner sectionFlag={true} />}
 
-                    </div>
-                )
-            }
         </div>
-
 
 
     </>

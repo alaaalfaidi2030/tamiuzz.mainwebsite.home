@@ -26,7 +26,7 @@ export default function ServiceCard({ idx = 0, imageUrl, iconUrl, title, path, d
     };
 
     return (
-        <Link className={styles.ServiceCard} to={`/services/${path}`}>
+        <Link className={styles.ServiceCard} to={`/services/${idx}`}>
             <motion.div
                 variants={cardVariants}
                 initial="hidden"

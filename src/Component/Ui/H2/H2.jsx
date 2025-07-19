@@ -38,7 +38,8 @@ const H2 = ({ text }) => {
       variants={containerVariants}
       initial="hidden"
       whileInView="visible"
-      viewport={{ once: true, amount: 0.5 }} // Adjust when the animation should trigger
+      animate="visible"
+      viewport={{ once: true, amount: 0.2 }} // Adjust when the animation should trigger
     >
       <motion.span className={styles.arrow} variants={arrowVariants}>&lt;</motion.span>
       <motion.div className={styles.line} variants={lineVariants}></motion.div>

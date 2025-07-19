@@ -19,7 +19,6 @@ export default function H3({ text }) {
             }}
 
 
-
             className={'m-auto fw-bolder fs-1 ' + style.heading} > {text}</motion.h3 >
 
     )

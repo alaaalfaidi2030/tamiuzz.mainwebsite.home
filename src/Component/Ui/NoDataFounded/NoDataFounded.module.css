@@ -9,16 +9,18 @@
     text-align: center;
     font-weight: bolder;
     font-size: 28px;
-    color: var(--secondary-color);
+    color: var(--Text-color);
 }
 
 @keyframes scaleAnimation {
     0% {
         scale: 1;
+        opacity: 1;
     }
-
-    50% {
+    
+    100% {
         scale: 0.8;
+        opacity: 0.5;
     }
 
 
