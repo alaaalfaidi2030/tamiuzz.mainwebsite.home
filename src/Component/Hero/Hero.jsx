@@ -54,7 +54,7 @@ const Hero = () => {
             <div className={style.contentContainer} >
                 <div className="container-fluid" >
                     <div className={`row py-5  ${style.mainContent} `}
-                    
+
                     >
 
                         {/* Right Side - Content */}
@@ -85,30 +85,31 @@ const Hero = () => {
                                 }} />
 
                             <motion.div
-                                className={"px-5 "+style.heading}
+                                className={"px-5 " + style.heading}
                                 variants={containerVariants}
                                 initial="hidden"
                                 animate="visible"
-                                
+
                             >
                                 <motion.h1
                                     className="fw-bold mb-4  "
                                     variants={itemVariants}
                                 >
                                     <span className={style.gradientText}>
-                                        {t("hero_title")}
+                                        {t("homePage.hero_title")}
                                     </span>
                                     <br />
-                                    <span className={style.orangeText}> {t("hero_subtitle")}</span>
+                                    <span className={style.orangeText}> {t("homePage.hero_subtitle")}</span>
                                 </motion.h1>
 
                                 <motion.p
                                     className={"lead mb-4 text-light " + style.heroDescription}
                                     variants={itemVariants}
                                 >
-                                    نقدم حلولاً مبتكرة تساعد الشركات على النمو والتطور في العصر الرقمي
+                                    {t("homePage.hero_desc_part1")}
                                     <br />
-                                    مع أحدث التقنيات وأفضل الممارسات في التطوير
+                                    {t("homePage.hero_desc_part2")}
+
                                 </motion.p>
 
                                 <motion.div
@@ -117,13 +118,13 @@ const Hero = () => {
                                 >
                                     <Link
                                         className={style.ctaButton + " btn-web btn-web-secondary  "}>
-                                        أطلب عرض سعر
+                                        {t("homePage.request-quote-button")}
                                     </Link>
 
                                     <button
                                         className={style.secondaryButton + " btn-web"}
                                     >
-                                        استكشف خدماتنا
+                                        {t("homePage.discover our services")}
                                     </button>
                                 </motion.div>
 

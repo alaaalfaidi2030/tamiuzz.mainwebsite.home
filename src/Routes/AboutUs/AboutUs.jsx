@@ -149,7 +149,7 @@ export default function AboutUs() {
                     className={"row " + style.branches}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }} // Adjust amount for branches section
+                    viewport={{ once: true, amount: 0.2 }} // Adjust amount for branches section
                     variants={{
                         visible: {
                             transition: {

@@ -46,7 +46,7 @@ const Navbar = () => {
 
   const toggleLanguage = async (lng) => {
     await i18n.changeLanguage(lng);
-  
+
     window.location.reload();
   };
 
@@ -63,8 +63,7 @@ const Navbar = () => {
     const updatePadding = () => {
       if (navBarRef.current) {
         const height = navBarRef.current.clientHeight + "px";
-        console.log("Navbar height:", height);
-        
+
         document.documentElement.style.setProperty("--navbar-height", height);
         const root = document.getElementById("root");
         if (root) root.style.paddingTop = height;
@@ -140,7 +139,7 @@ const Navbar = () => {
           className={`collapse navbar-collapse ${style["list-links"]}`}
           id="navbarSupportedContent"
         >
-          <div/>
+          <div />
           <ul className={`navbar-nav gap-2   ${style["middle-part"]}`}>
             {links.map((linkItem, idx) => (
               <motion.li
@@ -165,7 +164,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className={"navbar-nav gap-2 d-flex "+ style["right-part"]}
+            className={"navbar-nav gap-2 d-flex " + style["right-part"]}
           >
             <li className="nav-item dropdown">
               <div

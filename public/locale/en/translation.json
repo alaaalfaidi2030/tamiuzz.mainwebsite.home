@@ -7,11 +7,17 @@
   "about-us": "About Us",
   "nav_lang": "العربية",
   "shopping now": "Shop Now",
-  "read more": "read more",
 
-  "hero_title": "Integrated Software Solutions",
-  "hero_subtitle": "For Your Business Success",
+  "read more": "read more",
+  "No data founded": "we couldn't find any data here",
+
   "homePage": {
+    "hero_title": "Integrated Software Solutions",
+    "hero_subtitle": "For Your Business Success",
+    "hero_desc_part1": "We offer innovative solutions that help businesses grow and evolve in the digital age",
+    "hero_desc_part2": "Using the latest technologies and best development practices",
+    "request-quote-button": "Request a Quote",
+    "discover our services": "Discover Our Services",
     "aboutHomeHeading": "What Sets Us Apart",
     "aboutSectionTitle": "We can provide excellent services to clients",
     "aboutSectionDescription": "Tamayuz Company is a leading technology company in Saudi Arabia and the Middle East, aiming to provide smart technical solutions that meet the needs of companies, institutions, and individuals.",
@@ -80,11 +86,16 @@
 
   "why are we special": "What Sets Us Apart",
 
+  "faq": "FAQs",
+  "faqPage": {
+    "headline1": "Keep Your Business Secure",
+    "headline2": "And Ensure High Availability"
+  },
+
   "contact_us": "Contact Us",
   "email_placeholder": "Email Address",
   "email_description": "Please enter your email address to receive the latest news and updates.",
   "quick_links": "Quick Links",
-  "faq": "FAQs",
   "company_description": "Tamuizz is a leading tech company in the Kingdom of Saudi Arabia and the Middle East, aiming to provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
   "copyright": "All Copyright 2024 by",
   "terms_condition": "Terms & Conditions",

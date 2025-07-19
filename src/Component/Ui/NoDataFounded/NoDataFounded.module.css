@@ -1,0 +1,25 @@
+.NoDataFounded img {
+    max-width: 25%;
+    margin: auto;
+    animation: scaleAnimation 1s ease-in-out infinite  alternate ;
+    -webkit-animation: scaleAnimation 1s ease-in-out infinite  alternate ;
+}
+
+.NoDataFounded P {
+    text-align: center;
+    font-weight: bolder;
+    font-size: 28px;
+    color: var(--secondary-color);
+}
+
+@keyframes scaleAnimation {
+    0% {
+        scale: 1;
+    }
+
+    50% {
+        scale: 0.8;
+    }
+
+
+}

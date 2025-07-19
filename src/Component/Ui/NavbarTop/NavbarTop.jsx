@@ -22,7 +22,6 @@ export default function NavbarTop() {
                 containerRef.current.style.height = "10px";
             } else {
                 navbarTopRef.current.style.opacity = "100%";
-                console.log("NavbarTop height:", navbarTopRef.current?.clientHeight);
                 containerRef.current.style.height = navbarTopRef.current?.clientHeight + "px";
 
             }

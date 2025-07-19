@@ -14,3 +14,10 @@
             white 50%,
             transparent 100%);
 }
+
+.Testimonials :global(.swiper-button-prev),
+.Testimonials :global(.swiper-button-next),
+.Testimonials :global(.swiper-pagination-bullets) {
+    display: none !important;
+
+}

@@ -59,7 +59,7 @@ export default function SolutionCard({
                 animate="visible"
                 // Optional: Animate when it scrolls into view
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }} // Animate once when 30% in view
+                viewport={{ once: true, amount: 0.2 }} // Animate once when 30% in view
             >
                 <div className="col-md-6 d-flex justify-content-center align-items-center">
                     <motion.div

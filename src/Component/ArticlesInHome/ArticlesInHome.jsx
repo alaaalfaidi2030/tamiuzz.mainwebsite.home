@@ -1,17 +1,21 @@
 import { useRef, useEffect } from 'react';
-
-import H2 from '../Ui/H2/H2'
-import { useTranslation } from 'react-i18next'
-import H3 from '../Ui/H3/H3'
-import style from "./ArticlesInHome.module.css"
-import ArticleCard from '../ArticleCard/ArticleCard'
-import sampleImg from '../../assets/Images/Home/about-img.png';
-
+import H2 from '../Ui/H2/H2';
+import { useTranslation } from 'react-i18next';
+import H3 from '../Ui/H3/H3';
+import style from "./ArticlesInHome.module.css";
+import ArticleCard from '../ArticleCard/ArticleCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
+import { motion } from 'framer-motion';
 
 export default function ArticlesInHome() {
-    const { t } = useTranslation()
+    const { t } = useTranslation();
+
+    const fadeInUp = {
+        hidden: { opacity: 0, y: 40 },
+        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    };
+
     const articlesData = [
         {
             id: 1,
@@ -111,22 +115,31 @@ export default function ArticlesInHome() {
             link: '/articles/1'
         }
     ];
+
     return (
         <div className={"container py-5 " + style.ArticleHomeContainer}>
-            <div className={style.heading}>
+            <motion.div
+                className={style.heading}
+                variants={fadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.2 }}
+            >
                 <H2 text={t("Top Articles")} />
                 <H3 text={t("homePage.follow our newest articles")} />
-            </div>
+            </motion.div>
+
             <div className="row">
                 <ArticlesSlider articles={articlesData} />
             </div>
         </div>
-    )
+    );
 }
+
 function ArticlesSlider({ articles }) {
     const prevRef = useRef(null);
     const nextRef = useRef(null);
-    const swiperRef = useRef(null); // store swiper instance
+    const swiperRef = useRef(null);
 
     useEffect(() => {
         if (
@@ -137,11 +150,26 @@ function ArticlesSlider({ articles }) {
         ) {
             swiperRef.current.params.navigation.prevEl = prevRef.current;
             swiperRef.current.params.navigation.nextEl = nextRef.current;
-            swiperRef.current.navigation.destroy(); // cleanup
-            swiperRef.current.navigation.init();    // re-init
-            swiperRef.current.navigation.update();  // update
+            swiperRef.current.navigation.destroy();
+            swiperRef.current.navigation.init();
+            swiperRef.current.navigation.update();
         }
     }, []);
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: (i) => ({
+            opacity: 1,
+            y: 0,
+            transition: {
+                delay: i * 0.15,
+                duration: 0.5,
+                type: "spring",
+                stiffness: 100,
+                damping: 12
+            }
+        })
+    };
 
     return (
         <div className="solution-slider-container position-relative">
@@ -150,7 +178,7 @@ function ArticlesSlider({ articles }) {
                 spaceBetween={20}
                 slidesPerView={1}
                 onSwiper={(swiper) => {
-                    swiperRef.current = swiper; // store swiper instance
+                    swiperRef.current = swiper;
                 }}
                 pagination={{ clickable: true }}
                 breakpoints={{
@@ -161,13 +189,13 @@ function ArticlesSlider({ articles }) {
             >
                 {articles.map((article, idx) => (
                     <SwiperSlide key={idx} className='py-5'>
+
                         <ArticleCard idx={idx} {...article} image={article.image} />
                     </SwiperSlide>
                 ))}
             </Swiper>
 
-            {/* 🔽 Custom Navigation Buttons Below */}
-            <div className={"d-flex justify-content-center gap-3 mt-4 "+style.buttonContainer}>
+            <div className={"d-flex justify-content-center gap-3 mt-4 " + style.buttonContainer}>
                 <button
                     ref={prevRef}
                     className="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"

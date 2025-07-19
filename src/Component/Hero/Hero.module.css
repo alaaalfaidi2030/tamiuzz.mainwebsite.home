@@ -1,5 +1,4 @@
 .heroSection {
-  /* min-height: 100vh; */
   color: white;
   overflow: hidden;
   background-repeat: no-repeat;
@@ -127,7 +126,7 @@ h1 {
 
   .heading {
     height: auto;
-    padding:0 12px !important;
+    padding: 0 12px !important;
   }
 
   h1 {
@@ -144,10 +143,12 @@ h1 {
   .decroImage {
     display: none;
   }
-.btnContainer{
-  width: 70%;
-  margin: auto;
-}
+
+  .btnContainer {
+    width: 70%;
+    margin: auto;
+  }
+
   .btnContainer * {
     font-size: 0.8rem;
     justify-content: center;

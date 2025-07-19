@@ -60,7 +60,7 @@ export default function AboutSection() {
                 className={style.container}
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }} // Animate when 30% of the section is in view
+                viewport={{ once: true, amount: 0.2 }} 
                 variants={containerVariants}
             >
                 <motion.div className={style.content} variants={containerVariants}> {/* Nested for staggered children */}
