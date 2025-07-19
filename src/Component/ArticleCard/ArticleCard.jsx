@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import i18n from '../../i18n';
 
 export default function ArticleCard({ idx = 0, imageUrl, time, title, author, tags, urlPath }) {
+
     // x = {
     //     "time": "2025-05-27T11:18:18.7957329",
     //     "tags": [
@@ -40,7 +41,7 @@ export default function ArticleCard({ idx = 0, imageUrl, time, title, author, ta
     let date = new Date(time);
     let day = date.getDate();
     // English month name
-    let month =date.toLocaleString(i18n.language, { month: 'long' }) ; // "May"
+    let month = date.toLocaleString(i18n.language, { month: 'long' }); // "May"
 
 
     const { t } = useTranslation()
@@ -52,10 +53,10 @@ export default function ArticleCard({ idx = 0, imageUrl, time, title, author, ta
             animate="visible"  >
             <div className={styles.imageWrapper}>
                 <img src={imageUrl} alt="article image" className={styles.image} />
-                <div className={styles.dateBadge}>
+                {time && <div className={styles.dateBadge}>
                     <span className={styles.day}>{day}</span>
                     <span className={styles.month}>{month}</span>
-                </div>
+                </div>}
             </div>
             <div className={styles.content}>
                 <div className={styles.meta}>

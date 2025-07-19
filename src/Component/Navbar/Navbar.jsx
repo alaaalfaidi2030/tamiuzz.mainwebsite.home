@@ -193,10 +193,10 @@ const Navbar = () => {
             </li>
 
             <li className={style.shoppingNow}>
-              <Link to="/cart" className="btn-web btn-web-secondary">
+              <a href="http://shop.tamiuzz.com" target="_blank" className="btn-web btn-web-secondary">
                 <i className="fa-solid fa-cart-shopping mx-2"></i>
                 {t("shopping now")}
-              </Link>
+              </a>
             </li>
           </motion.div>
         </div>

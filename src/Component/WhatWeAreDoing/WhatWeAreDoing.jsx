@@ -9,7 +9,7 @@ import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import { phoneAndEmail } from '../../Utilies/data'
 
-export default function WhatWeAreDoing() {
+export default function WhatWeAreDoing({ solutions }) {
     const { t } = useTranslation()
 
     const fadeInUp = {
@@ -22,36 +22,37 @@ export default function WhatWeAreDoing() {
         visible: { opacity: 1, transition: { duration: 0.6, ease: "easeOut" } }
     }
 
-    const solutions = [
-        {
-            title: "إدارة خدمة العملاء CRM",
-            urlPath: "crm-customer-service",
-            shortDescription: "نظام يمكنك من إدارة تفاعلات وبيانات العملاء،",
-            imageUrl: "/images/solutions/crm.jpg",
-            iconUrl: "/images/icons/headphones.png"
-        },
-        {
-            title: "دردشة أعمال",
-            urlPath: "business-chat",
-            shortDescription: "نظام اتصال لإجراء واستقبال مكالمات متزامنة",
-            imageUrl: "/images/solutions/chat.jpg",
-            iconUrl: "/images/icons/chat.png"
-        },
-        {
-            title: "كول سنتر",
-            urlPath: "call-center",
-            shortDescription: "أول نظام اتصال سحابي لإجراء واستقبال مكالمات",
-            imageUrl: "/images/solutions/callcenter.jpg",
-            iconUrl: "/images/icons/cloud.png"
-        },
-        {
-            title: "الرقم الموحد والرقم المجاني",
-            urlPath: "unified-number",
-            shortDescription: "رقم سهل حفظه يبدأ ب 9200 يتيح ربط الفروع",
-            imageUrl: "/images/solutions/phone.jpg",
-            iconUrl: "/images/icons/phone.png"
-        }
-    ]
+    // const solutions = [
+    //     {
+    //         title: "إدارة خدمة العملاء CRM",
+    //         urlPath: "crm-customer-service",
+    //         shortDescription: "نظام يمكنك من إدارة تفاعلات وبيانات العملاء،",
+    //         imageUrl: "/images/solutions/crm.jpg",
+    //         iconUrl: "/images/icons/headphones.png"
+
+    //     },
+    //     {
+    //         title: "دردشة أعمال",
+    //         urlPath: "business-chat",
+    //         shortDescription: "نظام اتصال لإجراء واستقبال مكالمات متزامنة",
+    //         imageUrl: "/images/solutions/chat.jpg",
+    //         iconUrl: "/images/icons/chat.png"
+    //     },
+    //     {
+    //         title: "كول سنتر",
+    //         urlPath: "call-center",
+    //         shortDescription: "أول نظام اتصال سحابي لإجراء واستقبال مكالمات",
+    //         imageUrl: "/images/solutions/callcenter.jpg",
+    //         iconUrl: "/images/icons/cloud.png"
+    //     },
+    //     {
+    //         title: "الرقم الموحد والرقم المجاني",
+    //         urlPath: "unified-number",
+    //         shortDescription: "رقم سهل حفظه يبدأ ب 9200 يتيح ربط الفروع",
+    //         imageUrl: "/images/solutions/phone.jpg",
+    //         iconUrl: "/images/icons/phone.png"
+    //     }
+    // ]
 
     return (
         <div className={style.WhatWeAreDoing} style={{ backgroundImage: `url(${img})` }}>
@@ -134,6 +135,7 @@ function SolutionSlider({ solutions }) {
             }
         })
     }
+    console.log(solutions);
 
     return (
         <div className="solution-slider-container">
@@ -150,8 +152,8 @@ function SolutionSlider({ solutions }) {
                 }}
             >
                 {solutions.map((solution, idx) => (
-                    <SwiperSlide key={idx} className='py-5'>
-                        <Link to={`/solutions/${solution.urlPath}`}>
+                    <SwiperSlide key={idx} className='py-5 m-auto'>
+                        <Link to={`/solutions/${solution.path}`}>
                             <motion.div
                                 className={style.card + " m-auto"}
                                 custom={idx}
@@ -176,6 +178,12 @@ function SolutionSlider({ solutions }) {
                         </Link>
                     </SwiperSlide>
                 ))}
+                {/* {
+                "title": "كول سنتر",
+                "iconUrl": "/static/solutions/call-center-ar-746-icon.svg",
+                "imageUrl": "/static/solutions/call-center-ar-395.jpg",
+                "path": "call-center"
+            } */}
             </Swiper>
         </div>
     )

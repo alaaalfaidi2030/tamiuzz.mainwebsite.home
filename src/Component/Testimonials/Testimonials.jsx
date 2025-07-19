@@ -39,7 +39,7 @@ export default function Testimonials({rates}) {
                         }}
                     >
                         {rates?.map((item, idx) => (
-                            <SwiperSlide key={idx} >
+                            <SwiperSlide key={idx} className='m-auto' >
                                 <TestimonialCard {...item} />
                             </SwiperSlide>
                         ))}

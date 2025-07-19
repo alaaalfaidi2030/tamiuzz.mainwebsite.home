@@ -15,19 +15,22 @@ export default function Home() {
         return <Spinner sectionFlag />
     else return (
         <>
-
             <Hero />
-            {homeContent.counter && homeContent.logos &&
+            {homeContent.counter && homeContent.logos.length != 0 &&
                 < AboutSection counter={homeContent.counter} logos={homeContent.logos} />
             }
-            {homeContent.solutions &&
-                <WhatWeAreDoing solutions={homeContent.solutions} />
+            {
+                homeContent.solutions.length !== 0
+                &&
+                <WhatWeAreDoing
+                    solutions={homeContent.solutions}
+                />
             }
             {/* <HowWeWork /> */}
-            {homeContent.rates &&
+            {homeContent.rates.length != 0 &&
                 <Testimonials rates={homeContent.rates} />}
             {
-                homeContent.blogs &&
+                homeContent.blogs.length != 0 &&
                 <ArticlesInHome blogs={homeContent.blogs} />
             }
         </>

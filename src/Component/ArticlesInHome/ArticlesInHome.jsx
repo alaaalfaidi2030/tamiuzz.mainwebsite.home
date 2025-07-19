@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination } from 'swiper/modules';
 import { motion } from 'framer-motion';
 
-export default function ArticlesInHome() {
+export default function ArticlesInHome({ blogs }) {
     const { t } = useTranslation();
 
     const fadeInUp = {
@@ -16,105 +16,105 @@ export default function ArticlesInHome() {
         visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
     };
 
-    const articlesData = [
-        {
-            id: 1,
-            image: '/assets/images/articles/article1.png',
-            date: '17',
-            month: 'Feb',
-            author: 'المشرف',
-            category: 'خدمات برمجيه',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        },
-        {
-            id: 2,
-            image: '/assets/images/articles/article2.png',
-            date: '20',
-            month: 'May',
-            author: 'المشرف',
-            category: 'مصمم واجهة وتجربة المستخدم',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        },
-        {
-            id: 3,
-            image: '/assets/images/articles/article3.png',
-            date: '20',
-            month: 'May',
-            author: 'المشرف',
-            category: 'أمن سيبراني',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        }, {
-            id: 1,
-            image: '/assets/images/articles/article1.png',
-            date: '17',
-            month: 'Feb',
-            author: 'المشرف',
-            category: 'خدمات برمجيه',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        },
-        {
-            id: 2,
-            image: '/assets/images/articles/article2.png',
-            date: '20',
-            month: 'May',
-            author: 'المشرف',
-            category: 'مصمم واجهة وتجربة المستخدم',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        },
-        {
-            id: 3,
-            image: '/assets/images/articles/article3.png',
-            date: '20',
-            month: 'May',
-            author: 'المشرف',
-            category: 'أمن سيبراني',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        }, {
-            id: 1,
-            image: '/assets/images/articles/article1.png',
-            date: '17',
-            month: 'Feb',
-            author: 'المشرف',
-            category: 'خدمات برمجيه',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        },
-        {
-            id: 2,
-            image: '/assets/images/articles/article2.png',
-            date: '20',
-            month: 'May',
-            author: 'المشرف',
-            category: 'مصمم واجهة وتجربة المستخدم',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        },
-        {
-            id: 3,
-            image: '/assets/images/articles/article3.png',
-            date: '20',
-            month: 'May',
-            author: 'المشرف',
-            category: 'أمن سيبراني',
-            description:
-                'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-            link: '/articles/1'
-        }
-    ];
+    // const articlesData = [
+    //     {
+    //         id: 1,
+    //         image: '/assets/images/articles/article1.png',
+    //         date: '17',
+    //         month: 'Feb',
+    //         author: 'المشرف',
+    //         category: 'خدمات برمجيه',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     },
+    //     {
+    //         id: 2,
+    //         image: '/assets/images/articles/article2.png',
+    //         date: '20',
+    //         month: 'May',
+    //         author: 'المشرف',
+    //         category: 'مصمم واجهة وتجربة المستخدم',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     },
+    //     {
+    //         id: 3,
+    //         image: '/assets/images/articles/article3.png',
+    //         date: '20',
+    //         month: 'May',
+    //         author: 'المشرف',
+    //         category: 'أمن سيبراني',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     }, {
+    //         id: 1,
+    //         image: '/assets/images/articles/article1.png',
+    //         date: '17',
+    //         month: 'Feb',
+    //         author: 'المشرف',
+    //         category: 'خدمات برمجيه',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     },
+    //     {
+    //         id: 2,
+    //         image: '/assets/images/articles/article2.png',
+    //         date: '20',
+    //         month: 'May',
+    //         author: 'المشرف',
+    //         category: 'مصمم واجهة وتجربة المستخدم',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     },
+    //     {
+    //         id: 3,
+    //         image: '/assets/images/articles/article3.png',
+    //         date: '20',
+    //         month: 'May',
+    //         author: 'المشرف',
+    //         category: 'أمن سيبراني',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     }, {
+    //         id: 1,
+    //         image: '/assets/images/articles/article1.png',
+    //         date: '17',
+    //         month: 'Feb',
+    //         author: 'المشرف',
+    //         category: 'خدمات برمجيه',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     },
+    //     {
+    //         id: 2,
+    //         image: '/assets/images/articles/article2.png',
+    //         date: '20',
+    //         month: 'May',
+    //         author: 'المشرف',
+    //         category: 'مصمم واجهة وتجربة المستخدم',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     },
+    //     {
+    //         id: 3,
+    //         image: '/assets/images/articles/article3.png',
+    //         date: '20',
+    //         month: 'May',
+    //         author: 'المشرف',
+    //         category: 'أمن سيبراني',
+    //         description:
+    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
+    //         link: '/articles/1'
+    //     }
+    // ];
 
     return (
         <div className={"container py-5 " + style.ArticleHomeContainer}>
@@ -130,7 +130,9 @@ export default function ArticlesInHome() {
             </motion.div>
 
             <div className="row">
-                <ArticlesSlider articles={articlesData} />
+                <ArticlesSlider articles={
+                    blogs
+                } />
             </div>
         </div>
     );
@@ -156,21 +158,6 @@ function ArticlesSlider({ articles }) {
         }
     }, []);
 
-    const cardVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: (i) => ({
-            opacity: 1,
-            y: 0,
-            transition: {
-                delay: i * 0.15,
-                duration: 0.5,
-                type: "spring",
-                stiffness: 100,
-                damping: 12
-            }
-        })
-    };
-
     return (
         <div className="solution-slider-container position-relative">
             <Swiper
@@ -188,9 +175,9 @@ function ArticlesSlider({ articles }) {
                 }}
             >
                 {articles.map((article, idx) => (
-                    <SwiperSlide key={idx} className='py-5'>
+                    <SwiperSlide key={idx} className='py-5 mx-auto'>
 
-                        <ArticleCard idx={idx} {...article} image={article.image} />
+                        <ArticleCard idx={idx} {...article} urlPath={article.path} />
                     </SwiperSlide>
                 ))}
             </Swiper>
