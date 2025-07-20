@@ -3,7 +3,9 @@
   transition-property: height;
   transition-duration: 0.3s;
 }
+
 .navbar-top {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -18,7 +20,13 @@
 .navbar-top .phone-email a {
   position: relative;
   z-index: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
+
 .navbar-top .phone-email a::after {
   content: "";
   display: block;
@@ -38,6 +46,7 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+
 .navbar-top .phone-email a:hover::after {
   width: 100%;
   background: var(--secondary-color);

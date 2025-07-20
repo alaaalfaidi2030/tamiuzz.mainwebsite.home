@@ -30,32 +30,32 @@ export default function IsThemeModeProvider({ children }) {
 
   // Check the theme mode from local storage or from the system preferences
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-    const theme = localStorage.getItem("theme");
+    // const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
+    // const theme = localStorage.getItem("theme");
 
-    if (theme) {
-      // If a theme is saved in localStorage, use it
-      setIsDarkMode(false
-        // theme === "dark"
-      );
-      // Otherwise, use the system preference
-    } else setIsDarkMode(mediaQuery.matches);
+    // if (theme) {
+    //   // If a theme is saved in localStorage, use it
+    //   setIsDarkMode(false
+    //     // theme === "dark"
+    //   );
+    //   // Otherwise, use the system preference
+    // } else setIsDarkMode(mediaQuery.matches);
 
-    // Listen for changes in system theme preference
-    const handleChange = (e) => {
-      setIsDarkMode(e.matches);
-    };
+    // // Listen for changes in system theme preference
+    // const handleChange = (e) => {
+    //   setIsDarkMode(e.matches);
+    // };
 
-    mediaQuery.addEventListener("change", handleChange);
+    // mediaQuery.addEventListener("change", handleChange);
 
-    return () => {
-      mediaQuery.removeEventListener("change", handleChange);
-    };
+    // return () => {
+    //   mediaQuery.removeEventListener("change", handleChange);
+    // };
   }, []);
 
   // Apply the theme when `isDarkMode` changes
   useEffect(() => {
-    changeThemeMode();
+    // changeThemeMode();
   }, [isDarkMode]);
 
   return (

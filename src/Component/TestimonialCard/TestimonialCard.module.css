@@ -70,3 +70,24 @@
     color: var(--primary-color);
 
 }
+
+@media (max-width: 480px) {
+    .testimonial-card {
+        padding: 14px;
+        scale: 0.95 !important;
+    }
+
+
+    .user-image {
+        width: 45px;
+        height: 45px;
+    }
+
+    .testimonial-text {
+        font-size: 0.9rem;
+    }
+
+    .stars {
+        font-size: 0.9rem;
+    }
+}

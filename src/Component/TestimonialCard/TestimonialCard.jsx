@@ -25,7 +25,7 @@ export default function TestimonialCard({ imageUrl, name, position, stars, rate 
 
     return (
         <motion.div
-            className={`${style["testimonial-card"]} shadow`}
+            className={`${style["testimonial-card"]} shadow `}
             variants={cardVariants}
             initial="hidden"
             whileInView="visible"

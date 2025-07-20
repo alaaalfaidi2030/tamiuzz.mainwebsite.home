@@ -8,17 +8,16 @@
   "nav_lang": "English",
   "shopping now": "تسوق الآن",
 
-  
   "read more": "أطلع على المزيد",
-  "No data founded":"لم نستطيع العثور على اى بيانات ",
-  
+  "No data founded": "لم نستطيع العثور على اى بيانات ",
+
   "homePage": {
     "hero_title": "حلول برمجية متكاملة",
     "hero_subtitle": "لنجاح أعمالك",
     "hero_desc_part1": "نقدم حلولاً مبتكرة تساعد الشركات على النمو والتطور في العصر الرقمي",
     "hero_desc_part2": "مع أحدث التقنيات وأفضل الممارسات في التطوير",
     "request-quote-button": "أطلب عرض سعر",
-    "discover our services":"استكشف خدماتنا",
+    "discover our services": "استكشف خدماتنا",
     "aboutHomeHeading": "أكثر ما يميزنا",
     "aboutSectionTitle": "يمكننا تقديم خدمات مميزة للعملاء",
     "aboutSectionDescription": "شركة تميز هي شركة تقنية رائدة في المملكة العربية السعودية والشرق الأوسط، تهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد.",
@@ -33,6 +32,7 @@
     "servicesDetailsButton": "تفاصيل خدماتنا",
     "projectsLabel": "مشروع",
     "clientsLabel": "عملاء راضون",
+    "expertsLabel": "خبراء",
     "aboutImageAlt": "عن شركة تميز",
     "MoreThanOneHundredBrands": "أكثر من 100 علامه تجاريه تثق بنا",
     "what are we doing?": "ما نقوم به؟",
@@ -88,11 +88,10 @@
   "ServicesSubTitle": "نحن نقدم أفضل جوده",
 
   "faq": "الأسئلة الشائعة",
-    "faqPage": {
+  "faqPage": {
     "headline1": "حافظ على أمان عملك",
     "headline2": "وتأكد من توافره بدرجة عالية"
   },
-
 
   "contact_us": "تواصل معنا",
   "email_placeholder": "البريد الإلكتروني",

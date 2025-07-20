@@ -22,10 +22,10 @@ const Footer = () => {
     return (
         <footer className={style["footer-container"]}>
             <div className="footer-content">
-                <div className="container-fluid px-5">
+                <div className="container-fluid px-md-5">
                     <div className="row g-4">
                         {/* Contact Section */}
-                        <div className="col-lg-4 col-8">
+                        <div className="col-lg-4 col-7">
                             <div>
                                 <h4 className={style["footer-title"]}>{t("contact_us")}</h4>
                                 <div className={style["contact-info"]}>
@@ -45,7 +45,7 @@ const Footer = () => {
                                         ))
 
                                     }
-                                    <div className={style["email-subscribe"] + " w-75"}>
+                                    <div className={style["email-subscribe"] }>
                                         <input
                                             type="email"
                                             placeholder={t("email_placeholder")}
@@ -63,7 +63,7 @@ const Footer = () => {
                         </div>
 
                         {/* Quick Links Section */}
-                        <div className="col-lg-4 col-4  ">
+                        <div className="col-lg-4 col-5  ">
                             <div className={style["quick-links"]}>
                                 <h4 className={style["footer-title"]}>{t("quick_links")}</h4>
                                 <ul className={style["footer-links"]}>

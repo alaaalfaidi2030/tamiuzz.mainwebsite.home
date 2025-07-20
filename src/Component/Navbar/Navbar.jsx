@@ -102,7 +102,7 @@ const Navbar = () => {
     return () => {
       observer.disconnect();
     };
-  }, [location.pathname, links]);
+  }, [location.pathname, links,navBarRef?.current?.clientHeight]);
 
   return (
     <nav
@@ -136,7 +136,7 @@ const Navbar = () => {
         </button>
 
         <div
-          className={`collapse navbar-collapse ${style["list-links"]}`}
+          className={`collapse navbar-collapse  ${style["list-links"]}`}
           id="navbarSupportedContent"
         >
           <div />

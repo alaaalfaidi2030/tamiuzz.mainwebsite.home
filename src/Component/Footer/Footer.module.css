@@ -52,6 +52,7 @@ body[dir="ltr"] .footer-title::after {
   opacity: 0.9;
   transition: all 0.3s ease;
 }
+
 .contact-item span::after {
   content: "";
   display: block;
@@ -71,6 +72,7 @@ body[dir="ltr"] .footer-title::after {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+
 .contact-item span:hover::after {
   width: 100%;
   background: var(--secondary-color) !important;
@@ -95,6 +97,7 @@ body[dir="ltr"] .footer-title::after {
   overflow: hidden;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
   position: relative;
+  width: 70%;
 }
 
 .email-input {
@@ -133,6 +136,7 @@ body[dir="ltr"] .footer-title::after {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
 }
+
 body[dir="ltr"] .email-submit {
   left: auto;
   right: 0;
@@ -142,10 +146,12 @@ body[dir="ltr"] .email-submit {
   background: linear-gradient(135deg, #fbbf24, #e49d23);
   transform: translateX(2px);
 }
+
 .quick-links {
   width: 50%;
   margin: auto;
 }
+
 .footer-links {
   list-style: none;
   padding: 0;
@@ -193,6 +199,7 @@ body[dir="ltr"] .email-submit {
 .company-logo {
   margin-bottom: 1.5rem;
 }
+
 .company-logo img {
   width: 100%;
 }
@@ -301,16 +308,24 @@ body[dir="ltr"] .email-submit {
 .footer-bottom-links a:hover {
   color: #e49d23;
 }
+
 @media (max-width: 768px) {
   .quick-links {
     width: 100%;
   }
+
   .copyright {
     text-align: center;
     margin-top: 0.6rem;
   }
+
   .footer-bottom {
     flex-direction: column;
     align-items: center;
   }
+
+  .email-subscribe {
+    width: 100%;
+  }
+
 }

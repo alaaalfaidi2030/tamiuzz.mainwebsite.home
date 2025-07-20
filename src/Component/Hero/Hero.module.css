@@ -80,6 +80,10 @@ h1 {
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .ctaButton:hover {
@@ -92,13 +96,16 @@ h1 {
   background-color: var(--lite);
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: 2px solid rgba(255, 255, 255, 0.3);
-  border-radius: 50px;
   padding: 1rem 2rem;
   font-size: 1.1rem;
   font-weight: 600;
   color: var(--primary-color);
   z-index: 9;
   transition: all 0.3s ease-in-out;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .secondaryButton:hover {
@@ -145,7 +152,7 @@ h1 {
   }
 
   .btnContainer {
-    width: 70%;
+    width: 100%;
     margin: auto;
   }
 

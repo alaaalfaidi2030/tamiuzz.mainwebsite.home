@@ -11,7 +11,7 @@ export default function Error404() {
 
             <Link to="/" >
                 <div className="container">
-                    <div className="row">
+                    <div className="row min-vh-100">
                         <div className="col-sm-12 col-md-12 mt-5 mb-5">
                             <motion.svg
                                 animate={{ y: [0, 10, 0] }}

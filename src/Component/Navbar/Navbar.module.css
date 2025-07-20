@@ -2,10 +2,12 @@
 :global(.nav-link):focus-visible {
   box-shadow: none !important;
 }
+
 .navbar {
   background-color: var(--nav-bg-color);
   font-size: 16px;
 }
+
 .list-links {
   display: flex;
   justify-content: space-between;
@@ -26,10 +28,12 @@
   margin: auto;
   padding-bottom: 0;
 }
+
 .list-links .middle-part a.selected,
 .list-links .middle-part a:hover {
   opacity: 1;
 }
+
 .list-links .middle-part a::after {
   content: "";
   display: block;
@@ -49,11 +53,13 @@
   -ms-transform: translateX(-50%);
   -o-transform: translateX(-50%);
 }
+
 .list-links .middle-part a:hover::after,
 .list-links .middle-part a.selected::after {
   width: 100%;
   background-color: var(--primary-color);
 }
+
 .langButton {
   border: none;
   font-size: 1.2em;
@@ -69,6 +75,7 @@
   -o-border-radius: 10px;
   background-color: #e0f2fe;
 }
+
 .shoppingNow a {
   font-size: 1.2em;
   border-radius: 10px;
@@ -81,6 +88,7 @@
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
 }
+
 .language-icon {
   width: 20px;
   height: 20px;
@@ -97,17 +105,32 @@
   .navbar {
     font-size: 15px;
   }
+
   .langButton {
     font-size: 1em;
   }
-  
+
 
 }
+
 @media (max-width: 991px) {
   .list-links ul {
     width: 100%;
   }
-  .right-part{
+
+  .right-part {
     width: 70%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .list-links {
+    padding: 24px 0;
+  }
+
+  .shoppingNow a {
+    padding: 10px !important;
+    font-size: 1em;
+    border-radius: 10px;
   }
 }

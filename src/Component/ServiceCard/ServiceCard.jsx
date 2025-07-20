@@ -31,7 +31,7 @@ export default function ServiceCard({ idx = 0, imageUrl, iconUrl, title, path, d
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible" >
-                <div className={styles.imageWrapper}>
+                <div className={styles.imageWrapper+" my-3"}>
                     <img src={iconUrl} alt="icon image" className={styles.image} />
 
                 </div>

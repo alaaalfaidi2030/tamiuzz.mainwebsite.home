@@ -13,14 +13,14 @@ export default function AboutSection({ counter, logos }) {
     const { t } = useTranslation();
 
 
-    const clients = [
-        { id: 1, src: "/images/clients/logo1.png", alt: "Logo 1" },
-        { id: 2, src: "/images/clients/logo2.png", alt: "Logo 2" },
-        { id: 3, src: "/images/clients/logo3.png", alt: "Logo 3" },
-        { id: 4, src: "/images/clients/logo4.png", alt: "Logo 4" },
-        { id: 5, src: "/images/clients/logo5.png", alt: "Logo 5" },
-        { id: 6, src: "/images/clients/logo6.png", alt: "Logo 6" },
-    ];
+    // const clients = [
+    //     { id: 1, src: "/images/clients/logo1.png", alt: "Logo 1" },
+    //     { id: 2, src: "/images/clients/logo2.png", alt: "Logo 2" },
+    //     { id: 3, src: "/images/clients/logo3.png", alt: "Logo 3" },
+    //     { id: 4, src: "/images/clients/logo4.png", alt: "Logo 4" },
+    //     { id: 5, src: "/images/clients/logo5.png", alt: "Logo 5" },
+    //     { id: 6, src: "/images/clients/logo6.png", alt: "Logo 6" },
+    // ];
     // You can define animation variants here if you decide to add them
     // For now, let's focus on i18n
     const containerVariants = {
@@ -52,7 +52,7 @@ export default function AboutSection({ counter, logos }) {
 
 
     return (
-        <section className={style.aboutSection}>
+        <section className={style.aboutSection + " container"}>
             {/* The H2 component already uses `t("homePage.aboutHomeHeading")` */}
             <H2 text={t("homePage.aboutHomeHeading")} />
 
@@ -112,6 +112,14 @@ export default function AboutSection({ counter, logos }) {
                                 <p>{t("homePage.clientsLabel")}</p>
                             </div>
                         </motion.div>
+                        <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
+                            <div className="col-4 d-flex align-items-center justify-content-center">
+                                <i class="fa-solid fa-chalkboard-user"></i>                            </div>
+                            <div className="col-8 d-flex flex-column align-items-center justify-content-center">
+                                <h4>{counter.clients}</h4>
+                                <p>{t("homePage.expertsLabel")}</p>
+                            </div>
+                        </motion.div>
                     </div>
                 </motion.div>
                 <motion.div className={style.imageWrapper} variants={imageVariants}>
@@ -140,8 +148,8 @@ export default function AboutSection({ counter, logos }) {
                     >
                         {logos.map((logo, idx) => (
                             <SwiperSlide key={idx}>
-                                <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle " + style.logoPartner}>
-                                    <img src={logo.imageUrl} alt={logo.name} className="client-logo" />
+                                <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle  " + style.logoPartner}>
+                                    <img src={logo.imageUrl} alt={logo.name} className={"w-100"} />
                                 </div>
                             </SwiperSlide>
                         ))}

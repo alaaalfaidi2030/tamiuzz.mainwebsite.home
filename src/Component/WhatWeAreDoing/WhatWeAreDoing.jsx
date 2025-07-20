@@ -25,7 +25,7 @@ export default function WhatWeAreDoing({ solutions }) {
     // const solutions = [
     //     {
     //         title: "إدارة خدمة العملاء CRM",
-    //         urlPath: "crm-customer-service",
+    //         path: "crm-customer-service",
     //         shortDescription: "نظام يمكنك من إدارة تفاعلات وبيانات العملاء،",
     //         imageUrl: "/images/solutions/crm.jpg",
     //         iconUrl: "/images/icons/headphones.png"
@@ -33,21 +33,21 @@ export default function WhatWeAreDoing({ solutions }) {
     //     },
     //     {
     //         title: "دردشة أعمال",
-    //         urlPath: "business-chat",
+    //         path: "business-chat",
     //         shortDescription: "نظام اتصال لإجراء واستقبال مكالمات متزامنة",
     //         imageUrl: "/images/solutions/chat.jpg",
     //         iconUrl: "/images/icons/chat.png"
     //     },
     //     {
     //         title: "كول سنتر",
-    //         urlPath: "call-center",
+    //         path: "call-center",
     //         shortDescription: "أول نظام اتصال سحابي لإجراء واستقبال مكالمات",
     //         imageUrl: "/images/solutions/callcenter.jpg",
     //         iconUrl: "/images/icons/cloud.png"
     //     },
     //     {
     //         title: "الرقم الموحد والرقم المجاني",
-    //         urlPath: "unified-number",
+    //         path: "unified-number",
     //         shortDescription: "رقم سهل حفظه يبدأ ب 9200 يتيح ربط الفروع",
     //         imageUrl: "/images/solutions/phone.jpg",
     //         iconUrl: "/images/icons/phone.png"
@@ -135,7 +135,6 @@ function SolutionSlider({ solutions }) {
             }
         })
     }
-    console.log(solutions);
 
     return (
         <div className="solution-slider-container">
