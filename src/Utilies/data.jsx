@@ -8,7 +8,6 @@ export const getHeaders = (token) => {
     "Content-Type": "application/json",
     Authorization: token ? `Bearer ${token}` : undefined,
     "Accept-Language": i18n.language,
-    "Cache-Control":"no-cache"
   };
 };
 export const phoneAndEmail = [

@@ -114,6 +114,10 @@
 }
 
 @media (max-width: 991px) {
+  .list-links {
+    padding: 24px 0;
+  }
+
   .list-links ul {
     width: 100%;
   }
@@ -124,9 +128,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .list-links {
-    padding: 24px 0;
-  }
+
 
   .shoppingNow a {
     padding: 10px !important;

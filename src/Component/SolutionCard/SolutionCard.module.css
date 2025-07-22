@@ -21,12 +21,12 @@ body[dir="ltr"] .cardContainer:nth-child(odd) {
 .imageWrapper {
   text-align: center;
   overflow: hidden;
+  width: 80%;
 }
 
 .imageWrapper img {
   object-fit: cover;
   width: 100%;
-  max-height: 500px;
 }
 
 .cardContainer h3 {

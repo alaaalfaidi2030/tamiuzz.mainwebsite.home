@@ -52,7 +52,7 @@ export default function SolutionCard({
     return (
         <>
             <motion.div
-                className={"row my-5  " + style.cardContainer}
+                className={"row my-5 py-5 rounded  " + style.cardContainer}
                 variants={cardContainerVariants}
                 initial="hidden"
                 animate="visible"
@@ -65,9 +65,8 @@ export default function SolutionCard({
                         className={style["imageWrapper"]}
                         variants={imageWrapperVariants}
                     >
-                        <img src={
-                            imageUrl
-                        } alt={title} />
+                        <img src={imageUrl} 
+                            alt={title} />
                     </motion.div>
                 </div>
                 <div className="col-md-6 d-flex justify-content-center gap-3 flex-column">

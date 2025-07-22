@@ -11,7 +11,7 @@ export default function NavbarTop() {
 
     // Scroll effect for navbarTop
     useEffect(() => {
-        // containerRef.current.style.height = navbarTopRef.current?.clientHeight + "px";
+        containerRef.current.style.height = navbarTopRef.current?.clientHeight + "px";
 
         const handleScroll = () => {
             if (!navbarTopRef.current) return;
@@ -22,7 +22,7 @@ export default function NavbarTop() {
                 containerRef.current.style.height = "10px";
             } else {
                 navbarTopRef.current.style.opacity = "100%";
-                containerRef.current.style.height = "auto";
+                containerRef.current.style.height = navbarTopRef.current?.clientHeight + "px";
 
             }
 

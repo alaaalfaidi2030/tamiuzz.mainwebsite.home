@@ -1,15 +1,73 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import style from './Footer.module.css';
-import logo from "/logo.svg";
+import whiteLogo from "/whiteLogo.png";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { phoneAndEmail, socialMedia } from '../../Utilies/data';
+import { baseURL, getHeaders, phoneAndEmail, socialMedia } from '../../Utilies/data';
+import Swal from 'sweetalert2';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import * as Yup from 'yup';
 const Footer = () => {
     // Mock translation function for demonstration
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
+
+    const [responseFlag, setResponseFlag] = useState(false)
+    const validationSchema = Yup.object().shape({
+        email: Yup.string()
+            .email(t("errors.Invalid email address"))
+            .required(t("errors.Required")),
+    });
 
 
+
+    // send message to the server
+
+    const subscribeWithUs = async (values) => {
+
+
+        setResponseFlag(true);
+
+        try {
+            const { data } = await axios.get(baseURL + `/newsteller/subscribe?email=${values.email}`, {
+                headers: getHeaders(),
+            });
+
+            if (data.success) {
+                Swal.fire({
+                    title: t("success.Success"),
+                    text: t("success.successfully subscription"),
+                    icon: "success",
+                    confirmButtonText: t("success.OK"),
+                });
+            } else {
+                Swal.fire({
+                    title: t("errors.Error"),
+                    text: t("errors.Something went wrong, please try again later"),
+                    icon: "error",
+                    confirmButtonText: t("success.OK"),
+                });
+            }
+        } catch (error) {
+            console.error("There was an error sending the message:", error);
+            Swal.fire({
+                title: t("errors.Error"),
+                text: t("errors.Something went wrong, please try again later"),
+                icon: "error",
+                confirmButtonText: t("success.OK"),
+            });
+        } finally {
+            setResponseFlag(false);
+        }
+    };
+    const formik = useFormik({
+        initialValues: {
+            email: '',
+        },
+        validationSchema: validationSchema,
+        onSubmit: subscribeWithUs
+    });
 
     const links = useMemo(
         () => [
@@ -45,19 +103,29 @@ const Footer = () => {
                                         ))
 
                                     }
-                                    <div className={style["email-subscribe"] }>
+                                    <form onSubmit={formik.handleSubmit} className={style["email-subscribe"]}>
                                         <input
                                             type="email"
+                                            name='email'
                                             placeholder={t("email_placeholder")}
                                             className={style["email-input"]}
+                                            value={formik.values.email}
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
                                         />
                                         <button className={style["email-submit"]}>
                                             <i className="fa-solid fa-arrow-right"></i>
                                         </button>
-                                    </div>
-                                    <div className="email-desc fs-6 fw-light text-white text-muted">
+                                    </form>
+                                    {
+                                        formik.touched.email && formik.errors.email &&
+                                        <div className="text-danger ">
+                                            {formik.errors.email}
+                                        </div>
+                                    }
+                                    <p className={style["email-desc"] + " fs-6 fw-light "}>
                                         {t("email_description")}
-                                    </div>
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -96,7 +164,7 @@ const Footer = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.1 }}
                                     className={style["company-logo"]}>
-                                    <img src={logo} alt="logo image" />
+                                    <img src={whiteLogo} alt="logo image" style={{ width: "165px" }} />
                                 </motion.div>
                                 <motion.p
                                     initial={{ opacity: 0, y: -100 }}
@@ -136,7 +204,7 @@ const Footer = () => {
                             <a href="#terms" >
                                 {t("terms_condition")}
                             </a>
-                            <Link to ="policy">
+                            <Link to="policy">
                                 {t("privacy_policy")}
                             </Link>
                         </div>

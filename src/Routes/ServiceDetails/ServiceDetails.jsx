@@ -55,7 +55,7 @@ export default function ServiceDetails() {
             <div className="py-5"></div>
             <H2 text={t("serviceDetails")} />
             {
-                (!loading) ? <div className="container my-5">
+                (!loading) ? <div className="container ">
                     {
                         errorFlag ?
                             <ErrorComp /> :
@@ -70,7 +70,7 @@ export default function ServiceDetails() {
                                         setDisplayServicesIndex={setDisplayServicesIndex}
                                         isMobile={isMobile}
                                     />
-                                    <div className="col-md-7">
+                                    <div className="col-lg-9 col-md-12">
                                         {services[displayServicesIndex] &&
                                             <>
 
@@ -111,21 +111,20 @@ function IndexingPart({ services, displayServicesIndex, t, setDisplayServicesInd
 
             {
                 openFlag &&
-                <div className={"col-md-3 min-vh-100  " + style.indexingPart} >
+                <div className={"col-lg-3 min-vh-100  " + style.indexingPart} >
+                    {isMobile &&
+                        <button className='btn btn-danger  rounded-circle border-0 d-flex justify-content-center align-items-center fs-6 position-absolute end-0 top-0 m-2' style={{
+                            width: "30px",
+                            height: "30px",
+                            zIndex: "99999"
 
-                    <button className='btn btn-outline-danger rounded-circle border-0 d-flex justify-content-center align-items-center fs-4 position-absolute end-0 top-0 m-2' style={{
-                        width: "30px",
-                        height: "30px",
-                        zIndex: "99999"
-
-                    }} onClick={() => {
-                        setOpenFlag(!openFlag)
-                    }} > <i class="fa-solid fa-x fw-bolder"></i></button>
+                        }} onClick={() => {
+                            setOpenFlag(!openFlag)
+                        }} > <i class="fa-solid fa-x fw-bolder "></i></button>}
                     <H3 text={t("services")}></H3>
-                    <div className="py-1"></div>
                     {
                         services.map((service, idx) =>
-                            <button className={`my-3 d-flex  justify-content-between ${style.option} ${displayServicesIndex == idx ? style.active : ""}`} key={idx} onClick={() =>
+                            <button className={`my-2 d-flex  justify-content-between ${style.option} ${displayServicesIndex == idx ? style.active : ""}`} key={idx} onClick={() =>
                                 setDisplayServicesIndex(idx)
                             }>
                                 {service.title}

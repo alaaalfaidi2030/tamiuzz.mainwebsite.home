@@ -20,6 +20,9 @@
 .navbar-top .phone-email a {
   position: relative;
   z-index: 1;
+}
+.navbar-top .phone-email a span{
+  
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;

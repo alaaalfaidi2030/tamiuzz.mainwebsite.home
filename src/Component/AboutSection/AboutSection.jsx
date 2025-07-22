@@ -9,18 +9,15 @@ import { Link } from 'react-router-dom';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
-export default function AboutSection({ counter, logos }) {
+export default function AboutSection({ counter, logos, services }) {
     const { t } = useTranslation();
 
 
-    // const clients = [
-    //     { id: 1, src: "/images/clients/logo1.png", alt: "Logo 1" },
-    //     { id: 2, src: "/images/clients/logo2.png", alt: "Logo 2" },
-    //     { id: 3, src: "/images/clients/logo3.png", alt: "Logo 3" },
-    //     { id: 4, src: "/images/clients/logo4.png", alt: "Logo 4" },
-    //     { id: 5, src: "/images/clients/logo5.png", alt: "Logo 5" },
-    //     { id: 6, src: "/images/clients/logo6.png", alt: "Logo 6" },
-    // ];
+    //  "services": [
+    //         {
+    //             "title": "Demo Service 1",
+    //             "path": "demo-service"
+    //         }
     // You can define animation variants here if you decide to add them
     // For now, let's focus on i18n
     const containerVariants = {
@@ -72,16 +69,38 @@ export default function AboutSection({ counter, logos }) {
                     </motion.p>
                     <div className={style.features}>
                         <ul>
-                            <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.itConsulting")}</motion.li>
+                            {
+                                services.map((service, idx) => {
+                                    if (idx % 2 == 0)
+                                        return <motion.li variants={itemVariants} key={idx}>
+                                            <Link to={`/services/${service.path}`} >
+                                                <i className="fa-solid fa-check"></i>{service.title}
+                                            </Link>
+                                        </motion.li>
+
+
+                                })
+                            }
+                            {/* <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.itConsulting")}</motion.li>
                             <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.appDevelopment")}</motion.li>
                             <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.cyberSecurity")}</motion.li>
-                            <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.itManagement")}</motion.li>
+                            <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.itManagement")}</motion.li> */}
                         </ul>
-                        <ul>
-                            <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.uiUxDesign")}</motion.li>
+                        <ul>{
+                            services.map((service, idx) => {
+                                if (idx % 2 == 1)
+                                    return <motion.li variants={itemVariants} key={idx}>
+                                        <Link to={`/services/${service.path}`} >
+                                            <i className="fa-solid fa-check"></i>{service.title}
+                                        </Link>
+                                    </motion.li>
+
+
+                            })}
+                            {/* <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.uiUxDesign")}</motion.li>
                             <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.dataAnalysis")}</motion.li>
                             <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.databaseSecurity")}</motion.li>
-                            <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.digitalMarketing")}</motion.li>
+                            <motion.li variants={itemVariants}><i className="fa-solid fa-check"></i>{t("homePage.digitalMarketing")}</motion.li> */}
                         </ul>
                     </div>
                     <motion.div className="my-4"
@@ -133,21 +152,21 @@ export default function AboutSection({ counter, logos }) {
 
                 <div className="container my-5" dir="rtl">
                     <Swiper
-                        spaceBetween={30}
+                        spaceBetween={10}
                         loop={true}
                         autoplay={{
                             delay: 2000,
                             disableOnInteraction: false,
                         }}
                         breakpoints={{
-                            320: { slidesPerView: 2 },
-                            768: { slidesPerView: 3 },
-                            1024: { slidesPerView: 5 },
+                            320: { slidesPerView: 3 },
+                            768: { slidesPerView: 5 },
+                            1024: { slidesPerView: 8 },
                         }}
                         modules={[Autoplay]}
                     >
                         {logos.map((logo, idx) => (
-                            <SwiperSlide key={idx}>
+                            <SwiperSlide key={idx} >
                                 <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle  " + style.logoPartner}>
                                     <img src={logo.imageUrl} alt={logo.name} className={"w-100"} />
                                 </div>

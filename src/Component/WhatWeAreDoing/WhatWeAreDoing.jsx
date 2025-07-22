@@ -85,18 +85,18 @@ export default function WhatWeAreDoing({ solutions }) {
                 </div>
 
                 <motion.div
-                    className={"row g-3 " + style.info}
+                    className={"row g-4 " + style.info}
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                 >
-                    <div className="col-md-3 col-sm-12 d-flex justify-content-center align-items-center ">
+                    <div className="col-lg-3 col-md-12 d-flex justify-content-center align-items-center ">
                         <h4 className='m-0'>{t("homePage.keep in touch with us")}</h4>
                     </div>
                     {
                         phoneAndEmail.map((item, idx) =>
-                            <div key={idx} className="col-md-3 col-sm-6  border-end border-3 border-white d-flex  align-items-center gap-3">
+                            <div key={idx} className="col-lg-3  col-6 border-end border-3 border-white d-flex  align-items-center gap-3">
                                 <div className="icon text-primary bg-white d-flex justify-content-center align-items-center rounded-circle fs-4" style={{
                                     width: "40px",
                                     height: "40px"
@@ -110,7 +110,7 @@ export default function WhatWeAreDoing({ solutions }) {
                             </div>
                         )
                     }
-                    <div className="col-md-2 col-sm-12 d-flex align-items-center justify-content-center">
+                    <div className="col-lg-2 col-md-12 d-flex align-items-center justify-content-center">
                         <button className='btn btn-light'>{t("aboutSection.request-quote-button")}</button>
                     </div>
                 </motion.div>

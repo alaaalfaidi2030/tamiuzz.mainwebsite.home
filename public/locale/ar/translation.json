@@ -111,6 +111,7 @@
   "success": {
     "Success": "تم بنجاح",
     "message sent successfully": "تم إرسال الرسالة بنجاح",
+    "successfully subscription": "مرحبا معك معا فى تميز",
     "OK": "تمام"
   },
   "errors": {

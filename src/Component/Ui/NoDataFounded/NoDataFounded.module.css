@@ -1,6 +1,9 @@
+.NoDataFounded{
+    min-height: 75vh;
+}
 .NoDataFounded img {
     max-width: 25%;
-    margin: auto;
+    margin: 10px ;
     animation: scaleAnimation 1s ease-in-out infinite  alternate ;
     -webkit-animation: scaleAnimation 1s ease-in-out infinite  alternate ;
 }

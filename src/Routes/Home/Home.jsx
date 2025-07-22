@@ -17,7 +17,7 @@ export default function Home() {
         <>
             <Hero />
             {homeContent.counter && homeContent.logos.length != 0 &&
-                < AboutSection counter={homeContent.counter} logos={homeContent.logos} />
+                < AboutSection counter={homeContent.counter} logos={homeContent.logos} services={homeContent.services} />
             }
             {
                 homeContent.solutions.length !== 0

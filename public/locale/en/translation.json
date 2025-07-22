@@ -83,7 +83,7 @@
 
   "ServicesSubTitle": "We Offer the Best Solutions",
 
-  "why are we special": "What Sets Us Apart",
+  "why are we special": "What distinguishes us the most",
 
   "faq": "FAQs",
   "faqPage": {
@@ -109,6 +109,7 @@
   "success": {
     "Success": "Success",
     "message sent successfully": "Message Sent Successfully",
+    "successfully subscription": "You have successfully subscribed with us",
     "OK": "OK"
   },
   "errors": {
