@@ -14,7 +14,7 @@
   "mobile_support": "support",
   "mobile_main": "main",
   "Language_nav": "ع",
-  
+
   "read more": "read more",
   "No data founded": "we couldn't find any data here",
 
@@ -50,14 +50,21 @@
     "Some of our customer testimonials": "Some of our customer testimonials"
   },
 
-  "serviceDetails": "service details",
+  "articlePage": {
+    "heading": "Discover Insights. Stay Ahead.",
+    "subheading": "Sharing knowledge and insights to keep you ahead",
+    "Top Articles": "Top Articles",
+    "article details": "Article Details"
+  },
 
-  "Top Articles": "Top Articles",
-
-  "talk with us": "Talk to Us",
-  "contact with us": "Contact Us",
-  "how can we help": "How Can We Help You?",
-  "send": "Send",
+  "supportPage": {
+    "heading": "Always Here—Because Your Success Matters",
+    "subheading": "We're here to help you every step of the way, with fast and reliable support 24/7",
+    "talk with us": "Talk to Us",
+    "contact with us": "Contact Us",
+    "how can we help": "How Can We Help You?",
+    "send": "Send"
+  },
 
   "about tamuizz": "About Tamuizz Company",
   "we present our services in the best way": "We are committed to providing our services at the highest quality standards",
@@ -83,12 +90,18 @@
   },
 
   "solutionPage": {
-    "solution_title": "We Offer the Best Solutions"
+    "heading": "We Create Solutions That Drive Excellence",
+    "subheading": "Smart, forward-thinking solutions to drive your business toward excellence",
+    "solution_title": "We Offer the Best Solutions",
+    "solution details": "Solution details"
   },
 
-  "solution details": "Solution details",
-
-  "ServicesSubTitle": "We Offer the Best Solutions",
+  "servicesPage": {
+    "heading": "Services That Match Your Ambition and Make an Impact",
+    "subheading": "A full range of services tailored precisely to meet your needs.",
+    "ServicesSubTitle": "We Offer the Best Solutions",
+    "serviceDetails": "service details"
+  },
 
   "why are we special": "What distinguishes us the most",
 

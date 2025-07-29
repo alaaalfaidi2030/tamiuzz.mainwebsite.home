@@ -85,7 +85,7 @@ export default function WhatWeAreDoing({ solutions }) {
                 </div>
 
                 <motion.div
-                    className={"row g-4 " + style.info}
+                    className={"row g-4 g-lg-0 " + style.info}
                     variants={fadeInUp}
                     initial="hidden"
                     whileInView="visible"
@@ -96,14 +96,11 @@ export default function WhatWeAreDoing({ solutions }) {
                     </div>
                     {
                         phoneAndEmail.map((item, idx) =>
-                            <div key={idx} className="col-lg-3  col-6 border-end border-3 border-white d-flex  align-items-center gap-3">
-                                <div className="icon text-primary bg-white d-flex justify-content-center align-items-center rounded-circle fs-4" style={{
-                                    width: "40px",
-                                    height: "40px"
-                                }}>
+                            <div key={idx} className="col-lg-3  col-6 border-end border-3 border-white d-flex  align-items-center">
+                                <div className={"icon text-primary bg-white d-flex justify-content-center align-items-center rounded-circle fs-4 mx-2 " + style.iconWrapper} >
                                     <i className={item.icon}></i>
                                 </div>
-                                <div className="text d-flex flex-column">
+                                <div className="text d-flex flex-wrap ">
                                     <h5>{t(item.title)}</h5>
                                     <span>{item.text}</span>
                                 </div>
@@ -163,13 +160,13 @@ function SolutionSlider({ solutions }) {
                             >
                                 <div className={style.imageWrapper}>
                                     <img src={solution.imageUrl} alt={solution.title} className={style.image} />
+                                </div>
+                                <div className={style.content + " mt-3"}>
                                     {solution.iconUrl && (
                                         <div className={style.iconBadge}>
                                             <img src={solution.iconUrl} alt="icon" width={24} height={24} />
                                         </div>
                                     )}
-                                </div>
-                                <div className={style.content + " mt-3"}>
                                     <h3>{solution.title}</h3>
                                     <p className={style.description}>{solution.shortDescription}</p>
                                 </div>

@@ -53,9 +53,9 @@ export default function ServiceDetails() {
 
     return (
         <section>
-            <Heading pageName={t("serviceDetails")} />
+            <Heading heading={t("servicesPage.heading")} subHeading={t("servicesPage.subheading")} pageName={t("servicesPage.serviceDetails")} />
             <div className="py-5"></div>
-            <H2 text={t("serviceDetails")} />
+            <H2 text={t("servicesPage.serviceDetails")} />
             {
                 (!loading) ? <div className="container ">
                     {

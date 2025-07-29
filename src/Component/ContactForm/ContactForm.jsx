@@ -101,7 +101,7 @@ export default function ContactForm({ colorHeading = "var(--primary-color)" }) {
                 style={{
                     color: colorHeading
                 }}
-                className={styles.formTitle}>{t('how can we help')}</motion.h2>
+                className={styles.formTitle}>{t('supportPage.how can we help')}</motion.h2>
             <TextInput
 
                 error={formik.errors["name"]}
@@ -170,7 +170,7 @@ export default function ContactForm({ colorHeading = "var(--primary-color)" }) {
                 {
                     responseFlag ?
                         <i className='fa-solid fa-spinner fa-spin'></i>
-                        : t('send')
+                        : t('supportPage.send')
 
                 }
             </button>

@@ -12,9 +12,9 @@ export default function Support() {
 
     return (
         <section className={styles.supportSection} id="support">
-            <Heading pageName={'support'} />
+            <Heading heading={t("supportPage.heading")} subHeading={t("supportPage.subheading")} pageName={'support'} />
 
-            <H2 text={t('talk with us')} />
+            <H2 text={t('supportPage.talk with us')} />
             <div className="container">
                 <div className="row">
                     <div className="col-md-6">
@@ -31,7 +31,7 @@ export default function Support() {
                                     opacity: 1
                                 }} transition={{ duration: 0.3, delay: 0.3 }}
 
-                                className={styles.titleHeading}>{t('contact with us')}</motion.h2>
+                                className={styles.titleHeading}>{t('supportPage.contact with us')}</motion.h2>
 
                             {
                                 phoneAndEmail.map((item, idx) => (

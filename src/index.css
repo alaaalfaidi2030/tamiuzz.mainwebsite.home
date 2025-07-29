@@ -19,9 +19,8 @@ html {
 
 .dark {
   /* Global Coloring */
+  --primary-color: #1444d4;
   --bg-color: #1d242e;
-  /* 252629
-  151618 */
   --Text-color: #20a4fc;
   --desc-text-color: #e2e2e2;
 

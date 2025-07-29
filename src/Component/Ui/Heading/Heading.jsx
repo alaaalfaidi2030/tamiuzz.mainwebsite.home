@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { motion } from 'framer-motion';
 
-export default function Heading({ pageName }) {
+export default function Heading({ heading, subHeading, pageName }) {
     const { t } = useTranslation();
     const location = useLocation();
 
@@ -54,10 +54,10 @@ export default function Heading({ pageName }) {
             animate="visible"
         >
             <motion.h2 variants={itemVariants}>
-                {t("about tamuizz")}
+                {heading || t("about tamuizz")}
             </motion.h2>
-            <motion.p variants={itemVariants}>{
-                t("we present our services in the best way")}
+            <motion.p variants={itemVariants}>
+                {subHeading || t("we present our services in the best way")}
             </motion.p>
             <div className="links ">
                 <motion.div variants={linkVariants} initial="hidden" animate="visible">

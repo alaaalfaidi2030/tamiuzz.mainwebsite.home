@@ -122,11 +122,12 @@ const Hero = () => {
                                         {t("homePage.request-quote-button")}
                                     </Link>
 
-                                    <button
+                                    <Link
+                                    to={"/services"}
                                         className={style.secondaryButton + " btn-web"}
                                     >
                                         {t("homePage.discover our services")}
-                                    </button>
+                                    </Link>
                                 </motion.div>
 
                             </motion.div>

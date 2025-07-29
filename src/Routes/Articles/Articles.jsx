@@ -142,10 +142,10 @@ function Articles() {
     }, [])
     return (
         <>
-            <Heading pageName={"articles"} />
+            <Heading heading={t("articlePage.heading")} subHeading={t("articlePage.subheading")} pageName={"articles"} />
 
             {(!loading) ? <>
-                <H2 text={t("Top Articles")}> </H2>
+                <H2 text={t("articlePage.Top Articles")}> </H2>
 
                 {
                     errorFlag ?

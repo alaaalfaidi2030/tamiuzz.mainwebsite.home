@@ -46,9 +46,9 @@ export default function Services() {
 
     return (
         <section id='services'>
-            <Heading pageName={t("services")} />
+            <Heading heading={t("servicesPage.heading")} subHeading={t("servicesPage.subheading")} pageName={t("services")} />
             {(!loading) ?
-                <div className="container my-5">
+                <div className="container my-5 pb-5">
                     <div className=" row mb-5">
                         <H2 text={t("services")} />
                     </div>
@@ -60,7 +60,7 @@ export default function Services() {
                                 :
                                 <>
                                     <div className="row mt-5">
-                                        <H3 text={t("ServicesSubTitle")} />
+                                        <H3 text={t("servicesPage.ServicesSubTitle")} />
 
                                     </div>
                                     <div className="row justify-content-center my-5">

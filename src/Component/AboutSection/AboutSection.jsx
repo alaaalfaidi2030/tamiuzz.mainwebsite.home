@@ -5,7 +5,8 @@ import AboutImage from '../../assets/Images/Home/about-img.png';
 import style from './AboutSection.module.css';
 import { motion } from 'framer-motion'; // Assuming you might add animations later
 import { Link } from 'react-router-dom';
-
+import ourCLients from "../../assets/Images/Home/ourClients.svg"
+import projects from "../../assets/Images/Home/projects.svg"
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 
@@ -115,7 +116,7 @@ export default function AboutSection({ counter, logos, services }) {
                     <div className={style.statistics}>
                         <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
                             <div className="col-4 d-flex align-items-center justify-content-center">
-                                <i className="fa-solid fa-diagram-project "></i>
+                                <img src={ourCLients} alt="icon image for clients" />
                             </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
                                 <h4>{counter.projects}</h4>
@@ -124,21 +125,22 @@ export default function AboutSection({ counter, logos, services }) {
                         </motion.div>
                         <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
                             <div className="col-4 d-flex align-items-center justify-content-center">
-                                <i className="fa-solid fa-users"></i>
+                                {/* <i className="fa-solid fa-users"></i> */}
+                                <img src={projects} alt="icon image for project" />
                             </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
                                 <h4>{counter.clients}</h4>
                                 <p>{t("homePage.clientsLabel")}</p>
                             </div>
                         </motion.div>
-                        <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
+                        {/* <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
                             <div className="col-4 d-flex align-items-center justify-content-center">
                                 <i className="fa-solid fa-chalkboard-user"></i>                            </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
                                 <h4>{counter.clients}</h4>
                                 <p>{t("homePage.expertsLabel")}</p>
                             </div>
-                        </motion.div>
+                        </motion.div> */}
                     </div>
                 </motion.div>
                 <motion.div className={style.imageWrapper} variants={imageVariants}>
@@ -159,16 +161,18 @@ export default function AboutSection({ counter, logos, services }) {
                             disableOnInteraction: false,
                         }}
                         breakpoints={{
-                            320: { slidesPerView: 3 },
-                            768: { slidesPerView: 5 },
-                            1024: { slidesPerView: 8 },
+                            320: { slidesPerView: 2 },
+                            768: { slidesPerView: 3 },
+                            1024: { slidesPerView: 6 },
                         }}
                         modules={[Autoplay]}
                     >
                         {logos.map((logo, idx) => (
                             <SwiperSlide key={idx} >
                                 <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle  " + style.logoPartner}>
-                                    <img src={logo.imageUrl} alt={logo.name} className={"w-100"} />
+                                    <div className={style["logoContainer"]}>
+                                        <img src={logo.imageUrl} alt={logo.name} />
+                                    </div>
                                 </div>
                             </SwiperSlide>
                         ))}

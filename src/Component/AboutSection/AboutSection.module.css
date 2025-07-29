@@ -60,7 +60,7 @@
   font-size: 1rem;
   margin-bottom: 0.5rem;
   color: var(--desc-text-color);
-  }
+}
 
 .features i {
   margin-left: 0.5rem;
@@ -105,16 +105,31 @@
 }
 
 .logoPartner {
-  width: 100px;
-  height: 100px;
+  width: 180px;
+  height: 180px;
   border: 2px solid var(--primary-color);
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
   color: var(--desc-text-color);
+  background-color: #eff3ff;
 }
 
 .logoPartner:hover {
   transform: scale(0.9);
+}
+
+.logoContainer {
+  width: 90%;
+  height: 90%;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed var(--primary-color);
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
 }
 
 /* ---------------- Responsive Enhancements ---------------- */

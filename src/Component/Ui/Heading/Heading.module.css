@@ -3,7 +3,7 @@
   background-position: center;
   height: 40vh;
   min-height: 300px;
-  font-size: 48px;
+  font-size: 42px;
   font-weight: bold;
   width: 90%;
   margin: 15px auto;
@@ -43,7 +43,7 @@
 @media (max-width: 991px) {
   .heading {
     width: 100%;
-    font-size: 28px;
+    font-size: 22px;
     padding: 1.5rem 1rem;
   }
 

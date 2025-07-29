@@ -104,7 +104,7 @@ export default function SolutionDetails() {
 
     return (
         <>
-            <Heading pageName={t("solution details")} />
+            <Heading heading={t("solutionPage.heading")} subHeading={t("solutionPage.subheading")} pageName={t("solutionPage.solution details")} />
             <div className="py-3"></div>
             {(!loading) ?
                 noDataFounded ?

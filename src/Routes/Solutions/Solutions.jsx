@@ -77,9 +77,9 @@ export default function Solutions() {
 
     return (
         <section id='solutions'>
-            <Heading pageName={t("solutions")} />
+            <Heading heading={t("solutionPage.heading")} subHeading={t("solutionPage.subheading")} pageName={t("solutions")} />
             {(!loading) ?
-                <div className="container my-5">
+                <div className="container my-5 pb-4">
                     {/* 
                  {
             "path": "web-development",

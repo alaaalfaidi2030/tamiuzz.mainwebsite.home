@@ -51,7 +51,7 @@ export default function ArticleDetails() {
 
     return (<>
 
-        <Heading pageName={t("article details")} />
+        <Heading heading={t("articlePage.heading")} subHeading={t("articlePage.subheading")} pageName={t("articlePage.article details")} />
 
         <div className={"container " + style.content}>
             {(!loading) ?
