@@ -6,6 +6,7 @@ import H2 from '../../Component/Ui/H2/H2';
 import style from "./AboutUs.module.css";
 import aboutImg from "../../assets/Images/about-img.png";
 import { motion } from 'framer-motion'; // Import motion
+import { Link } from 'react-router-dom';
 
 export default function AboutUs() {
     // We'll use the 'about' namespace for translations here
@@ -81,10 +82,10 @@ export default function AboutUs() {
                     transition={{ delay: 0.2 }} // Added a slight delay
                 >
                     <div className={style.info}>
-                        <p>{t("aboutSection.about-us-intro-paragraph")}</p>
-                        <button className="btn-web btn-web-secondary my-3">
+                        <p className='mb-5'>{t("aboutSection.about-us-intro-paragraph")}</p>
+                        <Link to="/support" className="btn-web btn-web-secondary">
                             {t("aboutSection.request-quote-button")}
-                        </button>
+                        </Link>
                     </div>
                 </motion.div>
 

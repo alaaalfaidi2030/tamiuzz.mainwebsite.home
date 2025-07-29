@@ -83,11 +83,9 @@ function App() {
     if (i18nextLng === "ar") {
       document.body.dir = "rtl";
       document.documentElement.lang = "ar";
-      // document.title = "منصة حصون التعليمية";
     } else {
       document.body.dir = "ltr";
       document.documentElement.lang = "en";
-      // document.title = "Hoson Platform";
     }
   }, []);
   return (

@@ -1,7 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@100;200;300;400;500;600;700&display=swap");
+
 html {
   scroll-behavior: smooth;
 }
+
 :root {
   /* Global coloring  */
   --primary-color: #2644a2;
@@ -10,15 +12,19 @@ html {
   --bg-color: #fff;
   --lite: #e0f2fe;
   --Text-color: #082f49;
-
-  /* navbar */
-  --nav-bg-color: var(--bg-color);
+  --desc-text-color:  #333333;;
 
   /* Footer */
 }
+
 .dark {
   /* Global Coloring */
   --bg-color: #121212;
+  --Text-color: #20a4fc;
+  --desc-text-color:  #e2e2e2;;
+
+
+
 }
 
 body {
@@ -31,6 +37,7 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
+
 a {
   text-decoration: none;
   color: inherit;
@@ -41,6 +48,7 @@ button {
   transition-duration: 0.3s;
   transition-timing-function: ease-in-out;
 }
+
 button:active {
   scale: 0.9;
 }
@@ -50,10 +58,12 @@ button:disabled {
   background-color: gray;
   color: white;
 }
+
 button:disabled:hover {
   background-color: gray !important;
   color: white !important;
 }
+
 .btn-web {
   padding: 10px 20px;
   border-radius: 5px;
@@ -63,14 +73,17 @@ button:disabled:hover {
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
 }
+
 .btn-web:active {
   scale: 0.9;
 }
+
 .btn-web-secondary {
   background-color: var(--secondary-color);
   color: #fff;
   border: 1px solid var(--secondary-color);
 }
+
 .btn-web-secondary:hover {
   background-color: transparent;
   color: var(--secondary-color);
@@ -89,6 +102,7 @@ button:disabled:hover {
   background-color: transparent;
   color: var(--secondary-color);
 }
+
 /* 
 //////////selection///////////
 */
@@ -96,6 +110,7 @@ button:disabled:hover {
   background-color: var(--primary-color);
   color: #fff;
 }
+
 /* 
 //////////scrollbar///////////
 */
@@ -108,6 +123,7 @@ button:disabled:hover {
   z-index: 10000;
   /* height: 100vh; */
 }
+
 ::-webkit-scrollbar-thumb {
   background-color: var(--primary-color);
   border-radius: 10px;
@@ -121,9 +137,11 @@ button:disabled:hover {
   -ms-transition: all 0.5s ease-in-out;
   -o-transition: all 0.5s ease-in-out;
 }
+
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--primary-color-hover);
 }
+
 ::-webkit-scrollbar-thumb:active {
   background-color: var(--primary-color-hover);
 }

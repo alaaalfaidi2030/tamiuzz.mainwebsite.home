@@ -9,6 +9,7 @@ import React, {
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link, useLocation } from "react-router-dom";
 import logo from "/logo.svg";
+import whiteLogo from "/whiteLogo.png";
 import { useTranslation } from "react-i18next";
 import style from "./Navbar.module.css";
 import i18n from "../../i18n";
@@ -102,7 +103,7 @@ const Navbar = () => {
     return () => {
       observer.disconnect();
     };
-  }, [location.pathname, links,navBarRef?.current?.clientHeight]);
+  }, [location.pathname, links, navBarRef?.current?.clientHeight]);
 
   return (
     <nav
@@ -120,7 +121,7 @@ const Navbar = () => {
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            src={logo}
+            src={isDarkMode ? whiteLogo : logo}
             style={{ width: "110px" }}
             alt="website logo"
           />

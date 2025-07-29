@@ -6,7 +6,8 @@ import ScrollToTop from "../Ui/ScrollToTop/ScrollToTop.jsx"
 
 import Navbar from '../Navbar/Navbar'
 import Footer from "../Footer/Footer.jsx";
-import TextInput from "../Ui/TextInput/TextInput.jsx";
+import MobileNav from "../MobileNav/MobileNav.jsx"
+import DarkModeToggle from "../Ui/DarkModeToggle/DarkModeToggle.jsx"
 
 export default function RoutLayout() {
     const { isMobile } = useContext(IsMobileContext);
@@ -17,8 +18,10 @@ export default function RoutLayout() {
         <>
             <ScrollToTop />
 
-            <Navbar />
+            {!isMobile && <Navbar />}
+            <DarkModeToggle isDarkMode={isDarkMode} setIsDarkMode={setIsDarkMode} />
             <Outlet />
+            {isMobile && <MobileNav />}
             <Footer />
 
         </>
