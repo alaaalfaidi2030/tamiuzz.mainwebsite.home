@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import Heading from '../../Component/Ui/Heading/Heading'
 import H2 from '../../Component/Ui/H2/H2'
 import { useTranslation } from 'react-i18next';
-import { baseURL } from '../../Utilies/data';
+import { baseURL, getHeaders } from '../../Utilies/data';
 import { useParams } from 'react-router-dom';
 import style from "./ServiceDetails.module.css"
 import H3 from '../../Component/Ui/H3/H3';
@@ -27,7 +27,9 @@ export default function ServiceDetails() {
             setLoading(true)
             setErrorFlag(false)
             setServices([]);
-            const { data } = await axios.get(baseURL + "/services");
+            const { data } = await axios.get(baseURL + "/services", {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 if (services[id]) {
                     setDisplayServicesIndex(id)

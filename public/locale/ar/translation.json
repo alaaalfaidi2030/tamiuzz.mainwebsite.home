@@ -13,46 +13,46 @@
   "mobile_services": "الخدمات",
   "mobile_support": "الدعم",
   "mobile_main": "الرئيسية",
-  "Language_nav":" E",
+  "Language_nav": " E",
 
-  "read more": "أطلع على المزيد",
+  "read more": "اطلع على المزيد",
   "No data founded": "لم نستطيع العثور على اى بيانات ",
 
   "homePage": {
     "hero_title": "حلول برمجية متكاملة",
-    "hero_subtitle": "لنجاح أعمالك",
+    "hero_subtitle": "لنجاح اعمالك",
     "hero_desc_part1": "نقدم حلولاً مبتكرة تساعد الشركات على النمو والتطور في العصر الرقمي",
-    "hero_desc_part2": "مع أحدث التقنيات وأفضل الممارسات في التطوير",
-    "request-quote-button": "أطلب عرض سعر",
+    "hero_desc_part2": "مع احدث التقنيات وافضل الممارسات في التطوير",
+    "request-quote-button": "اطلب عرض سعر",
     "discover our services": "استكشف خدماتنا",
-    "aboutHomeHeading": "أكثر ما يميزنا",
+    "aboutHomeHeading": "اكثر ما يميزنا",
     "aboutSectionTitle": "يمكننا تقديم خدمات مميزة للعملاء",
-    "aboutSectionDescription": "شركة تميز هي شركة تقنية رائدة في المملكة العربية السعودية والشرق الأوسط، تهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد.",
+    "aboutSectionDescription": "شركة تميز هي شركة تقنية رائدة في المملكة العربية السعودية والشرق الاوسط، تهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد.",
     "itConsulting": "استشارات تكنولوجيا المعلومات",
     "appDevelopment": "تطوير التطبيقات",
-    "cyberSecurity": "الأمن السيبراني",
+    "cyberSecurity": "الامن السيبراني",
     "itManagement": "إدارة تكنولوجيا المعلومات",
     "uiUxDesign": "تصميم واجهة وتجربة المستخدم",
     "dataAnalysis": "تحليل البيانات",
-    "databaseSecurity": "أمن قاعدة البيانات",
+    "databaseSecurity": "امن قاعدة البيانات",
     "digitalMarketing": "التسوق الرقمي",
     "servicesDetailsButton": "تفاصيل خدماتنا",
     "projectsLabel": "مشروع",
     "clientsLabel": "عملاء راضون",
     "expertsLabel": "خبراء",
     "aboutImageAlt": "عن شركة تميز",
-    "MoreThanOneHundredBrands": "أكثر من 100 علامه تجاريه تثق بنا",
+    "MoreThanOneHundredBrands": "اكثر من 100 علامه تجاريه تثق بنا",
     "what are we doing?": "ما نقوم به؟",
-    "what are we doing?_desc": "توفير حلول وتطوير أداء خدمة العملاء بأنشاء مراكز اتصال مزودة بالتقنيات العالمية والخدمات السحابية المتطورة للمؤسسات والشركات ونظام الاتصال السحابي",
-    "follow our newest articles": "تابع أحدث مقالاتنا",
-    "keep in touch with us": "أبق على تواصل معنا",
+    "what are we doing?_desc": "توفير حلول وتطوير اداء خدمة العملاء بانشاء مراكز اتصال مزودة بالتقنيات العالمية والخدمات السحابية المتطورة للمؤسسات والشركات ونظام الاتصال السحابي",
+    "follow our newest articles": "تابع احدث مقالاتنا",
+    "keep in touch with us": "ابق على تواصل معنا",
     "Testimonials": "التقييمات",
     "Some of our customer testimonials": "بعض تقييمات عملائنا"
   },
 
   "serviceDetails": "تفاصيل الخدمة",
 
-  "Top Articles": "أهم المقالات",
+  "Top Articles": "اهم المقالات",
 
   "article details": "تفاصيل المقال",
 
@@ -62,18 +62,18 @@
   "send": "إرسال",
 
   "about tamuizz": "عن شركة تميز",
-  "we present our services in the best way": "نلتزم بتقديم خدماتنا بأعلى معايير الجوده",
+  "we present our services in the best way": "نلتزم بتقديم خدماتنا باعلى معايير الجوده",
 
   "aboutSection": {
     "about-us-page-name": "من نحن",
     "why-are-we-special": "لماذا نحن مميزون؟",
     "about-us-intro-paragraph": "نحن شركة سعودية متخصصة في مجال البرمجيات وتقديم الحلول الرقمية المبتكرة. فريقنا يضم نخبة من المصممين والمطورين المتخصصين في بناء تطبيقات ومواقع عالية الجودة تخدم مختلف القطاعات.",
-    "request-quote-button": "أطلب عرض سعر",
-    "tech-enhancement-heading": "نحن نعزز نجاح أعمالنا باستخدام التكنولوجيا",
-    "our-goals-heading": "أهدافنا",
-    "our-goals-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد",
+    "request-quote-button": "اطلب عرض سعر",
+    "tech-enhancement-heading": "نحن نعزز نجاح اعمالنا باستخدام التكنولوجيا",
+    "our-goals-heading": "اهدافنا",
+    "our-goals-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد",
     "our-vision-heading": "رؤيتنا",
-    "our-vision-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والأفراد",
+    "our-vision-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد",
     "about-us-image-alt": "فريقنا",
     "our-branches-heading": "فروعنا",
     "riyadh": "الرياض",
@@ -85,31 +85,31 @@
   },
 
   "solutionPage": {
-    "solution_title": "نحن نقدم أفضل الحلول"
+    "solution_title": "نحن نقدم افضل الحلول"
   },
 
   "solution details": "تفاصيل الحلول",
 
-  "why are we special": "أكثر ما يميزنا",
+  "why are we special": "اكثر ما يميزنا",
 
-  "ServicesSubTitle": "نحن نقدم أفضل جوده",
+  "ServicesSubTitle": "نحن نقدم افضل جوده",
 
-  "faq": "الأسئلة الشائعة",
+  "faq": "الاسئلة الشائعة",
   "faqPage": {
-    "headline1": "حافظ على أمان عملك",
-    "headline2": "وتأكد من توافره بدرجة عالية"
+    "headline1": "حافظ على امان عملك",
+    "headline2": "وتاكد من توافره بدرجة عالية"
   },
 
   "contact_us": "تواصل معنا",
   "email_placeholder": "البريد الإلكتروني",
-  "email_description": "يرجى إدخال عنوان بريدك الإلكتروني لتلقي آخر الأخبار والتحديثات.",
+  "email_description": "يرجى إدخال عنوان بريدك الإلكتروني لتلقي آخر الاخبار والتحديثات.",
   "quick_links": "روابط هامة",
-  "company_description": "شركة تميــّز هــي شركه تقنيــة رائــدة في الملكــة العربيــة الســعودية والــشرق الاوســط، تهـدف إلى تقديـم حلـول تقنيـة ذكيـة تلـبي احتياجـات الـشركات والمؤسسـات والأفـراد",
+  "company_description": "شركة تميــّز هــي شركه تقنيــة رائــدة في الملكــة العربيــة الســعودية والــشرق الاوســط، تهـدف إلى تقديـم حلـول تقنيـة ذكيـة تلـبي احتياجـات الـشركات والمؤسسـات والافـراد",
   "copyright": "All Copyright 2024 by",
   "terms_condition": "الشروط والاحكام",
   "privacy_policy": "سياسة الخصوصية",
   "form": {
-    "name": "الأسم",
+    "name": "الاسم",
     "phone": "رقم الهاتف",
     "email": "البريد الالكترونى",
     "message": "الرسالة",
@@ -122,11 +122,11 @@
     "OK": "تمام"
   },
   "errors": {
-    "Error": "حدث خطأ",
-    "Must be 3 characters or more": "يجب أن تكون 3 أحرف أو أكثر",
+    "Error": "حدث خطا",
+    "Must be 3 characters or more": "يجب ان تكون 3 احرف او اكثر",
     "Required": "مطلوب",
     "Invalid email address": "هذا البريد الإلكتروني غير صالح",
-    "Must be 10 characters or more": "يجب أن تكون 10 أحرف أو أكثر",
-    "Something went wrong, please try again later": "حدث خطأ ما، يرجى المحاولة مرة أخرى في وقت لاحق"
+    "Must be 10 characters or more": "يجب ان تكون 10 احرف او اكثر",
+    "Something went wrong, please try again later": "حدث خطا ما، يرجى المحاولة مرة اخرى في وقت لاحق"
   }
 }

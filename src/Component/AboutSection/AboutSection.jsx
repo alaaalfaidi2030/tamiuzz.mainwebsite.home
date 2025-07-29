@@ -133,7 +133,7 @@ export default function AboutSection({ counter, logos, services }) {
                         </motion.div>
                         <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
                             <div className="col-4 d-flex align-items-center justify-content-center">
-                                <i class="fa-solid fa-chalkboard-user"></i>                            </div>
+                                <i className="fa-solid fa-chalkboard-user"></i>                            </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
                                 <h4>{counter.clients}</h4>
                                 <p>{t("homePage.expertsLabel")}</p>

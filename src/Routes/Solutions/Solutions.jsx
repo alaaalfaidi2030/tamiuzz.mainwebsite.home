@@ -9,7 +9,7 @@ import Spinner from '../../Component/Ui/Spinner/Spinner'
 import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp'
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded'
 import axios from 'axios'
-import { baseURL } from '../../Utilies/data'
+import { baseURL, getHeaders } from '../../Utilies/data'
 
 export default function Solutions() {
     const { t } = useTranslation()
@@ -54,7 +54,9 @@ export default function Solutions() {
             setLoading(true)
             setErrorFlag(false)
             setSolutions([]);
-            const { data } = await axios.get(baseURL + "/solutions");
+            const { data } = await axios.get(baseURL + "/solutions", {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 setSolutions(data.data);
                 setLoading(false)

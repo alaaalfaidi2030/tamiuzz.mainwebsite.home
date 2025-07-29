@@ -117,6 +117,7 @@ const Hero = () => {
                                     variants={itemVariants}
                                 >
                                     <Link
+                                        to="/support"
                                         className={style.ctaButton + " btn-web btn-web-secondary  "}>
                                         {t("homePage.request-quote-button")}
                                     </Link>
@@ -134,7 +135,7 @@ const Hero = () => {
                 </div>
             </div>
             <div className="position-absolute bottom-0 start-0 end-0" style={{ zIndex: "1" }}>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#fff" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,149.3C480,128,600,128,720,154.7C840,181,960,235,1080,234.7C1200,235,1320,181,1380,154.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>            </div>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="var(--bg-color)" fill-opacity="1" d="M0,256L60,234.7C120,213,240,171,360,149.3C480,128,600,128,720,154.7C840,181,960,235,1080,234.7C1200,235,1320,181,1380,154.7L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path></svg>            </div>
         </div>
     );
 };

@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
 import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
-import { baseURL } from '../../Utilies/data';
+import { baseURL, getHeaders } from '../../Utilies/data';
 
 function Articles() {
     const { t } = useTranslation()
@@ -121,7 +121,9 @@ function Articles() {
             setLoading(true)
             setErrorFlag(false)
             setArticles([]);
-            const { data } = await axios.get(baseURL + "/blogs");
+            const { data } = await axios.get(baseURL + "/blogs", {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 setArticles(data.data);
                 setLoading(false)

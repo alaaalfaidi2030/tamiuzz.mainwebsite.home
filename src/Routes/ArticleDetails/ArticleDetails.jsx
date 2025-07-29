@@ -6,7 +6,7 @@ import H3 from '../../Component/Ui/H3/H3';
 import style from "./ArticleDetails.module.css"
 import axios from 'axios';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
-import { baseURL } from '../../Utilies/data';
+import { baseURL, getHeaders } from '../../Utilies/data';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
 
 export default function ArticleDetails() {
@@ -23,7 +23,9 @@ export default function ArticleDetails() {
             setLoading(true)
             setNoDataFounded(false)
             setArticleDetails(null);
-            const { data } = await axios.get(baseURL + "/blog/" + id);
+            const { data } = await axios.get(baseURL + "/blog/" + id, {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 setArticleDetails(data.data);
                 setLoading(false)

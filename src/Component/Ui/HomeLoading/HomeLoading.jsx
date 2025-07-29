@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import img from "/logo.svg";
+import whiteLogo from "/whiteLogo.png";
+
+import { isThemeModeContext } from "../../../Context/isThemeModeContext";
 export default function HomeLoading() {
+  const { isDarkMode } = useContext(isThemeModeContext);
+
   return (
     <div
       className="position-fixed top-0 start-0 bottom-0 end-0 w-100 d-flex justify-content-center align-items-center "
@@ -10,7 +15,7 @@ export default function HomeLoading() {
       }}
     >
       <img
-        src={img}
+        src={isDarkMode ? whiteLogo : img}
         alt="logo "
         className="fa-beat-fade"
         style={{

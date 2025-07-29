@@ -57,6 +57,7 @@ export default function NavbarTop() {
                             <motion.a
                                 key={idx}
                                 href={item.link}
+                                dir='ltr'
                                 initial={{ opacity: 0, y: -100 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.5, delay: idx * 0.1 }}

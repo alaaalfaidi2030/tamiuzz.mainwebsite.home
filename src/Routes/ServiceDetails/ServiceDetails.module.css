@@ -100,7 +100,7 @@
   font-weight: 400;
   font-size: 28px;
   line-height: 48px;
-  color: var(--text);
+  color: var(--desc-text-color);
 }
 
 @media screen and (max-width: 991px) {

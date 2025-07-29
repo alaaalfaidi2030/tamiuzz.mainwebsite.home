@@ -6,7 +6,7 @@ import H2 from '../../Component/Ui/H2/H2';
 import Heading from '../../Component/Ui/Heading/Heading';
 import { motion } from 'framer-motion';
 import axios from 'axios';
-import { baseURL } from '../../Utilies/data';
+import { baseURL, getHeaders } from '../../Utilies/data';
 import { useEffect } from 'react';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
@@ -25,7 +25,9 @@ function FAQ() {
             setLoading(true)
             setErrorFlag(false)
             setFaq([]);
-            const { data } = await axios.get(baseURL + "/faqs");
+            const { data } = await axios.get(baseURL + "/faqs", {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 setFaq(data.data);
                 setLoading(false)
@@ -75,7 +77,7 @@ function FAQ() {
                         viewport={{ once: true, amount: 0.25 }}
                     >{
                             errorFlag ?
-                            <ErrorComp/>
+                                <ErrorComp />
 
                                 :
                                 <div className="container">

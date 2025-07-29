@@ -9,7 +9,7 @@ import axios from 'axios'
 import Spinner from '../../Component/Ui/Spinner/Spinner'
 import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp'
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded'
-import { baseURL } from '../../Utilies/data'
+import { baseURL, getHeaders } from '../../Utilies/data'
 // import { services } from '../../Utilies/data'
 
 export default function Services() {
@@ -24,7 +24,9 @@ export default function Services() {
             setLoading(true)
             setErrorFlag(false)
             setServices([]);
-            const { data } = await axios.get(baseURL + "/services");
+            const { data } = await axios.get(baseURL + "/services", {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 setServices(data.data);
                 setLoading(false)

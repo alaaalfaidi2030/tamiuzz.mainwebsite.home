@@ -37,7 +37,7 @@
 }
 
 .description {
-  color: var(--Text);
+  color: var(--desc-text-color);
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.6;
@@ -59,8 +59,8 @@
 .features li {
   font-size: 1rem;
   margin-bottom: 0.5rem;
-  color: var(--Text);
-}
+  color: var(--desc-text-color);
+  }
 
 .features i {
   margin-left: 0.5rem;
@@ -110,6 +110,7 @@
   border: 2px solid var(--primary-color);
   overflow: hidden;
   transition: transform 0.3s ease-in-out;
+  color: var(--desc-text-color);
 }
 
 .logoPartner:hover {

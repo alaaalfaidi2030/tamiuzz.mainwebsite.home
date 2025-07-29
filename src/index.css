@@ -12,16 +12,19 @@ html {
   --bg-color: #fff;
   --lite: #e0f2fe;
   --Text-color: #082f49;
-  --desc-text-color:  #333333;;
+  --desc-text-color: #333333;
 
   /* Footer */
 }
 
 .dark {
   /* Global Coloring */
-  --bg-color: #121212;
+  --bg-color: #1d242e;
+  /* 252629
+  151618 */
   --Text-color: #20a4fc;
-  --desc-text-color:  #e2e2e2;;
+  --desc-text-color: #e2e2e2;
+
 
 
 

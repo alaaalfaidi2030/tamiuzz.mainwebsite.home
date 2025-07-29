@@ -5,7 +5,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import H2 from '../../Component/Ui/H2/H2';
 import style from "./SolutionDetails.module.css";
 import { motion } from 'framer-motion';
-import { baseURL } from '../../Utilies/data';
+import { baseURL, getHeaders } from '../../Utilies/data';
 import axios from 'axios';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
@@ -52,7 +52,9 @@ export default function SolutionDetails() {
             setLoading(true)
             setNoDataFounded(false)
             setSolutionDetails(null);
-            const { data } = await axios.get(baseURL + "/solutions/" + id);
+            const { data } = await axios.get(baseURL + "/solutions/" + id, {
+                headers: getHeaders(),
+            });
             if (data.success && data.data && data.data.length !== 0) {
                 setSolutionDetails(data.data);
                 setLoading(false)
