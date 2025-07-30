@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import i18n from "../../i18n";
 import NavbarTop from "../Ui/NavbarTop/NavbarTop";
- import whiteLogo from "/whiteLogo.png";
+ import whiteLogo from "/logo-white.svg";
 import { isThemeModeContext } from "../../Context/isThemeModeContext";
 
 // import SubMenuNavbar from "../Ui/SubMenuNavbar/SubMenuNavbar";
@@ -108,7 +108,7 @@ const MobileNav = () => {
       ><div className={style.navigation}>
           <ul>
             <li
-              className={`${style.list} ${["articles", "about-us"].includes(activeItem) ? style.active : ""}`}
+              className={`${style.list} ${["settings","articles", "about-us"].includes(activeItem) ? style.active : ""}`}
               onClick={() => {
                 handleClick("settings");
                 setToggleMenu(!toggleMenu);

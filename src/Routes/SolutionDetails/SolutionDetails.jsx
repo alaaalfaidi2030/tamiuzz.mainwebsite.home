@@ -146,7 +146,7 @@ export default function SolutionDetails() {
                                 </motion.div>
                                 <div className={"col-md-6 " + style.info}>
                                     <h3>{t(section.title)}</h3>
-                                    <p>{t(section.descriptionKey)}</p>
+                                    <p>{t(section.description)}</p>
                                 </div>
 
 

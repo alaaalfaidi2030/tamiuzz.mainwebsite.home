@@ -70,3 +70,15 @@ body[dir="ltr"] .cardContainer:nth-child(odd) {
   -ms-transition: all ease-in-out 0.3s;
   -o-transition: all ease-in-out 0.3s;
 }
+
+@media (max-width: 768px) {
+  .cardContainer {
+    background: linear-gradient(90deg, var(--lite) 100%, transparent 30%) !important;
+  }
+
+  .cardContainer h3 {
+    margin: 30px 0 10px !important;
+
+  }
+
+}

@@ -2,16 +2,58 @@
   order: 1;
 }
 
+/* Responsive typography and spacing */
 .info h3 {
   color: var(--primary-color);
   font-weight: 700;
-  font-style: Bold;
   font-size: 60px;
   line-height: 100%;
   text-transform: capitalize;
 }
+
 .info p {
   font-weight: 400;
   line-height: 32px;
   color: var(--Text-color);
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .info h3 {
+    font-size: 48px;
+  }
+
+  .info p {
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info h3 {
+    font-size: 36px;
+  }
+
+  .info p {
+    line-height: 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info h3 {
+    font-size: 28px;
+  }
+
+  .info p {
+    line-height: 22px;
+    font-size: 14px;
+  }
+
+  .cardContainer {
+    flex-direction: column;
+  }
+
+  .cardContainer div {
+    order: unset; /* Reset order on small screens if needed */
+  }
 }

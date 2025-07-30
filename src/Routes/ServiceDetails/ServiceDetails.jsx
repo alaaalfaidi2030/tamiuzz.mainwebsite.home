@@ -101,9 +101,10 @@ function IndexingPart({ services, displayServicesIndex, t, setDisplayServicesInd
 
         <>
             {isMobile &&
-                <button className='btn btn-outline-primary rounded-circle d-flex justify-content-center align-items-center fs-3 position-fixed start-0 bottom-0 m-5' style={{
-                    width: "50px",
-                    height: "50px",
+                <button className='btn btn-outline-primary rounded-circle d-flex justify-content-center align-items-center fs-3 position-fixed start-0 my-5' style={{
+                    width: "40px",
+                    height: "40px",
+                    bottom: "10%"
 
                 }} onClick={() => {
                     setOpenFlag(!openFlag)

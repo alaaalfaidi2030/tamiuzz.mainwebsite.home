@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from 'react';
 import style from './Footer.module.css';
-import whiteLogo from "/whiteLogo.png";
+import whiteLogo from "/logo-white.svg";
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';

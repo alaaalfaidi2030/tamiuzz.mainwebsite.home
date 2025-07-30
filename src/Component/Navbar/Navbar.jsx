@@ -9,7 +9,7 @@ import React, {
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link, useLocation } from "react-router-dom";
 import logo from "/logo.svg";
-import whiteLogo from "/whiteLogo.png";
+import whiteLogo from "/logo-white.svg";
 import { useTranslation } from "react-i18next";
 import style from "./Navbar.module.css";
 import i18n from "../../i18n";

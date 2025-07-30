@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import img from "/logo.svg";
-import whiteLogo from "/whiteLogo.png";
+import whiteLogo from "/logo-white.svg";
 
 import { isThemeModeContext } from "../../../Context/isThemeModeContext";
 export default function HomeLoading() {

@@ -47,7 +47,7 @@ export default function ArticleCard({ idx = 0, imageUrl, time, title, author, ta
     const { t } = useTranslation()
     return (
         <motion.div
-            className={styles.card + " col-md-4"}
+            className={styles.card + " col-md-4 m-auto"}
             variants={cardVariants}
             initial="hidden"
             animate="visible"  >

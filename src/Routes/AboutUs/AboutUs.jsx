@@ -59,7 +59,7 @@ export default function AboutUs() {
     };
 
     return (
-        <section id='about-us'>
+        <section id='about-us overflow-hidden'>
             <Heading pageName={t("aboutSection.about-us-page-name")} />
 
             <div className="container my-5">

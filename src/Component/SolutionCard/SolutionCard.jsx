@@ -72,7 +72,7 @@ export default function SolutionCard({
                 <div className="col-md-6 d-flex justify-content-center gap-3 flex-column">
                     <motion.h3 variants={textItemVariants}>{title}</motion.h3>
                     <motion.p variants={textItemVariants}>{shortDescription}...</motion.p>
-                    <motion.div variants={textItemVariants}> {/* Wrap link in motion.div */}
+                    <motion.div variants={textItemVariants}>
                         <Link className='btn-web btn-web-secondary' to={"/solutions/" + urlPath}> {t("read more")}</Link>
                     </motion.div>
                 </div>

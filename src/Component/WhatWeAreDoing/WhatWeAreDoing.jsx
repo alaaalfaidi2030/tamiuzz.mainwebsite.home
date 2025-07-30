@@ -100,7 +100,7 @@ export default function WhatWeAreDoing({ solutions }) {
                                 <div className={"icon text-primary bg-white d-flex justify-content-center align-items-center rounded-circle fs-4 mx-2 " + style.iconWrapper} >
                                     <i className={item.icon}></i>
                                 </div>
-                                <div className="text d-flex flex-wrap ">
+                                <div className="text d-flex flex-column ">
                                     <h5>{t(item.title)}</h5>
                                     <span>{item.text}</span>
                                 </div>
@@ -108,7 +108,7 @@ export default function WhatWeAreDoing({ solutions }) {
                         )
                     }
                     <div className="col-lg-2 col-md-12 d-flex align-items-center justify-content-center">
-                        <button className='btn btn-light'>{t("aboutSection.request-quote-button")}</button>
+                        <Link to={"/support"} className='btn btn-light'>{t("aboutSection.request-quote-button")}</Link>
                     </div>
                 </motion.div>
             </div>
