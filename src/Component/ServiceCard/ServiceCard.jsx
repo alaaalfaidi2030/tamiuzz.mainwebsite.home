@@ -32,7 +32,7 @@ export default function ServiceCard({ idx = 0, imageUrl, iconUrl, title, path, d
                 initial="hidden"
                 animate="visible" >
                 <div className={styles.imageWrapper+" my-3"}>
-                    <img src={iconUrl} alt="icon image" className={styles.image} />
+                    <img loading='lazy' src={iconUrl} alt="icon image" className={styles.image} />
 
                 </div>
                 <div className={styles.content}>

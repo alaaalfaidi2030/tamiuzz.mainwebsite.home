@@ -52,7 +52,7 @@ export default function ArticleCard({ idx = 0, imageUrl, time, title, author, ta
             initial="hidden"
             animate="visible"  >
             <div className={styles.imageWrapper}>
-                <img src={imageUrl} alt="article image" className={styles.image} />
+                <img loading='lazy' src={imageUrl} alt="article image" className={styles.image} />
                 {time && <div className={styles.dateBadge}>
                     <span className={styles.day}>{day}</span>
                     <span className={styles.month}>{month}</span>

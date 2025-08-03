@@ -124,7 +124,7 @@ export default function SolutionDetails() {
                         </motion.div>
                         {solutionDetails.sections.map((section, idx) => (
                             <motion.div
-                                className={"row my-5 py-5 " + style.cardContainer}
+                                className={"row g-5 my-3 py-3 " + style.cardContainer}
                                 key={idx}
                                 initial="hidden"
                                 whileInView="visible"
@@ -137,9 +137,11 @@ export default function SolutionDetails() {
                                     variants={imageWrapperVariants}
                                 >
                                     <div className={style["imageWrapper"]}>
-                                        <img
-                                            src={section.images[0]}
-                                            className='w-100'
+                                        <img loading='lazy'
+                                            src={
+                                                // "https://dev1.tamiuzz.com/"+
+                                                section.images[0]}
+                                            className='w-100 rounded-4'
                                             alt={t(section.title)}
                                         />
                                     </div>

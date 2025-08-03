@@ -20,6 +20,7 @@ const Footer = () => {
             .required(t("errors.Required")),
     });
 
+    const currentYear = new Date().getFullYear();
 
 
     // send message to the server
@@ -164,7 +165,7 @@ const Footer = () => {
                                     animate={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.5, delay: 0.1 }}
                                     className={style["company-logo"]}>
-                                    <img src={whiteLogo} alt="logo image" style={{ width: "165px" }} />
+                                    <img loading='lazy' src={whiteLogo} alt="logo image" style={{ width: "165px" }} />
                                 </motion.div>
                                 <motion.p
                                     initial={{ opacity: 0, y: -100 }}
@@ -209,7 +210,7 @@ const Footer = () => {
                             </Link>
                         </div>
                         <p className={style["copyright"]}>
-                            © {t("copyright")} Tamuizz
+                            ©  All Copyright {currentYear} by Tamuizz
                         </p>
                     </div>
                 </div>

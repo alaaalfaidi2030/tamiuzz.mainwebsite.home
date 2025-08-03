@@ -118,6 +118,7 @@ const Navbar = () => {
       <div className="container-fluid d-flex justify-content-between px-5">
         <Link className="navbar-brand py-3 rounded-3" to="/">
           <motion.img
+            loading='lazy'
             initial={{ opacity: 0, y: 100 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}

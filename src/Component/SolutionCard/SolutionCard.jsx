@@ -65,7 +65,7 @@ export default function SolutionCard({
                         className={style["imageWrapper"]}
                         variants={imageWrapperVariants}
                     >
-                        <img src={imageUrl} 
+                        <img loading='lazy' src={imageUrl} 
                             alt={title} />
                     </motion.div>
                 </div>

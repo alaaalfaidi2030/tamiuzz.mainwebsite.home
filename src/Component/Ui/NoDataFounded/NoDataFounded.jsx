@@ -7,7 +7,7 @@ export default function NoDataFounded() {
     const { t } = useTranslation()
     return (
         <div className={'d-flex flex-column justify-content-center align-items-center ' + style.NoDataFounded}>
-            <img src={NotFounded} alt="Error Image" />
+            <img loading='lazy' src={NotFounded} alt="Error Image" />
             <p> {t("No data founded")}</p>
         </div>
     )

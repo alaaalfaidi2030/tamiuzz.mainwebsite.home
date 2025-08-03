@@ -33,7 +33,7 @@ export default function TestimonialCard({ imageUrl, name, position, stars, rate 
         >
             <div className={style["testimonial-header"]}>
                 <div className={style["testimonial-user"]}>
-                    <img src={imageUrl} alt={name} className={style["user-image"]} />
+                    <img loading='lazy' src={imageUrl} alt={name} className={style["user-image"]} />
                     <div>
                         <h5 className={style["user-name"]}>{name}</h5>
                         <p className={style["user-role"]}>{position}</p>

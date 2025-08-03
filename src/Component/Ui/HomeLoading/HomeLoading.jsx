@@ -14,7 +14,7 @@ export default function HomeLoading() {
         zIndex: "10000000",
       }}
     >
-      <img
+      <img loading='lazy'
         src={isDarkMode ? whiteLogo : img}
         alt="logo "
         className="fa-beat-fade"

@@ -44,6 +44,7 @@ const Hero = () => {
             }>
             {/* Animated Background Elements */}
             <motion.img
+                loading='lazy'
                 alt='decroImage'
                 initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -63,6 +64,7 @@ const Hero = () => {
                             {/* decoration icons */}
 
                             <motion.img
+                                loading='lazy'
                                 alt='decroImage'
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -74,6 +76,7 @@ const Hero = () => {
                                 }} />
 
                             <motion.img
+                                loading='lazy'
                                 alt='decroImage'
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
@@ -123,7 +126,7 @@ const Hero = () => {
                                     </Link>
 
                                     <Link
-                                    to={"/services"}
+                                        to={"/services"}
                                         className={style.secondaryButton + " btn-web"}
                                     >
                                         {t("homePage.discover our services")}

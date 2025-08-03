@@ -14,7 +14,7 @@ export default function ContactSection() {
                     </div>
                     <div className="col-md-6">
                         <div className={style.imageWrapper}>
-                            <img src={img} alt="person trying to contact" className='w-100  object-fit-cover position-absolute' />
+                            <img loading='lazy' src={img} alt="person trying to contact" className='w-100  object-fit-cover position-absolute' />
                         </div>
                     </div>
                 </div>

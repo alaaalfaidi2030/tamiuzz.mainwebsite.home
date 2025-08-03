@@ -116,7 +116,7 @@ export default function AboutSection({ counter, logos, services }) {
                     <div className={style.statistics}>
                         <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
                             <div className="col-4 d-flex align-items-center justify-content-center">
-                                <img src={ourCLients} alt="icon image for clients" />
+                                <img loading='lazy' src={ourCLients} alt="icon image for clients" />
                             </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
                                 <h4>{counter.projects}</h4>
@@ -126,7 +126,7 @@ export default function AboutSection({ counter, logos, services }) {
                         <motion.div className={style.statBox + " row"} variants={statBoxVariants}>
                             <div className="col-4 d-flex align-items-center justify-content-center">
                                 {/* <i className="fa-solid fa-users"></i> */}
-                                <img src={projects} alt="icon image for project" />
+                                <img loading='lazy' src={projects} alt="icon image for project" />
                             </div>
                             <div className="col-8 d-flex flex-column align-items-center justify-content-center">
                                 <h4>{counter.clients}</h4>
@@ -144,7 +144,7 @@ export default function AboutSection({ counter, logos, services }) {
                     </div>
                 </motion.div>
                 <motion.div className={style.imageWrapper} variants={imageVariants}>
-                    <img src={AboutImage} alt={t("homePage.aboutImageAlt")} className={style.image} />
+                    <img loading='lazy' src={AboutImage} alt={t("homePage.aboutImageAlt")} className={style.image} />
                 </motion.div>
             </motion.div>
 
@@ -171,7 +171,7 @@ export default function AboutSection({ counter, logos, services }) {
                             <SwiperSlide key={idx} >
                                 <div className={"client-logo-wrapper mx-auto d-flex justify-content-center align-items-center rounded-circle  " + style.logoPartner}>
                                     <div className={style["logoContainer"]}>
-                                        <img src={logo.imageUrl} alt={logo.name} />
+                                        <img loading='lazy' src={logo.imageUrl} alt={logo.name} />
                                     </div>
                                 </div>
                             </SwiperSlide>

@@ -9,7 +9,7 @@ export default function HowWeWork() {
             <H2 text={"كيف نعمل"} />
             <H3 text={"خطوات العمل معنا"} />
             <div className="w-100 d-flex justify-content-center my-5">
-                <img src={image} className=' my-5' alt="work Steps" style={{ width: "90%" }} />
+                <img loading='lazy' src={image} className=' my-5' alt="work Steps" style={{ width: "90%" }} />
 
             </div>
         </>

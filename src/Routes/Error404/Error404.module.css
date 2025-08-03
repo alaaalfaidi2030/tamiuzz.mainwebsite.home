@@ -1,6 +1,7 @@
 .container {
   background-color: #141019;
   background: radial-gradient(at 50% -20%, #898ed1, var(--primary-color)) fixed;
+  position: relative;
 }
 
 #handboy {

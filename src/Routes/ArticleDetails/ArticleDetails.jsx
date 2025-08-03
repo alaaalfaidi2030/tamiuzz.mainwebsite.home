@@ -70,7 +70,7 @@ export default function ArticleDetails() {
                                     <p >{section.content}</p>
                                     {
                                         section.imageUrl && <div className="w-100">
-                                            <img src={section.imageUrl} alt={section.title} />
+                                            <img loading='lazy' src={section.imageUrl} alt={section.title} />
 
                                         </div>
                                     }

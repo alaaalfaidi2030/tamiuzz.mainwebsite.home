@@ -138,7 +138,7 @@ function FAQ() {
                                                     transition={{ duration: 0.6, delay: 0.3 }}
                                                     viewport={{ once: true }}
                                                 >
-                                                    <img src={AboutImage} alt="business team" className={style.image} />
+                                                    <img loading='lazy' src={AboutImage} alt="business team" className={style.image} />
                                                 </motion.div>
                                             </div>
                                         </div>

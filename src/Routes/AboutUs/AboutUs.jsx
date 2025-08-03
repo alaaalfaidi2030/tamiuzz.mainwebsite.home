@@ -135,7 +135,7 @@ export default function AboutUs() {
                             variants={slideInLeftVariants}
                         >
                             <div className={style.imageContainer}>
-                                <img
+                                <img loading='lazy'
                                     src={aboutImg}
                                     alt={t("aboutSection.about-us-image-alt")}
                                     className={"w-100 h-100"}

@@ -2,6 +2,8 @@ import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import style from "./Error404.module.css"
 import { motion } from 'framer-motion'
+import whiteLogo from "/logo-white.svg";
+
 export default function Error404() {
     const primColor = "#2644a2"
 
@@ -9,6 +11,19 @@ export default function Error404() {
     return (
         <div className={style.container + " w-100 vh-100"}>
 
+            <Link to="/"
+                className='position-absolute top-0 start-0 m-3'
+            >
+                <motion.img
+                    initial={{ opacity: 0, y: 100 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    src={whiteLogo}
+                    style={{ width: "180px" }}
+                    alt="website logo"
+                    loading='lazy'
+                />
+            </Link>
             <Link to="/" >
                 <div className="container">
                     <div className="row min-vh-100">

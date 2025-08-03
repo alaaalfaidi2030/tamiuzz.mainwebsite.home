@@ -1,13 +1,15 @@
-import React, { useContext } from 'react'
-import Hero from '../../Component/Hero/Hero'
-import AboutSection from '../../Component/AboutSection/AboutSection'
-import HowWeWork from '../../Component/HowWeWork/HowWeWork'
-import WhatWeAreDoing from '../../Component/WhatWeAreDoing/WhatWeAreDoing'
-import ArticlesInHome from '../../Component/ArticlesInHome/ArticlesInHome'
-import Testimonials from '../../Component/Testimonials/Testimonials'
+import React, { lazy, useContext } from 'react'
 import { HomeContentContext } from '../../Context/homeContentContext'
 import Spinner from '../../Component/Ui/Spinner/Spinner'
+import { createLazyLoadingComp } from '../../Utilies/LazyLoadingHelper'
 
+
+const Hero = createLazyLoadingComp(() => import('../../Component/Hero/Hero'))
+const AboutSection = createLazyLoadingComp(() => import('../../Component/AboutSection/AboutSection'))
+const HowWeWork = createLazyLoadingComp(() => import('../../Component/HowWeWork/HowWeWork'))
+const WhatWeAreDoing = createLazyLoadingComp(() => import('../../Component/WhatWeAreDoing/WhatWeAreDoing'))
+const ArticlesInHome = createLazyLoadingComp(() => import('../../Component/ArticlesInHome/ArticlesInHome'))
+const Testimonials = createLazyLoadingComp(() => import('../../Component/Testimonials/Testimonials'))
 export default function Home() {
     const { homeContent, isLoading, } = useContext(HomeContentContext)
 

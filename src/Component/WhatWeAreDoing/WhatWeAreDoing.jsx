@@ -159,12 +159,12 @@ function SolutionSlider({ solutions }) {
                                 viewport={{ once: true, amount: 0.2 }}
                             >
                                 <div className={style.imageWrapper}>
-                                    <img src={solution.imageUrl} alt={solution.title} className={style.image} />
+                                    <img loading='lazy' src={solution.imageUrl} alt={solution.title} className={style.image} />
                                 </div>
                                 <div className={style.content + " mt-3"}>
                                     {solution.iconUrl && (
                                         <div className={style.iconBadge}>
-                                            <img src={solution.iconUrl} alt="icon" width={24} height={24} />
+                                            <img loading='lazy' src={solution.iconUrl} alt="icon" width={24} height={24} />
                                         </div>
                                     )}
                                     <h3>{solution.title}</h3>
