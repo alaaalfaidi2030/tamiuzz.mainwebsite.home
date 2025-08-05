@@ -113,7 +113,7 @@ export default function SolutionDetails() {
                         <NoDataFounded />
                     </div>
                     :
-                    <div className="container p my-3">
+                    <div className="container  p my-3">
 
                         <motion.div
                             initial="hidden"
@@ -122,6 +122,8 @@ export default function SolutionDetails() {
                         >
                             <H2 text={t(solutionDetails.title)} />
                         </motion.div>
+
+
                         {solutionDetails.sections.map((section, idx) => (
                             <motion.div
                                 className={"row g-5 my-3 py-3 " + style.cardContainer}
@@ -157,7 +159,35 @@ export default function SolutionDetails() {
 
                             </motion.div>
                         ))}
-                    </div> : <Spinner sectionFlag={true} />}
+
+
+                        <div className={style.downloadLinks}>
+                            <div className="container">
+                                <div className={style["linksWrapper"]}>
+
+                                    {solutionDetails.profileUrl &&
+                                        <motion.a
+                                            initial="hidden"
+                                            whileInView="visible"
+                                            viewport={{ once: true, amount: 0.4 }}
+                                            variants={sectionContainerVariants}
+                                            target='_blank' href={solutionDetails.profileUrl} className='btn-web btn-web-secondary'>
+                                            <i class="fa-solid fa-file"></i>
+                                        </motion.a>}
+                                    {solutionDetails.downloadUrl &&
+                                        <motion.a
+                                            initial="hidden"
+                                            whileInView="visible"
+                                            viewport={{ once: true, amount: 0.4 }}
+                                            variants={sectionContainerVariants}
+                                            target='_blank' href={solutionDetails.downloadUrl}>
+                                            <i class="fa-solid fa-download"></i>
+                                        </motion.a>}
+                                </div>
+                            </div>
+                        </div>
+                    </div > : <Spinner sectionFlag={true} />
+            }
         </>
     );
 }
