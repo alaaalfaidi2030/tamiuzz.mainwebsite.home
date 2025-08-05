@@ -82,7 +82,10 @@ export default function ServiceDetails() {
                                                 </div>
                                                 <div className={style["info"] + " p-2"}>
                                                     <h4 className=' my-2'>{services[displayServicesIndex].title}</h4>
-                                                    <p className='mt-4'>{services[displayServicesIndex].description}</p>
+                                                    <div className={'mt-4 ' + style.desc}
+                                                        dangerouslySetInnerHTML={{
+                                                            __html: services[displayServicesIndex].description
+                                                        }}></div>
 
                                                 </div>
                                             </>

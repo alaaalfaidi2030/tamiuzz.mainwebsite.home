@@ -142,13 +142,16 @@ export default function SolutionDetails() {
                                                 // "https://dev1.tamiuzz.com/"+
                                                 section.images[0]}
                                             className='w-100 rounded-4'
-                                            alt={t(section.title)}
+                                            alt={section.title}
                                         />
                                     </div>
                                 </motion.div>
                                 <div className={"col-md-6 " + style.info}>
-                                    <h3>{t(section.title)}</h3>
-                                    <p>{t(section.description)}</p>
+                                    <h3>{section.title}</h3>
+                                    <div className={style.desc} dangerouslySetInnerHTML={{
+                                        __html:
+                                            section.description
+                                    }}></div>
                                 </div>
 
 

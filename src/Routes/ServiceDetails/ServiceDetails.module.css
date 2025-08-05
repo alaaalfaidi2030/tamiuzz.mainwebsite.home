@@ -96,7 +96,7 @@
   text-transform: capitalize;
 }
 
-.info p {
+.info .desc {
   font-weight: 400;
   font-size: 28px;
   line-height: 48px;
@@ -117,7 +117,7 @@
     -o-border-radius: 0;
   }
 
-  .info p {
+  .info .desc {
     font-size: 20px;
     line-height: 30px;
   }
@@ -129,7 +129,7 @@
     width: 70%;
   }
 
-  .info p {
+  .info .desc {
     font-size: 18px;
     line-height: 20px;
   }

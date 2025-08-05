@@ -51,14 +51,17 @@ function App() {
 
   useEffect(() => {
     // this code is for the language direction
+    console.log(localStorage.getItem("i18nextLng"));
+
     const i18nextLng = localStorage.getItem("i18nextLng") || "ar";
-    i18n.changeLanguage(i18nextLng);
     if (i18nextLng === "ar") {
       document.body.dir = "rtl";
-      document.documentElement.lang = "ar";
+      document.documentElement.setAttribute("lang", "ar");
+
     } else {
       document.body.dir = "ltr";
-      document.documentElement.lang = "en";
+      document.documentElement.setAttribute("lang", "en");
+
     }
 
 
