@@ -6,7 +6,8 @@ import { createLazyLoadingComp } from '../../Utilies/LazyLoadingHelper'
 
 const Hero = createLazyLoadingComp(() => import('../../Component/Hero/Hero'))
 const AboutSection = createLazyLoadingComp(() => import('../../Component/AboutSection/AboutSection'))
-const HowWeWork = createLazyLoadingComp(() => import('../../Component/HowWeWork/HowWeWork'))
+// const HowWeWork = createLazyLoadingComp(() => import('../../Component/HowWeWork/HowWeWork'))
+import HowWeWork from "../../Component/HowWeWork/HowWeWork"
 const WhatWeAreDoing = createLazyLoadingComp(() => import('../../Component/WhatWeAreDoing/WhatWeAreDoing'))
 const ArticlesInHome = createLazyLoadingComp(() => import('../../Component/ArticlesInHome/ArticlesInHome'))
 const Testimonials = createLazyLoadingComp(() => import('../../Component/Testimonials/Testimonials'))
@@ -28,7 +29,7 @@ export default function Home() {
                     solutions={homeContent.solutions}
                 />
             }
-            {/* <HowWeWork /> */}
+            <HowWeWork/>
             {homeContent.rates.length != 0 &&
                 <Testimonials rates={homeContent.rates} />}
             {

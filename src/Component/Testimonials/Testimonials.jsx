@@ -11,7 +11,7 @@ export default function Testimonials({rates}) {
     const { t } = useTranslation();
     
     return (
-        <div className={"my-2 " + style.Testimonials} style={{
+        <div className={"mb-2 " + style.Testimonials} style={{
             backgroundImage: `url(${img})`
         }}>
             <div className="container py-5 "

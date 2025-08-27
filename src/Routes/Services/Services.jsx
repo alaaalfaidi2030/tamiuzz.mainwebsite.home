@@ -10,7 +10,6 @@ import Spinner from '../../Component/Ui/Spinner/Spinner'
 import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp'
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded'
 import { baseURL, getHeaders } from '../../Utilies/data'
-// import { services } from '../../Utilies/data'
 
 export default function Services() {
     const { t } = useTranslation()

@@ -50,7 +50,6 @@
     "Some of our customer testimonials": "بعض تقييمات عملائنا"
   },
 
-  
   "articlePage": {
     "heading": "اكتشف المعرفة... وكن دائمًا في المقدمة",
     "subheading": "نشاركك المعرفة والخبرة لتبقى على اطلاع دائم بكل جديد",
@@ -69,7 +68,7 @@
 
   "about tamuizz": "عن شركة تميز",
   "we present our services in the best way": "نلتزم بتقديم خدماتنا باعلى معايير الجوده",
-  
+
   "aboutSection": {
     "about-us-page-name": "من نحن",
     "why-are-we-special": "لماذا نحن مميزون؟",
@@ -89,6 +88,15 @@
     "cairo": "القاهرة",
     "cairo-address": "3303 طريق العروبة، حي السليمانية 18480"
   },
+  "howWeWork": {
+    "title": "كيف نعمل",
+    "description": "خطوات العمل معنا",
+    "ourAchievements": "إنجازاتنا",
+    "weIncreaseSuccess": "نحن نزيد من نجاح عملائنا",
+    "clients": "عملائنا الراضون",
+    "projects": "مشاريعنا المنفذة",
+    "experts": "خبرائنا"
+  },
 
   "solutionPage": {
     "heading": "نبتكر الحلول... لنحقق التميز",
@@ -96,9 +104,9 @@
     "solution_title": "نحن نقدم افضل الحلول",
     "solution details": "تفاصيل الحلول"
   },
-  
+
   "why are we special": "اكثر ما يميزنا",
-  
+
   "servicesPage": {
     "heading": "خدمات تواكب طموحك، وتصنع الفارق",
     "subheading": "نقدم مجموعة متكاملة من الخدمات المصممة لتلائم احتياجاتك بدقة",

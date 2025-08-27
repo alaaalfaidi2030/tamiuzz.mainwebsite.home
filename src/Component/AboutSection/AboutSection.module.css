@@ -97,6 +97,7 @@
 .statBox p {
   font-size: 1rem;
   color: #555;
+  text-wrap: nowrap;
 }
 
 .statBox i {

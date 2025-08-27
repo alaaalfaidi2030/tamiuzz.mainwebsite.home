@@ -89,6 +89,17 @@
     "cairo-address": "3303 Al Urubah Road, Al Sulaymaniyah District, 18480"
   },
 
+  "howWeWork": {
+    "title": "How We Work",
+    "description": "Steps to Work with Us",
+    "ourAchievements": "Our Achievements",
+    "weIncreaseSuccess": "We Increase Our Clients' Success",
+    "clients": "Satisfied Clients",
+    "projects": "Finished Projects",
+    "experts": "Experts"
+ 
+  },
+
   "solutionPage": {
     "heading": "We Create Solutions That Drive Excellence",
     "subheading": "Smart, forward-thinking solutions to drive your business toward excellence",

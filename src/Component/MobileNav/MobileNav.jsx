@@ -38,7 +38,7 @@ const MobileNav = () => {
       { id: "home", icon: "fa-house", link: "mobile_main", path: "/home" },
     ]
     , [t])
-  const toggleLanguage = async () => {
+  const toggleLanguage = async () => {  
     let languageFlag = i18n.language == "en";
     languageFlag
       ? await i18n.changeLanguage("ar")

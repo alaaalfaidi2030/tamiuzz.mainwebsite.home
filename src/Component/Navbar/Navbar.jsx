@@ -46,6 +46,10 @@ const Navbar = () => {
   }, [navbarCollapseInstance]);
 
   const toggleLanguage = async (lng) => {
+    if (i18n.resolvedLanguage === lng) {
+      return;
+      
+    }
     await i18n.changeLanguage(lng);
 
     window.location.reload();
