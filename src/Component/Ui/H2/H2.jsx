@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './H2.module.css';
 import { motion } from 'framer-motion';
 
-const H2 = ({ text }) => {
+const H2 = ({ text, textColorWhite }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -36,6 +36,10 @@ const H2 = ({ text }) => {
     <motion.div
       className={styles.container}
       variants={containerVariants}
+      style={{
+        // change value of the main color for the heading
+        '--heading-color-H2-component': textColorWhite ? "white" : "var(--primary-color)"
+      }}
       initial="hidden"
       whileInView="visible"
       animate="visible"

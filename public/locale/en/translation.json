@@ -97,9 +97,11 @@
     "clients": "Satisfied Clients",
     "projects": "Finished Projects",
     "experts": "Experts"
- 
   },
-
+  "projects": {
+    "Our Projects": "Our Projects",
+    "Description": "Our latest successes"
+  },
   "solutionPage": {
     "heading": "We Create Solutions That Drive Excellence",
     "subheading": "Smart, forward-thinking solutions to drive your business toward excellence",

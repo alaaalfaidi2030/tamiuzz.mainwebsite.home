@@ -7,29 +7,48 @@ import ourCLients from "../../assets/Images/Home/ourClients.svg"
 import projects from "../../assets/Images/Home/projects.svg"
 import experts from "../../assets/Images/Home/experts.svg"
 import style from "./HowWeWork.module.css"
+import { motion } from 'framer-motion'
 // continue next time 
-export default function HowWeWork() {
+
+export default function HowWeWork({ counter }) {
     const { t, i18n } = useTranslation()
-    let howWeWork = {
-        title: "كيف نعمل",
-        description: "خطوات العمل معنا",
-        ourAcheivements: "إنجازاتنا",
-        weIncreaseSuccess: "نحن نزيد من نجاح عملائنا ."
-
-    }
-    let counter = {
-        "clients": 400,
-        "projects": 2500,
-        "experts": 300
-    }
     return (
-        <div className={style.howWeWork}>
-            <H2 text={t("howWeWork.title")} />
-            <H3 text={t("howWeWork.description")} />
-            <div className="w-100 d-flex justify-content-center my-3">
-                <Svg i18n={i18n} />
+        <motion.div
+            className={style.howWeWork}
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: 'easeOut' }}
+            viewport={{ once: true, amount: 0.2 }}
+        >
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1, duration: 0.6 }}
+                viewport={{ once: true }}
+            >
+                <H2 text={t("howWeWork.title")} />
+            </motion.div>
 
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2, duration: 0.6 }}
+                viewport={{ once: true }}
+            >
+                <H3 text={t("howWeWork.description")} />
+            </motion.div>
+
+            <div className="w-100 d-flex justify-content-center my-3">
+                <motion.div
+                    initial={{ scale: 0.9, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.5 }}
+                    viewport={{ once: true }}
+                >
+                    <Svg i18n={i18n} />
+                </motion.div>
             </div>
+
             <div className={"w-100 d-flex align-items-center overflow-hidden  " + style.footerContainer} style={{ backgroundImage: `url(${image})` }}>
                 <div className="container">
                     <div className="row">
@@ -39,29 +58,54 @@ export default function HowWeWork() {
                         </div>
                         <div className={"col-md-6  " + style.iconsWrapper} >
                             <div className="d-flex justify-content-around align-items-center h-100">
-                                <div className={"text-center "+style.icon}>
-                                    <img loading='lazy' src={ourCLients} alt="icon image for clients" />
-                                    <h5 className=''>{counter.clients}+</h5>
-                                    <p className=''>{t("howWeWork.clients")}</p>
-                                </div>
-                                <div className={"text-center "+style.icon}>
-                                    <img loading='lazy' src={projects} alt="icon image for project" />
-                                    <h5 className=''>{counter.projects}+</h5>
-                                    <p className=''>{t("howWeWork.projects")}</p>
-                                </div>
-                                <div className={"text-center "+style.icon}>
-                                    <img loading='lazy' src={experts} alt="icon image for project" />
-                                    <h5 className=''>{counter.experts}+</h5>
-                                    <p className=''>{t("howWeWork.experts")}</p>
-                                </div>
+                                {
+                                    counter.clients &&
+                                    <motion.div
+                                        className={"text-center " + style.icon}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3, duration: 0.6 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <img loading='lazy' src={ourCLients} alt="icon image for clients" />
+                                        <h5 className=''>{counter.clients}+</h5>
+                                        <p className=''>{t("howWeWork.clients")}</p>
+                                    </motion.div>
+                                }
+                                {
+                                    counter.projects &&
+                                    <motion.div
+                                        className={"text-center " + style.icon}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3, duration: 0.6 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        <img loading='lazy' src={projects} alt="icon image for project" />
+                                        <h5 className=''>{counter.projects}+</h5>
+                                        <p className=''>{t("howWeWork.projects")}</p>
+                                    </motion.div>}
+                                {
+                                    counter.experts &&
+                                    <motion.div
+                                        className={"text-center " + style.icon}
+                                        initial={{ opacity: 0, y: 30 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.3, duration: 0.6 }}
+                                        viewport={{ once: true }} >
+                                        <img loading='lazy' src={experts} alt="icon image for project" />
+                                        <h5 className=''>{counter.experts}+</h5>
+                                        <p className=''>{t("howWeWork.experts")}</p>
+                                    </motion.div>
+                                }
                             </div>
                         </div>
                     </div>
                 </div>
 
 
-            </div>
-        </div>
+            </div >
+        </motion.div >
     )
 }
 

@@ -2,15 +2,17 @@ import React, { lazy, useContext } from 'react'
 import { HomeContentContext } from '../../Context/homeContentContext'
 import Spinner from '../../Component/Ui/Spinner/Spinner'
 import { createLazyLoadingComp } from '../../Utilies/LazyLoadingHelper'
+import Projects from '../../Component/Projects/Projects'
 
 
 const Hero = createLazyLoadingComp(() => import('../../Component/Hero/Hero'))
 const AboutSection = createLazyLoadingComp(() => import('../../Component/AboutSection/AboutSection'))
 // const HowWeWork = createLazyLoadingComp(() => import('../../Component/HowWeWork/HowWeWork'))
-import HowWeWork from "../../Component/HowWeWork/HowWeWork"
 const WhatWeAreDoing = createLazyLoadingComp(() => import('../../Component/WhatWeAreDoing/WhatWeAreDoing'))
 const ArticlesInHome = createLazyLoadingComp(() => import('../../Component/ArticlesInHome/ArticlesInHome'))
-const Testimonials = createLazyLoadingComp(() => import('../../Component/Testimonials/Testimonials'))
+const Testimonials = createLazyLoadingComp(() => import('../../Component/Testimonials/Testimonials'));
+const HowWeWork = createLazyLoadingComp(() => import('../../Component/HowWeWork/HowWeWork'));
+
 export default function Home() {
     const { homeContent, isLoading, } = useContext(HomeContentContext)
 
@@ -29,7 +31,14 @@ export default function Home() {
                     solutions={homeContent.solutions}
                 />
             }
-            <HowWeWork/>
+            <HowWeWork counter={homeContent.counter} />
+
+            {
+                homeContent.projects &&
+                homeContent.projects.length != 0 &&
+                <Projects projects={homeContent.projects} />
+
+            }
             {homeContent.rates.length != 0 &&
                 <Testimonials rates={homeContent.rates} />}
             {
