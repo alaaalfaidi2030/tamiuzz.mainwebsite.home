@@ -8,28 +8,28 @@ import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
 
-export default function Projects({ }) {
+export default function Projects({projects }) {
     const { t } = useTranslation();
 
-    const projects = [
-        {
-            title: "Software Development",
-            imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
-            category: "Technology"
-        }, {
-            title: "Software Development",
-            imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
-            category: "Technology"
-        }, {
-            title: "Software Development",
-            imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
-            category: "Technology"
-        }, {
-            title: "Software Development",
-            imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
-            category: "Technology"
-        },
-    ];
+    // const projects = [
+    //     {
+    //         title: "Software Development",
+    //         imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
+    //         category: "Technology"
+    //     }, {
+    //         title: "Software Development",
+    //         imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
+    //         category: "Technology"
+    //     }, {
+    //         title: "Software Development",
+    //         imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
+    //         category: "Technology"
+    //     }, {
+    //         title: "Software Development",
+    //         imageUrl: "https://dev1.tamiuzz.com/static/images/demo-project.jpg",
+    //         category: "Technology"
+    //     },
+    // ];
 
 
     return (
