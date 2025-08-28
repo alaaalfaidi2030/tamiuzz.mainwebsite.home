@@ -113,7 +113,7 @@ export default function SolutionDetails() {
                         <NoDataFounded />
                     </div>
                     :
-                    <div className="container  p my-3">
+                    <div className="container  my-3">
 
                         <motion.div
                             initial="hidden"

@@ -43,7 +43,9 @@
 .icon p {
     margin: 0;
     color: var(--text-color);
+    text-wrap: nowrap;
     font-size: 1rem;
+    margin-bottom: 20px;
 }
 
 /* Responsive Tweaks */
@@ -53,6 +55,11 @@
         align-items: center;
         background-size: cover;
     }
+
+    .iconsWrapper {
+        margin-top: 40px;
+    }
+
 
     .icon {
         max-width: 100%;
@@ -72,9 +79,6 @@
 }
 
 @media (max-width: 480px) {
-    .iconsWrapper {
-        margin-top: 40px;
-    }
 
     .icon h5 {
         font-size: 1.1rem;

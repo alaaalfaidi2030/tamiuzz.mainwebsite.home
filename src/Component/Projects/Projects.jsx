@@ -8,7 +8,7 @@ import { Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
 
-export default function Projects({projects }) {
+export default function Projects({ projects }) {
     const { t } = useTranslation();
 
     // const projects = [
@@ -41,24 +41,26 @@ export default function Projects({projects }) {
                         <H3 text={t("projects.Description")} />
                     </div>
                 </div>
-                <div className="col-md-12 my-3 flex-grow-1 d-flex align-items-center" style={{ minHeight: "70vh" }}>
+                <div className="col-md-12 my-3 flex-grow-1 d-flex align-items-center" style={{ minHeight: "60vh" }}>
+                    <div className="w-100">
 
-                    <Swiper
-                        modules={[Pagination]}
-                        spaceBetween={30}
-                        pagination={{ clickable: true }}
-                        breakpoints={{
-                            320: { slidesPerView: 1 },
-                            768: { slidesPerView: 2 },
-                            1024: { slidesPerView: 3 },
-                        }}
-                    >
-                        {projects.map((project, index) => (
-                            <SwiperSlide key={index}>
-                                <ProjectCard {...project} />
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
+                        <Swiper
+                            modules={[Pagination]}
+                            spaceBetween={30}
+                            pagination={{ clickable: true }}
+                            breakpoints={{
+                                320: { slidesPerView: 1 },
+                                768: { slidesPerView: 2 },
+                                1024: { slidesPerView: 3 },
+                            }}
+                        >
+                            {projects.map((project, index) => (
+                                <SwiperSlide key={index}>
+                                    <ProjectCard {...project} />
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    </div>
                 </div>
                 {/* Swiper Component */}
 
