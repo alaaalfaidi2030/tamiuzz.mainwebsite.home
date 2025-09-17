@@ -1,0 +1,137 @@
+.indexingPart {
+  background-color: var(--lite);
+  padding: 30px 20px;
+  padding-top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 13px;
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+  max-height: 50vh !important;
+  overflow-y: auto;
+
+}
+
+.indexingPart::-webkit-scrollbar-track {
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  margin: 0px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.indexingPart::-webkit-scrollbar-thumb {
+  background-color: #bde3fc;
+}
+
+.indexingPart h3 {
+  width: 100%;
+  text-align: center;
+  position: sticky;
+  background-color: var(--lite);
+  top: 0;
+  /* bottom: 90%; */
+  margin: 15px 0 !important;
+  padding: 15px 0;
+  border-bottom: white 2px solid;
+
+}
+
+.indexingPart button.option {
+  color: var(--primary-color);
+  background-color: white;
+  padding: 20px 20px;
+  border-radius: 15px;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  line-height: 100%;
+  vertical-align: middle;
+  border: none !important;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.indexingPart button.option:hover {
+  background-color: #384bff;
+  color: white;
+}
+
+.indexingPart button.option.active {
+  background-color: #384bff;
+  color: white;
+}
+
+.imageWrapper {
+  width: 100%;
+  max-height: 400px;
+  min-height: 250px;
+  border-radius: 15px;
+  overflow: hidden;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+.imageWrapper img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.info h4 {
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 32px;
+  line-height: 32px;
+  color: var(--primary-color);
+  text-transform: capitalize;
+}
+
+.info .desc {
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 48px;
+  color: var(--desc-text-color);
+}
+
+@media screen and (max-width: 991px) {
+  .indexingPart {
+    position: fixed;
+    top: 0;
+    z-index: 99999;
+    width: 40%;
+    left: 0;
+    border-radius: 0;
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    -ms-border-radius: 0;
+    -o-border-radius: 0;
+  }
+
+  .info .desc {
+    font-size: 20px;
+    line-height: 30px;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  .indexingPart {
+    width: 70%;
+  }
+
+  .info .desc {
+    font-size: 18px;
+    line-height: 20px;
+  }
+
+}

@@ -1,0 +1,59 @@
+.supportSection {
+  padding: 2rem;
+}
+
+.contact {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact a {
+  font-size: 18px;
+  color: var(--primary-color);
+  margin: 5px 0;
+}
+
+.contact a:hover i {
+  color: var(--secondary-color);
+}
+
+.contact i {
+  margin: 0 10px;
+  transition-property: color;
+  transition-duration: 0.3s;
+}
+
+
+.titleHeading {
+  font-size: 24px;
+  color: var(--primary-color);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+
+@media screen and (max-width: 991px) {
+  .supportSection {
+   padding: 0
+  }
+
+  .info {
+    order: -1;
+  }
+
+  .contact {
+    flex-direction: row;
+    flex-wrap: wrap;
+    /* justify-content: space-between; */
+    gap: 10px;
+  }
+  .contact a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact h2 {
+    display: none;
+  }
+}

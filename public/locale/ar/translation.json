@@ -1,0 +1,156 @@
+{
+  "home": "الرئيسية",
+  "solutions": "الحلول",
+  "services": "الخدمات",
+  "articles": "المقالات",
+  "support": "الدعم",
+  "about-us": "من نحن",
+  "nav_lang": "English",
+  "shopping now": "تسوق الآن",
+
+  "mobile_navbar": "القائمة الرئيسية",
+  "mobile_solutions": "الحلول",
+  "mobile_services": "الخدمات",
+  "mobile_support": "الدعم",
+  "mobile_main": "الرئيسية",
+  "Language_nav": " E",
+
+  "read more": "اطلع على المزيد",
+  "No data founded": "لم نستطع العثور على أي بيانات ",
+
+  "homePage": {
+    "hero_title": "حلول برمجية متكاملة",
+    "hero_subtitle": "لنجاح اعمالك",
+    "hero_desc_part1": "نقدم حلولاً مبتكرة تساعد الشركات على النمو والتطور في العصر الرقمي",
+    "hero_desc_part2": "مع احدث التقنيات وافضل الممارسات في التطوير",
+    "request-quote-button": "اطلب عرض سعر",
+    "discover our services": "استكشف خدماتنا",
+  "aboutHomeHeading": "أكثر ما يميزنا",
+    "aboutSectionTitle": "يمكننا تقديم خدمات مميزة للعملاء",
+    "aboutSectionDescription": "شركة تميز هي شركة تقنية رائدة في المملكة العربية السعودية والشرق الاوسط، تهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد.",
+    "itConsulting": "استشارات تكنولوجيا المعلومات",
+    "appDevelopment": "تطوير التطبيقات",
+    "cyberSecurity": "الامن السيبراني",
+    "itManagement": "إدارة تكنولوجيا المعلومات",
+    "uiUxDesign": "تصميم واجهة وتجربة المستخدم",
+    "dataAnalysis": "تحليل البيانات",
+    "databaseSecurity": "امن قاعدة البيانات",
+  "digitalMarketing": "التسويق الرقمي",
+    "servicesDetailsButton": "تفاصيل خدماتنا",
+    "projectsLabel": "مشروع",
+    "clientsLabel": "عملاء راضون",
+    "expertsLabel": "خبراء",
+    "aboutImageAlt": "عن شركة تميز",
+  "MoreThanOneHundredBrands": "أكثر من 100 علامة تجارية تثق بنا",
+    "what are we doing?": "ما نقوم به؟",
+    "what are we doing?_desc": "توفير حلول وتطوير اداء خدمة العملاء بانشاء مراكز اتصال مزودة بالتقنيات العالمية والخدمات السحابية المتطورة للمؤسسات والشركات ونظام الاتصال السحابي",
+  "follow our newest articles": "تابع أحدث مقالاتنا",
+  "keep in touch with us": "ابقَ على تواصل معنا",
+    "Testimonials": "التقييمات",
+    "Some of our customer testimonials": "بعض تقييمات عملائنا"
+  },
+
+  "articlePage": {
+    "heading": "اكتشف المعرفة... وكن دائمًا في المقدمة",
+    "subheading": "نشاركك المعرفة والخبرة لتبقى على اطلاع دائم بكل جديد",
+    "Top Articles": "أهم المقالات",
+    "article details": "تفاصيل المقال"
+  },
+
+  "supportPage": {
+    "heading": "معك دائمًا... لأن نجاحك يهمنا",
+    "subheading": "نحن هنا لمساعدتك في كل خطوة، بدعم سريع وفعّال على مدار الساعة",
+    "talk with us": "تحدث معنا",
+    "contact with us": "تواصل معنا",
+    "how can we help": "كيف يمكننا مساعدتك؟",
+    "send": "إرسال"
+  },
+
+  "about tamuizz": "عن شركة تميز",
+  "we present our services in the best way": "نلتزم بتقديم خدماتنا بأعلى معايير الجودة",
+
+  "aboutSection": {
+    "about-us-page-name": "من نحن",
+    "why-are-we-special": "لماذا نحن مميزون؟",
+    "about-us-intro-paragraph": "نحن شركة سعودية متخصصة في مجال البرمجيات وتقديم الحلول الرقمية المبتكرة. فريقنا يضم نخبة من المصممين والمطورين المتخصصين في بناء تطبيقات ومواقع عالية الجودة تخدم مختلف القطاعات.",
+    "request-quote-button": "اطلب عرض سعر",
+    "tech-enhancement-heading": "نحن نعزز نجاح اعمالنا باستخدام التكنولوجيا",
+    "our-goals-heading": "اهدافنا",
+    "our-goals-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد",
+    "our-vision-heading": "رؤيتنا",
+    "our-vision-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد",
+    "about-us-image-alt": "فريقنا",
+    "our-branches-heading": "فروعنا",
+    "riyadh": "الرياض",
+    "riyadh-address": "3303 طريق العروبة، حي السليمانية 18480",
+    "dammam": "الدمام",
+    "dammam-address": "حي الاتصالات، شارع عثمان بن عفان، الدور الثالث",
+    "cairo": "القاهرة",
+    "cairo-address": "3303 طريق العروبة، حي السليمانية 18480"
+  },
+  "howWeWork": {
+    "title": "كيف نعمل",
+    "description": "خطوات العمل معنا",
+    "ourAchievements": "إنجازاتنا",
+  "weIncreaseSuccess": "نحن نعزز نجاح عملائنا",
+    "clients": "عملائنا الراضون",
+  "projects": "مشاريعنا المُنفذة",
+    "experts": "خبرائنا"
+  },
+
+  "projects": {
+    "Our Projects": "مشاريعنا",
+    "Description": "أحدث نجاحاتنا"
+  },
+
+  "solutionPage": {
+    "heading": "نبتكر الحلول... لنحقق التميز",
+    "subheading": "نبتكر حلولًا ذكية تواكب تطلعاتك وتدفع أعمالك نحو التميز",
+    "solution_title": "نحن نقدم افضل الحلول",
+    "solution details": "تفاصيل الحلول"
+  },
+
+  "why are we special": "أكثر ما يميزنا",
+
+  "servicesPage": {
+    "heading": "خدمات تواكب طموحك، وتصنع الفارق",
+    "subheading": "نقدم مجموعة متكاملة من الخدمات المصممة لتلائم احتياجاتك بدقة",
+    "ServicesSubTitle": "نحن نقدم افضل جوده",
+    "serviceDetails": "تفاصيل الخدمة"
+  },
+
+  "faq": "الاسئلة الشائعة",
+  "faqPage": {
+    "headline1": "حافظ على امان عملك",
+    "headline2": "وتاكد من توافره بدرجة عالية"
+  },
+
+  "contact_us": "تواصل معنا",
+  "email_placeholder": "البريد الإلكتروني",
+  "email_description": "يرجى إدخال عنوان بريدك الإلكتروني لتلقي آخر الاخبار والتحديثات.",
+  "quick_links": "روابط هامة",
+  "company_description": "شركة تميــّز هــي شركه تقنيــة رائــدة في الملكــة العربيــة الســعودية والــشرق الاوســط، تهـدف إلى تقديـم حلـول تقنيـة ذكيـة تلـبي احتياجـات الـشركات والمؤسسـات والافـراد",
+  "terms_condition": "الشروط والاحكام",
+  "privacy_policy": "سياسة الخصوصية",
+  "form": {
+    "name": "الاسم",
+    "phone": "رقم الهاتف",
+    "email": "البريد الالكترونى",
+    "message": "الرسالة",
+    "message_placeholder": "اكتب رسالتك هنا"
+  },
+  "success": {
+    "Success": "تم بنجاح",
+    "message sent successfully": "تم إرسال الرسالة بنجاح",
+  "successfully subscription": "مرحبًا بك معنا في تميز",
+    "OK": "تمام"
+  },
+  "errors": {
+    "Error": "حدث خطأ",
+    "Must be 3 characters or more": "يجب أن تكون 3 أحرف أو أكثر",
+    "Required": "مطلوب",
+    "Invalid email address": "هذا البريد الإلكتروني غير صالح",
+    "Must be 10 characters or more": "يجب أن تكون 10 أحرف أو أكثر",
+    "Something went wrong, please try again later": "حدث خطأ ما، يرجى المحاولة مرة أخرى في وقت لاحق"
+  }
+}

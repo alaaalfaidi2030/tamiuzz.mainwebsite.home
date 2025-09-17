@@ -1,0 +1,116 @@
+.cardContainer:nth-child(odd) div:nth-child(1) {
+  order: 1;
+}
+
+/* Responsive typography and spacing */
+.info h3 {
+  color: var(--primary-color);
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.3;
+  text-transform: capitalize;
+}
+
+.info .desc {
+  font-weight: 400;
+  margin: 20px 0 0;
+  font-size: 20px;
+  line-height: 1.5;
+  color: var(--Text-color);
+}
+
+.downloadLinks {
+
+  position: fixed;
+  bottom: 20%;
+  left: 0;
+}
+
+.linksWrapper {
+  display: flex;
+  gap: 10px;
+  padding: 10px;
+  flex-direction: column;
+}
+
+.downloadLinks a {
+
+  width: 50px;
+  padding: 10px;
+  opacity: 0.7 !important;
+  height: 50px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+}
+
+.downloadLinks a i {
+  font-size: 20px;
+}
+
+.downloadLinks a:nth-child(2) {
+  background-color: var(--primary-color);
+  border: 2px solid var(--primary-color);
+  color: white;
+}
+
+.downloadLinks a:nth-child(2):hover {
+  color: var(--primary-color);
+  background-color: white;
+}
+
+.downloadLinks a:hover {
+  opacity: 1 !important;
+}
+
+/* Responsive styles */
+@media (max-width: 1024px) {
+  .info h3 {
+    font-size: 48px;
+  }
+
+  .info .desc {
+    line-height: 28px;
+  }
+}
+
+@media (max-width: 768px) {
+  .info h3 {
+    font-size: 36px;
+  }
+
+  .info .desc {
+    line-height: 24px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .info h3 {
+    font-size: 28px;
+  }
+
+  .info .desc {
+    line-height: 22px;
+    font-size: 14px;
+  }
+
+  .cardContainer {
+    flex-direction: column;
+  }
+
+  .cardContainer div {
+    order: unset;
+    /* Reset order on small screens if needed */
+  }
+}

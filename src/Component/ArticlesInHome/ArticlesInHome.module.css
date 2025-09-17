@@ -1,0 +1,14 @@
+.heading {
+    width: fit-content;
+}
+
+.ArticleHomeContainer :global(.swiper-button-prev),
+.ArticleHomeContainer :global(.swiper-button-next),
+.ArticleHomeContainer :global(.swiper-pagination-bullets) {
+    display: none !important;
+
+}
+
+ body[dir="ltr"] .buttonContainer{
+    flex-direction: row-reverse;
+ }

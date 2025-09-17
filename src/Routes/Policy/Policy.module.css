@@ -1,0 +1,35 @@
+.privacySection {
+  padding: 2rem;
+  background-color: var(--bg-color);
+  color: var(--Text);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.8;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.policyContent {
+  max-width: 70%;
+  margin: 0 auto;
+  background-color: #f8fafc;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--lite);
+}
+
+.policyContent h3 {
+  color: var(--primary-color);
+  font-size: 1.25rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.policyContent ul {
+  padding-right: 1.5rem;
+  list-style-type: disc;
+}
+
+.policyContent li {
+  margin-bottom: 0.5rem;
+}
