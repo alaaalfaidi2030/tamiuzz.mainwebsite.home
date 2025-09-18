@@ -74,7 +74,7 @@ export default function AboutSection({ counter, logos, services }) {
                                 services.map((service, idx) => {
                                     if (idx % 2 == 0)
                                         return <motion.li variants={itemVariants} key={idx}>
-                                            <Link to={`/services/${service.path}`} >
+                                            <Link to={`/services/${idx}`} >
                                                 <i className="fa-solid fa-check"></i>{service.title}
                                             </Link>
                                         </motion.li>
@@ -91,7 +91,7 @@ export default function AboutSection({ counter, logos, services }) {
                             services.map((service, idx) => {
                                 if (idx % 2 == 1)
                                     return <motion.li variants={itemVariants} key={idx}>
-                                        <Link to={`/services/${service.path}`} >
+                                        <Link to={`/services/${idx}`} >
                                             <i className="fa-solid fa-check"></i>{service.title}
                                         </Link>
                                     </motion.li>

@@ -31,7 +31,7 @@ export default function ServiceCard({ idx = 0, imageUrl, iconUrl, title, path, d
                 variants={cardVariants}
                 initial="hidden"
                 animate="visible" >
-                <div className={styles.imageWrapper+" my-3"}>
+                <div className={styles.imageWrapper + " my-3"}>
                     <img loading='lazy' src={iconUrl} alt="icon image" className={styles.image} />
 
                 </div>
@@ -39,7 +39,7 @@ export default function ServiceCard({ idx = 0, imageUrl, iconUrl, title, path, d
                     <h4>
                         {title}
                     </h4>
-                    <p className={styles.description}>{description}</p>
+                    <p className={styles.description} dangerouslySetInnerHTML={{ __html: description }}></p>
                     <Link to={`/services/${path}`} className={styles.link}>{t("read more")} →</Link>
                 </div>
             </motion.div>

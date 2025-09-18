@@ -48,6 +48,7 @@ export default function ServiceDetails() {
 
     useEffect(() => {
         getServices(id)
+        setDisplayServicesIndex(id)
     }, [])
 
 
@@ -130,9 +131,13 @@ function IndexingPart({ services, displayServicesIndex, t, setDisplayServicesInd
                     <H3 text={t("services")}></H3>
                     {
                         services.map((service, idx) =>
-                            <button className={`my-2 d-flex  justify-content-between ${style.option} ${displayServicesIndex == idx ? style.active : ""}`} key={idx} onClick={() =>
-                                setDisplayServicesIndex(idx)
-                            }>
+                            <button className={`my-2 d-flex  justify-content-between ${style.option} ${displayServicesIndex == idx ? style.active : ""}`} key={idx}
+                                onClick={() => {
+                                    setDisplayServicesIndex(idx);
+                                    //change the path also
+                                    window.history.pushState({}, '', `/services/${idx}`)
+                                }}
+                            >
                                 {service.title}
                             </button>
                         )

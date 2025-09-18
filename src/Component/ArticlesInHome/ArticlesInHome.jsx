@@ -125,7 +125,7 @@ export default function ArticlesInHome({ blogs }) {
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.2 }}
             >
-                <H2 text={t("Top Articles")} />
+                <H2 text={t("homePage.Top Articles")} />
                 <H3 text={t("homePage.follow our newest articles")} />
             </motion.div>
 

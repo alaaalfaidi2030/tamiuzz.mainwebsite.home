@@ -100,9 +100,9 @@ export default function WhatWeAreDoing({ solutions }) {
                                 <div className={"icon text-primary bg-white d-flex justify-content-center align-items-center rounded-circle fs-4 mx-2 " + style.iconWrapper} >
                                     <i className={item.icon}></i>
                                 </div>
-                                <div className="text d-flex flex-column ">
+                                <div className="text d-flex flex-column " >
                                     <h5>{t(item.title)}</h5>
-                                    <span>{item.text}</span>
+                                    <span dir='ltr'>{item.text}</span>
                                 </div>
                             </div>
                         )
@@ -164,7 +164,7 @@ function SolutionSlider({ solutions }) {
                                 <div className={style.content + " mt-3"}>
                                     {solution.iconUrl && (
                                         <div className={style.iconBadge}>
-                                            <img loading='lazy' src={solution.iconUrl} alt="icon" width={24} height={24} />
+                                            <img loading='lazy' src={solution.iconUrl} alt="icon" width={35} height={35} />
                                         </div>
                                     )}
                                     <h3>{solution.title}</h3>

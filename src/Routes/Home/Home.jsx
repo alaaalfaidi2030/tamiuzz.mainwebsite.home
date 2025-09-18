@@ -31,6 +31,7 @@ export default function Home() {
                     solutions={homeContent.solutions}
                 />
             }
+            
             <HowWeWork counter={homeContent.counter} />
 
             {
