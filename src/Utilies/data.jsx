@@ -19,7 +19,7 @@ export const phoneAndEmail = [
   },
   {
     icon: "fa-solid fa-phone",
-    text: "+1966 544 277 172",
+    text: "+966 544 277 172",
     link: "https://wa.me/966544277172",
     title: "contact_us"
   },
