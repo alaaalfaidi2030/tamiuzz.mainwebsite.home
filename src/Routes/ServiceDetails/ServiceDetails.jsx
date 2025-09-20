@@ -78,7 +78,7 @@ export default function ServiceDetails() {
                                             <>
 
                                                 <div className={style["imageWrapper"]}>
-                                                    <img loading='lazy' src={baseURL + services[displayServicesIndex].imageUrl} alt={services[displayServicesIndex].title} />
+                                                    <img src={baseURL + services[displayServicesIndex].imageUrl} alt={services[displayServicesIndex].title} />
 
                                                 </div>
                                                 <div className={style["info"] + " p-2"}>
