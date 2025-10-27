@@ -20,13 +20,10 @@ html {
 .dark {
   /* Global Coloring */
   --primary-color: #1444d4;
-  --bg-color: #1d242e;
-  --Text-color: #20a4fc;
+  --bg-color: #021120;
+  --Text-color: #8eb9d6;
   --desc-text-color: #e2e2e2;
-
-
-
-
+ 
 }
 
 body {

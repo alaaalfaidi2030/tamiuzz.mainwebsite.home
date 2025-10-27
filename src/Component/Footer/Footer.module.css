@@ -3,7 +3,6 @@
 
   --gradient-footer-color: linear-gradient(90deg, transparent, white);
   --gradient-footer-color-ltr: linear-gradient(-90deg, transparent, white);
-
   background: var(--primary-color);
   color: white;
   padding: 60px 0 20px;
@@ -136,7 +135,8 @@ body[dir="ltr"] .footer-title::after {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
 }
-.email-desc{
+
+.email-desc {
   color: rgba(255, 255, 255, 0.7);
 }
 

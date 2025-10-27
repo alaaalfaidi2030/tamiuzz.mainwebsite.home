@@ -68,7 +68,7 @@ export default function WhatWeAreDoing({ solutions }) {
                             <H2 text={t("homePage.what are we doing?")} />
                         </motion.div>
                     </div>
-                    <div className="col-md-6 ">
+                    <div className="col-md-8 m-auto text-center ">
                         <motion.p
                             variants={fadeIn}
                             initial="hidden"
