@@ -12,10 +12,10 @@ import logo from "/logo.svg";
 import whiteLogo from "/logo-white.svg";
 import { useTranslation } from "react-i18next";
 import style from "./Navbar.module.css";
-import i18n from "../../i18n";
 import { motion } from "framer-motion";
 import { isThemeModeContext } from "../../Context/isThemeModeContext";
 import NavbarTop from "../Ui/NavbarTop/NavbarTop";
+import i18n from "../../i18n";
 
 const Navbar = () => {
   const [navbarCollapseInstance, setNavbarCollapseInstance] = useState(null);

@@ -1,11 +1,9 @@
-import { useEffect } from 'react'
 import IsMobileProvider from './Context/isMobileContext'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import HomeContentProvider from './Context/homeContentContext'
 import AuthProvider from './Context/authContext'
 import IsThemeModeProvider from './Context/isThemeModeContext'
 import RoutLayout from './Component/RoutLayout/RoutLayout'
-import i18n from './i18n'
 import Error404 from './Routes/Error404/Error404'
 import { createLazyLoadingComp, preloadRoute } from './Utilies/LazyLoadingHelper.jsx'
 
