@@ -124,55 +124,83 @@ export default function SolutionDetails() {
                         </motion.div>
 
 
-                        {solutionDetails.sections.map((section, idx) => (
-                            <motion.div
-                                className={"row g-5 my-3 py-3 " + style.cardContainer}
-                                key={idx}
-                                initial="hidden"
-                                whileInView="visible"
-                                viewport={{ once: true, amount: 0.4 }}
-                                variants={sectionContainerVariants}
-                            >
 
+                        {solutionDetails.sections.map((section, idx) => (
+                            <React.Fragment key={idx}>
                                 <motion.div
-                                    className="col-md-6 d-flex justify-content-center"
-                                    variants={imageWrapperVariants}
+                                    className={"row g-5 my-3 py-3 " + style.cardContainer}
+                                    initial="hidden"
+                                    whileInView="visible"
+                                    viewport={{ once: true, amount: 0.4 }}
+                                    variants={sectionContainerVariants}
                                 >
-                                    <div className={style["imageWrapper"]}>
-                                        <img loading='lazy'
-                                            src={
-                                                // "https://dev1.tamiuzz.com/"+
-                                                section.images[0]}
-                                            className='w-100 rounded-4'
-                                            alt={section.title}
-                                        />
+                                    <motion.div
+                                        className="col-md-6 d-flex justify-content-center"
+                                        variants={imageWrapperVariants}
+                                    >
+                                        <div className={style["imageWrapper"]}>
+                                            <img loading='lazy'
+                                                src={section.images[0]}
+                                                className='w-100 rounded-4'
+                                                alt={section.title}
+                                            />
+                                        </div>
+                                    </motion.div>
+                                    <div className={"col-md-6 " + style.info}>
+                                        <h3>{section.title}</h3>
+                                        <div className={style.desc} dangerouslySetInnerHTML={{
+                                            __html: section.description
+                                        }}></div>
                                     </div>
                                 </motion.div>
-                                <div className={"col-md-6 " + style.info}>
-                                    <h3>{section.title}</h3>
-                                    <div className={style.desc} dangerouslySetInnerHTML={{
-                                        __html:
-                                            section.description
-                                    }}></div>
-                                </div>
-
-
-                            </motion.div>
+                                <motion.div
+                                    className={style.flatBtnGroup}
+                                    initial={{ opacity: 0, y: 32 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.4 }}
+                                    transition={{ duration: 0.7, ease: "easeOut" }}
+                                >
+                                    {solutionDetails.profileUrl &&
+                                        <a
+                                            target='_blank'
+                                            href={solutionDetails.profileUrl}
+                                            className={style.flatBtn + ' ' + style.flatProfile}
+                                            title={t('solutionPage.download_profile')}
+                                        >
+                                            <i className="fa-solid fa-file" style={{ marginLeft: 6 }}></i>
+                                            <span>{t('solutionPage.download_profile')}</span>
+                                        </a>}
+                                    {solutionDetails.downloadUrl &&
+                                        <a
+                                            target='_blank'
+                                            href={solutionDetails.downloadUrl}
+                                            className={style.flatBtn + ' ' + style.flatDownload}
+                                            title={t('solutionPage.download_document')}
+                                        >
+                                            <i className="fa-solid fa-download" style={{ marginLeft: 6 }}></i>
+                                            <span>{t('solutionPage.download_document')}</span>
+                                        </a>}
+                                </motion.div>
+                            </React.Fragment>
                         ))}
 
 
                         <div className={style.downloadLinks}>
                             <div className="container">
                                 <div className={style["linksWrapper"]}>
-
                                     {solutionDetails.profileUrl &&
                                         <motion.a
                                             initial="hidden"
                                             whileInView="visible"
                                             viewport={{ once: true, amount: 0.4 }}
                                             variants={sectionContainerVariants}
-                                            target='_blank' href={solutionDetails.profileUrl} className='btn-web btn-web-secondary'>
-                                            <i class="fa-solid fa-file"></i>
+                                            target='_blank'
+                                            href={solutionDetails.profileUrl}
+                                            className={`btn-web btn-web-secondary ${style.downloadBtn} ${style.iconOnlyBtn}`}
+                                            title={t('solutionPage.download_profile')}
+                                        >
+                                            <i className="fa-solid fa-file"></i>
+                                            <span className={style.btnText}>{t('solutionPage.download_profile')}</span>
                                         </motion.a>}
                                     {solutionDetails.downloadUrl &&
                                         <motion.a
@@ -180,8 +208,13 @@ export default function SolutionDetails() {
                                             whileInView="visible"
                                             viewport={{ once: true, amount: 0.4 }}
                                             variants={sectionContainerVariants}
-                                            target='_blank' href={solutionDetails.downloadUrl}>
-                                            <i class="fa-solid fa-download"></i>
+                                            target='_blank'
+                                            href={solutionDetails.downloadUrl}
+                                            className={`btn-web btn-web-primary ${style.downloadBtn} ${style.iconOnlyBtn}`}
+                                            title={t('solutionPage.download_document')}
+                                        >
+                                            <i className="fa-solid fa-download"></i>
+                                            <span className={style.btnText}>{t('solutionPage.download_document')}</span>
                                         </motion.a>}
                                 </div>
                             </div>

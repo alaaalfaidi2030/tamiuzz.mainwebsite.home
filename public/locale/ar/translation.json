@@ -108,7 +108,11 @@
     "heading": "نبتكر الحلول... لنحقق التميز",
     "subheading": "نبتكر حلولًا ذكية تواكب تطلعاتك وتدفع أعمالك نحو التميز",
     "solution_title": "نحن نقدم افضل الحلول",
-    "solution details": "تفاصيل الحلول"
+    "solution details": "تفاصيل الحلول",
+    "download_profile": "تحميل الملف التعريفي",
+    "download_document": "تحميل المستند",
+    "view_profile": "عرض الملف التعريفي",
+    "view_document": "عرض المستند"
   },
 
   "why are we special": "اكثر ما يميزنا",

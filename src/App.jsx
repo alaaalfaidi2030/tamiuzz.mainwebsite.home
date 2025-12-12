@@ -6,6 +6,7 @@ import IsThemeModeProvider from './Context/isThemeModeContext'
 import RoutLayout from './Component/RoutLayout/RoutLayout'
 import Error404 from './Routes/Error404/Error404'
 import { createLazyLoadingComp, preloadRoute } from './Utilies/LazyLoadingHelper.jsx'
+import { useEffect } from 'react'
 
 // Lazy load all route components
 const Home = createLazyLoadingComp(() => import('./Routes/Home/Home'))
