@@ -1,0 +1,311 @@
+/* ========================= */
+/*    Pricing Table Wrapper  */
+/* ========================= */
+
+.pricingTableWrapper {
+    width: 100%;
+    margin: 3rem 0;
+    padding: 2rem 0;
+}
+
+.tableContainer {
+    background: var(--bg-color);
+    border-radius: 16px;
+    box-shadow: 0 4px 24px rgba(38, 68, 162, 0.08);
+    overflow: hidden;
+    border: 1px solid rgba(38, 68, 162, 0.08);
+}
+
+.tableScroll {
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--bg-color);
+}
+
+.tableScroll::-webkit-scrollbar {
+    height: 8px;
+}
+
+.tableScroll::-webkit-scrollbar-track {
+    background: #f1f5f9;
+    border-radius: 8px;
+}
+
+.tableScroll::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 8px;
+}
+
+/* ========================= */
+/*       Table Styles        */
+/* ========================= */
+
+.pricingTable {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 480px;
+}
+
+/* ========================= */
+/*       Header Styles       */
+/* ========================= */
+
+.pricingTable thead {
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-color-hover) 100%);
+    color: #fff;
+}
+
+.pricingTable thead tr {
+    border: none;
+}
+
+.pricingTable th {
+    padding: 1.5rem 1.2rem;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    border: none;
+}
+
+.featureHeader {
+    text-align: right;
+    background: var(--primary-color);
+    min-width: 220px;
+}
+
+.featureHeader span {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.planHeader {
+    min-width: 180px;
+    position: relative;
+}
+
+.planTitle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.planName {
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.popularBadge {
+    background: var(--secondary-color);
+    color: #fff;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.3em 0.8em;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ========================= */
+/*       Body Styles         */
+/* ========================= */
+
+.pricingTable tbody tr {
+    border-bottom: 1px solid rgba(38, 68, 162, 0.08);
+    transition: background 0.2s ease;
+}
+
+.pricingTable tbody tr:hover {
+    background: rgba(38, 68, 162, 0.02);
+}
+
+.pricingTable tbody tr:last-child {
+    border-bottom: none;
+}
+
+.pricingTable td {
+    padding: 1.2rem 1rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--Text-color);
+}
+
+.featureCell {
+    text-align: right;
+    font-weight: 500;
+    background: var(--bg-color);
+    border-left: 1px solid rgba(38, 68, 162, 0.08);
+}
+
+.featureName {
+    font-size: 1.05rem;
+    color: var(--Text-color);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.valueCell {
+    vertical-align: middle;
+}
+
+.textValue {
+    font-size: 1rem;
+    color: var(--desc-text-color);
+    font-weight: 500;
+}
+
+.emptyValue {
+    color: #cbd5e1;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+/* ========================= */
+/*    Responsive Styles      */
+/* ========================= */
+
+@media (max-width: 1024px) {
+    .pricingTable th {
+        padding: 1rem 0.7rem;
+        font-size: 0.95rem;
+    }
+
+    .featureHeader span {
+        font-size: 1rem;
+    }
+
+    .planName {
+        font-size: 1rem;
+    }
+
+    .pricingTable td {
+        padding: 0.9rem 0.6rem;
+        font-size: 0.9rem;
+    }
+
+    .featureName {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .pricingTableWrapper {
+        margin: 1.2rem 0;
+        padding: 1rem 0;
+    }
+
+    .tableContainer {
+        border-radius: 8px;
+    }
+
+    .pricingTable {
+        min-width: 380px;
+    }
+
+    .pricingTable th {
+        padding: 0.7rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .featureHeader {
+        min-width: 120px;
+    }
+
+    .featureHeader span {
+        font-size: 0.9rem;
+    }
+
+    .planHeader {
+        min-width: 90px;
+    }
+
+    .planName {
+        font-size: 0.9rem;
+    }
+
+    .popularBadge {
+        font-size: 0.65rem;
+        padding: 0.18em 0.5em;
+    }
+
+    .pricingTable td {
+        padding: 0.7rem 0.5rem;
+        font-size: 0.85rem;
+    }
+
+    .featureName {
+        font-size: 0.9rem;
+    }
+
+    .tableScroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .textValue {
+        font-size: 0.9rem;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+    .pricingTableWrapper {
+        margin: 0.7rem 0;
+        padding: 0.5rem 0;
+    }
+
+    .tableContainer {
+        border-radius: 5px;
+    }
+
+    .pricingTable {
+        min-width: 320px;
+    }
+
+    .pricingTable th {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.75rem;
+    }
+
+    .featureHeader {
+        min-width: 80px;
+    }
+
+    .featureHeader span {
+        font-size: 0.8rem;
+    }
+
+    .planHeader {
+        min-width: 60px;
+    }
+
+    .planName {
+        font-size: 0.8rem;
+    }
+
+    .popularBadge {
+        font-size: 0.55rem;
+        padding: 0.12em 0.3em;
+    }
+
+    .pricingTable td {
+        padding: 0.5rem 0.3rem;
+        font-size: 0.75rem;
+    }
+
+    .featureName {
+        font-size: 0.8rem;
+    }
+
+    .textValue {
+        font-size: 0.75rem;
+    }
+
+    .tableScroll {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}

@@ -9,6 +9,8 @@ import { baseURL, getHeaders } from '../../Utilies/data';
 import axios from 'axios';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
+import PricingTable from '../../Component/PricingTable/PricingTable';
+import Modal from '../../Component/Ui/Modal/Modal';
 
 export default function SolutionDetails() {
 
@@ -20,6 +22,7 @@ export default function SolutionDetails() {
     const [solutionDetails, setSolutionDetails] = useState(null);
     const [noDataFounded, setNoDataFounded] = useState(false)
     const [loading, setLoading] = useState(true)
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const navigate = useNavigate()
     // {
 
@@ -140,7 +143,7 @@ export default function SolutionDetails() {
                                     >
                                         <div className={style["imageWrapper"]}>
                                             <img loading='lazy'
-                                                src={section.images[0]}
+                                                src={"https://tamiuzz.com/"+section.images[0]}
                                                 className='w-100 rounded-4'
                                                 alt={section.title}
                                             />
@@ -153,37 +156,84 @@ export default function SolutionDetails() {
                                         }}></div>
                                     </div>
                                 </motion.div>
-                                <motion.div
-                                    className={style.flatBtnGroup}
-                                    initial={{ opacity: 0, y: 32 }}
-                                    whileInView={{ opacity: 1, y: 0 }}
-                                    viewport={{ once: true, amount: 0.4 }}
-                                    transition={{ duration: 0.7, ease: "easeOut" }}
-                                >
-                                    {solutionDetails.profileUrl &&
-                                        <a
-                                            target='_blank'
-                                            href={solutionDetails.profileUrl}
-                                            className={style.flatBtn + ' ' + style.flatProfile}
-                                            title={t('solutionPage.download_profile')}
-                                        >
-                                            <i className="fa-solid fa-file" style={{ marginLeft: 6 }}></i>
-                                            <span>{t('solutionPage.download_profile')}</span>
-                                        </a>}
-                                    {solutionDetails.downloadUrl &&
-                                        <a
-                                            target='_blank'
-                                            href={solutionDetails.downloadUrl}
-                                            className={style.flatBtn + ' ' + style.flatDownload}
-                                            title={t('solutionPage.download_document')}
-                                        >
-                                            <i className="fa-solid fa-download" style={{ marginLeft: 6 }}></i>
-                                            <span>{t('solutionPage.download_document')}</span>
-                                        </a>}
-                                </motion.div>
+                                {
+                                    idx < solutionDetails.sections.length - 1 &&
+
+                                    <motion.div
+                                        className={style.flatBtnGroup}
+                                        initial={{ opacity: 0, y: 32 }}
+                                        whileInView={{ opacity: 1, y: 0 }}
+                                        viewport={{ once: true, amount: 0.4 }}
+                                        transition={{ duration: 0.7, ease: "easeOut" }}
+                                    >
+                                        {(solutionDetails.features && solutionDetails.plans) &&
+                                            <button
+                                                onClick={() => setIsModalOpen(true)}
+                                                className={style.flatBtn + ' ' + style.flatPricing}
+                                                title={t('solutionPage.view_pricing')}
+                                            >
+                                                <i className="fa-solid fa-table" style={{ marginLeft: 6 }}></i>
+                                                <span>{t('solutionPage.view_pricing')}</span>
+                                            </button>}
+                                        {solutionDetails.profileUrl &&
+                                            <a
+                                                target='_blank'
+                                                href={solutionDetails.profileUrl}
+                                                className={style.flatBtn + ' ' + style.flatProfile}
+                                                title={t('solutionPage.download_profile')}
+                                            >
+                                                <i className="fa-solid fa-file" style={{ marginLeft: 6 }}></i>
+                                                <span>{t('solutionPage.download_profile')}</span>
+                                            </a>}
+                                        {solutionDetails.downloadUrl &&
+                                            <a
+                                                target='_blank'
+                                                href={solutionDetails.downloadUrl}
+                                                className={style.flatBtn + ' ' + style.flatDownload}
+                                                title={t('solutionPage.download_document')}
+                                            >
+                                                <i className="fa-solid fa-download" style={{ marginLeft: 6 }}></i>
+                                                <span>{t('solutionPage.download_document')}</span>
+                                            </a>}
+                                    </motion.div>
+                                }
                             </React.Fragment>
                         ))}
 
+                        {/* Pricing Table Section */}
+                        {solutionDetails.features && solutionDetails.plans && (
+                            <PricingTable
+                                features={solutionDetails.features}
+                                plans={solutionDetails.plans}
+                            />
+                        )}
+
+                        {/* Modal for Pricing Table */}
+                        <Modal
+                            isOpen={isModalOpen}
+                            onClose={() => setIsModalOpen(false)}
+                            title={t('solutionPage.pricing_modal_title')}
+                        >
+                            {solutionDetails.features && solutionDetails.plans && (
+                                <PricingTable
+                                    features={solutionDetails.features}
+                                    plans={solutionDetails.plans}
+                                />
+                            )}
+                            {solutionDetails.profileUrl && (
+                                <div className={style.modalDownloadSection}>
+                                    <a
+                                        target='_blank'
+                                        href={solutionDetails.profileUrl}
+                                        className={style.flatBtn + ' ' + style.flatDownload}
+
+                                    >
+                                        <i className="fa-solid fa-download" style={{ marginLeft: 8 }}></i>
+                                        <span>{t('solutionPage.download_profile')}</span>
+                                    </a>
+                                </div>
+                            )}
+                        </Modal>
 
                         <div className={style.downloadLinks}>
                             <div className="container">

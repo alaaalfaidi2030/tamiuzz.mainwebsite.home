@@ -112,7 +112,12 @@
     "download_profile": "تحميل الملف التعريفي",
     "download_document": "تحميل المستند",
     "view_profile": "عرض الملف التعريفي",
-    "view_document": "عرض المستند"
+    "view_document": "عرض المستند",
+    "plans": "الخطط",
+    "features": "الميزات",
+    "popular": "الأكثر شعبية",
+    "view_pricing": "عرض الأسعار والخطط",
+    "pricing_modal_title": "الخطط والأسعار"
   },
 
   "why are we special": "اكثر ما يميزنا",

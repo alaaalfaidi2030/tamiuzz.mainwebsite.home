@@ -111,8 +111,14 @@
     "download_profile": "Download Profile",
     "download_document": "Download Document",
     "view_profile": "View Profile",
-    "view_document": "View Document"
+    "view_document": "View Document",
+    "plans": "Plans",
+    "features": "Features",
+    "popular": "Most Popular",
+    "view_pricing": "View Pricing & Plans",
+    "pricing_modal_title": "Plans & Pricing"
   },
+
 
   "servicesPage": {
     "heading": "Services That Match Your Ambition and Make an Impact",

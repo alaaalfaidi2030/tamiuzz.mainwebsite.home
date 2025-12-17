@@ -1,0 +1,162 @@
+/* ========================= */
+/*      Modal Overlay        */
+/* ========================= */
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+/* ========================= */
+/*      Modal Content        */
+/* ========================= */
+
+.modalContent {
+    background: var(--bg-color);
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* ========================= */
+/*      Modal Header         */
+/* ========================= */
+
+.modalHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(38, 68, 162, 0.1);
+    position: sticky;
+    top: 0;
+    background: var(--bg-color);
+    z-index: 10;
+}
+
+.modalTitle {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+}
+
+.closeButton {
+    background: transparent;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--Text-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.closeButton:hover {
+    background: rgba(38, 68, 162, 0.1);
+    color: var(--primary-color);
+    transform: rotate(90deg);
+}
+
+/* ========================= */
+/*       Modal Body          */
+/* ========================= */
+
+.modalBody {
+    padding: 2rem;
+}
+
+/* ========================= */
+/*    Responsive Styles      */
+/* ========================= */
+
+@media (max-width: 768px) {
+    .modalContent {
+        max-height: 95vh;
+        border-radius: 12px;
+    }
+
+    .modalHeader {
+        padding: 1rem 1.5rem;
+    }
+
+    .modalTitle {
+        font-size: 1.2rem;
+    }
+
+    .modalBody {
+        padding: 1.5rem;
+    }
+
+    .closeButton {
+        width: 36px;
+        height: 36px;
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .modalOverlay {
+        padding: 0.5rem;
+    }
+
+    .modalContent {
+        border-radius: 8px;
+    }
+
+    .modalHeader {
+        padding: 0.8rem 1rem;
+    }
+
+    .modalTitle {
+        font-size: 1rem;
+    }
+
+    .modalBody {
+        padding: 1rem;
+    }
+
+    .closeButton {
+        width: 32px;
+        height: 32px;
+        font-size: 1.2rem;
+    }
+}
+
+/* ========================= */
+/*      Hide Scrollbar       */
+/* ========================= */
+
+.modalOverlay::-webkit-scrollbar,
+.modalContent::-webkit-scrollbar {
+    display: none; /* For Chrome, Safari, and Edge */
+}
+
+.modalOverlay {
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+}
+
+.modalContent {
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+    scrollbar-width: none; /* For Firefox */
+}
