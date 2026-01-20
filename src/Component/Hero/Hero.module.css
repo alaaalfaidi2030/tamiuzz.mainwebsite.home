@@ -1,41 +1,41 @@
+/* ============================================
+   HERO - PROFESSIONAL CORPORATE
+   ============================================ */
+
 .heroSection {
-  color: white;
+  color: var(--text-inverse);
   overflow: hidden;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
   z-index: 1;
-  padding-bottom: 3rem;
+  padding-bottom: var(--space-8);
 }
 
 body[dir="ltr"] .heroSection {
-  transform: scaleX(-1) !important;
-  -webkit-transform: scaleX(-1) !important;
-  -moz-transform: scaleX(-1) !important;
-  -ms-transform: scaleX(-1) !important;
-  -o-transform: scaleX(-1) !important;
+  transform: scaleX(-1);
 }
 
 body[dir="ltr"] .contentContainer {
-  transform: scaleX(-1) !important;
-  -webkit-transform: scaleX(-1) !important;
-  -moz-transform: scaleX(-1) !important;
-  -ms-transform: scaleX(-1) !important;
-  -o-transform: scaleX(-1) !important;
+  transform: scaleX(-1);
 }
 
 body[dir="ltr"] .mainContent {
-  background: linear-gradient(-90deg,
-      rgba(5, 26, 108, 0) 14.74%,
-      #0a2ea4bd 70.82%);
+  background: linear-gradient(
+    -90deg,
+    rgba(10, 17, 41, 0) 10%,
+    rgba(26, 58, 143, 0.85) 65%
+  );
 }
 
 .mainContent {
   min-height: 100vh;
-  background: linear-gradient(90deg,
-      rgba(5, 26, 108, 0) 14.74%,
-      #0a2ea4bd 70.82%);
+  background: linear-gradient(
+    90deg,
+    rgba(10, 17, 41, 0) 10%,
+    rgba(26, 58, 143, 0.85) 65%
+  );
 }
 
 .heading {
@@ -45,74 +45,101 @@ body[dir="ltr"] .mainContent {
   justify-content: center;
 }
 
-h1 {
-  font-size: 3.5rem;
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+
+.heroSection h1 {
+  font-size: clamp(2rem, 4.5vw, 3.25rem);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-5);
+  letter-spacing: -0.02em;
 }
 
 .gradientText {
-  background: linear-gradient(135deg, #ffffff 0%, #bbdefb 100%);
+  background: linear-gradient(135deg, #ffffff 0%, #c7d6fe 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 .orangeText {
-  color: #ff9800;
+  color: var(--secondary-400);
 }
 
 .heroDescription {
-  font-size: 1.5rem;
-  line-height: 1.6;
+  font-size: clamp(1rem, 1.8vw, 1.35rem);
+  line-height: 1.7;
+  opacity: 0.92;
+  max-width: 600px;
+  font-weight: 400;
 }
 
+/* ============================================
+   BUTTONS
+   ============================================ */
+
 .ctaButton {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: 600;
-  color: white;
-  border-radius: 10px;
-  padding: 13px 32px;
+  color: var(--text-inverse);
+  background-color: var(--secondary-500);
+  border-radius: var(--radius-md);
+  padding: var(--space-3) var(--space-8);
+  border: none;
   z-index: 9;
-  transition: all 0.3s ease-in-out;
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  transition: all var(--transition-base);
 }
 
 .ctaButton:hover {
-  scale: 1.05;
-  box-shadow: 0 15px 35px rgba(255, 152, 0, 0.4);
+  background-color: var(--secondary-600);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(228, 157, 35, 0.35);
+}
+
+.ctaButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
 }
 
 .secondaryButton {
-  border-radius: 10px;
-  background-color: var(--lite);
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  padding: 1rem 2rem;
-  font-size: 1.1rem;
+  border-radius: var(--radius-md);
+  background-color: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: var(--space-3) var(--space-8);
+  font-size: 1rem;
   font-weight: 600;
-  color: var(--primary-color);
+  color: var(--text-inverse);
   z-index: 9;
-  transition: all 0.3s ease-in-out;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  transition: all var(--transition-base);
 }
 
 .secondaryButton:hover {
-  scale: 1.05;
-  background-color: rgba(255, 255, 255, 0.1);
-  color: var(--lite);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translateY(-2px);
 }
+
+.secondaryButton:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.7);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   DECORATIVE
+   ============================================ */
+
+.decroImage {
+  pointer-events: none;
+  opacity: 0.7;
+  z-index: 0;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
 
 @media (max-width: 991px) {
   .heroSection {
@@ -129,22 +156,31 @@ h1 {
   .mainContent {
     min-height: 100vh;
     align-items: center;
+    background: linear-gradient(
+      180deg,
+      rgba(10, 17, 41, 0.3) 0%,
+      rgba(26, 58, 143, 0.9) 50%
+    );
+  }
+
+  body[dir="ltr"] .mainContent {
+    background: linear-gradient(
+      180deg,
+      rgba(10, 17, 41, 0.3) 0%,
+      rgba(26, 58, 143, 0.9) 50%
+    );
   }
 
   .heading {
     height: auto;
-    padding: 0 12px !important;
-  }
-
-  h1 {
-    font-size: 2rem;
+    padding: var(--space-16) var(--space-4) !important;
   }
 
   .heroDescription {
-    font-size: 1.2rem;
-    line-height: 1.4;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    line-height: 1.6;
+    font-weight: 500;
+    margin-bottom: var(--space-5);
+    max-width: 100%;
   }
 
   .decroImage {
@@ -154,40 +190,46 @@ h1 {
   .btnContainer {
     width: 100%;
     margin: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-3);
   }
 
-  .btnContainer * {
-    font-size: 0.8rem;
-    justify-content: center;
-    margin: 0 auto;
+  .btnContainer > * {
+    font-size: 0.9rem;
+  }
+
+  .ctaButton,
+  .secondaryButton {
+    padding: var(--space-3) var(--space-6);
   }
 }
 
-@media (max-width: 400px) {
+@media (max-width: 480px) {
+  .btnContainer {
+    flex-direction: column;
+    gap: var(--space-3);
+  }
 
-  h1 {
-    font-size: 1.8rem;
+  .btnContainer > * {
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
   }
 
   .heroDescription {
-    font-size: 1rem;
-    line-height: 1.4;
-    font-weight: bold;
-    margin-bottom: 1rem;
+    font-size: 0.95rem;
   }
 
-  .decroImage {
-    display: none;
+  .heroSection h1 {
+    font-size: 1.75rem;
   }
+}
 
-  .btnContainer {
-    width: 100%;
-    margin: auto;
-  }
-
-  .btnContainer * {
-    font-size: 0.5rem;
-    justify-content: center;
-    margin: 0 auto;
+@media (max-width: 360px) {
+  .ctaButton,
+  .secondaryButton {
+    padding: var(--space-3) var(--space-4);
+    font-size: 0.85rem;
   }
 }

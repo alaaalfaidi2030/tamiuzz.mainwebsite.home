@@ -1,66 +1,104 @@
-import { useEffect, useState } from 'react';
-import styles from './textInput.module.css';
-import { motion } from 'framer-motion';
+import { useEffect, useState, useId } from "react";
+import { motion } from "framer-motion";
+import styles from "./TextInput.module.css";
 
-export default function TextInput({ idx = 0, label, name, required = false, placeholder = '', value, onChange, error, touched, animationFlag = true }) {
-    const [shouldShake, setShouldShake] = useState(false);
+const SHAKE_VARIANTS = {
+  shake: {
+    x: [-8, 8, -8, 8, -4, 4, 0],
+    transition: { duration: 0.5, ease: "easeInOut" },
+  },
+  normal: { x: 0 },
+};
 
+const TextInput = ({
+  idx = 0,
+  label,
+  name,
+  type = "text",
+  required = false,
+  placeholder = "",
+  value,
+  onChange,
+  onBlur,
+  error,
+  touched,
+  disabled = false,
+  animationFlag = true,
+  autoComplete,
+}) => {
+  const [shouldShake, setShouldShake] = useState(false);
+  const generatedId = useId();
+  const inputId = name || generatedId;
+  const errorId = `${inputId}-error`;
 
-    // Trigger shake animation when error appears
-    useEffect(() => {
-        if (error && touched) {
-            setShouldShake(true);
-            // Reset shake after animation completes
-            const timer = setTimeout(() => setShouldShake(false), 600);
-            return () => clearTimeout(timer);
-        }
-    }, [error, touched, name]);
+  const hasError = error && touched;
+  const isValid = touched && !error && value;
 
-    // Shake animation variants
-    const shakeVariants = {
-        shake: {
-            x: [-10, 10, -10, 10, -5, 5, 0],
-            transition: {
-                duration: 0.6,
-                ease: "easeInOut"
-            }
-        },
-        normal: {
-            x: 0
-        }
-    };
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{
-                opacity: 1,
-                y: 0,
-                ...(shouldShake ? shakeVariants.shake : shakeVariants.normal)
-            }}
-            transition={{
-                duration: animationFlag ? 0.5 : 0,
-                delay: animationFlag ? 0.4 + idx * 0.1 : 0,
-            }}
-            className={styles.inputWrapper}>
-            <label htmlFor={name} className={styles.label}>
-                {label} {required && <span className={styles.required}>*</span>}
-            </label>
-            <input
-                id={name}
-                name={name}
-                type="text"
-                className={styles.input}
-                placeholder={placeholder}
-                value={value}
-                onChange={onChange}
-            />
-            {
-                error && touched &&
-                <div className="text-danger text-center">
-                    {error}
+  useEffect(() => {
+    if (hasError) {
+      setShouldShake(true);
+      const timer = setTimeout(() => setShouldShake(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [hasError]);
 
-                </div>
-            }
-        </motion.div>
-    );
-}
+  const inputClassName = [
+    styles.input,
+    hasError && styles.inputError,
+    isValid && styles.inputSuccess,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        ...(shouldShake ? SHAKE_VARIANTS.shake : SHAKE_VARIANTS.normal),
+      }}
+      transition={{
+        duration: animationFlag ? 0.4 : 0,
+        delay: animationFlag ? 0.1 + idx * 0.08 : 0,
+      }}
+      className={styles.inputWrapper}
+    >
+      <label htmlFor={inputId} className={styles.label}>
+        {label}
+        {required && (
+          <span className={styles.required} aria-hidden="true">
+            *
+          </span>
+        )}
+      </label>
+
+      <div className={styles.inputContainer}>
+        <input
+          id={inputId}
+          name={name}
+          type={type}
+          className={inputClassName}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          disabled={disabled}
+          required={required}
+          autoComplete={autoComplete}
+          aria-invalid={hasError ? "true" : "false"}
+          aria-describedby={hasError ? errorId : undefined}
+        />
+      </div>
+
+      {hasError && (
+        <div id={errorId} className={styles.errorMessage} role="alert">
+          <i className={`fa-solid fa-circle-exclamation ${styles.errorIcon}`} aria-hidden="true" />
+          <span>{error}</span>
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
+export default TextInput;

@@ -1,37 +1,127 @@
-.container {
-  background-color: var(--primary-color);
-}
-.container label,
-.container span {
-  color: white;
-}
-.imageWrapper {
+/* ============================================
+   CONTACT SECTION - PROFESSIONAL CORPORATE
+   ============================================ */
+
+.contactSection {
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  padding: var(--space-16) 0;
+  margin-top: var(--space-16);
   position: relative;
-}
-.container img {
-  top: -90px;
-}
-.container input:focus,
-.container input:focus-within,
-.container input:focus-visible,
-.container textarea:focus,
-.container textarea:focus-within,
-.container textarea:focus-visible {
-  border-bottom-color: var(--secondary-color);
-  outline: none;
-  box-shadow: 0 0 0 0.25rem #e49d2346 !important;
+  overflow: hidden;
 }
 
-@media screen and (max-width: 991px) {
+/* Decorative background pattern */
+.contactSection::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.03) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.contentWrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   FORM COLUMN
+   ============================================ */
+
+.formColumn {
+  padding: var(--space-4);
+}
+
+/* ============================================
+   IMAGE COLUMN
+   ============================================ */
+
+.imageColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.imageWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 450px;
+}
+
+.contactImage {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 20px 40px rgba(0, 0, 0, 0.2));
+  animation: float 6s ease-in-out infinite;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 991px) {
+  .contactSection {
+    padding: var(--space-12) 0;
+    margin-top: var(--space-12);
+  }
+
+  .imageColumn {
+    order: -1;
+    margin-bottom: var(--space-6);
+  }
+
   .imageWrapper {
-    position: static;
+    max-width: 200px;
   }
-  .container {
-    position: relative;
+
+  .contactImage {
+    animation: none;
   }
-  .container img {
-    width: 92px !important;
-    top: 10px;
-    left: 0;
+}
+
+@media (max-width: 768px) {
+  .contactSection {
+    padding: var(--space-10) 0;
+    margin-top: var(--space-10);
+  }
+
+  .formColumn,
+  .imageColumn {
+    padding: var(--space-2);
+  }
+
+  .imageWrapper {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactSection {
+    padding: var(--space-8) 0;
+    margin-top: var(--space-8);
+  }
+
+  .imageWrapper {
+    max-width: 120px;
   }
 }

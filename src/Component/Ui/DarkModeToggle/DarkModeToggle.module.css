@@ -1,46 +1,75 @@
-/* 
-//////////darkModeButton///////////
-*/
+/* ============================================
+   DARK MODE TOGGLE - PROFESSIONAL CORPORATE
+   ============================================ */
 
 .darkModeButton {
   position: fixed;
-  top: 40%;
+  top: 30%;
   right: 0;
   cursor: pointer;
   display: flex;
   align-items: center;
-  border-radius: 50% 0px 0px 50%;
-  padding: 4px 13px 5px 7px;
-  background: var(--primary-color);
-
-  z-index: 10000;
-  opacity: 0.5;
-  transition-duration: 0.3s;
-  transition-property: opacity;
-  transition-timing-function: ease-in-out;
-  -webkit-border-radius: 50% 0px 0px 50%;
-  -moz-border-radius: 50% 0px 0px 50%;
-  -ms-border-radius: 50% 0px 0px 50%;
-  -o-border-radius: 50% 0px 0px 50%;
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  padding: var(--space-1) var(--space-2) var(--space-1) var(--space-2);
+  background: var(--primary-600);
+  z-index: 1000;
+  opacity: 0.55;
+  border: none;
+  transition: all var(--transition-base);
 }
+
 .darkModeButton:hover {
   opacity: 1;
+  transform: translateX(-3px);
+  box-shadow: var(--shadow-md);
 }
+
+.darkModeButton:focus-visible {
+  opacity: 1;
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.darkModeButton:active {
+  transform: translateX(-2px) scale(0.98);
+}
+
 .darkModeButton svg {
-  width: 35px;
-  height: 35px;
-  padding: 5px;
-  border-radius: 50%;
-  background-color: #fff;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding: var(--space-1);
+  border-radius: var(--radius-md);
+  background-color: var(--bg-surface);
+  transition: all var(--transition-base);
 }
+
+.darkModeButton:hover svg {
+  transform: rotate(12deg);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 768px) {
   .darkModeButton {
     top: 30%;
-    scale: 0.8;
-    translate: 10px 10px;
+    padding: var(--space-1);
+  }
+
+  .darkModeButton svg {
+    width: 26px;
+    height: 26px;
+  }
+}
+
+@media (max-width: 480px) {
+  .darkModeButton {
+    top: 25%;
+  }
+
+  .darkModeButton svg {
+    width: 22px;
+    height: 22px;
   }
 }

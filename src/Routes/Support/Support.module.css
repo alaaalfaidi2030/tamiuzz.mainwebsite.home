@@ -1,59 +1,310 @@
-.supportSection {
-  padding: 2rem;
+/* ============================================
+   SUPPORT PAGE - PROFESSIONAL CORPORATE
+   ============================================ */
+
+.supportPage {
+  min-height: 60vh;
+  padding-bottom: var(--space-16);
 }
 
-.contact {
+.contentWrapper {
+  padding: var(--space-10) 0;
+}
+
+/* ============================================
+   FORM SECTION
+   ============================================ */
+
+.formSection {
+  padding: var(--space-4);
+}
+
+/* ============================================
+   CONTACT INFO SECTION
+   ============================================ */
+
+.contactSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space-4);
+}
+
+.contactCard {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+  height: 100%;
   display: flex;
   flex-direction: column;
 }
 
-.contact a {
-  font-size: 18px;
-  color: var(--primary-color);
-  margin: 5px 0;
+.contactHeader {
+  margin-bottom: var(--space-6);
 }
 
-.contact a:hover i {
-  color: var(--secondary-color);
+.contactTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-600);
+  margin-bottom: var(--space-2);
+  position: relative;
+  padding-bottom: var(--space-3);
 }
 
-.contact i {
-  margin: 0 10px;
-  transition-property: color;
-  transition-duration: 0.3s;
+.contactTitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+  border-radius: var(--radius-full);
 }
 
-
-.titleHeading {
-  font-size: 24px;
-  color: var(--primary-color);
-  font-weight: 700;
-  margin-bottom: 1rem;
+body[dir="rtl"] .contactTitle::after {
+  left: auto;
+  right: 0;
 }
 
+.contactSubtitle {
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  margin: 0;
+}
 
-@media screen and (max-width: 991px) {
-  .supportSection {
-   padding: 0
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  flex: 1;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  background-color: var(--bg-tertiary);
+  border-radius: var(--radius-xl);
+  border: 1px solid transparent;
+  transition: all var(--transition-normal);
+  text-decoration: none;
+}
+
+.contactItem:hover {
+  background-color: var(--primary-50);
+  border-color: var(--primary-200);
+  transform: translateX(-4px);
+}
+
+body[dir="rtl"] .contactItem:hover {
+  transform: translateX(4px);
+}
+
+.contactItem:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+.contactIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+  border-radius: var(--radius-lg);
+  color: white;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  transition: transform var(--transition-normal);
+}
+
+.contactItem:hover .contactIcon {
+  transform: scale(1.1);
+}
+
+.contactContent {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.contactLabel {
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.contactText {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+/* Social Links in Contact Card */
+.socialLinks {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--border-light);
+}
+
+.socialLink {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-lg);
+  background-color: var(--bg-tertiary);
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  transition: all var(--transition-normal);
+}
+
+.socialLink:hover {
+  background-color: var(--primary-500);
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .contactCard {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.dark .contactItem {
+  background-color: var(--bg-secondary);
+}
+
+.dark .contactItem:hover {
+  background-color: var(--primary-900);
+  border-color: var(--primary-700);
+}
+
+.dark .socialLink {
+  background-color: var(--bg-secondary);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 991px) {
+  .contentWrapper {
+    padding: var(--space-6) 0;
   }
 
-  .info {
+  .contactSection {
     order: -1;
+    padding: var(--space-4);
+    margin-bottom: var(--space-6);
   }
 
-  .contact {
+  .contactCard {
+    padding: var(--space-6);
+  }
+
+  .contactHeader {
+    text-align: center;
+    margin-bottom: var(--space-5);
+  }
+
+  .contactTitle::after {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+
+  .contactList {
     flex-direction: row;
     flex-wrap: wrap;
-    /* justify-content: space-between; */
-    gap: 10px;
+    justify-content: center;
+    gap: var(--space-3);
   }
-  .contact a {
-    display: flex;
+
+  .contactItem {
     flex-direction: column;
+    text-align: center;
+    padding: var(--space-4);
+    min-width: 150px;
+    flex: 1;
+    max-width: 200px;
+  }
+
+  .contactItem:hover {
+    transform: translateY(-4px);
+  }
+
+  .contactContent {
     align-items: center;
   }
 
-  .contact h2 {
-    display: none;
+  .socialLinks {
+    justify-content: center;
+  }
+
+  .formSection {
+    padding: var(--space-4);
+  }
+}
+
+@media (max-width: 768px) {
+  .contactCard {
+    padding: var(--space-5);
+  }
+
+  .contactTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .contactIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.1rem;
+  }
+
+  .contactItem {
+    min-width: 130px;
+  }
+}
+
+@media (max-width: 480px) {
+  .contactItem {
+    min-width: 100%;
+    max-width: 100%;
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .contactContent {
+    align-items: flex-start;
+  }
+
+  .contactIcon {
+    width: 44px;
+    height: 44px;
+    font-size: 1rem;
+  }
+
+  .contactText {
+    font-size: var(--font-size-sm);
+  }
+
+  .socialLink {
+    width: 40px;
+    height: 40px;
   }
 }

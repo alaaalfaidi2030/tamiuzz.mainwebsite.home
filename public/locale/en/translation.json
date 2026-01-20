@@ -7,6 +7,12 @@
   "about-us": "About Us",
   "nav_lang": "العربية",
   "shopping now": "Shop Now",
+  "select language": "Select Language",
+  "available languages": "Available Languages",
+  "opens in new tab": "Opens in new tab",
+  "main navigation": "Main Navigation",
+  "toggle navigation": "Toggle Navigation",
+  "company logo": "Tamiuzz Company Logo",
 
   "mobile_navbar": "Main Menu",
   "mobile_solutions": "solutions",
@@ -17,6 +23,11 @@
 
   "read more": "read more",
   "No data founded": "we couldn't find any data here",
+  "noData": {
+    "title": "No Data Found",
+    "message": "We couldn't find any data here. Try again later or explore other sections.",
+    "goHome": "Back to Home"
+  },
 
   "homePage": {
     "hero_title": "Integrated Software Solutions",
@@ -55,7 +66,11 @@
     "heading": "Discover Insights. Stay Ahead.",
     "subheading": "Sharing knowledge and insights to keep you ahead",
     "Top Articles": "Top Articles",
-    "article details": "Article Details"
+    "article details": "Article Details",
+    "share": "Share Article",
+    "back_to_articles": "Back to Articles",
+    "related": "Related",
+    "related_articles": "Related Articles"
   },
 
   "supportPage": {
@@ -63,8 +78,13 @@
     "subheading": "We're here to help you every step of the way, with fast and reliable support 24/7",
     "talk with us": "Talk to Us",
     "contact with us": "Contact Us",
+    "contact subtitle": "We're always ready to assist you. Reach out through any of the following channels",
+    "phone": "Phone",
+    "email": "Email",
+    "whatsapp": "WhatsApp",
     "how can we help": "How Can We Help You?",
-    "send": "Send"
+    "send": "Send",
+    "sending": "Sending..."
   },
 
   "about tamuizz": "About Tamuizz Company",
@@ -87,7 +107,52 @@
     "dammam": "Dammam",
     "dammam-address": "Telecom District, Othman Bin Affan Street, Third Floor",
     "cairo": "Cairo",
-    "cairo-address": "3303 Al Urubah Road, Al Sulaymaniyah District, 18480"
+    "cairo-address": "3303 Al Urubah Road, Al Sulaymaniyah District, 18480",
+    "hero-title-1": "Building",
+    "hero-title-highlight": "Digital Excellence",
+    "hero-title-2": "Together",
+    "hero-description": "We are a leading technology company in Saudi Arabia and the Middle East, providing innovative solutions that drive business success and digital transformation.",
+    "get-started": "Get Started",
+    "our-services": "Our Services",
+    "stats": {
+      "years": "Years of Experience",
+      "clients": "Happy Clients",
+      "projects": "Completed Projects",
+      "team": "Team Members"
+    },
+    "our-story": "Our Story",
+    "story-title": "A Journey of Innovation and Excellence",
+    "story-description": "Since our founding, we have been committed to delivering cutting-edge technology solutions that help businesses thrive in the digital age. Our team of experts combines creativity with technical expertise to create solutions that make a difference.",
+    "highlight1": "Trusted by 500+ businesses across the region",
+    "highlight2": "Award-winning technical support team",
+    "highlight3": "Cutting-edge technology solutions",
+    "highlight4": "Dedicated to client success",
+    "what-drives-us": "What Drives Us",
+    "values-section-title": "Our Mission, Vision & Values",
+    "values-section-desc": "We are guided by our commitment to excellence, innovation, and delivering value to our clients.",
+    "mission-title": "Our Mission",
+    "mission-desc": "To empower businesses with innovative technology solutions that drive growth, efficiency, and success in the digital era.",
+    "vision-title": "Our Vision",
+    "vision-desc": "To be the leading technology partner in the Middle East, known for excellence, innovation, and exceptional client service.",
+    "values-title": "Our Values",
+    "values-desc": "Integrity, innovation, excellence, and client-centricity guide everything we do and every solution we deliver.",
+    "why-choose-us": "Why Choose Us",
+    "why-choose-title": "What Sets Us Apart",
+    "why-choose-desc": "We combine expertise, dedication, and innovation to deliver solutions that exceed expectations.",
+    "why": {
+      "expertise-title": "Industry Expertise",
+      "expertise-desc": "Over 10 years of experience delivering successful projects across diverse industries and sectors.",
+      "support-title": "24/7 Support",
+      "support-desc": "Round-the-clock technical support to ensure your systems run smoothly at all times.",
+      "quality-title": "Quality Assurance",
+      "quality-desc": "Rigorous testing and quality standards ensure reliable, high-performance solutions.",
+      "innovation-title": "Innovation Focus",
+      "innovation-desc": "We stay ahead of technology trends to bring you the most advanced solutions available."
+    },
+    "our-locations": "Our Locations",
+    "branches-description": "With offices across the region, we're always close to serve you better.",
+    "phone": "Phone",
+    "address": "Address"
   },
 
   "howWeWork": {
@@ -116,7 +181,20 @@
     "features": "Features",
     "popular": "Most Popular",
     "view_pricing": "View Pricing & Plans",
-    "pricing_modal_title": "Plans & Pricing"
+    "pricing_modal_title": "Plans & Pricing",
+    "pricing_section": "Pricing Section",
+    "download_section": "Quick Actions",
+    "compare_plans": "Compare features & plans",
+    "pdf_format": "PDF format",
+    "full_details": "Complete information",
+    "feature_secure": "Secure & Reliable",
+    "feature_secure_desc": "Enterprise-grade security with 99.9% uptime guarantee",
+    "feature_fast": "High Performance",
+    "feature_fast_desc": "Optimized solutions for maximum speed and efficiency",
+    "feature_support": "24/7 Support",
+    "feature_support_desc": "Round-the-clock expert assistance whenever you need it",
+    "feature_scalable": "Scalable",
+    "feature_scalable_desc": "Grows with your business needs seamlessly"
   },
 
 
@@ -124,7 +202,10 @@
     "heading": "Services That Match Your Ambition and Make an Impact",
     "subheading": "A full range of services tailored precisely to meet your needs.",
     "ServicesSubTitle": "We Offer the Best Solutions",
-    "serviceDetails": "service details"
+    "serviceDetails": "Service Details",
+    "explore-more": "Explore More",
+    "other-services": "Other Services You May Like",
+    "view-all-services": "View All Services"
   },
 
   "why are we special": "What distinguishes us the most",

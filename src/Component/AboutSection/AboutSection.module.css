@@ -1,53 +1,72 @@
+/* ============================================
+   ABOUT SECTION - PROFESSIONAL CORPORATE
+   ============================================ */
+
 .aboutSection {
-  padding: 3rem 1rem;
+  padding: var(--space-16) var(--space-4);
+  background-color: var(--bg-body);
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 2rem;
+  gap: var(--space-10);
   justify-content: center;
 }
 
-/* Image responsiveness */
+/* ============================================
+   IMAGE
+   ============================================ */
+
 .imageWrapper {
   flex: 1;
-  min-width: 280px;
+  min-width: 300px;
   max-width: 100%;
 }
 
 .image {
   width: 100%;
-  border-radius: 20px;
+  border-radius: var(--radius-xl);
   object-fit: cover;
+  box-shadow: var(--shadow-card);
 }
+
+/* ============================================
+   CONTENT
+   ============================================ */
 
 .content {
   flex: 1;
-  min-width: 280px;
+  min-width: 300px;
   max-width: 100%;
 }
 
 .heading {
-  color: var(--secondary-color);
-  font-size: 2.5rem;
+  color: var(--primary-500);
+  font-size: clamp(1.75rem, 3.5vw, 2.25rem);
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
+  margin-bottom: var(--space-5);
 }
 
 .description {
-  color: var(--desc-text-color);
-  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
   font-weight: 400;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin-bottom: var(--space-6);
 }
+
+/* ============================================
+   FEATURES
+   ============================================ */
 
 .features {
   display: flex;
-  gap: 2rem;
+  gap: var(--space-8);
   flex-wrap: wrap;
-  margin-bottom: 1.5rem;
+  margin-bottom: var(--space-6);
 }
 
 .features ul {
@@ -57,94 +76,149 @@
 }
 
 .features li {
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  color: var(--desc-text-color);
+  font-size: 0.95rem;
+  margin-bottom: var(--space-3);
+  color: var(--text-secondary);
+}
+
+.features li a {
+  display: inline-flex;
+  align-items: center;
+  transition: color var(--transition-base);
+}
+
+.features li a:hover {
+  color: var(--primary-500);
+}
+
+.features li a:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-sm);
 }
 
 .features i {
-  margin-left: 0.5rem;
-  color: #f4a424;
+  margin-left: var(--space-2);
+  color: var(--secondary-500);
+  font-size: 0.85rem;
+}
+
+body[dir="ltr"] .features i {
+  margin-left: 0;
+  margin-right: var(--space-2);
 }
 
 .aboutSection a {
-  transition: transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  transition: all var(--transition-base);
 }
+
+/* ============================================
+   STATISTICS
+   ============================================ */
 
 .statistics {
   display: flex;
-  gap: 2rem;
+  gap: var(--space-5);
   flex-wrap: wrap;
+  margin-top: var(--space-8);
 }
 
 .statBox {
-  background-color: #f8f8f8;
   text-align: center;
   flex: 1;
   max-width: 30%;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-  border-left: 3px solid #384bff;
-  background: #eff3ff;
-  box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.06);
+  min-width: 160px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-left: 3px solid var(--primary-500);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  transition: all var(--transition-base);
+}
+
+body[dir="ltr"] .statBox {
+  border-left: 1px solid var(--border-light);
+  border-right: 3px solid var(--primary-500);
+}
+
+.statBox:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card-hover);
 }
 
 .statBox h4 {
-  font-size: 1.8rem;
-  margin: 0.5rem 0;
-  color: #022c43;
+  font-size: 1.75rem;
+  margin: var(--space-2) 0;
+  color: var(--primary-500);
+  font-weight: 700;
 }
 
 .statBox p {
-  font-size: 1rem;
-  color: #555;
-  text-wrap: nowrap;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin: 0;
+  white-space: nowrap;
 }
 
 .statBox i {
-  font-size: 2rem;
-  color: #f4a424;
+  font-size: 1.75rem;
+  color: var(--secondary-500);
 }
 
+.statBox img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+}
+
+/* ============================================
+   PARTNER LOGOS
+   ============================================ */
+
 .logoPartner {
-  width: 180px;
-  height: 180px;
-  border: 2px solid var(--primary-color);
+  width: 140px;
+  height: 140px;
+  border: 2px solid var(--border-default);
   overflow: hidden;
-  transition: transform 0.3s ease-in-out;
-  background-color: #eff3ff;
+  transition: all var(--transition-base);
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-full);
 }
 
 .logoPartner:hover {
-  transform: scale(0.9);
+  border-color: var(--primary-500);
+  transform: scale(0.96);
 }
 
 .logoContainer {
   width: 90%;
   height: 90%;
-  border-radius: 50%;
+  border-radius: var(--radius-full);
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px dashed var(--primary-color);
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
+  border: 2px dashed var(--border-light);
+  padding: var(--space-2);
 }
 
 .logoContainer img {
   width: 100%;
-  object-fit: cover;
+  height: 100%;
+  object-fit: contain;
 }
 
-/* ---------------- Responsive Enhancements ---------------- */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 1024px) {
   .heading {
-    font-size: 2.25rem;
+    font-size: 1.85rem;
   }
 
   .description {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
   .statBox {
@@ -154,45 +228,61 @@
 }
 
 @media (max-width: 768px) {
+  .aboutSection {
+    padding: var(--space-12) var(--space-4);
+  }
+
   .container {
     flex-direction: column;
     align-items: flex-start;
   }
 
   .heading {
-    font-size: 2rem;
+    font-size: 1.65rem;
     line-height: 1.3;
   }
 
   .description {
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.65;
   }
 
   .statistics {
     flex-direction: column;
+    width: 100%;
   }
 
   .statBox {
     flex: 1 1 100%;
+    max-width: 100%;
   }
 
   .features {
     flex-direction: column;
-  }
-}
-
-@media (max-width: 480px) {
-  .heading {
-    font-size: 1.75rem;
-  }
-
-  .description {
-    font-size: 0.95rem;
+    gap: var(--space-4);
   }
 
   .logoPartner {
     width: 120px;
     height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.5rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+  }
+
+  .logoPartner {
+    width: 100px;
+    height: 100px;
+  }
+
+  .statBox h4 {
+    font-size: 1.5rem;
   }
 }

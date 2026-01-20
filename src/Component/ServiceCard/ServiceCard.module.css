@@ -1,84 +1,203 @@
+/* ============================================
+   SERVICE CARD - PROFESSIONAL CORPORATE
+   ============================================ */
+
 .ServiceCard {
-  width: 100%;
-  max-width: 370px;
-  margin: 10px;
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.06);
-  background: #fff;
   display: flex;
   flex-direction: column;
-  direction: rtl;
-  transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
-  -webkit-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
-  -moz-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
-  -ms-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
-  -o-transition: transform 0.2s ease-out, box-shadow 0.3s ease-out;
-  -webkit-border-radius: 16px;
-  -moz-border-radius: 16px;
-  -ms-border-radius: 16px;
-  -o-border-radius: 16px;
+  height: 100%;
+  background-color: var(--bg-primary);
+  border-radius: var(--radius-2xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--border-light);
+  text-decoration: none;
+  transition: all var(--transition-normal);
 }
 
 .ServiceCard:hover {
-  transform: translateY(-5px) scale(1.03) !important;
-  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-  -webkit-transform: translateY(-5px) scale(1.03) !important;
-  -moz-transform: translateY(-5px) scale(1.03) !important;
-  -ms-transform: translateY(-5px) scale(1.03) !important;
-  -o-transform: translateY(-5px) scale(1.03) !important;
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--primary-200);
 }
 
-.content {
-  padding: 16px 20px;
+.ServiceCard:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
-.title {
-  color: #0f0d1d;
-  font-weight: 700;
-  font-size: 24px;
-  line-height: 100%;
-}
-
-.description {
-  color: var(--primary-color);
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.2;
-  /* Adjusted to improve readability */
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.link {
-  color: #f4a300;
-  font-weight: bold;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.link:hover {
-  color: #d48800;
-}
+/* ============================================
+   IMAGE WRAPPER
+   ============================================ */
 
 .imageWrapper {
-  width: 90px;
+  width: 100%;
+  padding: var(--space-8) var(--space-6);
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 0px 15px;
-  border-radius: 20px;
-  background: linear-gradient(135deg, transparent 30%, #f3f7fb 30%);
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  -ms-border-radius: 20px;
-  -o-border-radius: 20px;
+  background: linear-gradient(135deg, var(--primary-50) 0%, var(--bg-secondary) 100%);
+  position: relative;
 }
 
-.imageWrapper img {
-  width: 75%;
-  aspect-ratio: 1/ 1;
+.imageWrapper::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--primary-200), transparent);
+}
+
+.image {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  transition: transform var(--transition-normal);
+}
+
+.ServiceCard:hover .image {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   CONTENT
+   ============================================ */
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-6);
+  gap: var(--space-3);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  line-height: var(--leading-tight);
+  margin: 0;
+}
+
+.description {
+  flex: 1;
+  font-size: var(--font-size-base);
+  color: var(--text-secondary);
+  line-height: var(--leading-relaxed);
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0;
+}
+
+/* ============================================
+   LINK
+   ============================================ */
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-600);
+  margin-top: auto;
+  padding-top: var(--space-3);
+}
+
+.link i {
+  font-size: 0.75rem;
+  transition: transform var(--transition-fast);
+}
+
+body[dir="rtl"] .link i {
+  transform: rotate(180deg);
+}
+
+.ServiceCard:hover .link {
+  color: var(--primary-700);
+}
+
+.ServiceCard:hover .link i {
+  transform: translateX(4px);
+}
+
+body[dir="rtl"] .ServiceCard:hover .link i {
+  transform: translateX(-4px) rotate(180deg);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .ServiceCard {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.dark .ServiceCard:hover {
+  border-color: var(--primary-500);
+}
+
+.dark .imageWrapper {
+  background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-tertiary) 100%);
+}
+
+.dark .imageWrapper::after {
+  background: linear-gradient(90deg, transparent, var(--primary-400), transparent);
+}
+
+.dark .link {
+  color: var(--primary-400);
+}
+
+.dark .ServiceCard:hover .link {
+  color: var(--primary-300);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .imageWrapper {
+    padding: var(--space-6) var(--space-4);
+  }
+
+  .image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .content {
+    padding: var(--space-5);
+  }
+
+  .title {
+    font-size: var(--font-size-base);
+  }
+
+  .description {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .imageWrapper {
+    padding: var(--space-5) var(--space-3);
+  }
+
+  .image {
+    width: 56px;
+    height: 56px;
+  }
+
+  .content {
+    padding: var(--space-4);
+  }
 }

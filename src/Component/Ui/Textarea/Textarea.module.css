@@ -1,44 +1,181 @@
+/* ============================================
+   TEXTAREA - PROFESSIONAL CORPORATE
+   ============================================ */
+
 .inputWrapper {
   display: flex;
   flex-direction: column;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: var(--space-5);
 }
 
 .label {
-  color: var(--primary-color);
-  font-size: 16px;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
 }
 
 .required {
-  color: var(--primary-color);
+  color: var(--error);
+  font-weight: var(--font-weight-bold);
+}
+
+.textareaContainer {
+  position: relative;
 }
 
 .textarea {
-  height: 56px;
-  padding: 17.5px 21px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  border: 1px solid var(--lite);
-  background: var(--lite);
-  font-size: 16px;
-  font-weight: 400;
-  color: var(--primary-color);
-  transition-property: border, box-shadow;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
-  border-bottom: transparent 3px solid;
-  min-height: 120px;
-  resize: none;
-  line-height: 1.5;
+  width: 100%;
+  min-height: 140px;
+  padding: var(--space-4);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-tertiary);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  line-height: var(--leading-relaxed);
+  resize: vertical;
+  transition: all var(--transition-normal);
 }
 
-.textarea:focus,
-.textarea:focus-within,
-.textarea:focus-visible {
-  border-bottom-color: var(--primary-color);
+.textarea::placeholder {
+  color: var(--text-muted);
+  font-weight: var(--font-weight-normal);
+}
+
+.textarea:hover {
+  border-color: var(--primary-300);
+  background-color: var(--bg-secondary);
+}
+
+.textarea:focus {
   outline: none;
-  box-shadow: 0 0 0 0.25rem #2645a25e !important;
+  border-color: var(--primary-500);
+  background-color: var(--bg-secondary);
+  box-shadow: 0 0 0 4px rgba(38, 68, 162, 0.1);
+}
+
+.textarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--bg-tertiary);
+  resize: none;
+}
+
+/* Error State */
+.textareaError {
+  border-color: var(--error);
+  background-color: rgba(239, 68, 68, 0.02);
+}
+
+.textareaError:hover,
+.textareaError:focus {
+  border-color: var(--error);
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+}
+
+.errorMessage {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-2);
+  font-size: var(--font-size-sm);
+  color: var(--error);
+  animation: fadeIn 0.2s ease-out;
+}
+
+.errorIcon {
+  font-size: 0.875rem;
+}
+
+/* Success State */
+.textareaSuccess {
+  border-color: var(--success);
+}
+
+.textareaSuccess:focus {
+  box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.1);
+}
+
+/* Character Count */
+.charCount {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-1);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+}
+
+.charCountWarning {
+  color: var(--warning);
+}
+
+.charCountError {
+  color: var(--error);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .textarea {
+  background-color: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.dark .textarea:hover {
+  border-color: var(--primary-400);
+  background-color: var(--bg-tertiary);
+}
+
+.dark .textarea:focus {
+  background-color: var(--bg-tertiary);
+  box-shadow: 0 0 0 4px rgba(38, 68, 162, 0.2);
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .textarea {
+    min-height: 120px;
+    padding: var(--space-3);
+    font-size: var(--font-size-base);
+  }
+
+  .label {
+    font-size: var(--font-size-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .inputWrapper {
+    margin-bottom: var(--space-4);
+  }
+
+  .textarea {
+    min-height: 100px;
+  }
 }

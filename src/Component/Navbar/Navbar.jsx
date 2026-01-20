@@ -1,60 +1,74 @@
-import React, {
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-  useCallback,
-  useMemo,
-} from "react";
+import { useContext, useEffect, useRef, useState, useCallback, useMemo } from "react";
 import bootstrap from "bootstrap/dist/js/bootstrap.bundle.min.js";
 import { Link, useLocation } from "react-router-dom";
-import logo from "/logo.svg";
-import whiteLogo from "/logo-white.svg";
 import { useTranslation } from "react-i18next";
-import style from "./Navbar.module.css";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { isThemeModeContext } from "../../Context/isThemeModeContext";
 import NavbarTop from "../Ui/NavbarTop/NavbarTop";
-import i18n from "../../i18n";
+import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
+import logo from "/logo.svg";
+import whiteLogo from "/logo-white.svg";
+import style from "./Navbar.module.css";
+
+const NAV_LINKS = [
+  { id: "home", to: "/home", icon: "fa-home" },
+  { id: "solutions", to: "/solutions", icon: "fa-lightbulb" },
+  { id: "services", to: "/services", icon: "fa-cogs" },
+  { id: "articles", to: "/articles", icon: "fa-newspaper" },
+  { id: "support", to: "/support", icon: "fa-headset" },
+  { id: "about-us", to: "/about-us", icon: "fa-building" },
+];
+
+const ANIMATION_VARIANTS = {
+  logo: {
+    hidden: { opacity: 0, x: -20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4 } },
+  },
+  navItem: {
+    hidden: { opacity: 0, y: -10 },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, delay: i * 0.05 },
+    }),
+  },
+  rightSection: {
+    hidden: { opacity: 0, x: 20 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.4, delay: 0.2 } },
+  },
+  mobileMenu: {
+    hidden: { opacity: 0, height: 0 },
+    visible: { opacity: 1, height: "auto", transition: { duration: 0.3 } },
+    exit: { opacity: 0, height: 0, transition: { duration: 0.2 } },
+  },
+};
 
 const Navbar = () => {
   const [navbarCollapseInstance, setNavbarCollapseInstance] = useState(null);
   const [activeLink, setActiveLink] = useState("home");
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const { t } = useTranslation();
   const { isDarkMode } = useContext(isThemeModeContext);
   const navBarRef = useRef(null);
 
   const links = useMemo(
-    () => [
-      { label: t("home"), id: "home", to: "/home" },
-      { label: t("solutions"), id: "solutions", to: "/solutions" },
-      { label: t("services"), id: "services", to: "/services" },
-      { label: t("articles"), id: "articles", to: "/articles" },
-      { label: t("support"), id: "support", to: "/support" },
-      { label: t("about-us"), id: "about-us", to: "/about-us" },
-    ],
+    () => NAV_LINKS.map((link) => ({ ...link, label: t(link.id) })),
     [t]
   );
 
   const toggleNavbarCollapse = useCallback(() => {
     navbarCollapseInstance?.toggle();
+    setIsMobileMenuOpen((prev) => !prev);
   }, [navbarCollapseInstance]);
 
   const hideNavbar = useCallback(() => {
     navbarCollapseInstance?.hide();
+    setIsMobileMenuOpen(false);
   }, [navbarCollapseInstance]);
 
-  const toggleLanguage = async (lng) => {
-    if (i18n.resolvedLanguage === lng) {
-      return;
-      
-    }
-    await i18n.changeLanguage(lng);
-
-    window.location.reload();
-  };
-
+  // Initialize Bootstrap collapse
   useEffect(() => {
     const navbarEl = document.getElementById("navbarSupportedContent");
     if (navbarEl) {
@@ -64,18 +78,31 @@ const Navbar = () => {
     }
   }, []);
 
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  // Handle navbar height for body padding
   useEffect(() => {
     const updatePadding = () => {
-      if (navBarRef.current) {
-        const height = navBarRef.current.clientHeight + "px";
+      if (!navBarRef.current) return;
 
-        document.documentElement.style.setProperty("--navbar-height", height);
-        const root = document.getElementById("root");
-        if (root) root.style.paddingTop = height;
-      }
+      const height = `${navBarRef.current.clientHeight}px`;
+      document.documentElement.style.setProperty("--navbar-height", height);
+
+      const root = document.getElementById("root");
+      if (root) root.style.paddingTop = height;
     };
+
     updatePadding();
     window.addEventListener("resize", updatePadding);
+
     return () => {
       window.removeEventListener("resize", updatePadding);
       document.documentElement.style.setProperty("--navbar-height", "0px");
@@ -84,6 +111,7 @@ const Navbar = () => {
     };
   }, []);
 
+  // Track active link based on route and scroll
   useEffect(() => {
     const currentPath = location.pathname.substring(1).split("/")[0].toLowerCase();
     const matchedLink = links.find((l) => l.id === currentPath);
@@ -104,107 +132,157 @@ const Navbar = () => {
       observer.observe(section)
     );
 
-    return () => {
-      observer.disconnect();
-    };
-  }, [location.pathname, links, navBarRef?.current?.clientHeight]);
+    return () => observer.disconnect();
+  }, [location.pathname, links]);
+
+  const logoSrc = isDarkMode ? whiteLogo : logo;
 
   return (
     <nav
       id="navBarMain"
-      className={`navbar lead navbar-expand-lg fixed-top py-0  shadow flex-column ${style.navbar}`}
+      className={`${style.navbar} ${isScrolled ? style.navbarScrolled : ""}`}
       data-bs-theme={isDarkMode ? "dark" : "light"}
       ref={navBarRef}
+      role="navigation"
+      aria-label={t("main navigation")}
     >
-      <div className="w-100">
-        <NavbarTop />
-      </div>
-      <div className="container-fluid d-flex justify-content-between px-5">
-        <Link className="navbar-brand py-3 rounded-3" to="/">
-          <motion.img
-            loading='lazy'
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            src={isDarkMode ? whiteLogo : logo}
-            style={{ width: "110px" }}
-            alt="website logo"
-          />
-        </Link>
+      {/* Top Bar */}
+      <NavbarTop />
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          onClick={toggleNavbarCollapse}
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+      {/* Main Navigation */}
+      <div className={style.navbarMain}>
+        <div className={style.navbarContainer}>
+          {/* Logo */}
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={ANIMATION_VARIANTS.logo}
+          >
+            <Link
+              className={style.navbarBrand}
+              to="/"
+              aria-label={t("home")}
+            >
+              <img
+                src={logoSrc}
+                width={110}
+                height="auto"
+                alt={t("company logo")}
+                className={style.logo}
+              />
+            </Link>
+          </motion.div>
 
-        <div
-          className={`collapse navbar-collapse  ${style["list-links"]}`}
-          id="navbarSupportedContent"
-        >
-          <div />
-          <ul className={`navbar-nav gap-2   ${style["middle-part"]}`}>
+          {/* Mobile Toggle Button */}
+          <button
+            className={`${style.mobileToggle} ${isMobileMenuOpen ? style.mobileToggleOpen : ""}`}
+            type="button"
+            onClick={toggleNavbarCollapse}
+            aria-controls="navbarSupportedContent"
+            aria-expanded={isMobileMenuOpen}
+            aria-label={t("toggle navigation")}
+          >
+            <span className={style.toggleBar} />
+            <span className={style.toggleBar} />
+            <span className={style.toggleBar} />
+          </button>
+
+          {/* Desktop Navigation Links */}
+          <ul className={style.navLinks}>
             {links.map((linkItem, idx) => (
               <motion.li
                 key={linkItem.id}
-                initial={{ opacity: 0, y: -100 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: idx * 0.1 }}
-                className="nav-item"
+                custom={idx}
+                initial="hidden"
+                animate="visible"
+                variants={ANIMATION_VARIANTS.navItem}
+                className={style.navItem}
               >
                 <Link
-                  className={`nav-link ${linkItem.id === activeLink ? style.selected : ""}`}
+                  className={`${style.navLink} ${linkItem.id === activeLink ? style.navLinkActive : ""}`}
                   to={linkItem.to}
-                  onClick={hideNavbar}
+                  aria-current={linkItem.id === activeLink ? "page" : undefined}
                 >
-                  {linkItem.label}
+                  <span className={style.navLinkText}>{linkItem.label}</span>
+                  <span className={style.navLinkIndicator} />
                 </Link>
               </motion.li>
             ))}
           </ul>
 
+          {/* Right Section - Actions */}
           <motion.div
-            initial={{ opacity: 0, y: 100 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className={"navbar-nav gap-2 d-flex " + style["right-part"]}
+            className={style.navActions}
+            initial="hidden"
+            animate="visible"
+            variants={ANIMATION_VARIANTS.rightSection}
           >
-            <li className="nav-item dropdown">
-              <div
-                className={`btn-web btn-web-primary ${style.langButton}`}
-                role="button"
-                data-bs-toggle="dropdown"
-                aria-expanded="false"
-              >
-                <i className="fa-solid fa-angle-down mx-2"></i>
-                {t("nav_lang")}
-              </div>
-              <ul className="dropdown-menu">
-                <li>
-                  <button className="dropdown-item" onClick={() => toggleLanguage("ar")}>
-                    <span className="mx-2">اللغة العربية</span>
-                    <span className={`rounded-circle fw-bold bg-info text-white text-center ${style["language-icon"]}`}>ع</span>
-                  </button>
-                </li>
-                <li>
-                  <button className="dropdown-item" onClick={() => toggleLanguage("en")}>
-                    <span className="mx-2">English</span>
-                    <span className={`rounded-circle fw-bold bg-info text-white text-center ${style["language-icon"]}`}>E</span>
-                  </button>
-                </li>
-              </ul>
-            </li>
+            {/* Language Dropdown */}
+            <div className={style.langWrapper}>
+              <LanguageDropdown />
+            </div>
 
-            <li className={style.shoppingNow}>
-              <a href="http://shop.tamiuzz.com" target="_blank" className="btn-web btn-web-secondary">
-                <i className="fa-solid fa-cart-shopping mx-2"></i>
-                {t("shopping now")}
-              </a>
-            </li>
+            {/* Shop CTA */}
+            <a
+              href="http://shop.tamiuzz.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={style.shopButton}
+              aria-label={`${t("shopping now")} - ${t("opens in new tab")}`}
+            >
+              <i className="fa-solid fa-cart-shopping" aria-hidden="true" />
+              <span className={style.shopButtonText}>{t("shopping now")}</span>
+            </a>
           </motion.div>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`collapse navbar-collapse ${style.mobileMenu}`}
+          id="navbarSupportedContent"
+        >
+          <div className={style.mobileMenuContent}>
+            {/* Mobile Navigation Links */}
+            <ul className={style.mobileNavLinks}>
+              {links.map((linkItem) => (
+                <li key={linkItem.id} className={style.mobileNavItem}>
+                  <Link
+                    className={`${style.mobileNavLink} ${linkItem.id === activeLink ? style.mobileNavLinkActive : ""}`}
+                    to={linkItem.to}
+                    onClick={hideNavbar}
+                    aria-current={linkItem.id === activeLink ? "page" : undefined}
+                  >
+                    <i className={`fa-solid ${linkItem.icon}`} aria-hidden="true" />
+                    <span>{linkItem.label}</span>
+                    {linkItem.id === activeLink && (
+                      <i className="fa-solid fa-check" aria-hidden="true" />
+                    )}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            {/* Mobile Divider */}
+            <div className={style.mobileDivider} />
+
+            {/* Mobile Actions */}
+            <div className={style.mobileActions}>
+              <div className={style.mobileLangWrapper}>
+                <LanguageDropdown />
+              </div>
+
+              <a
+                href="http://shop.tamiuzz.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={style.mobileShopButton}
+                aria-label={`${t("shopping now")} - ${t("opens in new tab")}`}
+              >
+                <i className="fa-solid fa-cart-shopping" aria-hidden="true" />
+                <span>{t("shopping now")}</span>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
     </nav>

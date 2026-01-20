@@ -1,64 +1,104 @@
-import React, { useEffect, useState } from 'react';
-import styles from './Textarea.module.css'; // Reuse same styles
-import { motion } from 'framer-motion';
+import { useEffect, useState, useId } from "react";
+import { motion } from "framer-motion";
+import styles from "./Textarea.module.css";
 
-export default function TextArea({ idx, label, name, required = false, placeholder = '', value, onChange, error, touched, animationFlag = true }) {
-    const [shouldShake, setShouldShake] = useState(false);
+const SHAKE_VARIANTS = {
+  shake: {
+    x: [-8, 8, -8, 8, -4, 4, 0],
+    transition: { duration: 0.5, ease: "easeInOut" },
+  },
+  normal: { x: 0 },
+};
 
+const Textarea = ({
+  idx = 0,
+  label,
+  name,
+  required = false,
+  placeholder = "",
+  value,
+  onChange,
+  onBlur,
+  error,
+  touched,
+  disabled = false,
+  animationFlag = true,
+  rows = 5,
+  maxLength,
+}) => {
+  const [shouldShake, setShouldShake] = useState(false);
+  const generatedId = useId();
+  const textareaId = name || generatedId;
+  const errorId = `${textareaId}-error`;
 
-    // Trigger shake animation when error appears
-    useEffect(() => {
-        if (error && touched) {
-            setShouldShake(true);
-            // Reset shake after animation completes
-            const timer = setTimeout(() => setShouldShake(false), 600);
-            return () => clearTimeout(timer);
-        }
-    }, [error, touched, name]);
+  const hasError = error && touched;
+  const isValid = touched && !error && value;
 
-    // Shake animation variants
-    const shakeVariants = {
-        shake: {
-            x: [-10, 10, -10, 10, -5, 5, 0],
-            transition: {
-                duration: 0.6,
-                ease: "easeInOut"
-            }
-        },
-        normal: {
-            x: 0
-        }
-    };
-    return (<motion.div
-        initial={{ opacity: 0, y: 100 }}
-        animate={{
-            opacity: 1,
-            y: 0,
-            ...(shouldShake ? shakeVariants.shake : shakeVariants.normal)
-        }}
-        transition={{
-            duration: animationFlag ? 0.5 : 0,
-            delay: animationFlag ? 0.4 + idx * 0.1 : 0,
-        }}
-        className={styles.inputWrapper}>
+  useEffect(() => {
+    if (hasError) {
+      setShouldShake(true);
+      const timer = setTimeout(() => setShouldShake(false), 500);
+      return () => clearTimeout(timer);
+    }
+  }, [hasError]);
 
-        <label htmlFor={name} className={styles.label}>
-            {label} {required && <span className={styles.required}> *</span>}
-        </label>
+  const textareaClassName = [
+    styles.textarea,
+    hasError && styles.textareaError,
+    isValid && styles.textareaSuccess,
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{
+        opacity: 1,
+        y: 0,
+        ...(shouldShake ? SHAKE_VARIANTS.shake : SHAKE_VARIANTS.normal),
+      }}
+      transition={{
+        duration: animationFlag ? 0.4 : 0,
+        delay: animationFlag ? 0.1 + idx * 0.08 : 0,
+      }}
+      className={styles.inputWrapper}
+    >
+      <label htmlFor={textareaId} className={styles.label}>
+        {label}
+        {required && (
+          <span className={styles.required} aria-hidden="true">
+            *
+          </span>
+        )}
+      </label>
+
+      <div className={styles.textareaContainer}>
         <textarea
-            id={name}
-            name={name}
-            placeholder={placeholder}
-            value={value}
-            onChange={onChange}
-            className={`${styles.textarea}`}
+          id={textareaId}
+          name={name}
+          className={textareaClassName}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          onBlur={onBlur}
+          disabled={disabled}
+          required={required}
+          rows={rows}
+          maxLength={maxLength}
+          aria-invalid={hasError ? "true" : "false"}
+          aria-describedby={hasError ? errorId : undefined}
         />
-        {
-            error && touched &&
-            <div className="text-danger text-center">
-                {error}
-            </div>
-        }
-    </motion.div >
-    );
-}
+      </div>
+
+      {hasError && (
+        <div id={errorId} className={styles.errorMessage} role="alert">
+          <i className={`fa-solid fa-circle-exclamation ${styles.errorIcon}`} aria-hidden="true" />
+          <span>{error}</span>
+        </div>
+      )}
+    </motion.div>
+  );
+};
+
+export default Textarea;

@@ -1,0 +1,39 @@
+/* ============================================
+   SERVICES PAGE - PROFESSIONAL CORPORATE
+   ============================================ */
+
+.servicesPage {
+  overflow-x: hidden;
+}
+
+/* ============================================
+   SERVICES GRID
+   ============================================ */
+
+.servicesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+  margin-top: var(--space-10);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 991px) {
+  .servicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-5);
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    gap: var(--space-4);
+  }
+}

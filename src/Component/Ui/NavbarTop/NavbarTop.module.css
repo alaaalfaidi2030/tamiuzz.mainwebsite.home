@@ -1,121 +1,196 @@
-.navbar-container {
-  background-color: var(--primary-color);
-  transition-property: height;
-  transition-duration: 0.3s;
+/* ============================================
+   NAVBAR TOP - PROFESSIONAL CORPORATE
+   ============================================ */
+
+.navbarContainer {
+  background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-700) 100%);
+  overflow: hidden;
+  transition: height var(--transition-normal);
 }
 
-.navbar-top {
-  width: 100%;
+.navbarTop {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.5rem 3rem;
-  color: white;
-  font-size: 20px;
-  transition-property: opacity;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
+  padding: var(--space-2) var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+  color: var(--text-inverse);
+  font-size: var(--font-size-sm);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
 }
 
-.navbar-top .phone-email a {
-  position: relative;
-  z-index: 1;
+.navbarTopHidden {
+  opacity: 0;
+  transform: translateY(-100%);
 }
-.navbar-top .phone-email a span{
-  
+
+/* ============================================
+   CONTACT INFORMATION
+   ============================================ */
+
+.contactInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: var(--font-weight-normal);
+  transition: all var(--transition-fast);
+  padding: var(--space-1) 0;
+}
+
+.contactLink:hover {
+  color: var(--text-inverse);
+}
+
+.contactLink i {
+  color: var(--secondary-400);
+  font-size: 0.875rem;
+  width: 16px;
+  text-align: center;
+}
+
+.contactText {
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
-/* 
-.navbar-top .phone-email a::after {
-  content: "";
-  display: block;
-  width: 0;
-  background-color: transparent;
-  position: absolute;
-  bottom: 0;
-  top: 0;
-  border-radius: 10px;
-  z-index: -1;
-  background-color: transparent;
-  transition-property: width, background-color;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+
+.contactLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
 }
 
-.navbar-top .phone-email a:hover::after {
-  width: 100%;
-  background: var(--secondary-color);
-} */
+/* ============================================
+   SOCIAL MEDIA LINKS
+   ============================================ */
 
-.social-link {
+.socialLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.socialLink {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
-  margin: 0 5px;
-  border-radius: 12px;
-  color: white;
-  border: white;
+  width: 30px;
+  height: 30px;
+  border-radius: var(--radius-md);
+  color: var(--text-inverse);
   text-decoration: none;
-  font-size: 1.2rem;
-  transition-property: background-color, transform, box-shadow;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  position: relative;
-  overflow: hidden;
+  font-size: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: all var(--transition-fast);
 }
 
-.social-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(255, 255, 255, 0.1);
-  opacity: 0;
-  transition: all 0.3s ease;
+.socialLink:hover {
+  transform: translateY(-2px);
+  color: var(--text-inverse);
 }
 
-.social-link:hover::before {
-  opacity: 1;
+.socialLink:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.6);
+  outline-offset: 1px;
 }
 
-.social-link:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+/* Social Media Brand Colors */
+.socialLink.instagram:hover {
+  background: linear-gradient(135deg, #e1306c, #fd1d1d, #fcb045);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(225, 48, 108, 0.4);
 }
 
-.social-link.instagram:hover {
-  background: linear-gradient(45deg, #e1306c, #fd1d1d, #fcb045);
+.socialLink.facebook:hover {
+  background: #1877f2;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(24, 119, 242, 0.4);
 }
 
-.social-link.facebook:hover {
-  background: linear-gradient(45deg, #1877f2, #42a5f5);
+.socialLink.twitter:hover {
+  background: #1da1f2;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(29, 161, 242, 0.4);
 }
 
-.social-link.twitter:hover {
-  background: linear-gradient(45deg, #1da1f2, #0d8bd9);
+.socialLink.youtube:hover {
+  background: #ff0000;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.4);
 }
 
-.social-link.youtube:hover {
-  background: linear-gradient(45deg, #ff0000, #cc0000);
+.socialLink.linkedin:hover {
+  background: #0077b5;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(0, 119, 181, 0.4);
+}
+
+.socialLink.tiktok:hover {
+  background: linear-gradient(135deg, #000000, #25f4ee);
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(37, 244, 238, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 991px) {
+  .navbarTop {
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .contactInfo {
+    gap: var(--space-3);
+  }
 }
 
 @media (max-width: 768px) {
-  .navbar-top {
-    font-size: 14px;
-    align-items: center;
+  .navbarTop {
     justify-content: center;
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+
+  .contactInfo {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-2);
+  }
+
+  .contactLink {
+    font-size: var(--font-size-xs);
+  }
+
+  .socialLink {
+    width: 26px;
+    height: 26px;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbarTop {
+    font-size: 0.7rem;
+  }
+
+  .contactLink {
+    gap: var(--space-1);
+  }
+
+  .contactLink i {
+    font-size: 0.75rem;
   }
 }

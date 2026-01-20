@@ -1,138 +1,466 @@
-/* Delete Bootstrap styles */
-:global(.nav-link):focus-visible {
-  box-shadow: none !important;
-}
+/* ============================================
+   NAVBAR - PROFESSIONAL CORPORATE
+   ============================================ */
 
 .navbar {
-  background-color: var(--bg-color);
-  font-size: 16px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: var(--bg-surface);
+  border-bottom: 1px solid var(--border-light);
+  transition: all var(--transition-normal);
 }
 
-.list-links {
+.navbarScrolled {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   MAIN NAVBAR CONTAINER
+   ============================================ */
+
+.navbarMain {
+  padding: 0 var(--space-6);
+}
+
+.navbarContainer {
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  flex-wrap: nowrap;
-  text-align: center;
+  gap: var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+  min-height: 70px;
 }
 
-.list-links .middle-part a {
-  color: var(--Text-color);
-  text-align: center;
-  font-size: 1.3em;
-  font-weight: 700;
-  width: fit-content;
-  opacity: 0.65;
+/* ============================================
+   LOGO
+   ============================================ */
+
+.navbarBrand {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.logo {
+  transition: transform var(--transition-fast);
+}
+
+.navbarBrand:hover .logo {
+  transform: scale(1.02);
+}
+
+.navbarBrand:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 4px;
+  border-radius: var(--radius-sm);
+}
+
+/* ============================================
+   DESKTOP NAVIGATION LINKS
+   ============================================ */
+
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navItem {
   position: relative;
-  transition-property: opacity, color;
-  transition-duration: 0.3s;
-  margin: auto;
-  padding-bottom: 0;
 }
 
-.list-links .middle-part a.selected,
-.list-links .middle-part a:hover {
-  opacity: 1;
+.navLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  position: relative;
 }
 
-.list-links .middle-part a::after {
-  content: "";
-  display: block;
-  width: 0;
-  background-color: transparent;
+.navLink:hover {
+  color: var(--primary-600);
+  background-color: var(--primary-50);
+}
+
+.navLinkActive {
+  color: var(--primary-600);
+}
+
+.navLinkText {
+  position: relative;
+  z-index: 1;
+}
+
+.navLinkIndicator {
   position: absolute;
-  bottom: 0;
+  bottom: 8px;
   left: 50%;
   transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+  border-radius: var(--radius-full);
+  transition: width var(--transition-fast);
+}
+
+.navLink:hover .navLinkIndicator,
+.navLinkActive .navLinkIndicator {
+  width: calc(100% - var(--space-8));
+}
+
+.navLink:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   RIGHT SECTION - ACTIONS
+   ============================================ */
+
+.navActions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.langWrapper {
+  flex-shrink: 0;
+}
+
+/* ============================================
+   SHOP BUTTON
+   ============================================ */
+
+.shopButton {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-5);
+  background: linear-gradient(135deg, var(--secondary-500), var(--secondary-600));
+  color: var(--text-inverse);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+}
+
+.shopButton::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.shopButton:hover::before {
+  left: 100%;
+}
+
+.shopButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  color: var(--text-inverse);
+}
+
+.shopButton:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.shopButton i {
+  font-size: 0.9rem;
+}
+
+/* ============================================
+   MOBILE TOGGLE BUTTON
+   ============================================ */
+
+.mobileToggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-2);
+  background: transparent;
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.mobileToggle:hover {
+  background-color: var(--bg-muted);
+}
+
+.mobileToggle:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+.toggleBar {
+  width: 22px;
   height: 2px;
-  border-radius: 10px;
-  background-color: var(--primary-color);
-  transition-property: width, background-color;
-  transition-duration: 0.3s;
-  -webkit-transform: translateX(-50%);
-  -moz-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  -o-transform: translateX(-50%);
+  background-color: var(--text-primary);
+  border-radius: var(--radius-full);
+  transition: all var(--transition-fast);
 }
 
-.list-links .middle-part a:hover::after,
-.list-links .middle-part a.selected::after {
-  width: 100%;
-  background-color: var(--primary-color);
+.mobileToggleOpen .toggleBar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
 }
 
-.langButton {
-  border: none;
-  font-size: 1.2em;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.mobileToggleOpen .toggleBar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobileToggleOpen .toggleBar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ============================================
+   MOBILE MENU
+   ============================================ */
+
+.mobileMenu {
+  display: none;
+}
+
+.mobileMenuContent {
+  padding: var(--space-4) 0 var(--space-6);
+}
+
+.mobileNavLinks {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mobileNavItem {
+  margin-bottom: var(--space-1);
+}
+
+.mobileNavLink {
   display: flex;
-  width: 100%;
   align-items: center;
-  font-weight: 300;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
-  background-color: #e0f2fe;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
 }
 
-.shoppingNow a {
-  font-size: 1.2em;
-  border-radius: 10px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+.mobileNavLink i:first-child {
+  width: 24px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.mobileNavLink span {
+  flex: 1;
+}
+
+.mobileNavLink i:last-child {
+  color: var(--primary-500);
+  font-size: 0.875rem;
+}
+
+.mobileNavLink:hover {
+  background-color: var(--bg-muted);
+  color: var(--primary-600);
+}
+
+.mobileNavLinkActive {
+  background-color: var(--primary-50);
+  color: var(--primary-600);
+}
+
+.mobileNavLink:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: -2px;
+}
+
+/* ============================================
+   MOBILE DIVIDER
+   ============================================ */
+
+.mobileDivider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-light),
+    transparent
+  );
+  margin: var(--space-4) 0;
+}
+
+/* ============================================
+   MOBILE ACTIONS
+   ============================================ */
+
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.mobileLangWrapper {
+  width: 100%;
+}
+
+.mobileShopButton {
   display: flex;
   align-items: center;
-  font-weight: 300;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-4);
+  background: linear-gradient(135deg, var(--secondary-500), var(--secondary-600));
+  color: var(--text-inverse);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-fast);
 }
 
-.language-icon {
-  width: 20px;
-  height: 20px;
-  line-height: 20px;
-  display: inline-block;
+.mobileShopButton:hover {
+  opacity: 0.9;
+  color: var(--text-inverse);
 }
 
-:global(.dropdown-item):active {
-  background-color: var(--secondary-color) !important;
+.mobileShopButton:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
 }
 
+/* ============================================
+   DARK MODE
+   ============================================ */
 
-@media screen and (max-width: 1200px) {
-  .navbar {
-    font-size: 15px;
+.dark .navbar {
+  background-color: var(--bg-surface);
+  border-bottom-color: var(--border-color);
+}
+
+.dark .navLink:hover {
+  background-color: var(--primary-900);
+}
+
+.dark .mobileToggle {
+  border-color: var(--border-color);
+}
+
+.dark .mobileToggle:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.dark .mobileNavLink:hover {
+  background-color: var(--bg-tertiary);
+}
+
+.dark .mobileNavLinkActive {
+  background-color: var(--primary-900);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .navLink {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
   }
 
-  .langButton {
-    font-size: 1em;
+  .navbarContainer {
+    gap: var(--space-4);
   }
 
+  .shopButtonText {
+    display: none;
+  }
 
+  .shopButton {
+    padding: var(--space-2) var(--space-3);
+  }
 }
 
 @media (max-width: 991px) {
-  .list-links {
-    padding: 24px 0;
+  .navLinks,
+  .navActions {
+    display: none;
   }
 
-  .list-links ul {
-    width: 100%;
+  .mobileToggle {
+    display: flex;
   }
 
-  .right-part {
-    width: 70%;
+  .mobileMenu {
+    display: block;
+  }
+
+  .navbarContainer {
+    min-height: 60px;
+  }
+
+  .navbarMain {
+    padding: 0 var(--space-4);
   }
 }
 
-@media screen and (max-width: 768px) {
+@media (max-width: 768px) {
+  .navbarMain {
+    padding: 0 var(--space-3);
+  }
 
+  .navbarContainer {
+    min-height: 56px;
+  }
 
-  .shoppingNow a {
-    padding: 10px !important;
-    font-size: 1em;
-    border-radius: 10px;
+  .logo {
+    width: 90px;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .mobileMenuContent {
+    padding: var(--space-3) 0 var(--space-4);
+  }
+
+  .mobileNavLink {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
   }
 }

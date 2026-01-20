@@ -1,72 +1,164 @@
-.projects {
-    background-size: cover;
-    background-position: center;
+/* ============================================
+   PROJECTS - PROFESSIONAL CORPORATE
+   ============================================ */
 
+.projects {
+  background-size: cover;
+  background-position: center;
+  padding: var(--space-16) var(--space-4);
 }
 
 .projects .heading {
-    width: fit-content;
+  width: fit-content;
 }
 
 .projects .heading h3 {
-    color: white;
+  color: var(--text-inverse);
 }
 
+/* ============================================
+   PROJECT CARD
+   ============================================ */
+
 .card {
-    position: relative;
-    border-radius: 15px;
-    overflow: hidden;
-    background-color: #fff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  background-color: var(--bg-surface);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-base);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-card-hover);
+}
+
+.card:focus-within {
+  outline: none;
+  box-shadow: var(--focus-ring);
 }
 
 .image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
 }
 
+.card:hover .image {
+  transform: scale(1.04);
+}
+
+/* ============================================
+   CARD OVERLAY
+   ============================================ */
+
 .overlay {
-    position: absolute;
-    bottom: 0;
-    width: 90%;
-    margin: 12px;
-    background: rgba(245, 247, 251, 0.9);
-    padding: 16px;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    border-radius: 20px;
-    -webkit-border-radius: 20px;
-    -moz-border-radius: 20px;
-    -ms-border-radius: 20px;
-    -o-border-radius: 20px;
+  position: absolute;
+  bottom: 0;
+  width: calc(100% - var(--space-5));
+  margin: var(--space-3);
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  padding: var(--space-4);
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  transition: transform var(--transition-base);
+}
+
+.dark .overlay {
+  background: rgba(20, 24, 33, 0.95);
+}
+
+.card:hover .overlay {
+  transform: translateY(-3px);
 }
 
 .category {
-    color: #4468E2;
-    font-size: 0.8rem;
-    margin-bottom: 5px;
+  color: var(--secondary-500);
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .title {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #1C1C1C;
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-primary);
+  line-height: 1.35;
 }
+
+/* ============================================
+   ICON BUTTON
+   ============================================ */
 
 .icon {
-    position: absolute;
-    bottom: 16px;
-    right: 16px;
-    background: rgba(105, 122, 246, 0.2);
-    padding: 8px;
-    border-radius: 50%;
-    color: #4468E2;
+  position: absolute;
+  bottom: var(--space-4);
+  right: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  padding: var(--space-2);
+  border-radius: var(--radius-full);
+  color: var(--primary-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  transition: all var(--transition-base);
 }
 
-body[dir|="rtl"] .icon {
-    left: 16px;
-    right: auto;
+.icon:hover {
+  background: var(--primary-500);
+  border-color: var(--primary-500);
+  color: var(--text-inverse);
+  transform: scale(1.08);
+}
+
+.icon:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+body[dir="ltr"] .icon {
+  left: var(--space-4);
+  right: auto;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .projects {
+    padding: var(--space-12) var(--space-3);
+  }
+
+  .overlay {
+    padding: var(--space-3);
+  }
+
+  .title {
+    font-size: 0.95rem;
+  }
+
+  .category {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .icon {
+    width: 32px;
+    height: 32px;
+    padding: var(--space-1);
+  }
 }

@@ -1,0 +1,53 @@
+/* ============================================
+   ARTICLES PAGE - PROFESSIONAL CORPORATE
+   ============================================ */
+
+.articlesPage {
+  min-height: 60vh;
+  padding-bottom: var(--space-16);
+}
+
+/* ============================================
+   ARTICLES GRID
+   ============================================ */
+
+.articlesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-6);
+  padding: var(--space-8) 0;
+}
+
+/* ============================================
+   STATES
+   ============================================ */
+
+.loadingState,
+.errorState,
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40vh;
+  padding: var(--space-8);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .articlesGrid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-5);
+    padding: var(--space-6) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .articlesGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}

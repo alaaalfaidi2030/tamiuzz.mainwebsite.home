@@ -1,148 +1,247 @@
-import React, { useContext, useEffect, useState } from 'react'
-import Heading from '../../Component/Ui/Heading/Heading'
-import H2 from '../../Component/Ui/H2/H2'
-import { useTranslation } from 'react-i18next';
-import { baseURL, getHeaders } from '../../Utilies/data';
-import { useParams } from 'react-router-dom';
-import style from "./ServiceDetails.module.css"
-import H3 from '../../Component/Ui/H3/H3';
-import { IsMobileContext } from '../../Context/isMobileContext';
-import axios from 'axios';
-import Spinner from '../../Component/Ui/Spinner/Spinner';
-import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp';
-import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
+import { useEffect, useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { useParams, Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import axios from "axios";
+import Heading from "../../Component/Ui/Heading/Heading";
+import ContactSection from "../../Component/ContactSection/ContactSection";
+import Spinner from "../../Component/Ui/Spinner/Spinner";
+import ErrorComp from "../../Component/Ui/ErrorComp/ErrorComp";
+import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
+import { baseURL, getHeaders } from "../../Utilies/data";
+import style from "./ServiceDetails.module.css";
 
-export default function ServiceDetails() {
-    const { isMobile } = useContext(IsMobileContext)
-    const { t } = useTranslation();
-    const { id } = useParams();
-    const [displayServicesIndex, setDisplayServicesIndex] = useState(0)
-    const [services, setServices] = useState([])
-    const [errorFlag, setErrorFlag] = useState(false)
-    const [loading, setLoading] = useState(true)
+const ANIMATION_VARIANTS = {
+  fadeIn: {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  },
+  fadeInLeft: {
+    hidden: { opacity: 0, x: -40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  },
+  fadeInRight: {
+    hidden: { opacity: 0, x: 40 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      transition: { duration: 0.6, ease: "easeOut" },
+    },
+  },
+  staggerContainer: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  },
+  staggerItem: {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.4, ease: "easeOut" },
+    },
+  },
+};
 
-    const getServices = async () => {
-        try {
+const ServiceDetails = () => {
+  const { t } = useTranslation();
+  const { id } = useParams();
+  const [service, setService] = useState(null);
+  const [allServices, setAllServices] = useState([]);
+  const [errorFlag, setErrorFlag] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-            setLoading(true)
-            setErrorFlag(false)
-            setServices([]);
-            const { data } = await axios.get(baseURL + "/services", {
-                headers: getHeaders(),
-            });
-            if (data.success && data.data && data.data.length !== 0) {
-                if (services[id]) {
-                    setDisplayServicesIndex(id)
-                }
-                setServices(data.data);
-                setLoading(false)
-            } else {
-                setServices([]);
-                setLoading(false)
-            }
-        } catch (error) {
-            setLoading(false)
-            // setErrorFlag(true)
+  const getServiceDetails = useCallback(async () => {
+    try {
+      setLoading(true);
+      setErrorFlag(false);
+
+      // Fetch all services
+      const { data } = await axios.get(`${baseURL}/services`, {
+        headers: getHeaders(),
+      });
+
+      if (data.success && data.data && data.data.length !== 0) {
+        setAllServices(data.data);
+
+        // Find the current service by path or index
+        const foundService = data.data.find(
+          (s) => s.path === id || s.id === id || String(s.id) === id
+        );
+
+        if (foundService) {
+          setService(foundService);
+        } else if (id && !isNaN(Number(id)) && data.data[Number(id)]) {
+          setService(data.data[Number(id)]);
+        } else {
+          setService(data.data[0]);
         }
-    };
+      } else {
+        setService(null);
+        setAllServices([]);
+      }
+    } catch (error) {
+      console.error("Error fetching service details:", error);
+      setErrorFlag(true);
+    } finally {
+      setLoading(false);
+    }
+  }, [id]);
 
-    useEffect(() => {
-        getServices(id)
-        setDisplayServicesIndex(id)
-    }, [])
+  useEffect(() => {
+    getServiceDetails();
+  }, [getServiceDetails]);
 
+  // Get other services for the "More Services" section
+  const otherServices = allServices.filter(
+    (s) => s.path !== service?.path && s.id !== service?.id
+  ).slice(0, 3);
 
-    return (
-        <section>
-            <Heading heading={t("servicesPage.heading")} subHeading={t("servicesPage.subheading")} pageName={t("servicesPage.serviceDetails")} />
-            <div className="py-5"></div>
-            <H2 text={t("servicesPage.serviceDetails")} />
-            {
-                (!loading) ? <div className="container ">
-                    {
-                        errorFlag ?
-                            <ErrorComp /> :
-                            services.length == 0 ?
-                                <NoDataFounded />
-                                :
-                                <div className="row">
-                                    <IndexingPart
-                                        t={t}
-                                        services={services}
-                                        displayServicesIndex={displayServicesIndex}
-                                        setDisplayServicesIndex={setDisplayServicesIndex}
-                                        isMobile={isMobile}
-                                    />
-                                    <div className="col-lg-9 col-md-12">
-                                        {services[displayServicesIndex] &&
-                                            <>
+  return (
+    <main className={style.serviceDetailsPage}>
+      <Heading
+        heading={t("servicesPage.heading")}
+        subHeading={t("servicesPage.subheading")}
+        pageName={t("servicesPage.serviceDetails")}
+      />
 
-                                                <div className={style["imageWrapper"]}>
-                                                    <img src={baseURL + services[displayServicesIndex].imageUrl} alt={services[displayServicesIndex].title} />
-
-                                                </div>
-                                                <div className={style["info"] + " p-2"}>
-                                                    <h4 className=' my-2'>{services[displayServicesIndex].title}</h4>
-                                                    <div className={'mt-4 ' + style.desc}
-                                                        dangerouslySetInnerHTML={{
-                                                            __html: services[displayServicesIndex].description
-                                                        }}></div>
-
-                                                </div>
-                                            </>
-                                        }
-                                    </div>
-
-                                </div>}
-                </div> : <Spinner sectionFlag />
-            }
-        </section>
-    )
-}
-function IndexingPart({ services, displayServicesIndex, t, setDisplayServicesIndex, isMobile }) {
-    const [openFlag, setOpenFlag] = useState(!isMobile)
-    return (
-
+      {loading ? (
+        <Spinner sectionFlag />
+      ) : errorFlag ? (
+        <div className="container my-5">
+          <ErrorComp />
+        </div>
+      ) : !service ? (
+        <div className="container my-5">
+          <NoDataFounded />
+        </div>
+      ) : (
         <>
-            {isMobile &&
-                <button className='btn btn-outline-primary rounded-circle d-flex justify-content-center align-items-center fs-3 position-fixed start-0 my-5' style={{
-                    width: "40px",
-                    height: "40px",
-                    bottom: "10%"
+          {/* Hero Section */}
+          <section className={style.heroSection}>
+            <div className="container">
+              <div className={style.heroContent}>
+                <motion.div
+                  className={style.heroText}
+                  initial="hidden"
+                  animate="visible"
+                  variants={ANIMATION_VARIANTS.fadeInLeft}
+                >
+                  <span className={style.heroLabel}>{t("services")}</span>
+                  <h1 className={style.heroTitle}>{service.title}</h1>
+                  <div
+                    className={style.heroDescription}
+                    dangerouslySetInnerHTML={{ __html: service.description }}
+                  />
+                  <div className={style.heroActions}>
+                    <Link to="/support" className="btn-web btn-web-primary">
+                      <i className="fa-solid fa-paper-plane" aria-hidden="true" />
+                      <span>{t("supportPage.contact with us")}</span>
+                    </Link>
+                  </div>
+                </motion.div>
 
-                }} onClick={() => {
-                    setOpenFlag(!openFlag)
-                }} > <i class="fa-solid fa-sliders"></i></button>
-            }
+                <motion.div
+                  className={style.heroImageWrapper}
+                  initial="hidden"
+                  animate="visible"
+                  variants={ANIMATION_VARIANTS.fadeInRight}
+                >
+                  <div className={style.heroImageContainer}>
+                    <img
+                      src={baseURL + service.imageUrl}
+                      alt={service.title}
+                      className={style.heroImage}
+                    />
+                  </div>
+                  <div className={style.heroImageDecoration} aria-hidden="true" />
+                </motion.div>
+              </div>
+            </div>
+          </section>
 
+          {/* Other Services Section */}
+          {otherServices.length > 0 && (
+            <section className={style.moreServicesSection}>
+              <div className="container">
+                <motion.div
+                  className={style.sectionHeader}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={ANIMATION_VARIANTS.fadeIn}
+                >
+                  <span className={style.sectionLabel}>{t("servicesPage.explore-more")}</span>
+                  <h2 className={style.sectionTitle}>{t("servicesPage.other-services")}</h2>
+                </motion.div>
 
-            {
-                openFlag &&
-                <div className={"col-lg-3 min-vh-100  " + style.indexingPart} >
-                    {isMobile &&
-                        <button className='btn btn-danger  rounded-circle border-0 d-flex justify-content-center align-items-center fs-6 position-absolute end-0 top-0 m-2' style={{
-                            width: "30px",
-                            height: "30px",
-                            zIndex: "99999"
+                <motion.div
+                  className={style.servicesGrid}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.2 }}
+                  variants={ANIMATION_VARIANTS.staggerContainer}
+                >
+                  {otherServices.map((otherService, idx) => (
+                    <motion.article
+                      key={otherService.id || idx}
+                      className={style.serviceCard}
+                      variants={ANIMATION_VARIANTS.staggerItem}
+                    >
+                      <Link
+                        to={`/services/${otherService.path || idx}`}
+                        className={style.serviceCardLink}
+                      >
+                        <div className={style.serviceCardImage}>
+                          <img
+                            src={baseURL + otherService.imageUrl}
+                            alt={otherService.title}
+                            loading="lazy"
+                          />
+                        </div>
+                        <div className={style.serviceCardContent}>
+                          <h3 className={style.serviceCardTitle}>
+                            {otherService.title}
+                          </h3>
+                          <span className={style.serviceCardArrow}>
+                            <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+                          </span>
+                        </div>
+                      </Link>
+                    </motion.article>
+                  ))}
+                </motion.div>
 
-                        }} onClick={() => {
-                            setOpenFlag(!openFlag)
-                        }} > <i class="fa-solid fa-x fw-bolder "></i></button>}
-                    <H3 text={t("services")}></H3>
-                    {
-                        services.map((service, idx) =>
-                            <button className={`my-2 d-flex  justify-content-between ${style.option} ${displayServicesIndex == idx ? style.active : ""}`} key={idx}
-                                onClick={() => {
-                                    setDisplayServicesIndex(idx);
-                                    //change the path also
-                                    window.history.pushState({}, '', `/services/${idx}`)
-                                }}
-                            >
-                                {service.title}
-                            </button>
-                        )
-                    }
-                </div >}
+                <motion.div
+                  className={style.viewAllWrapper}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={ANIMATION_VARIANTS.fadeIn}
+                >
+                  <Link to="/services" className="btn-web btn-web-outline">
+                    {t("servicesPage.view-all-services")}
+                  </Link>
+                </motion.div>
+              </div>
+            </section>
+          )}
         </>
-    )
-}
+      )}
+
+      <ContactSection />
+    </main>
+  );
+};
+
+export default ServiceDetails;

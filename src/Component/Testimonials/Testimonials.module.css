@@ -1,23 +1,39 @@
+/* ============================================
+   TESTIMONIALS - PROFESSIONAL CORPORATE
+   ============================================ */
+
 .Testimonials {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: var(--space-16) var(--space-4);
 }
 
 .heading * {
-    color: white;
+  color: var(--text-inverse);
 }
 
 .heading div div {
-    background: linear-gradient(90deg,
-            transparent 0%,
-            white 50%,
-            transparent 100%);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    transparent 100%
+  );
 }
 
 .Testimonials :global(.swiper-button-prev),
 .Testimonials :global(.swiper-button-next),
 .Testimonials :global(.swiper-pagination-bullets) {
-    display: none !important;
+  display: none !important;
+}
 
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .Testimonials {
+    padding: var(--space-12) var(--space-3);
+  }
 }

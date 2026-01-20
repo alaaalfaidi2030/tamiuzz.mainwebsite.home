@@ -1,33 +1,289 @@
+/* ============================================
+   CONTACT FORM - PROFESSIONAL CORPORATE
+   ============================================ */
+
+/* ============================================
+   DEFAULT VARIANT (Card Style)
+   ============================================ */
+
+.formContainer {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+}
+
 .formTitle {
-  font-size: 48px;
-  font-weight: 700;
-  margin-bottom: 3rem;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  color: var(--primary-600);
+  margin-bottom: var(--space-8);
+  position: relative;
+  padding-bottom: var(--space-3);
 }
-.button {
-  background-color: #eaf3ff;
-  color: var(--primary-color);
-  padding: 10px 20px;
-  font-size: 16px;
-  font-weight: 700;
+
+.formTitle::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+  border-radius: var(--radius-full);
+}
+
+body[dir="rtl"] .formTitle::after {
+  left: auto;
+  right: 0;
+}
+
+/* ============================================
+   DARK VARIANT (For dark backgrounds)
+   ============================================ */
+
+.formContainerDark {
+  background-color: transparent;
   border: none;
-  border-radius: 10px;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none;
+}
+
+.formTitleDark {
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: var(--font-weight-bold);
+  color: white;
+  margin-bottom: var(--space-8);
+  position: relative;
+  padding-bottom: var(--space-3);
+}
+
+.formTitleDark::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary-400), var(--secondary-500));
+  border-radius: var(--radius-full);
+}
+
+body[dir="rtl"] .formTitleDark::after {
+  left: auto;
+  right: 0;
+}
+
+/* Dark variant - Labels */
+.formContainerDark label {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.formContainerDark .required {
+  color: var(--secondary-400);
+}
+
+/* Dark variant - Inputs */
+.formContainerDark input,
+.formContainerDark textarea {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.formContainerDark input::placeholder,
+.formContainerDark textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.formContainerDark input:hover,
+.formContainerDark textarea:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.formContainerDark input:focus,
+.formContainerDark textarea:focus {
+  background-color: rgba(255, 255, 255, 0.15);
+  border-color: var(--secondary-400);
+  box-shadow: 0 0 0 4px rgba(228, 157, 35, 0.2);
+}
+
+/* Dark variant - Submit Button */
+.submitButtonDark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 160px;
+  height: 52px;
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-700);
+  background-color: var(--secondary-400);
+  border: 2px solid var(--secondary-400);
+  border-radius: var(--radius-xl);
   cursor: pointer;
-  transition: background-color 0.3s;
-  -webkit-transition: background-color 0.3s;
-  -moz-transition: background-color 0.3s;
-  -ms-transition: background-color 0.3s;
-  -o-transition: background-color 0.3s;
+  transition: all var(--transition-normal);
+  margin-top: var(--space-4);
 }
 
-.button:hover {
-  background-color: #d9e9ff;
+.submitButtonDark:hover:not(:disabled) {
+  background-color: var(--secondary-500);
+  border-color: var(--secondary-500);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(228, 157, 35, 0.3);
 }
 
-@media screen and (max-width: 991px) {
-  .formTitle {
-    font-size: 24x;
-    font-weight: 700;
-    margin: 3rem 0;
+.submitButtonDark:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButtonDark:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 2px;
+}
+
+.submitButtonDark:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   SHARED STYLES
+   ============================================ */
+
+.formRow {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+.textareaWrapper {
+  margin-top: var(--space-2);
+}
+
+.submitButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-width: 160px;
+  height: 52px;
+  padding: var(--space-3) var(--space-8);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--primary-600);
+  background-color: var(--primary-50);
+  border: 2px solid var(--primary-100);
+  border-radius: var(--radius-xl);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  margin-top: var(--space-4);
+}
+
+.submitButton:hover:not(:disabled) {
+  background-color: var(--primary-100);
+  border-color: var(--primary-200);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.submitButton:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.submitButton:focus-visible {
+  outline: 2px solid var(--primary-500);
+  outline-offset: 2px;
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.submitButton i,
+.submitButtonDark i {
+  font-size: 1rem;
+}
+
+/* ============================================
+   DARK MODE (for default variant)
+   ============================================ */
+
+.dark .formContainer {
+  background-color: var(--bg-tertiary);
+  border-color: var(--border-color);
+}
+
+.dark .submitButton {
+  background-color: var(--primary-900);
+  border-color: var(--primary-800);
+  color: var(--primary-200);
+}
+
+.dark .submitButton:hover:not(:disabled) {
+  background-color: var(--primary-800);
+  border-color: var(--primary-700);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 991px) {
+  .formContainer,
+  .formContainerDark {
+    padding: var(--space-6);
+  }
+
+  .formTitle,
+  .formTitleDark {
     text-align: center;
+    margin-bottom: var(--space-6);
+  }
+
+  .formTitle::after,
+  .formTitleDark::after {
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+  }
+}
+
+@media (max-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .submitButton,
+  .submitButtonDark {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .formContainer {
+    padding: var(--space-5);
+  }
+
+  .formContainerDark {
+    padding: 0;
+  }
+
+  .formTitle,
+  .formTitleDark {
+    font-size: var(--font-size-xl);
+  }
+
+  .submitButton,
+  .submitButtonDark {
+    height: 48px;
+    font-size: var(--font-size-sm);
   }
 }

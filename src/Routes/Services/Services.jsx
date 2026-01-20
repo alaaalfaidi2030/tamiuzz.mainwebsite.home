@@ -1,81 +1,110 @@
-import React, { useEffect, useState } from 'react'
-import Heading from '../../Component/Ui/Heading/Heading'
-import { useTranslation } from 'react-i18next'
-import H3 from '../../Component/Ui/H3/H3'
-import ContactSection from '../../Component/ContactSection/ContactSection'
-import H2 from '../../Component/Ui/H2/H2'
-import ServiceCard from '../../Component/ServiceCard/ServiceCard'
-import axios from 'axios'
-import Spinner from '../../Component/Ui/Spinner/Spinner'
-import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp'
-import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded'
-import { baseURL, getHeaders } from '../../Utilies/data'
+import { useEffect, useState, useCallback } from "react";
+import { useTranslation } from "react-i18next";
+import { motion } from "framer-motion";
+import axios from "axios";
+import Heading from "../../Component/Ui/Heading/Heading";
+import H3 from "../../Component/Ui/H3/H3";
+import ContactSection from "../../Component/ContactSection/ContactSection";
+import ServiceCard from "../../Component/ServiceCard/ServiceCard";
+import Spinner from "../../Component/Ui/Spinner/Spinner";
+import ErrorComp from "../../Component/Ui/ErrorComp/ErrorComp";
+import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
+import { baseURL, getHeaders } from "../../Utilies/data";
+import style from "./Services.module.css";
 
-export default function Services() {
-    const { t } = useTranslation()
-    const [services, setServices] = useState([])
-    const [errorFlag, setErrorFlag] = useState(false)
-    const [loading, setLoading] = useState(true)
+const ANIMATION_VARIANTS = {
+  staggerContainer: {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  },
+  staggerItem: {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.5, ease: "easeOut" },
+    },
+  },
+};
 
+const Services = () => {
+  const { t } = useTranslation();
+  const [services, setServices] = useState([]);
+  const [errorFlag, setErrorFlag] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-    const getServices = async () => {
-        try {
-            setLoading(true)
-            setErrorFlag(false)
-            setServices([]);
-            const { data } = await axios.get(baseURL + "/services", {
-                headers: getHeaders(),
-            });
-            if (data.success && data.data && data.data.length !== 0) {
-                setServices(data.data);
-                setLoading(false)
-            } else {
-                setServices([]);
-                setLoading(false)
-            }
-        } catch (error) {
-            setLoading(false)
-            setErrorFlag(true)
-        }
-    };
+  const getServices = useCallback(async () => {
+    try {
+      setLoading(true);
+      setErrorFlag(false);
+      setServices([]);
+      const { data } = await axios.get(`${baseURL}/services`, {
+        headers: getHeaders(),
+      });
+      if (data.success && data.data && data.data.length !== 0) {
+        setServices(data.data);
+      } else {
+        setServices([]);
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
+      setErrorFlag(true);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
 
-    useEffect(() => {
-        getServices()
-    }, [])
+  useEffect(() => {
+    getServices();
+  }, [getServices]);
 
-    return (
-        <section id='services'>
-            <Heading heading={t("servicesPage.heading")} subHeading={t("servicesPage.subheading")} pageName={t("services")} />
-            {(!loading) ?
-                <div className="container my-5 pb-5">
-                    <div className=" row mb-5">
-                        <H2 text={t("services")} />
-                    </div>
-                    {
-                        errorFlag ?
-                            <ErrorComp /> :
-                            services.length == 0 ?
-                                <NoDataFounded />
-                                :
-                                <>
-                                    <div className="row mt-5">
-                                        <H3 text={t("servicesPage.ServicesSubTitle")} />
+  return (
+    <main className={style.servicesPage} id="services">
+      <Heading
+        heading={t("servicesPage.heading")}
+        subHeading={t("servicesPage.subheading")}
+        pageName={t("services")}
+      />
 
-                                    </div>
-                                    <div className="row justify-content-center my-5">
-                                        {
-                                            services.map((service, idx) => {
+      {!loading ? (
+        <div className="container my-5 pb-5">
+          {errorFlag ? (
+            <ErrorComp />
+          ) : services.length === 0 ? (
+            <NoDataFounded />
+          ) : (
+            <>
+              <H3 text={t("servicesPage.ServicesSubTitle")} />
 
-                                                return <ServiceCard {...service} key={idx} />
-                                            })
-                                        }
-                                    </div>
-                                </>}
+              <motion.div
+                className={style.servicesGrid}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={ANIMATION_VARIANTS.staggerContainer}
+              >
+                {services.map((service, idx) => (
+                  <motion.div
+                    key={service.id || idx}
+                    variants={ANIMATION_VARIANTS.staggerItem}
+                  >
+                    <ServiceCard {...service} idx={idx} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </>
+          )}
+        </div>
+      ) : (
+        <Spinner sectionFlag={true} />
+      )}
 
-                </div>
-                : <Spinner sectionFlag={true} />}
+      <ContactSection />
+    </main>
+  );
+};
 
-            <ContactSection />
-        </section>
-    )
-}
+export default Services;

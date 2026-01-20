@@ -1,28 +1,37 @@
-import React, { useContext } from "react";
-import img from "/logo.svg";
-import whiteLogo from "/logo-white.svg";
-
+import { useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { isThemeModeContext } from "../../../Context/isThemeModeContext";
-export default function HomeLoading() {
+import logo from "/logo.svg";
+import whiteLogo from "/logo-white.svg";
+import style from "./HomeLoading.module.css";
+
+const HomeLoading = () => {
+  const { t } = useTranslation();
   const { isDarkMode } = useContext(isThemeModeContext);
+
+  const logoSrc = isDarkMode ? whiteLogo : logo;
 
   return (
     <div
-      className="position-fixed top-0 start-0 bottom-0 end-0 w-100 d-flex justify-content-center align-items-center "
-      style={{
-        backgroundColor: "var(--bg-color)",
-        zIndex: "10000000",
-      }}
+      className={style.loadingOverlay}
+      role="status"
+      aria-live="polite"
+      aria-label={t("loading")}
     >
-      <img loading='lazy'
-        src={isDarkMode ? whiteLogo : img}
-        alt="logo "
-        className="fa-beat-fade"
-        style={{
-          width: "200px",
-          height: "200px",
-        }}
-      />
+      <div className={style.loadingContent}>
+        <img
+          src={logoSrc}
+          alt={t("company logo")}
+          className={style.logo}
+        />
+        <div className={style.loadingDots} aria-hidden="true">
+          <span className={style.dot} />
+          <span className={style.dot} />
+          <span className={style.dot} />
+        </div>
+      </div>
     </div>
   );
-}
+};
+
+export default HomeLoading;
