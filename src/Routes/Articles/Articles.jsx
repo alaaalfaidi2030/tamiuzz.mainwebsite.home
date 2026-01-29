@@ -8,6 +8,7 @@ import Spinner from "../../Component/Ui/Spinner/Spinner";
 import ErrorComp from "../../Component/Ui/ErrorComp/ErrorComp";
 import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
 import { baseURL, getHeaders } from "../../Utilies/data";
+import SEO from "../../Component/SEO/SEO";
 import style from "./Articles.module.css";
 
 const Articles = () => {
@@ -82,6 +83,10 @@ const Articles = () => {
 
   return (
     <main className={style.articlesPage}>
+      <SEO
+        title={t("seo.articles.title", "مقالات تميّز - أحدث المقالات في التسويق الرقمي | Tamiuzz Articles")}
+        description={t("seo.articles.description", "اقرأ أحدث المقالات والنصائح في التسويق الإلكتروني، SEO، تصميم المواقع وإدارة وسائل التواصل الاجتماعي من خبراء شركة تميّز.")}
+      />
       <Heading
         heading={t("articlePage.heading")}
         subHeading={t("articlePage.subheading")}

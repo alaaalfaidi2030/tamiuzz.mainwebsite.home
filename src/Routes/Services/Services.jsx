@@ -10,6 +10,7 @@ import Spinner from "../../Component/Ui/Spinner/Spinner";
 import ErrorComp from "../../Component/Ui/ErrorComp/ErrorComp";
 import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
 import { baseURL, getHeaders } from "../../Utilies/data";
+import SEO from "../../Component/SEO/SEO";
 import style from "./Services.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -63,6 +64,10 @@ const Services = () => {
 
   return (
     <main className={style.servicesPage} id="services">
+      <SEO
+        title={t("seo.services.title", "خدماتنا - شركة تميّز | Tamiuzz Services")}
+        description={t("seo.services.description", "خدمات تسويق إلكتروني متكاملة: SEO، تصميم مواقع، حملات إعلانية، إدارة وسائل التواصل الاجتماعي. شركة تميّز شريكك الرقمي منذ 2018.")}
+      />
       <Heading
         heading={t("servicesPage.heading")}
         subHeading={t("servicesPage.subheading")}

@@ -1,6 +1,7 @@
 import React from 'react';
 import Heading from '../../Component/Ui/Heading/Heading';
 import { useTranslation } from 'react-i18next';
+import SEO from '../../Component/SEO/SEO';
 import style from './Policy.module.css';
 
 export default function Policy() {
@@ -8,6 +9,10 @@ export default function Policy() {
 
     return (
         <section className={style.privacySection }>
+            <SEO
+                title={t("seo.policy.title", "سياسة الخصوصية - شركة تميّز | Tamiuzz Privacy Policy")}
+                description={t("seo.policy.description", "سياسة الخصوصية لشركة تميّز للحلول الرقمية. تعرّف على كيفية جمع واستخدام وحماية بياناتك الشخصية.")}
+            />
             <Heading pageName={"privacy_policy"} />
 
             <div className={style.policyContent}>

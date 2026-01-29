@@ -1,140 +1,89 @@
 import { useRef, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import H2 from '../Ui/H2/H2';
 import { useTranslation } from 'react-i18next';
 import H3 from '../Ui/H3/H3';
 import style from "./ArticlesInHome.module.css";
 import ArticleCard from '../ArticleCard/ArticleCard';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import { motion } from 'framer-motion';
 
 export default function ArticlesInHome({ blogs }) {
     const { t } = useTranslation();
 
-    const fadeInUp = {
-        hidden: { opacity: 0, y: 40 },
-        visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15,
+                delayChildren: 0.2
+            }
+        }
     };
 
-    // const articlesData = [
-    //     {
-    //         id: 1,
-    //         image: '/assets/images/articles/article1.png',
-    //         date: '17',
-    //         month: 'Feb',
-    //         author: 'المشرف',
-    //         category: 'خدمات برمجيه',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     },
-    //     {
-    //         id: 2,
-    //         image: '/assets/images/articles/article2.png',
-    //         date: '20',
-    //         month: 'May',
-    //         author: 'المشرف',
-    //         category: 'مصمم واجهة وتجربة المستخدم',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     },
-    //     {
-    //         id: 3,
-    //         image: '/assets/images/articles/article3.png',
-    //         date: '20',
-    //         month: 'May',
-    //         author: 'المشرف',
-    //         category: 'أمن سيبراني',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     }, {
-    //         id: 1,
-    //         image: '/assets/images/articles/article1.png',
-    //         date: '17',
-    //         month: 'Feb',
-    //         author: 'المشرف',
-    //         category: 'خدمات برمجيه',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     },
-    //     {
-    //         id: 2,
-    //         image: '/assets/images/articles/article2.png',
-    //         date: '20',
-    //         month: 'May',
-    //         author: 'المشرف',
-    //         category: 'مصمم واجهة وتجربة المستخدم',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     },
-    //     {
-    //         id: 3,
-    //         image: '/assets/images/articles/article3.png',
-    //         date: '20',
-    //         month: 'May',
-    //         author: 'المشرف',
-    //         category: 'أمن سيبراني',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     }, {
-    //         id: 1,
-    //         image: '/assets/images/articles/article1.png',
-    //         date: '17',
-    //         month: 'Feb',
-    //         author: 'المشرف',
-    //         category: 'خدمات برمجيه',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     },
-    //     {
-    //         id: 2,
-    //         image: '/assets/images/articles/article2.png',
-    //         date: '20',
-    //         month: 'May',
-    //         author: 'المشرف',
-    //         category: 'مصمم واجهة وتجربة المستخدم',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     },
-    //     {
-    //         id: 3,
-    //         image: '/assets/images/articles/article3.png',
-    //         date: '20',
-    //         month: 'May',
-    //         author: 'المشرف',
-    //         category: 'أمن سيبراني',
-    //         description:
-    //             'هو مجموعة من الإجراءات والتقنيات المصممة لحماية الأنظمة الرقمية والشبكات والبيانات من الهجمات الإلكترونية والاختراقات.',
-    //         link: '/articles/1'
-    //     }
-    // ];
+    const headingVariants = {
+        hidden: { opacity: 0, y: -20 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15
+            }
+        }
+    };
+
+    const subHeadingVariants = {
+        hidden: { opacity: 0, y: -10 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                damping: 15,
+                delay: 0.1
+            }
+        }
+    };
 
     return (
-        <div className={"container py-5 " + style.ArticleHomeContainer}>
-            <motion.div
-                className={style.heading}
-                variants={fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-            >
-                <H2 text={t("homePage.Top Articles")} />
-                <H3 text={t("homePage.follow our newest articles")} />
+        <motion.div
+            className={"container py-5 " + style.ArticleHomeContainer}
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.15 }}
+        >
+            <motion.div className={style.heading}>
+                <motion.div variants={headingVariants}>
+                    <H2 text={t("homePage.Top Articles")} />
+                </motion.div>
+                <motion.div variants={subHeadingVariants}>
+                    <H3 text={t("homePage.follow our newest articles")} />
+                </motion.div>
             </motion.div>
 
             <div className="row">
-                <ArticlesSlider articles={
-                    blogs
-                } />
+                <ArticlesSlider articles={blogs} />
             </div>
-        </div>
+
+            <motion.div
+                className={style.viewAllContainer}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.5, duration: 0.6 }}
+            >
+                <Link to="/articles" className={style.viewAllLink}>
+                    {t("View All Articles", "عرض جميع المقالات")}
+                    <i className="fas fa-arrow-left"></i>
+                </Link>
+            </motion.div>
+        </motion.div>
     );
 }
 
@@ -161,43 +110,58 @@ function ArticlesSlider({ articles }) {
     return (
         <div className="solution-slider-container position-relative">
             <Swiper
-                modules={[Navigation, Pagination]}
-                spaceBetween={20}
+                modules={[Navigation, Pagination, Autoplay]}
+                spaceBetween={24}
                 slidesPerView={1}
                 onSwiper={(swiper) => {
                     swiperRef.current = swiper;
                 }}
                 pagination={{ clickable: true }}
+                autoplay={{
+                    delay: 3500,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true,
+                }}
+                speed={800}
                 breakpoints={{
-                    640: { slidesPerView: 1 },
-                    768: { slidesPerView: 2 },
-                    1024: { slidesPerView: 3 }
+                    640: { slidesPerView: 1, spaceBetween: 20 },
+                    768: { slidesPerView: 2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3, spaceBetween: 24 }
                 }}
             >
                 {articles.map((article, idx) => (
-                    <SwiperSlide key={idx} className='py-5 mx-auto'>
-
+                    <SwiperSlide key={article.id || idx} className='py-5 mx-auto'>
                         <ArticleCard idx={idx} {...article} urlPath={article.path} />
                     </SwiperSlide>
                 ))}
             </Swiper>
 
-            <div className={"d-flex justify-content-center gap-3 mt-4 " + style.buttonContainer}>
-                <button
+            <motion.div
+                className={"d-flex justify-content-center gap-3 mt-4 " + style.buttonContainer}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+            >
+                <motion.button
                     ref={prevRef}
-                    className="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
-                    style={{ width: 40, height: 40 }}
+                    className={style.navButton}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label="Previous slide"
                 >
                     <i className="fa fa-chevron-right"></i>
-                </button>
-                <button
+                </motion.button>
+                <motion.button
                     ref={nextRef}
-                    className="btn btn-primary rounded-circle d-flex align-items-center justify-content-center"
-                    style={{ width: 40, height: 40 }}
+                    className={style.navButton}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    aria-label="Next slide"
                 >
                     <i className="fa fa-chevron-left"></i>
-                </button>
-            </div>
+                </motion.button>
+            </motion.div>
         </div>
     );
 }

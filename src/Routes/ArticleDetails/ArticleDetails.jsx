@@ -8,6 +8,7 @@ import Spinner from "../../Component/Ui/Spinner/Spinner";
 import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
 import ContactSection from "../../Component/ContactSection/ContactSection";
 import { baseURL, getHeaders } from "../../Utilies/data";
+import SEO from "../../Component/SEO/SEO";
 import style from "./ArticleDetails.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -149,6 +150,25 @@ const ArticleDetails = () => {
 
   return (
     <main className={style.articleDetailsPage}>
+      <SEO
+        title={`${article.title} - Tamiuzz`}
+        description={article.description?.replace(/<[^>]*>/g, "").slice(0, 160) || t("seo.articles.description", "مقالات شركة تميّز للحلول الرقمية")}
+        ogType="article"
+        ogImage={article.imageUrl || undefined}
+        jsonLd={{
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": article.title,
+          "image": article.imageUrl || undefined,
+          "author": article.author ? { "@type": "Person", "name": article.author } : { "@type": "Organization", "name": "Tamiuzz" },
+          "datePublished": article.date || undefined,
+          "publisher": {
+            "@type": "Organization",
+            "name": "Tamiuzz - شركة تميّز",
+            "logo": { "@type": "ImageObject", "url": "https://tamiuzz.com/logo.svg" }
+          }
+        }}
+      />
       <Heading
         heading={t("articlePage.heading")}
         subHeading={t("articlePage.subheading")}

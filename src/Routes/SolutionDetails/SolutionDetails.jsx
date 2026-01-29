@@ -12,6 +12,7 @@ import PricingTable from '../../Component/PricingTable/PricingTable';
 import Modal from '../../Component/Ui/Modal/Modal';
 import { baseURL, getHeaders } from '../../Utilies/data';
 
+import SEO from '../../Component/SEO/SEO';
 import styles from './SolutionDetails.module.css';
 
 // Animation Variants
@@ -362,6 +363,10 @@ export default function SolutionDetails() {
   // Render content
   return (
     <>
+      <SEO
+        title={`${solutionDetails.title} - Tamiuzz`}
+        description={solutionDetails.sections?.[0]?.description?.replace(/<[^>]*>/g, "").slice(0, 160) || t("seo.solutions.description", "حلول تميّز الرقمية المتكاملة")}
+      />
       <Heading
         heading={t('solutionPage.heading')}
         subHeading={t('solutionPage.subheading')}

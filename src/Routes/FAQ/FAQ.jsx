@@ -11,6 +11,7 @@ import { useEffect } from 'react';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
 import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp';
+import SEO from '../../Component/SEO/SEO';
 
 function FAQ() {
     const { t } = useTranslation();
@@ -64,6 +65,22 @@ function FAQ() {
 
     return (
         <>
+            <SEO
+                title={t("seo.faq.title", "الأسئلة الشائعة - شركة تميّز | Tamiuzz FAQ")}
+                description={t("seo.faq.description", "إجابات على أكثر الأسئلة شيوعاً حول خدمات شركة تميّز للحلول الرقمية والتسويق الإلكتروني.")}
+                jsonLd={faq.length > 0 ? {
+                    "@context": "https://schema.org",
+                    "@type": "FAQPage",
+                    "mainEntity": faq.map(item => ({
+                        "@type": "Question",
+                        "name": item.question,
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": item.answer
+                        }
+                    }))
+                } : undefined}
+            />
             <Heading pageName="faq" />
             <H2 text={t("faq")} />
             {

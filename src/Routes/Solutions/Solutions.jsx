@@ -10,6 +10,7 @@ import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp'
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded'
 import axios from 'axios'
 import { baseURL, getHeaders } from '../../Utilies/data'
+import SEO from '../../Component/SEO/SEO'
 
 export default function Solutions() {
     const { t } = useTranslation()
@@ -77,6 +78,10 @@ export default function Solutions() {
 
     return (
         <section id='solutions'>
+            <SEO
+                title={t("seo.solutions.title", "الحلول الرقمية - شركة تميّز | Tamiuzz Solutions")}
+                description={t("seo.solutions.description", "اكتشف حلول تميّز الرقمية المتكاملة لتطوير أعمالك، من أنظمة إدارة المحتوى إلى منصات التجارة الإلكترونية.")}
+            />
             <Heading heading={t("solutionPage.heading")} subHeading={t("solutionPage.subheading")} pageName={t("solutions")} />
             {(!loading) ?
                 <div className="container my-5 pb-4">

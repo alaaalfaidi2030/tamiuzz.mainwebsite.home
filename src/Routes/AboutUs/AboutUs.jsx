@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Heading from "../../Component/Ui/Heading/Heading";
 import ContactSection from "../../Component/ContactSection/ContactSection";
 import aboutImg from "../../assets/Images/about-img.png";
+import SEO from "../../Component/SEO/SEO";
 import style from "./AboutUs.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -113,6 +114,10 @@ const AboutUs = () => {
 
   return (
     <main className={style.aboutPage} id="about-us">
+      <SEO
+        title={t("seo.about.title", "من نحن - شركة تميّز للحلول الرقمية | Tamiuzz About Us")}
+        description={t("seo.about.description", "تعرّف على شركة تميّز للحلول الرقمية والتسويق الإلكتروني. أكثر من 10 سنوات خبرة في خدمة الشركات في مصر والخليج.")}
+      />
       <Heading pageName={t("aboutSection.about-us-page-name")} />
 
       {/* Hero Section */}

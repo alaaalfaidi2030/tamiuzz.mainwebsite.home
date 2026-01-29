@@ -1,14 +1,93 @@
 /* ============================================
-   ARTICLES IN HOME - PROFESSIONAL CORPORATE
+   ARTICLES IN HOME - PREMIUM REDESIGN
    ============================================ */
 
 .ArticleHomeContainer {
-  padding: var(--space-16) var(--space-4);
-  background-color: var(--bg-body);
+  padding: var(--space-20) var(--space-4);
+  background: linear-gradient(
+    180deg,
+    var(--bg-body) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-body) 100%
+  );
+  position: relative;
+  overflow: hidden;
 }
+
+/* Decorative gradient background */
+.ArticleHomeContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1400px;
+  height: 400px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.03) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ArticleHomeContainer > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   HEADING
+   ============================================ */
 
 .heading {
   width: fit-content;
+  margin-bottom: var(--space-12);
+  position: relative;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  bottom: -12px;
+  left: 0;
+  width: 80px;
+  height: 4px;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-500),
+    var(--primary-400),
+    transparent
+  );
+}
+
+body[dir="ltr"] .heading::after {
+  left: auto;
+  right: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-400),
+    var(--primary-500)
+  );
+}
+
+/* ============================================
+   SWIPER CUSTOMIZATION
+   ============================================ */
+
+.ArticleHomeContainer :global(.swiper) {
+  padding: var(--space-6) var(--space-2);
+  margin: 0 calc(-1 * var(--space-2));
+}
+
+.ArticleHomeContainer :global(.swiper-slide) {
+  height: auto;
+  display: flex;
+  justify-content: center;
 }
 
 .ArticleHomeContainer :global(.swiper-button-prev),
@@ -18,17 +97,136 @@
 }
 
 /* ============================================
-   BUTTON CONTAINER
+   CUSTOM NAVIGATION BUTTONS
    ============================================ */
 
 .buttonContainer {
   display: flex;
-  gap: var(--space-4);
+  gap: var(--space-3);
+  justify-content: center;
+  margin-top: var(--space-10);
+}
+
+.navButton {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-500);
+  background: var(--bg-surface);
+  color: var(--primary-500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.navButton::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--primary-500);
+  transform: scale(0);
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.navButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+  border-color: var(--primary-600);
+}
+
+.navButton:hover::before {
+  transform: scale(1);
+}
+
+.navButton:hover i {
+  color: var(--text-inverse);
+}
+
+.navButton:active {
+  transform: scale(0.95);
+}
+
+.navButton i {
+  font-size: 0.9rem;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+/* RTL support */
+body[dir="ltr"] .buttonContainer {
+  flex-direction: row-reverse;
+}
+
+/* ============================================
+   VIEW ALL ARTICLES LINK
+   ============================================ */
+
+.viewAllContainer {
+  display: flex;
+  justify-content: center;
   margin-top: var(--space-8);
 }
 
-body[dir="ltr"] .buttonContainer {
-  flex-direction: row-reverse;
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-6);
+  background: var(--primary-500);
+  color: var(--text-inverse);
+  text-decoration: none;
+  border-radius: var(--radius-full);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(var(--primary-rgb, 79, 70, 229), 0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+.viewAllLink::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
+}
+
+.viewAllLink:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.35);
+  background: var(--primary-600);
+  color: var(--text-inverse);
+}
+
+.viewAllLink:hover::before {
+  transform: translateX(100%);
+}
+
+.viewAllLink i {
+  font-size: 0.85rem;
+  transition: transform 0.3s ease;
+}
+
+.viewAllLink:hover i {
+  transform: translateX(4px);
+}
+
+body[dir="rtl"] .viewAllLink:hover i {
+  transform: translateX(-4px);
 }
 
 /* ============================================
@@ -37,11 +235,56 @@ body[dir="ltr"] .buttonContainer {
 
 @media (max-width: 768px) {
   .ArticleHomeContainer {
-    padding: var(--space-12) var(--space-3);
+    padding: var(--space-16) var(--space-3);
+  }
+
+  .heading {
+    margin-bottom: var(--space-8);
   }
 
   .buttonContainer {
-    flex-direction: column;
-    align-items: stretch;
+    margin-top: var(--space-8);
+    gap: var(--space-2);
   }
+
+  .navButton {
+    width: 44px;
+    height: 44px;
+  }
+
+  .viewAllLink {
+    padding: var(--space-2-5) var(--space-5);
+    font-size: 0.88rem;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .ArticleHomeContainer {
+  background: linear-gradient(
+    180deg,
+    var(--bg-elevated) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-elevated) 100%
+  );
+}
+
+.dark .navButton {
+  background: var(--bg-elevated);
+  border-color: var(--primary-400);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark .navButton:hover {
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.5);
+}
+
+.dark .viewAllLink {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.dark .viewAllLink:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
 }

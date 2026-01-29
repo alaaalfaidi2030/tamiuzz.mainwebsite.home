@@ -1,5 +1,5 @@
 import IsMobileProvider from './Context/isMobileContext'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import HomeContentProvider from './Context/homeContentContext'
 import AuthProvider from './Context/authContext'
 import IsThemeModeProvider from './Context/isThemeModeContext'
@@ -30,7 +30,7 @@ function App() {
       element: <RoutLayout />,
       children: [
         { index: true, element: <Home /> },
-        { path: "home", element: <Home /> },
+        { path: "home", element: <Navigate to="/" replace /> },
         { path: "faq", element: <FAQ /> },
         { path: "articles", element: <Articles /> },
         { path: "articles/:id", element: <ArticleDetails /> },

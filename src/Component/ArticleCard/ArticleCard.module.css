@@ -1,24 +1,26 @@
 /* ============================================
-   ARTICLE CARD - PROFESSIONAL CORPORATE
+   ARTICLE CARD - PREMIUM CORPORATE REDESIGN
    ============================================ */
 
 .card {
   width: 100%;
-  max-width: 350px;
-  border-radius: var(--radius-xl);
+  max-width: 380px;
+  border-radius: var(--radius-2xl);
   overflow: hidden;
-  box-shadow: var(--shadow-card);
   background: var(--bg-surface);
   border: 1px solid var(--border-light);
   display: flex;
   flex-direction: column;
-  direction: rtl;
-  transition: all var(--transition-base);
+  position: relative;
+  cursor: pointer;
+  transition: box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              border-color 0.4s ease;
 }
 
 .card:hover {
-  transform: translateY(-4px);
-  box-shadow: var(--shadow-card-hover);
+  box-shadow: 0 24px 48px rgba(26, 31, 43, 0.1),
+              0 10px 24px rgba(26, 31, 43, 0.06);
+  border-color: var(--primary-300);
 }
 
 .card:focus-within {
@@ -33,7 +35,7 @@
 .imageWrapper {
   position: relative;
   width: 100%;
-  height: 200px;
+  height: 230px;
   overflow: hidden;
 }
 
@@ -41,11 +43,20 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform var(--transition-slow);
 }
 
-.card:hover .image {
-  transform: scale(1.04);
+/* Gradient overlay on hover */
+.imageOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(26, 31, 43, 0.0) 0%,
+    rgba(26, 31, 43, 0.05) 60%,
+    rgba(26, 31, 43, 0.35) 100%
+  );
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* ============================================
@@ -54,30 +65,80 @@
 
 .dateBadge {
   position: absolute;
-  top: var(--space-3);
-  left: var(--space-3);
+  top: var(--space-4);
+  right: var(--space-4);
   background: var(--primary-500);
   color: var(--text-inverse);
   text-align: center;
-  border-radius: var(--radius-md);
-  padding: var(--space-2) var(--space-3);
-  font-size: 0.8rem;
+  border-radius: var(--radius-lg);
+  padding: 8px 14px;
+  z-index: 2;
+  box-shadow: 0 4px 14px rgba(38, 68, 162, 0.3);
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease;
+}
+
+.card:hover .dateBadge {
+  transform: scale(1.06);
+  box-shadow: 0 6px 18px rgba(38, 68, 162, 0.4);
 }
 
 body[dir="ltr"] .dateBadge {
-  left: auto;
-  right: var(--space-3);
+  right: auto;
+  left: var(--space-4);
 }
 
 .day {
   display: block;
-  font-weight: 700;
-  font-size: 0.95rem;
+  font-weight: 800;
+  font-size: 1.2rem;
+  line-height: 1.15;
 }
 
 .month {
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  opacity: 0.9;
+}
+
+/* ============================================
+   TAG CHIPS (on image)
+   ============================================ */
+
+.tagsRow {
+  position: absolute;
+  bottom: var(--space-3);
+  left: var(--space-3);
+  display: flex;
+  gap: var(--space-2);
+  z-index: 2;
+  flex-wrap: wrap;
+}
+
+body[dir="rtl"] .tagsRow {
+  left: auto;
+  right: var(--space-3);
+}
+
+.tagChip {
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--primary-600);
   font-size: 0.7rem;
-  opacity: 0.85;
+  font-weight: 600;
+  padding: 4px 14px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.3px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.card:hover .tagChip {
+  background: var(--primary-500);
+  color: var(--text-inverse);
 }
 
 /* ============================================
@@ -85,37 +146,71 @@ body[dir="ltr"] .dateBadge {
    ============================================ */
 
 .content {
-  padding: var(--space-5);
+  padding: var(--space-5) var(--space-6);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   flex: 1;
 }
 
+/* Meta row: author + time */
 .meta {
-  font-size: 0.8rem;
-  color: var(--text-muted);
   display: flex;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-3);
   flex-wrap: wrap;
 }
 
-.meta i {
-  color: var(--primary-500);
-  font-size: 0.75rem;
-}
-
-.meta span {
+.authorRow {
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  font-size: 0.78rem;
+  color: var(--text-muted);
 }
 
-.title {
-  font-size: 0.95rem;
+.authorIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-100), var(--primary-200));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-600);
+  font-size: 0.6rem;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .authorIcon {
+  transform: scale(1.08);
+}
+
+.authorName {
   font-weight: 600;
-  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+.timeLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+.timeLabel i {
+  font-size: 0.68rem;
+  color: var(--primary-400);
+}
+
+/* Title */
+.title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
   color: var(--text-heading);
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -123,25 +218,51 @@ body[dir="ltr"] .dateBadge {
   overflow: hidden;
   text-overflow: ellipsis;
   margin: 0;
+  transition: color 0.3s ease;
+}
+
+.card:hover .title {
+  color: var(--primary-600);
+}
+
+/* Divider */
+.divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-light) 15%,
+    var(--border-light) 85%,
+    transparent
+  );
+  margin: var(--space-1) 0;
 }
 
 /* ============================================
-   LINK
+   FOOTER / LINK
    ============================================ */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
 
 .link {
   color: var(--primary-500);
   font-weight: 600;
   text-decoration: none;
-  transition: color var(--transition-fast);
   display: inline-flex;
   align-items: center;
   gap: var(--space-2);
-  font-size: 0.9rem;
+  font-size: 0.85rem;
+  transition: color 0.3s ease;
 }
 
 .link:hover {
-  color: var(--primary-600);
+  color: var(--primary-700);
 }
 
 .link:focus-visible {
@@ -150,24 +271,129 @@ body[dir="ltr"] .dateBadge {
   border-radius: var(--radius-sm);
 }
 
+.linkArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--primary-50);
+  color: var(--primary-500);
+  font-size: 0.7rem;
+  transition: background 0.3s ease, color 0.3s ease;
+  flex-shrink: 0;
+}
+
+body[dir="ltr"] .linkArrow i {
+  transform: rotate(180deg);
+}
+
+.card:hover .linkArrow {
+  background: var(--primary-500);
+  color: var(--text-inverse);
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .card {
+  background: var(--bg-elevated);
+  border-color: var(--border-default);
+}
+
+.dark .card:hover {
+  border-color: var(--primary-400);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3),
+              0 10px 24px rgba(0, 0, 0, 0.2);
+}
+
+.dark .dateBadge {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
+}
+
+.dark .tagChip {
+  background: rgba(30, 36, 47, 0.85);
+  color: var(--primary-400);
+}
+
+.dark .card:hover .tagChip {
+  background: var(--primary-500);
+  color: var(--text-inverse);
+}
+
+.dark .authorIcon {
+  background: linear-gradient(135deg, var(--bg-muted), var(--bg-surface));
+  color: var(--primary-400);
+}
+
+.dark .timeLabel {
+  color: var(--text-muted);
+}
+
+.dark .timeLabel i {
+  color: var(--primary-500);
+}
+
+.dark .linkArrow {
+  background: var(--primary-200);
+  color: var(--primary-400);
+}
+
+.dark .card:hover .linkArrow {
+  background: var(--primary-500);
+  color: var(--text-inverse);
+}
+
+.dark .divider {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--border-default) 15%,
+    var(--border-default) 85%,
+    transparent
+  );
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */
 
 @media (max-width: 480px) {
+  .card {
+    max-width: 100%;
+  }
+
   .imageWrapper {
-    height: 170px;
+    height: 190px;
   }
 
   .content {
-    padding: var(--space-4);
+    padding: var(--space-4) var(--space-5);
   }
 
   .title {
-    font-size: 0.9rem;
+    font-size: 0.92rem;
+  }
+
+  .authorRow {
+    font-size: 0.72rem;
+  }
+
+  .authorIcon {
+    width: 26px;
+    height: 26px;
+    font-size: 0.55rem;
   }
 
   .meta {
-    font-size: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+
+  .timeLabel {
+    font-size: 0.68rem;
   }
 }

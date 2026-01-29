@@ -1,5 +1,5 @@
 /* ============================================
-   TESTIMONIALS - PROFESSIONAL CORPORATE
+   TESTIMONIALS SECTION - PROFESSIONAL REDESIGN
    ============================================ */
 
 .Testimonials {
@@ -7,7 +7,46 @@
   background-repeat: no-repeat;
   background-size: cover;
   padding: var(--space-16) var(--space-4);
+  position: relative;
+  overflow: hidden;
 }
+
+/* Dark overlay for better contrast */
+.Testimonials::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.65) 0%,
+    rgba(0, 0, 0, 0.55) 50%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  z-index: 0;
+}
+
+/* Subtle animated gradient accent */
+.Testimonials::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.08) 0%,
+    transparent 50%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.05) 100%
+  );
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   HEADING
+   ============================================ */
 
 .heading * {
   color: var(--text-inverse);
@@ -17,15 +56,49 @@
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.9) 50%,
+    rgba(255, 255, 255, 0.85) 50%,
     transparent 100%
   );
 }
+
+/* ============================================
+   SWIPER OVERRIDES
+   ============================================ */
 
 .Testimonials :global(.swiper-button-prev),
 .Testimonials :global(.swiper-button-next),
 .Testimonials :global(.swiper-pagination-bullets) {
   display: none !important;
+}
+
+.sliderRow {
+  padding-top: var(--space-8);
+  padding-bottom: var(--space-6);
+}
+
+/* ============================================
+   DECORATIVE QUOTE MARKS
+   ============================================ */
+
+.bgQuote {
+  position: absolute;
+  font-size: 14rem;
+  color: rgba(255, 255, 255, 0.03);
+  font-family: Georgia, serif;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+}
+
+.bgQuoteLeft {
+  top: -20px;
+  left: 40px;
+}
+
+.bgQuoteRight {
+  bottom: -60px;
+  right: 40px;
 }
 
 /* ============================================
@@ -35,5 +108,14 @@
 @media (max-width: 768px) {
   .Testimonials {
     padding: var(--space-12) var(--space-3);
+  }
+
+  .sliderRow {
+    padding-top: var(--space-6);
+    padding-bottom: var(--space-4);
+  }
+
+  .bgQuote {
+    font-size: 8rem;
   }
 }

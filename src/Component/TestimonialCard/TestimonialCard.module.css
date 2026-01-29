@@ -1,59 +1,146 @@
 /* ============================================
-   TESTIMONIAL CARD - PROFESSIONAL CORPORATE
+   TESTIMONIAL CARD - PROFESSIONAL REDESIGN
    ============================================ */
 
-.testimonial-card {
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-light);
+.card {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: var(--radius-xl);
   padding: var(--space-6);
   max-width: 480px;
-  color: var(--text-secondary);
-  box-shadow: var(--shadow-card);
-  transition: all var(--transition-base);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.4s ease,
+              box-shadow 0.4s ease;
 }
 
-.testimonial-card:hover {
-  box-shadow: var(--shadow-card-hover);
-  transform: translateY(-2px);
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2),
+              0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+}
+
+/* Accent glow on top border */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--primary-400, #818cf8) 30%,
+    var(--primary-500, #6366f1) 50%,
+    var(--primary-400, #818cf8) 70%,
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease, width 0.4s ease;
+}
+
+.card:hover::before {
+  opacity: 1;
+  width: 80%;
 }
 
 /* ============================================
    HEADER
    ============================================ */
 
-.testimonial-header {
+.header {
   display: flex;
   justify-content: space-between;
-  align-items: start;
-  margin-bottom: var(--space-4);
+  align-items: flex-start;
 }
 
-.testimonial-user {
+.user {
   display: flex;
   gap: var(--space-3);
+  align-items: center;
 }
 
-.user-image {
+.avatarWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.avatar {
   width: 52px;
   height: 52px;
-  border-radius: var(--radius-full);
+  border-radius: 50%;
   object-fit: cover;
-  border: 2px solid var(--border-light);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  transition: border-color 0.3s ease, transform 0.3s ease;
 }
 
-.user-name {
-  font-weight: 600;
+.card:hover .avatar {
+  border-color: var(--primary-400, #818cf8);
+  transform: scale(1.05);
+}
+
+/* Online-style ring around avatar */
+.avatarRing {
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  background: linear-gradient(135deg, var(--primary-400, #818cf8), var(--primary-600, #4f46e5)) border-box;
+  -webkit-mask:
+    linear-gradient(#fff 0 0) padding-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.card:hover .avatarRing {
+  opacity: 1;
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.userName {
+  font-weight: 700;
   margin: 0;
-  color: var(--text-heading);
+  color: #fff;
   font-size: 0.95rem;
+  letter-spacing: 0.2px;
 }
 
-.user-role {
-  font-size: 0.8rem;
-  color: var(--primary-500);
+.userRole {
+  font-size: 0.78rem;
+  color: var(--primary-300, #a5b4fc);
   margin: 0;
   font-weight: 500;
+}
+
+/* ============================================
+   QUOTE ICON
+   ============================================ */
+
+.quoteIcon {
+  font-size: 1.6rem;
+  color: var(--primary-400, #818cf8);
+  opacity: 0.25;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card:hover .quoteIcon {
+  opacity: 0.5;
+  transform: rotate(-8deg) scale(1.1);
 }
 
 /* ============================================
@@ -61,37 +148,56 @@
    ============================================ */
 
 .stars {
-  margin-top: var(--space-1);
-  color: var(--text-muted);
   display: flex;
-  gap: 2px;
+  gap: 3px;
+  margin-top: var(--space-1);
 }
 
-.fa-star.filled {
-  color: var(--secondary-500);
+.star {
+  font-size: 0.8rem;
+  color: rgba(255, 255, 255, 0.2);
+  transition: transform 0.3s ease;
 }
 
-.fa-star {
-  margin-right: 2px;
-  font-size: 0.85rem;
+.starFilled {
+  color: #fbbf24;
+}
+
+.card:hover .star {
+  transform: scale(1.1);
 }
 
 /* ============================================
-   QUOTE
+   TEXT
    ============================================ */
 
-.quote-icon {
-  font-size: 1.35rem;
-  color: var(--primary-300);
-  opacity: 0.5;
+.text {
+  line-height: 1.75;
+  font-weight: 400;
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.testimonial-text {
-  margin-top: var(--space-3);
-  line-height: 1.7;
-  font-weight: 400;
-  font-size: 0.9rem;
-  color: var(--text-secondary);
+/* Bottom decorative line */
+.bottomAccent {
+  width: 40px;
+  height: 3px;
+  border-radius: 10px;
+  background: linear-gradient(90deg, var(--primary-500, #6366f1), var(--primary-300, #a5b4fc));
+  opacity: 0.5;
+  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              opacity 0.3s ease;
+}
+
+.card:hover .bottomAccent {
+  width: 70px;
+  opacity: 0.8;
 }
 
 /* ============================================
@@ -99,28 +205,28 @@
    ============================================ */
 
 @media (max-width: 480px) {
-  .testimonial-card {
+  .card {
     padding: var(--space-5);
   }
 
-  .user-image {
+  .avatar {
     width: 44px;
     height: 44px;
   }
 
-  .user-name {
+  .userName {
     font-size: 0.85rem;
   }
 
-  .user-role {
+  .userRole {
+    font-size: 0.72rem;
+  }
+
+  .text {
+    font-size: 0.82rem;
+  }
+
+  .star {
     font-size: 0.75rem;
-  }
-
-  .testimonial-text {
-    font-size: 0.85rem;
-  }
-
-  .stars {
-    font-size: 0.8rem;
   }
 }

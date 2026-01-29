@@ -4,6 +4,7 @@ import Heading from "../../Component/Ui/Heading/Heading";
 import H2 from "../../Component/Ui/H2/H2";
 import ContactForm from "../../Component/ContactForm/ContactForm";
 import { phoneAndEmail, socialMedia } from "../../Utilies/data";
+import SEO from "../../Component/SEO/SEO";
 import style from "./Support.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -43,6 +44,10 @@ const Support = () => {
 
   return (
     <main className={style.supportPage} id="support">
+      <SEO
+        title={t("seo.support.title", "تواصل معنا - شركة تميّز | Tamiuzz Support")}
+        description={t("seo.support.description", "تواصل مع فريق شركة تميّز للحلول الرقمية. نحن هنا لمساعدتك في تحقيق أهدافك الرقمية.")}
+      />
       <Heading
         heading={t("supportPage.heading")}
         subHeading={t("supportPage.subheading")}

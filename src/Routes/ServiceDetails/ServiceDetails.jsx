@@ -9,6 +9,7 @@ import Spinner from "../../Component/Ui/Spinner/Spinner";
 import ErrorComp from "../../Component/Ui/ErrorComp/ErrorComp";
 import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
 import { baseURL, getHeaders } from "../../Utilies/data";
+import SEO from "../../Component/SEO/SEO";
 import style from "./ServiceDetails.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -109,6 +110,13 @@ const ServiceDetails = () => {
 
   return (
     <main className={style.serviceDetailsPage}>
+      {service && (
+        <SEO
+          title={`${service.title} - Tamiuzz`}
+          description={service.description?.replace(/<[^>]*>/g, "").slice(0, 160) || t("seo.services.description", "خدمات شركة تميّز للحلول الرقمية")}
+          ogImage={service.imageUrl ? baseURL + service.imageUrl : undefined}
+        />
+      )}
       <Heading
         heading={t("servicesPage.heading")}
         subHeading={t("servicesPage.subheading")}
