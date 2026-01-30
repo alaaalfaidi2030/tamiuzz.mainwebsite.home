@@ -13,7 +13,6 @@ import { Autoplay } from "swiper/modules";
 export default function AboutSection({ counter, logos, services }) {
     const { t } = useTranslation();
 
-    // Container orchestration
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -26,7 +25,6 @@ export default function AboutSection({ counter, logos, services }) {
         }
     };
 
-    // Content animations
     const contentVariants = {
         hidden: { opacity: 0, x: -60 },
         visible: {
@@ -54,7 +52,6 @@ export default function AboutSection({ counter, logos, services }) {
         }
     };
 
-    // Image with parallax-style reveal
     const imageVariants = {
         hidden: { opacity: 0, scale: 0.9, x: 60 },
         visible: {
@@ -70,7 +67,6 @@ export default function AboutSection({ counter, logos, services }) {
         }
     };
 
-    // Stat boxes with stagger
     const statBoxVariants = {
         hidden: { opacity: 0, y: 30, scale: 0.9 },
         visible: {
@@ -85,7 +81,6 @@ export default function AboutSection({ counter, logos, services }) {
         }
     };
 
-    // Logo animation
     const logoVariants = {
         hidden: { opacity: 0, scale: 0.8 },
         visible: (i) => ({
@@ -101,7 +96,48 @@ export default function AboutSection({ counter, logos, services }) {
     };
 
     return (
-        <section className={style.aboutSection + " container"}>
+        <section className={style.aboutSection}>
+            <div className={style.sectionContainer}>
+                {/* Floating Decorative Shapes */}
+                <motion.div
+                    className={style.floatingShape1}
+                    animate={{
+                        y: [0, -25, 0],
+                        x: [0, 20, 0],
+                        rotate: [0, 8, 0]
+                    }}
+                    transition={{
+                        duration: 10,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                <motion.div
+                    className={style.floatingShape2}
+                    animate={{
+                        y: [0, 30, 0],
+                        x: [0, -15, 0],
+                        rotate: [0, -5, 0]
+                    }}
+                    transition={{
+                        duration: 12,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+                <motion.div
+                    className={style.floatingShape3}
+                    animate={{
+                        y: [0, -20, 0],
+                        scale: [1, 1.1, 1]
+                    }}
+                    transition={{
+                        duration: 8,
+                        repeat: Infinity,
+                        ease: "easeInOut"
+                    }}
+                />
+
             {/* Section Heading */}
             <motion.div
                 initial={{ opacity: 0, y: -20 }}
@@ -139,27 +175,62 @@ export default function AboutSection({ counter, logos, services }) {
                         {t("homePage.aboutSectionDescription")}
                     </motion.p>
 
-                    {/* Services Grid */}
+                    {/* Services Grid with Premium Effects */}
                     <motion.div className={style.servicesGrid} variants={itemVariants}>
                         {services.map((service, idx) => (
                             <motion.div
                                 key={idx}
                                 className={style.serviceItem}
-                                whileHover={{ x: 5, transition: { type: "spring", stiffness: 300 } }}
+                                initial="rest"
+                                whileHover="hover"
+                                animate="rest"
                             >
                                 <Link to={`/services/${service.path}`}>
                                     <motion.span
                                         className={style.checkIcon}
-                                        whileHover={{ scale: 1.2, rotate: 360 }}
-                                        transition={{ type: "spring", stiffness: 200 }}
+                                        variants={{
+                                            rest: { scale: 1, rotate: 0 },
+                                            hover: {
+                                                scale: 1.2,
+                                                rotate: 360,
+                                                transition: {
+                                                    type: "spring",
+                                                    stiffness: 200,
+                                                    damping: 10
+                                                }
+                                            }
+                                        }}
                                     >
                                         <i className="fa-solid fa-check"></i>
                                     </motion.span>
-                                    <span className={style.serviceTitle}>{service.title}</span>
+                                    <motion.span
+                                        className={style.serviceTitle}
+                                        variants={{
+                                            rest: { x: 0 },
+                                            hover: {
+                                                x: 5,
+                                                transition: {
+                                                    type: "spring",
+                                                    stiffness: 300
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        {service.title}
+                                    </motion.span>
                                     <motion.span
                                         className={style.arrow}
-                                        initial={{ opacity: 0, x: -5 }}
-                                        whileHover={{ opacity: 1, x: 0 }}
+                                        variants={{
+                                            rest: { opacity: 0, x: -5 },
+                                            hover: {
+                                                opacity: 1,
+                                                x: 0,
+                                                transition: {
+                                                    type: "spring",
+                                                    stiffness: 300
+                                                }
+                                            }
+                                        }}
                                     >
                                         <i className="fa-solid fa-arrow-left"></i>
                                     </motion.span>
@@ -168,10 +239,12 @@ export default function AboutSection({ counter, logos, services }) {
                         ))}
                     </motion.div>
 
-                    {/* CTA Button */}
+                    {/* CTA Button with Glow */}
                     <motion.div className={style.ctaWrapper} variants={itemVariants}>
                         <Link to={"/services"} className={style.ctaButton}>
+                            <div className={style.buttonGlow} />
                             <motion.span
+                                className={style.buttonContent}
                                 whileHover={{ scale: 1.05 }}
                                 transition={{ type: "spring", stiffness: 400 }}
                             >
@@ -187,47 +260,29 @@ export default function AboutSection({ counter, logos, services }) {
                         </Link>
                     </motion.div>
 
-                    {/* Statistics */}
+                    {/* Premium Statistics with Count-Up */}
                     <motion.div className={style.statistics} variants={containerVariants}>
-                        <motion.div className={style.statBox} variants={statBoxVariants}>
-                            <div className={style.statIcon}>
-                                <img loading='lazy' src={projects} alt="projects icon" />
-                            </div>
-                            <div className={style.statContent}>
-                                <motion.h4
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ type: "spring", stiffness: 200, delay: 0.3 }}
-                                >
-                                    {counter.projects}
-                                </motion.h4>
-                                <p>{t("homePage.projectsLabel")}</p>
-                            </div>
-                        </motion.div>
-
-                        <motion.div className={style.statBox} variants={statBoxVariants}>
-                            <div className={style.statIcon}>
-                                <img loading='lazy' src={ourCLients} alt="clients icon" />
-                            </div>
-                            <div className={style.statContent}>
-                                <motion.h4
-                                    initial={{ opacity: 0, scale: 0.5 }}
-                                    whileInView={{ opacity: 1, scale: 1 }}
-                                    viewport={{ once: true }}
-                                    transition={{ type: "spring", stiffness: 200, delay: 0.4 }}
-                                >
-                                    {counter.clients}
-                                </motion.h4>
-                                <p>{t("homePage.clientsLabel")}</p>
-                            </div>
-                        </motion.div>
+                        <PremiumStatCard
+                            icon={projects}
+                            number={counter.projects}
+                            label={t("homePage.projectsLabel")}
+                            delay={0.3}
+                            gradient="primary"
+                        />
+                        <PremiumStatCard
+                            icon={ourCLients}
+                            number={counter.clients}
+                            label={t("homePage.clientsLabel")}
+                            delay={0.4}
+                            gradient="secondary"
+                        />
                     </motion.div>
                 </motion.div>
 
-                {/* Image Side */}
+                {/* Image Side with Premium Effects */}
                 <motion.div className={style.imageWrapper} variants={imageVariants}>
                     <div className={style.imageContainer}>
+                        {/* Animated Background Glow */}
                         <motion.div
                             className={style.imageBg}
                             animate={{
@@ -236,6 +291,19 @@ export default function AboutSection({ counter, logos, services }) {
                             }}
                             transition={{
                                 duration: 8,
+                                repeat: Infinity,
+                                ease: "easeInOut"
+                            }}
+                        />
+                        {/* Pulsing Glow Effect */}
+                        <motion.div
+                            className={style.imageGlow}
+                            animate={{
+                                scale: [1, 1.15, 1],
+                                opacity: [0.3, 0.6, 0.3]
+                            }}
+                            transition={{
+                                duration: 3,
                                 repeat: Infinity,
                                 ease: "easeInOut"
                             }}
@@ -250,7 +318,7 @@ export default function AboutSection({ counter, logos, services }) {
                 </motion.div>
             </motion.div>
 
-            {/* Partner Logos Section */}
+            {/* Partner Logos Section with Premium Effects */}
             <div className={style.partnersSection}>
                 <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -296,6 +364,7 @@ export default function AboutSection({ counter, logos, services }) {
                                     transition={{ type: "spring", stiffness: 300 }}
                                 >
                                     <div className={style.logoInner}>
+                                        <div className={style.logoGlow} />
                                         <img loading='lazy' src={logo.imageUrl} alt={logo.name} />
                                     </div>
                                 </motion.div>
@@ -304,6 +373,100 @@ export default function AboutSection({ counter, logos, services }) {
                     </Swiper>
                 </motion.div>
             </div>
+            </div>
         </section>
     );
+}
+
+// Premium Stat Card with Count-Up Animation
+function PremiumStatCard({ icon, number, label, delay, gradient }) {
+    return (
+        <motion.div
+            className={`${style.statBox} ${style[`gradient-${gradient}`]}`}
+            initial={{ opacity: 0, y: 40, rotateX: -15 }}
+            whileInView={{ opacity: 1, y: 0, rotateX: 0 }}
+            viewport={{ once: true }}
+            transition={{
+                type: "spring",
+                stiffness: 80,
+                damping: 18,
+                delay
+            }}
+            whileHover={{
+                y: -10,
+                scale: 1.05,
+                transition: { type: "spring", stiffness: 400 }
+            }}
+        >
+            <div className={style.statCardGlow} />
+
+            <motion.div
+                className={style.statIcon}
+                whileHover={{
+                    rotate: [0, -10, 10, -10, 0],
+                    scale: 1.1
+                }}
+                transition={{ duration: 0.5 }}
+            >
+                <img loading='lazy' src={icon} alt={label} />
+            </motion.div>
+
+            <div className={style.statContent}>
+                <motion.h4
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{
+                        type: "spring",
+                        stiffness: 100,
+                        delay: delay + 0.2
+                    }}
+                >
+                    <CountUpNumber target={number} delay={delay + 0.3} />
+                </motion.h4>
+                <p>{label}</p>
+            </div>
+
+            {/* Decorative rotating element */}
+            <div className={style.statDecoration}>
+                <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{
+                        duration: 20,
+                        repeat: Infinity,
+                        ease: "linear"
+                    }}
+                />
+            </div>
+        </motion.div>
+    );
+}
+
+// Count-Up Number Animation
+function CountUpNumber({ target, delay }) {
+    const [count, setCount] = React.useState(0);
+
+    React.useEffect(() => {
+        const timeout = setTimeout(() => {
+            let start = 0;
+            const duration = 2000;
+            const increment = target / (duration / 16);
+
+            const timer = setInterval(() => {
+                start += increment;
+                if (start >= target) {
+                    setCount(target);
+                    clearInterval(timer);
+                } else {
+                    setCount(Math.floor(start));
+                }
+            }, 16);
+
+            return () => clearInterval(timer);
+        }, delay * 1000);
+
+        return () => clearTimeout(timeout);
+    }, [target, delay]);
+
+    return <>{count}+</>;
 }

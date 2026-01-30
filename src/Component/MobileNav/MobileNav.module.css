@@ -9,9 +9,11 @@
   left: 0;
   right: 0;
   width: 100%;
+  max-width: 100vw;
   z-index: 1000;
   border-bottom: 1px solid var(--border-light);
   box-shadow: var(--shadow-sm);
+  overflow-x: hidden;
 }
 
 .logo {
@@ -62,12 +64,15 @@
   position: relative;
   background: var(--primary-600);
   width: 100%;
+  max-width: 100vw;
   min-height: 80px;
   padding-bottom: 32px;
+  padding-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: visible;
 }
 
 .navigation ul {
@@ -83,6 +88,22 @@
   width: 20%;
   list-style: none;
   z-index: 2;
+}
+
+.list button {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  font-weight: 500;
+  color: var(--text-inverse);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
 }
 
 .list a {
@@ -150,7 +171,7 @@
   z-index: 1;
   transition: left var(--transition-slow);
   border: 5px solid var(--primary-600);
-  left: calc(10% - 28px);
+  left: -100px;
   margin-bottom: 20px;
   box-shadow: 0 4px 16px rgba(228, 157, 35, 0.35);
 }
@@ -179,11 +200,11 @@
   box-shadow: -9px -6px 0 var(--primary-600);
 }
 
-.navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 28px); }
-.navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 28px); }
-.navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 28px); }
-.navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 28px); }
-.navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 28px); }
+.navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 28px); transform: translateX(0); }
+.navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 28px); transform: translateX(0); }
+.navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 28px); transform: translateX(0); }
+.navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 28px); transform: translateX(0); }
+.navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 28px); transform: translateX(0); }
 
 /* ============================================
    SIDEBAR
@@ -335,6 +356,7 @@
   .navigation {
     min-height: 72px;
     padding-bottom: 28px;
+    padding-top: 8px;
   }
 
   .icon {
@@ -360,11 +382,11 @@
     transform: translateY(34px);
   }
 
-  .navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 24px); }
-  .navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 24px); }
-  .navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 24px); }
-  .navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 24px); }
-  .navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 24px); }
+  .navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 24px); transform: translateX(0); }
+  .navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 24px); transform: translateX(0); }
+  .navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 24px); transform: translateX(0); }
+  .navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 24px); transform: translateX(0); }
+  .navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 24px); transform: translateX(0); }
 
   .indicator::before {
     left: -16px;
@@ -413,15 +435,16 @@
     height: 42px;
   }
 
-  .navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 21px); }
-  .navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 21px); }
-  .navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 21px); }
-  .navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 21px); }
-  .navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 21px); }
+  .navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 21px); transform: translateX(0); }
+  .navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 21px); transform: translateX(0); }
+  .navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 21px); transform: translateX(0); }
+  .navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 21px); transform: translateX(0); }
+  .navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 21px); transform: translateX(0); }
 
   .navigation {
     min-height: 68px;
     padding-bottom: 24px;
+    padding-top: 8px;
   }
 
   .list.active .text {
@@ -438,5 +461,68 @@
 
   .sidebar {
     width: 240px;
+  }
+
+  .logo {
+    width: 65px;
+  }
+
+  .langButton {
+    width: 36px;
+    height: 36px;
+    font-size: 0.85rem;
+  }
+}
+
+/* Extra small devices */
+@media screen and (max-width: 320px) {
+  .navigation {
+    min-height: 64px;
+    padding-bottom: 20px;
+    padding-top: 6px;
+  }
+
+  .icon {
+    font-size: 0.95rem;
+    height: 44px;
+  }
+
+  .text {
+    font-size: 0.55rem;
+  }
+
+  .indicator {
+    width: 40px;
+    height: 40px;
+  }
+
+  .list.active .icon {
+    transform: translateY(-18px);
+  }
+
+  .list.active .text {
+    transform: translateY(28px);
+  }
+
+  .navigation ul li:nth-child(1).active ~ .indicator { left: calc(10% - 20px); transform: translateX(0); }
+  .navigation ul li:nth-child(2).active ~ .indicator { left: calc(30% - 20px); transform: translateX(0); }
+  .navigation ul li:nth-child(3).active ~ .indicator { left: calc(50% - 20px); transform: translateX(0); }
+  .navigation ul li:nth-child(4).active ~ .indicator { left: calc(70% - 20px); transform: translateX(0); }
+  .navigation ul li:nth-child(5).active ~ .indicator { left: calc(90% - 20px); transform: translateX(0); }
+
+  .sidebar {
+    width: 100%;
+    max-width: 220px;
+  }
+
+  .logo {
+    width: 60px;
+  }
+
+  .langButton {
+    width: 34px;
+    height: 34px;
+    font-size: 0.8rem;
+    padding: var(--space-1);
   }
 }

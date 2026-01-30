@@ -1,5 +1,5 @@
 /* ============================================
-   ARTICLES IN HOME - PREMIUM REDESIGN
+   ARTICLES IN HOME - ULTRA PREMIUM DESIGN
    ============================================ */
 
 .ArticleHomeContainer {
@@ -14,7 +14,6 @@
   overflow: hidden;
 }
 
-/* Decorative gradient background */
 .ArticleHomeContainer::before {
   content: "";
   position: absolute;
@@ -23,10 +22,10 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: 1400px;
-  height: 400px;
+  height: 500px;
   background: radial-gradient(
     ellipse at center,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.03) 0%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.05) 0%,
     transparent 70%
   );
   pointer-events: none;
@@ -36,6 +35,46 @@
 .ArticleHomeContainer > * {
   position: relative;
   z-index: 1;
+}
+
+/* ============================================
+   FLOATING DECORATIVE SHAPES
+   ============================================ */
+
+.floatingShape1,
+.floatingShape2,
+.floatingShape3 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(85px);
+  opacity: 0.22;
+  z-index: 0;
+}
+
+.floatingShape1 {
+  top: 10%;
+  right: 5%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--primary-300), transparent);
+}
+
+.floatingShape2 {
+  bottom: 15%;
+  left: 8%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, var(--secondary-400), transparent);
+}
+
+.floatingShape3 {
+  top: 50%;
+  left: 50%;
+  width: 360px;
+  height: 360px;
+  background: radial-gradient(circle, var(--primary-400), transparent);
+  transform: translate(-50%, -50%);
 }
 
 /* ============================================
@@ -51,17 +90,18 @@
 .heading::after {
   content: "";
   position: absolute;
-  bottom: -12px;
+  bottom: -16px;
   left: 0;
-  width: 80px;
+  width: 90px;
   height: 4px;
   border-radius: 10px;
   background: linear-gradient(
     90deg,
     var(--primary-500),
     var(--primary-400),
-    transparent
+    var(--secondary-500)
   );
+  box-shadow: 0 4px 16px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
 }
 
 body[dir="ltr"] .heading::after {
@@ -69,7 +109,7 @@ body[dir="ltr"] .heading::after {
   right: 0;
   background: linear-gradient(
     90deg,
-    transparent,
+    var(--secondary-500),
     var(--primary-400),
     var(--primary-500)
   );
@@ -90,14 +130,24 @@ body[dir="ltr"] .heading::after {
   justify-content: center;
 }
 
-.ArticleHomeContainer :global(.swiper-button-prev),
-.ArticleHomeContainer :global(.swiper-button-next),
-.ArticleHomeContainer :global(.swiper-pagination-bullets) {
-  display: none !important;
+.ArticleHomeContainer :global(.swiper-pagination-bullet) {
+  background: var(--primary-300);
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+.ArticleHomeContainer :global(.swiper-pagination-bullet-active) {
+  background: var(--primary-500);
+  width: 32px;
+  border-radius: 6px;
+  opacity: 1;
+  box-shadow: 0 4px 12px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
 }
 
 /* ============================================
-   CUSTOM NAVIGATION BUTTONS
+   PREMIUM CUSTOM NAVIGATION BUTTONS
    ============================================ */
 
 .buttonContainer {
@@ -108,36 +158,53 @@ body[dir="ltr"] .heading::after {
 }
 
 .navButton {
-  width: 50px;
-  height: 50px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
-  border: 2px solid var(--primary-500);
+  border: 2px solid var(--primary-400);
   background: var(--bg-surface);
   color: var(--primary-500);
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+}
+
+.buttonGlow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.3),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.navButton:hover .buttonGlow {
+  opacity: 1;
 }
 
 .navButton::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: var(--primary-500);
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
   transform: scale(0);
   transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
   border-radius: 50%;
-  z-index: -1;
+  z-index: 0;
 }
 
 .navButton:hover {
-  transform: scale(1.1);
-  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+  transform: scale(1.12);
+  box-shadow: 0 10px 28px rgba(var(--primary-rgb, 79, 70, 229), 0.35);
   border-color: var(--primary-600);
 }
 
@@ -149,46 +216,55 @@ body[dir="ltr"] .heading::after {
   color: var(--text-inverse);
 }
 
-.navButton:active {
-  transform: scale(0.95);
-}
-
 .navButton i {
-  font-size: 0.9rem;
+  font-size: 1rem;
   transition: color 0.3s ease;
   z-index: 1;
+  position: relative;
 }
 
-/* RTL support */
 body[dir="ltr"] .buttonContainer {
   flex-direction: row-reverse;
 }
 
 /* ============================================
-   VIEW ALL ARTICLES LINK
+   PREMIUM VIEW ALL ARTICLES LINK
    ============================================ */
 
 .viewAllContainer {
   display: flex;
   justify-content: center;
-  margin-top: var(--space-8);
+  margin-top: var(--space-10);
 }
 
 .viewAllLink {
   display: inline-flex;
   align-items: center;
   gap: var(--space-3);
-  padding: var(--space-3) var(--space-6);
-  background: var(--primary-500);
+  padding: var(--space-4) var(--space-8);
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
   color: var(--text-inverse);
   text-decoration: none;
-  border-radius: var(--radius-full);
-  font-weight: 600;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 14px rgba(var(--primary-rgb, 79, 70, 229), 0.25);
+  border-radius: var(--radius-xl);
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
   position: relative;
   overflow: hidden;
+}
+
+.linkGlow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(circle, var(--primary-400), transparent);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.linkContent {
+  position: relative;
+  z-index: 2;
 }
 
 .viewAllLink::before {
@@ -198,17 +274,17 @@ body[dir="ltr"] .buttonContainer {
   background: linear-gradient(
     135deg,
     transparent,
-    rgba(255, 255, 255, 0.1),
+    rgba(255, 255, 255, 0.15),
     transparent
   );
   transform: translateX(-100%);
   transition: transform 0.6s ease;
+  z-index: 1;
 }
 
 .viewAllLink:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.35);
-  background: var(--primary-600);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
   color: var(--text-inverse);
 }
 
@@ -217,21 +293,32 @@ body[dir="ltr"] .buttonContainer {
 }
 
 .viewAllLink i {
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   transition: transform 0.3s ease;
-}
-
-.viewAllLink:hover i {
-  transform: translateX(4px);
+  position: relative;
+  z-index: 2;
 }
 
 body[dir="rtl"] .viewAllLink:hover i {
-  transform: translateX(-4px);
+  transform: translateX(-5px);
+}
+
+body[dir="ltr"] .viewAllLink i {
+  transform: rotate(180deg);
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
+
+@media (max-width: 992px) {
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 350px;
+    height: 350px;
+  }
+}
 
 @media (max-width: 768px) {
   .ArticleHomeContainer {
@@ -248,13 +335,42 @@ body[dir="rtl"] .viewAllLink:hover i {
   }
 
   .navButton {
-    width: 44px;
-    height: 44px;
+    width: 48px;
+    height: 48px;
   }
 
   .viewAllLink {
-    padding: var(--space-2-5) var(--space-5);
-    font-size: 0.88rem;
+    padding: var(--space-3) var(--space-6);
+    font-size: 0.92rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navButton {
+    width: 42px;
+    height: 42px;
+  }
+
+  .navButton i {
+    font-size: 0.9rem;
+  }
+
+  .viewAllLink {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    display: none;
   }
 }
 
@@ -274,17 +390,17 @@ body[dir="rtl"] .viewAllLink:hover i {
 .dark .navButton {
   background: var(--bg-elevated);
   border-color: var(--primary-400);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
 }
 
 .dark .navButton:hover {
-  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.5);
+  box-shadow: 0 10px 28px rgba(var(--primary-rgb, 79, 70, 229), 0.5);
 }
 
 .dark .viewAllLink {
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
 .dark .viewAllLink:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.5);
 }

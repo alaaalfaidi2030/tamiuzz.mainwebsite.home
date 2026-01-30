@@ -5,6 +5,7 @@ import Spinner from '../../Component/Ui/Spinner/Spinner'
 import { createLazyLoadingComp } from '../../Utilies/LazyLoadingHelper'
 import Projects from '../../Component/Projects/Projects'
 import SEO from '../../Component/SEO/SEO'
+import style from './Home.module.css'
 
 
 const Hero = createLazyLoadingComp(() => import('../../Component/Hero/Hero'))
@@ -22,7 +23,7 @@ export default function Home() {
     if (isLoading)
         return <Spinner sectionFlag />
     else return (
-        <>
+        <div className={style.homePage}>
             <SEO
                 title={t("seo.home.title", "Tamiuzz - شركة تميّز للحلول الرقمية والتسويق الإلكتروني")}
                 description={t("seo.home.description", "شركة تميّز للحلول الرقمية والتسويق الإلكتروني تقدم خدمات SEO وتصميم مواقع وحملات PPC وإدارة التواصل الاجتماعي للشركات في مصر والخليج منذ 2018.")}
@@ -81,7 +82,7 @@ export default function Home() {
                 homeContent.blogs.length != 0 &&
                 <ArticlesInHome blogs={homeContent.blogs} />
             }
-        </>
+        </div>
     )
 }
 

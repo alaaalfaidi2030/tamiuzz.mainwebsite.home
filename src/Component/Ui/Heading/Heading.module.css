@@ -1,3 +1,7 @@
+/* ============================================
+   HEADING - ULTRA PREMIUM DESIGN
+   ============================================ */
+
 .heading {
   background-size: cover;
   background-position: center;
@@ -7,69 +11,228 @@
   font-weight: bold;
   width: 90%;
   margin: 15px auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-2xl);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
 }
 
-.heading h2 {
-  color: #eff3ff;
+/* ============================================
+   PREMIUM OVERLAY
+   ============================================ */
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.3) 0%,
+    rgba(var(--secondary-rgb, 124, 58, 237), 0.2) 50%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.3) 100%
+  );
+  backdrop-filter: blur(2px);
+  z-index: 0;
+}
+
+/* ============================================
+   FLOATING DECORATIVE SHAPES
+   ============================================ */
+
+.floatingShape1,
+.floatingShape2,
+.floatingShape3 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(75px);
+  opacity: 0.25;
+  z-index: 1;
+}
+
+.floatingShape1 {
+  top: 15%;
+  right: 10%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--primary-300), transparent);
+}
+
+.floatingShape2 {
+  bottom: 20%;
+  left: 12%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, var(--secondary-400), transparent);
+}
+
+.floatingShape3 {
+  top: 50%;
+  left: 50%;
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(circle, var(--primary-400), transparent);
+  transform: translate(-50%, -50%);
+}
+
+/* ============================================
+   TITLE & SUBTITLE
+   ============================================ */
+
+.titleText {
+  color: #ffffff;
   font-size: 1.5em;
   font-weight: 700;
-  line-height: 80px;
-  /* 133.333% */
+  line-height: 1.3;
   text-align: center;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  margin-bottom: 0.5rem;
 }
 
-.heading p {
-  color: #eff3ff;
-
+.subtitleText {
+  color: rgba(255, 255, 255, 0.95);
   text-align: center;
   font-size: 0.9em;
   font-weight: 400;
-  line-height: 60px;
-  /* 200% */
+  line-height: 1.5;
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================
+   PREMIUM BREADCRUMB
+   ============================================ */
+
+.breadcrumbContainer {
+  position: relative;
+  z-index: 2;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-xl);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+}
+
+.breadcrumbGlow {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 255, 255, 0.1),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.breadcrumbContainer:hover .breadcrumbGlow {
+  opacity: 1;
+}
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 1;
 }
 
 .arrow {
-  color: var(--secondary-color);
-  margin: 0 1rem;
+  color: var(--secondary-400);
   font-size: 0.4em;
+  font-weight: 700;
+  margin: 0 0.5rem;
 }
 
-.heading a {
-  color: #eff3ff;
+.breadcrumbLink,
+.breadcrumbLinkActive {
+  color: #ffffff;
   font-size: 0.5em;
   font-weight: 700;
-}
-
-.heading .arrow+a {
-  color: var(--secondary-color);
-  font-weight: 600;
   text-decoration: none;
+  transition: all 0.3s ease;
+  position: relative;
+  padding: 0.25rem 0.5rem;
+  border-radius: var(--radius-md);
 }
 
-/* Extra mobile handling */
+.breadcrumbLink::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--secondary-400);
+  transition: width 0.3s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--secondary-300);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.breadcrumbLink:hover::after {
+  width: 80%;
+}
+
+.breadcrumbLinkActive {
+  color: var(--secondary-400);
+  background: rgba(var(--secondary-rgb, 124, 58, 237), 0.15);
+  font-weight: 800;
+  box-shadow: 0 2px 8px rgba(var(--secondary-rgb, 124, 58, 237), 0.3);
+}
+
+.breadcrumbLinkActive:hover {
+  color: var(--secondary-300);
+  background: rgba(var(--secondary-rgb, 124, 58, 237), 0.25);
+  box-shadow: 0 4px 12px rgba(var(--secondary-rgb, 124, 58, 237), 0.4);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 991px) {
   .heading {
     width: 100%;
     font-size: 22px;
     padding: 1.5rem 1rem;
+    border-radius: var(--radius-xl);
   }
 
-  .heading h2 {
+  .titleText {
     line-height: 1.3;
+    font-size: 1.8em;
   }
 
-  .heading p {
+  .subtitleText {
     line-height: 1.5;
+    font-size: 1em;
   }
 
   .arrow {
     font-size: 0.9rem;
   }
 
-  .heading a {
+  .breadcrumbLink,
+  .breadcrumbLinkActive {
     font-size: 0.7em;
   }
 
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 @media (max-width: 400px) {
@@ -77,22 +240,70 @@
     font-size: 18px;
     padding: 1rem 0.5rem;
     text-align: center;
+    border-radius: var(--radius-lg);
   }
 
-  .heading h2 {
+  .titleText {
     line-height: 1.3;
+    font-size: 1.6em;
   }
 
-  .heading p {
+  .subtitleText {
     line-height: 1.5;
+    font-size: 0.95em;
   }
 
   .arrow {
     font-size: 0.9rem;
+    margin: 0 0.25rem;
   }
 
-  .heading a {
+  .breadcrumbLink,
+  .breadcrumbLinkActive {
     font-size: 0.6em;
+    padding: 0.2rem 0.4rem;
   }
 
+  .breadcrumbContainer {
+    padding: 0.5rem 1rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    display: none;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .heading {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+}
+
+.dark .overlay {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.4) 0%,
+    rgba(var(--secondary-rgb, 124, 58, 237), 0.3) 50%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.4) 100%
+  );
+}
+
+.dark .breadcrumbContainer {
+  background: rgba(0, 0, 0, 0.3);
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.dark .breadcrumbLinkActive {
+  background: rgba(var(--secondary-rgb, 124, 58, 237), 0.25);
+  box-shadow: 0 2px 8px rgba(var(--secondary-rgb, 124, 58, 237), 0.4);
+}
+
+.dark .breadcrumbLinkActive:hover {
+  background: rgba(var(--secondary-rgb, 124, 58, 237), 0.35);
+  box-shadow: 0 4px 12px rgba(var(--secondary-rgb, 124, 58, 237), 0.5);
 }

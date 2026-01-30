@@ -1,109 +1,672 @@
 /* ============================================
-   HOW WE WORK - PROFESSIONAL CORPORATE
+   HOW WE WORK - ULTRA PREMIUM TIMELINE DESIGN
    ============================================ */
 
-.howWeWork h3 {
-  text-align: center;
-  color: var(--primary-500);
+.howWeWork {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--bg-body) 0%,
+    var(--bg-surface) 30%,
+    var(--bg-body) 70%,
+    var(--bg-surface) 100%
+  );
 }
 
-.howWeWork .footerContainer {
-  background-size: 100% 100%;
-  background-repeat: no-repeat;
-  height: 280px;
-  padding: var(--space-8) var(--space-4);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: var(--space-10);
+/* Floating Decorative Shapes */
+.floatingShape1,
+.floatingShape2 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0.4;
+  filter: blur(80px);
+}
+
+.floatingShape1 {
+  top: 10%;
+  right: 5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary-500), transparent);
+}
+
+.floatingShape2 {
+  bottom: 15%;
+  left: 5%;
+  width: 350px;
+  height: 350px;
+  background: radial-gradient(circle, var(--secondary-500), transparent);
 }
 
 /* ============================================
-   ICON CARDS
+   PROCESS SECTION
    ============================================ */
 
-.icon {
-  flex: 1 1 140px;
-  max-width: 220px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+.processSection {
+  padding: var(--space-20) 0;
+  position: relative;
+  z-index: 1;
+}
+
+.subtitle {
+  text-align: center;
+  color: var(--primary-600);
+  font-weight: 600;
+  font-size: clamp(1.05rem, 2vw, 1.2rem);
+  margin: var(--space-4) auto var(--space-16);
+  max-width: 650px;
+  line-height: 1.7;
+}
+
+/* ============================================
+   VERTICAL TIMELINE
+   ============================================ */
+
+.timeline {
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-10) 0;
+}
+
+.timelineLine {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    var(--primary-300) 10%,
+    var(--primary-500) 50%,
+    var(--secondary-500) 90%,
+    transparent 100%
+  );
+  transform: translateX(-50%);
+  transform-origin: top;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+}
+
+/* ============================================
+   TIMELINE ITEMS
+   ============================================ */
+
+.timelineItem {
+  position: relative;
+  margin-bottom: var(--space-16);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
+  gap: var(--space-8);
+}
+
+.timelineItemEven .stepCard {
+  grid-column: 1;
+}
+
+.timelineItemOdd .stepCard {
+  grid-column: 3;
+}
+
+.timelineItemEven .timelineDot {
+  grid-column: 2;
+}
+
+.timelineItemOdd .timelineDot {
+  grid-column: 2;
+}
+
+/* Timeline Dot */
+.timelineDot {
+  position: relative;
+  width: 80px;
+  height: 80px;
+  z-index: 2;
+}
+
+.dotPulse {
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  opacity: 0.3;
+}
+
+.dotInner {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: var(--text-inverse);
+  box-shadow: 0 8px 32px rgba(var(--primary-rgb, 79, 70, 229), 0.5),
+    inset 0 2px 8px rgba(255, 255, 255, 0.2);
+  border: 4px solid var(--bg-body);
+}
+
+/* ============================================
+   STEP CARDS
+   ============================================ */
+
+.stepCard {
+  position: relative;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-2xl);
+  padding: var(--space-8);
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.stepCard::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-500), var(--secondary-500));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.5s ease;
+}
+
+body[dir="ltr"] .stepCard::before {
+  transform-origin: left;
+}
+
+.stepCard:hover {
+  border-color: var(--primary-300);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15),
+    0 0 40px rgba(var(--primary-rgb, 79, 70, 229), 0.1);
+}
+
+.stepCard:hover::before {
+  transform: scaleX(1);
+}
+
+/* Card Glow Effect */
+.cardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.1) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.stepCard:hover .cardGlow {
+  opacity: 1;
+}
+
+/* Icon Container */
+.iconContainer {
+  margin-bottom: var(--space-5);
+}
+
+.iconCircle {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto;
+  background: linear-gradient(135deg, var(--primary-100), var(--primary-200));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.2);
+  transition: all 0.6s ease;
+}
+
+.iconCircle i {
+  font-size: 2.5rem;
+  color: var(--primary-600);
+  transition: all 0.3s ease;
+}
+
+.stepCard:hover .iconCircle {
+  border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+  background: linear-gradient(135deg, var(--primary-200), var(--primary-300));
+}
+
+/* Card Content */
+.cardContent {
   text-align: center;
 }
 
-.icon img {
-  width: 48px;
-  max-width: 100%;
-  height: auto;
-  transition: transform var(--transition-base);
+.stepTitle {
+  font-weight: 800;
+  font-size: 1.4rem;
+  line-height: 1.3;
+  color: var(--text-heading);
+  margin-bottom: var(--space-4);
+  transition: color 0.3s ease;
 }
 
-.icon:hover img {
-  transform: scale(1.08);
+.stepCard:hover .stepTitle {
+  color: var(--primary-600);
 }
 
-.icon h5 {
-  margin: var(--space-3) 0 var(--space-1);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--primary-500);
-  font-variant-numeric: tabular-nums;
-}
-
-.icon p {
-  margin: 0;
+.stepDescription {
+  font-size: 1rem;
+  line-height: 1.75;
   color: var(--text-secondary);
-  white-space: nowrap;
-  font-size: 0.95rem;
   margin-bottom: var(--space-5);
+}
+
+.stepAction {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--primary-500);
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-lg);
+  background: rgba(var(--primary-rgb, 79, 70, 229), 0.05);
+  transition: all 0.3s ease;
+}
+
+.stepAction i {
+  transition: transform 0.3s ease;
+}
+
+body[dir="ltr"] .stepAction i {
+  transform: rotate(180deg);
+}
+
+.stepCard:hover .stepAction {
+  background: rgba(var(--primary-rgb, 79, 70, 229), 0.1);
+}
+
+/* Decorative Corner */
+.cardCorner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, transparent 50%, var(--primary-500) 50%);
+  opacity: 0.1;
+  transition: opacity 0.3s ease;
+}
+
+body[dir="ltr"] .cardCorner {
+  right: auto;
+  left: 0;
+  background: linear-gradient(225deg, transparent 50%, var(--primary-500) 50%);
+}
+
+.stepCard:hover .cardCorner {
+  opacity: 0.2;
+}
+
+/* ============================================
+   ACHIEVEMENTS SECTION
+   ============================================ */
+
+.achievementsSection {
+  padding: var(--space-20) 0;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.02) 0%,
+    rgba(var(--secondary-rgb, 236, 72, 153), 0.02) 100%
+  );
+  position: relative;
+}
+
+.achievementSubtitle {
+  text-align: center;
+  font-size: clamp(1rem, 2vw, 1.15rem);
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin: var(--space-4) auto var(--space-12);
+  max-width: 600px;
+  font-weight: 500;
+}
+
+/* ============================================
+   PREMIUM STAT CARDS
+   ============================================ */
+
+.statsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-8);
+  max-width: 1000px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+.premiumStatCard {
+  position: relative;
+  background: var(--bg-surface);
+  border: 2px solid var(--border-light);
+  border-radius: var(--radius-3xl);
+  padding: var(--space-10) var(--space-6);
+  text-align: center;
+  transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.premiumStatCard::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  border-radius: var(--radius-3xl);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  z-index: -1;
+}
+
+.premiumStatCard:hover {
+  border-color: transparent;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+}
+
+.premiumStatCard:hover::before {
+  opacity: 1;
+}
+
+/* Stat Card Glow */
+.statCardGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.15) 0%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.premiumStatCard:hover .statCardGlow {
+  opacity: 1;
+}
+
+/* Stat Icon */
+.statIconWrapper {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto var(--space-6);
+  background: linear-gradient(135deg, var(--primary-100), var(--secondary-100));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.statIconWrapper::after {
+  content: "";
+  position: absolute;
+  inset: -10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  opacity: 0.2;
+  filter: blur(20px);
+  transition: opacity 0.5s ease;
+}
+
+.premiumStatCard:hover .statIconWrapper::after {
+  opacity: 0.4;
+}
+
+.statIconWrapper img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+/* Stat Number */
+.statNumber {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 900;
+  margin-bottom: var(--space-3);
+  background: linear-gradient(
+    135deg,
+    var(--primary-600) 0%,
+    var(--secondary-600) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.statLabel {
+  font-size: 1.05rem;
+  color: var(--text-secondary);
+  font-weight: 600;
+  margin: 0;
+  position: relative;
+  z-index: 1;
+  transition: color 0.3s ease;
+}
+
+.premiumStatCard:hover .statLabel {
+  color: var(--text-heading);
+}
+
+/* Stat Decoration */
+.statDecoration {
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(
+    circle,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.1) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .stepCard {
+  background: var(--bg-elevated);
+  border-color: var(--border-default);
+}
+
+.dark .stepCard:hover {
+  border-color: var(--primary-400);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark .dotInner {
+  border-color: var(--bg-elevated);
+}
+
+.dark .premiumStatCard {
+  background: var(--bg-elevated);
+  border-color: var(--border-default);
+}
+
+.dark .premiumStatCard:hover {
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6);
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 768px) {
-  .howWeWork .footerContainer {
-    flex-direction: column;
-    align-items: center;
-    background-size: cover;
-    height: auto;
+@media (max-width: 1024px) {
+  .timelineItem {
+    grid-template-columns: 1fr;
     gap: var(--space-6);
-    padding: var(--space-6) var(--space-4);
+    margin-bottom: var(--space-12);
   }
 
-  .iconsWrapper {
-    margin-top: var(--space-8);
+  .timelineItemEven .stepCard,
+  .timelineItemOdd .stepCard {
+    grid-column: 1;
   }
 
-  .icon {
-    max-width: 100%;
+  .timelineLine {
+    left: 40px;
   }
 
-  .icon h5 {
+  .timelineDot {
+    position: absolute;
+    left: 0;
+    width: 60px;
+    height: 60px;
+  }
+
+  .dotInner {
     font-size: 1.2rem;
   }
 
-  .icon p {
-    font-size: 0.9rem;
+  .stepCard {
+    margin-left: 100px;
   }
 
-  .icon img {
+  body[dir="ltr"] .stepCard {
+    margin-left: 0;
+    margin-right: 100px;
+  }
+}
+
+@media (max-width: 768px) {
+  .processSection {
+    padding: var(--space-16) 0;
+  }
+
+  .achievementsSection {
+    padding: var(--space-16) 0;
+  }
+
+  .timeline {
+    padding: var(--space-6) 0;
+  }
+
+  .timelineItem {
+    margin-bottom: var(--space-10);
+  }
+
+  .timelineLine {
+    left: 25px;
+  }
+
+  .timelineDot {
+    width: 50px;
+    height: 50px;
+  }
+
+  .dotInner {
+    font-size: 1rem;
+  }
+
+  .stepCard {
+    margin-left: 80px;
+    padding: var(--space-6);
+  }
+
+  body[dir="ltr"] .stepCard {
+    margin-left: 0;
+    margin-right: 80px;
+  }
+
+  .iconCircle {
+    width: 80px;
+    height: 80px;
+  }
+
+  .iconCircle i {
+    font-size: 2rem;
+  }
+
+  .stepTitle {
+    font-size: 1.2rem;
+  }
+
+  .stepDescription {
+    font-size: 0.92rem;
+  }
+
+  .statsContainer {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .statIconWrapper {
+    width: 80px;
+    height: 80px;
+  }
+
+  .statIconWrapper img {
     width: 40px;
+    height: 40px;
   }
 }
 
 @media (max-width: 480px) {
-  .icon h5 {
+  .subtitle {
+    font-size: 1rem;
+    margin-bottom: var(--space-10);
+  }
+
+  .timelineDot {
+    width: 45px;
+    height: 45px;
+  }
+
+  .stepCard {
+    margin-left: 70px;
+    padding: var(--space-5);
+  }
+
+  body[dir="ltr"] .stepCard {
+    margin-left: 0;
+    margin-right: 70px;
+  }
+
+  .iconCircle {
+    width: 70px;
+    height: 70px;
+  }
+
+  .iconCircle i {
+    font-size: 1.75rem;
+  }
+
+  .stepTitle {
     font-size: 1.1rem;
   }
 
-  .icon p {
-    font-size: 0.85rem;
+  .stepDescription {
+    font-size: 0.88rem;
   }
 
-  .icon img {
-    width: 36px;
+  .premiumStatCard {
+    padding: var(--space-8) var(--space-5);
+  }
+
+  .achievementSubtitle {
+    font-size: 0.95rem;
   }
 }

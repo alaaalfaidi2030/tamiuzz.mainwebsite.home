@@ -1,5 +1,5 @@
 /* ============================================
-   NO DATA FOUND - PROFESSIONAL CORPORATE
+   NO DATA FOUND - ULTRA PREMIUM DESIGN
    ============================================ */
 
 .noDataContainer {
@@ -7,67 +7,58 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 400px;
-  padding: var(--space-12);
+  min-height: 500px;
+  padding: var(--space-16);
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(
+    180deg,
+    var(--bg-body) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-body) 100%
+  );
+  border-radius: var(--radius-2xl);
 }
 
 /* ============================================
-   DECORATIVE BACKGROUND
+   FLOATING DECORATIVE SHAPES
    ============================================ */
 
-.decorativeCircles {
+.floatingShape1,
+.floatingShape2,
+.floatingShape3 {
   position: absolute;
-  inset: 0;
+  border-radius: 50%;
   pointer-events: none;
-  overflow: hidden;
+  filter: blur(88px);
+  opacity: 0.2;
+  z-index: 0;
 }
 
-.circle1 {
-  position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, var(--primary-100) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 4s ease-in-out infinite;
+.floatingShape1 {
+  top: 10%;
+  right: 8%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--primary-300), transparent);
 }
 
-.circle2 {
-  position: absolute;
-  bottom: -15%;
-  left: -5%;
-  width: 250px;
-  height: 250px;
-  background: radial-gradient(circle, var(--secondary-100) 0%, transparent 70%);
-  border-radius: 50%;
-  animation: pulse 4s ease-in-out infinite 1s;
+.floatingShape2 {
+  bottom: 15%;
+  left: 10%;
+  width: 460px;
+  height: 460px;
+  background: radial-gradient(circle, var(--secondary-400), transparent);
 }
 
-.circle3 {
-  position: absolute;
+.floatingShape3 {
   top: 50%;
   left: 50%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, var(--primary-400), transparent);
   transform: translate(-50%, -50%);
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, var(--primary-50) 0%, transparent 60%);
-  border-radius: 50%;
-  opacity: 0.5;
-}
-
-@keyframes pulse {
-  0%, 100% {
-    transform: scale(1);
-    opacity: 0.6;
-  }
-  50% {
-    transform: scale(1.1);
-    opacity: 0.8;
-  }
 }
 
 /* ============================================
@@ -77,33 +68,65 @@
 .iconWrapper {
   position: relative;
   z-index: 1;
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-8);
 }
 
 .iconBg {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   display: flex;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-50) 100%);
   border-radius: var(--radius-2xl);
   position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.15);
+  transition: all 0.4s ease;
+}
+
+.iconGlow {
+  position: absolute;
+  inset: -20px;
+  background: radial-gradient(
+    circle at center,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.3),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.iconBg:hover .iconGlow {
+  opacity: 1;
 }
 
 .iconBg::before {
   content: "";
   position: absolute;
-  inset: -4px;
-  background: linear-gradient(135deg, var(--primary-200), var(--secondary-200));
+  inset: -3px;
+  background: linear-gradient(135deg, var(--primary-400), var(--secondary-400));
   border-radius: var(--radius-2xl);
   z-index: -1;
-  opacity: 0.5;
+  opacity: 0.4;
+}
+
+.iconBg:hover {
+  box-shadow: 0 12px 36px rgba(var(--primary-rgb, 79, 70, 229), 0.25);
+  transform: translateY(-4px);
 }
 
 .iconBg i {
-  font-size: 3rem;
-  color: var(--primary-400);
+  font-size: 3.5rem;
+  color: var(--primary-500);
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.iconBg:hover i {
+  color: var(--primary-600);
 }
 
 /* ============================================
@@ -113,20 +136,24 @@
 .content {
   position: relative;
   z-index: 1;
-  max-width: 400px;
-  margin-bottom: var(--space-6);
+  max-width: 500px;
+  margin-bottom: var(--space-8);
 }
 
 .title {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   font-weight: var(--font-weight-bold);
   color: var(--text-primary);
-  margin-bottom: var(--space-3);
+  margin-bottom: var(--space-4);
   line-height: var(--leading-tight);
+  background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .message {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-xl);
   color: var(--text-secondary);
   line-height: var(--leading-relaxed);
   margin: 0;
@@ -144,42 +171,85 @@
 .actions .btn-web {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-8);
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: var(--radius-xl);
+  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.25);
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  position: relative;
+  overflow: hidden;
 }
 
-/* ============================================
-   DARK MODE
-   ============================================ */
-
-.dark .circle1 {
-  background: radial-gradient(circle, var(--primary-900) 0%, transparent 70%);
+.actions .btn-web::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%);
+  transition: transform 0.6s ease;
 }
 
-.dark .circle2 {
-  background: radial-gradient(circle, var(--secondary-900) 0%, transparent 70%);
+.actions .btn-web:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 32px rgba(var(--primary-rgb, 79, 70, 229), 0.35);
 }
 
-.dark .circle3 {
-  background: radial-gradient(circle, var(--primary-900) 0%, transparent 60%);
-}
-
-.dark .iconBg {
-  background: linear-gradient(135deg, var(--primary-900) 0%, var(--bg-tertiary) 100%);
-}
-
-.dark .iconBg::before {
-  background: linear-gradient(135deg, var(--primary-700), var(--secondary-700));
-}
-
-.dark .iconBg i {
-  color: var(--primary-400);
+.actions .btn-web:hover::before {
+  transform: translateX(100%);
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 
+@media (max-width: 992px) {
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 350px;
+    height: 350px;
+  }
+}
+
 @media (max-width: 768px) {
+  .noDataContainer {
+    min-height: 400px;
+    padding: var(--space-12);
+  }
+
+  .iconBg {
+    width: 120px;
+    height: 120px;
+  }
+
+  .iconBg i {
+    font-size: 3rem;
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .message {
+    font-size: var(--font-size-lg);
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
   .noDataContainer {
     min-height: 350px;
     padding: var(--space-8);
@@ -202,42 +272,63 @@
     font-size: var(--font-size-base);
   }
 
-  .circle1 {
-    width: 200px;
-    height: 200px;
+  .actions .btn-web {
+    padding: var(--space-3) var(--space-6);
+    font-size: 0.95rem;
   }
 
-  .circle2 {
-    width: 150px;
-    height: 150px;
-  }
-
-  .circle3 {
-    width: 250px;
-    height: 250px;
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    display: none;
   }
 }
 
-@media (max-width: 480px) {
-  .noDataContainer {
-    min-height: 300px;
-    padding: var(--space-6);
-  }
+/* ============================================
+   DARK MODE
+   ============================================ */
 
-  .iconBg {
-    width: 80px;
-    height: 80px;
-  }
+.dark .noDataContainer {
+  background: linear-gradient(
+    180deg,
+    var(--bg-elevated) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-elevated) 100%
+  );
+}
 
-  .iconBg i {
-    font-size: 2rem;
-  }
+.dark .iconBg {
+  background: linear-gradient(135deg, var(--primary-900) 0%, var(--bg-tertiary) 100%);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
 
-  .title {
-    font-size: var(--font-size-lg);
-  }
+.dark .iconBg::before {
+  background: linear-gradient(135deg, var(--primary-700), var(--secondary-700));
+}
 
-  .message {
-    font-size: var(--font-size-sm);
-  }
+.dark .iconBg:hover {
+  box-shadow: 0 12px 36px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
+}
+
+.dark .iconBg i {
+  color: var(--primary-400);
+}
+
+.dark .iconBg:hover i {
+  color: var(--primary-300);
+}
+
+.dark .title {
+  background: linear-gradient(135deg, var(--primary-400), var(--secondary-400));
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .actions .btn-web {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.dark .actions .btn-web:hover {
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6);
 }

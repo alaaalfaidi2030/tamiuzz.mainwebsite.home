@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import H2 from '../Ui/H2/H2';
 import { useTranslation } from 'react-i18next';
@@ -24,10 +24,11 @@ export default function ArticlesInHome({ blogs }) {
     };
 
     const headingVariants = {
-        hidden: { opacity: 0, y: -20 },
+        hidden: { opacity: 0, y: -25, scale: 0.96 },
         visible: {
             opacity: 1,
             y: 0,
+            scale: 1,
             transition: {
                 type: "spring",
                 stiffness: 100,
@@ -37,7 +38,7 @@ export default function ArticlesInHome({ blogs }) {
     };
 
     const subHeadingVariants = {
-        hidden: { opacity: 0, y: -10 },
+        hidden: { opacity: 0, y: -12 },
         visible: {
             opacity: 1,
             y: 0,
@@ -58,6 +59,46 @@ export default function ArticlesInHome({ blogs }) {
             whileInView="visible"
             viewport={{ once: true, amount: 0.15 }}
         >
+            {/* Floating Decorative Shapes */}
+            <motion.div
+                className={style.floatingShape1}
+                animate={{
+                    y: [0, -30, 0],
+                    x: [0, 20, 0],
+                    rotate: [0, 8, 0]
+                }}
+                transition={{
+                    duration: 11,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+            <motion.div
+                className={style.floatingShape2}
+                animate={{
+                    y: [0, 28, 0],
+                    x: [0, -18, 0],
+                    scale: [1, 1.1, 1]
+                }}
+                transition={{
+                    duration: 13,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+            <motion.div
+                className={style.floatingShape3}
+                animate={{
+                    y: [0, -20, 0],
+                    rotate: [0, -6, 0]
+                }}
+                transition={{
+                    duration: 9,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+
             <motion.div className={style.heading}>
                 <motion.div variants={headingVariants}>
                     <H2 text={t("homePage.Top Articles")} />
@@ -73,14 +114,30 @@ export default function ArticlesInHome({ blogs }) {
 
             <motion.div
                 className={style.viewAllContainer}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.5, duration: 0.6 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 15,
+                    delay: 0.5
+                }}
             >
                 <Link to="/articles" className={style.viewAllLink}>
-                    {t("View All Articles", "عرض جميع المقالات")}
-                    <i className="fas fa-arrow-left"></i>
+                    <div className={style.linkGlow} />
+                    <motion.span
+                        className={style.linkContent}
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ type: "spring", stiffness: 400 }}
+                    >
+                        {t("View All Articles", "عرض جميع المقالات")}
+                    </motion.span>
+                    <motion.i
+                        className="fas fa-arrow-left"
+                        whileHover={{ x: -4 }}
+                        transition={{ type: "spring", stiffness: 300 }}
+                    />
                 </Link>
             </motion.div>
         </motion.div>
@@ -116,7 +173,7 @@ function ArticlesSlider({ articles }) {
                 onSwiper={(swiper) => {
                     swiperRef.current = swiper;
                 }}
-                pagination={{ clickable: true }}
+                pagination={{ clickable: true, dynamicBullets: true }}
                 autoplay={{
                     delay: 3500,
                     disableOnInteraction: false,
@@ -138,30 +195,53 @@ function ArticlesSlider({ articles }) {
 
             <motion.div
                 className={"d-flex justify-content-center gap-3 mt-4 " + style.buttonContainer}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.6 }}
+                transition={{
+                    type: "spring",
+                    stiffness: 80,
+                    damping: 15,
+                    delay: 0.3
+                }}
             >
-                <motion.button
-                    ref={prevRef}
-                    className={style.navButton}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Previous slide"
-                >
-                    <i className="fa fa-chevron-right"></i>
-                </motion.button>
-                <motion.button
-                    ref={nextRef}
-                    className={style.navButton}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    aria-label="Next slide"
-                >
-                    <i className="fa fa-chevron-left"></i>
-                </motion.button>
+                <PremiumNavButton ref={prevRef} direction="prev" />
+                <PremiumNavButton ref={nextRef} direction="next" />
             </motion.div>
         </div>
     );
 }
+
+// Enhanced Navigation Button Component
+const PremiumNavButton = React.forwardRef(({ direction }, ref) => {
+    return (
+        <motion.button
+            ref={ref}
+            className={style.navButton}
+            initial="rest"
+            whileHover="hover"
+            whileTap="tap"
+            animate="rest"
+            aria-label={direction === "prev" ? "Previous slide" : "Next slide"}
+        >
+            <div className={style.buttonGlow} />
+            <motion.i
+                className={`fa fa-chevron-${direction === "prev" ? "right" : "left"}`}
+                variants={{
+                    rest: { scale: 1, rotate: 0 },
+                    hover: {
+                        scale: 1.15,
+                        x: direction === "prev" ? 2 : -2,
+                        transition: {
+                            type: "spring",
+                            stiffness: 300
+                        }
+                    },
+                    tap: { scale: 0.95 }
+                }}
+            />
+        </motion.button>
+    );
+});
+
+PremiumNavButton.displayName = 'PremiumNavButton';

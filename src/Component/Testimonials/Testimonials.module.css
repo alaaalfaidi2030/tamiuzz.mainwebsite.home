@@ -1,42 +1,66 @@
 /* ============================================
-   TESTIMONIALS SECTION - PROFESSIONAL REDESIGN
+   TESTIMONIALS - ULTRA PREMIUM DESIGN
    ============================================ */
 
 .Testimonials {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
-  padding: var(--space-16) var(--space-4);
+  padding: var(--space-20) var(--space-4);
   position: relative;
   overflow: hidden;
 }
 
-/* Dark overlay for better contrast */
-.Testimonials::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0.65) 0%,
-    rgba(0, 0, 0, 0.55) 50%,
-    rgba(0, 0, 0, 0.7) 100%
-  );
-  z-index: 0;
-}
-
-/* Subtle animated gradient accent */
-.Testimonials::after {
-  content: "";
+/* Premium Dark Overlay */
+.overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.08) 0%,
-    transparent 50%,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.05) 100%
+    rgba(10, 17, 41, 0.9) 0%,
+    rgba(26, 58, 143, 0.85) 50%,
+    rgba(10, 17, 41, 0.92) 100%
   );
   z-index: 0;
+}
+
+/* ============================================
+   FLOATING DECORATIVE SHAPES
+   ============================================ */
+
+.floatingShape1,
+.floatingShape2,
+.floatingShape3 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(90px);
+  opacity: 0.2;
+  z-index: 0;
+}
+
+.floatingShape1 {
+  top: 12%;
+  right: 8%;
+  width: 470px;
+  height: 470px;
+  background: radial-gradient(circle, var(--primary-400), transparent);
+}
+
+.floatingShape2 {
+  bottom: 18%;
+  left: 10%;
+  width: 510px;
+  height: 510px;
+  background: radial-gradient(circle, var(--secondary-400), transparent);
+}
+
+.floatingShape3 {
+  top: 48%;
+  right: 38%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary-300), transparent);
 }
 
 .inner {
@@ -50,72 +74,139 @@
 
 .heading * {
   color: var(--text-inverse);
+  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .heading div div {
   background: linear-gradient(
     90deg,
     transparent 0%,
-    rgba(255, 255, 255, 0.85) 50%,
+    rgba(255, 255, 255, 0.9) 50%,
     transparent 100%
   );
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
 }
 
 /* ============================================
-   SWIPER OVERRIDES
+   SWIPER CUSTOMIZATION
    ============================================ */
 
 .Testimonials :global(.swiper-button-prev),
-.Testimonials :global(.swiper-button-next),
-.Testimonials :global(.swiper-pagination-bullets) {
-  display: none !important;
+.Testimonials :global(.swiper-button-next) {
+  color: var(--text-inverse);
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.Testimonials :global(.swiper-button-prev):hover,
+.Testimonials :global(.swiper-button-next):hover {
+  background: var(--primary-500);
+  transform: scale(1.1);
+  border-color: var(--primary-400);
+  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
+}
+
+.Testimonials :global(.swiper-button-prev)::after,
+.Testimonials :global(.swiper-button-next)::after {
+  font-size: 1.15rem;
+  font-weight: 800;
+}
+
+.Testimonials :global(.swiper-pagination-bullet) {
+  background: rgba(255, 255, 255, 0.6);
+  opacity: 1;
+  width: 10px;
+  height: 10px;
+  transition: all 0.3s ease;
+}
+
+.Testimonials :global(.swiper-pagination-bullet-active) {
+  background: var(--secondary-500);
+  width: 32px;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(228, 157, 35, 0.4);
 }
 
 .sliderRow {
-  padding-top: var(--space-8);
-  padding-bottom: var(--space-6);
+  padding-top: var(--space-10);
+  padding-bottom: var(--space-8);
 }
 
 /* ============================================
-   DECORATIVE QUOTE MARKS
+   PREMIUM DECORATIVE QUOTE MARKS
    ============================================ */
 
 .bgQuote {
   position: absolute;
-  font-size: 14rem;
-  color: rgba(255, 255, 255, 0.03);
+  font-size: 16rem;
+  color: rgba(255, 255, 255, 0.1);
   font-family: Georgia, serif;
   line-height: 1;
   pointer-events: none;
   user-select: none;
   z-index: 0;
+  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.05);
 }
 
 .bgQuoteLeft {
-  top: -20px;
-  left: 40px;
+  top: -30px;
+  left: 50px;
 }
 
 .bgQuoteRight {
-  bottom: -60px;
-  right: 40px;
+  bottom: -70px;
+  right: 50px;
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 
+@media (max-width: 992px) {
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 370px;
+    height: 370px;
+  }
+}
+
 @media (max-width: 768px) {
   .Testimonials {
-    padding: var(--space-12) var(--space-3);
+    padding: var(--space-16) var(--space-3);
   }
 
   .sliderRow {
-    padding-top: var(--space-6);
-    padding-bottom: var(--space-4);
+    padding-top: var(--space-8);
+    padding-bottom: var(--space-6);
   }
 
   .bgQuote {
-    font-size: 8rem;
+    font-size: 10rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 270px;
+    height: 270px;
+  }
+}
+
+@media (max-width: 480px) {
+  .bgQuote {
+    font-size: 7rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    display: none;
   }
 }

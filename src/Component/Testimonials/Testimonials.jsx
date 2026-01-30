@@ -12,12 +12,28 @@ import TestimonialCard from '../TestimonialCard/TestimonialCard'
 export default function Testimonials({ rates }) {
     const { t } = useTranslation();
 
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.12,
+                delayChildren: 0.2
+            }
+        }
+    };
+
     const headingVariants = {
-        hidden: { opacity: 0, y: 30 },
+        hidden: { opacity: 0, y: -30, scale: 0.95 },
         visible: {
             opacity: 1,
             y: 0,
-            transition: { duration: 0.7, ease: [0.25, 0.46, 0.45, 0.94] }
+            scale: 1,
+            transition: {
+                type: "spring",
+                stiffness: 90,
+                damping: 15
+            }
         }
     };
 
@@ -25,28 +41,100 @@ export default function Testimonials({ rates }) {
         <div className={"mb-2 " + style.Testimonials} style={{
             backgroundImage: `url(${img})`
         }}>
-            {/* Decorative background quotes */}
-            <span className={`${style.bgQuote} ${style.bgQuoteLeft}`}>&ldquo;</span>
-            <span className={`${style.bgQuote} ${style.bgQuoteRight}`}>&rdquo;</span>
+            {/* Premium Dark Overlay */}
+            <div className={style.overlay} />
+
+            {/* Floating Decorative Shapes */}
+            <motion.div
+                className={style.floatingShape1}
+                animate={{
+                    y: [0, -28, 0],
+                    x: [0, 22, 0],
+                    rotate: [0, 9, 0]
+                }}
+                transition={{
+                    duration: 12,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+            <motion.div
+                className={style.floatingShape2}
+                animate={{
+                    y: [0, 32, 0],
+                    x: [0, -18, 0],
+                    scale: [1, 1.12, 1]
+                }}
+                transition={{
+                    duration: 10,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+            <motion.div
+                className={style.floatingShape3}
+                animate={{
+                    y: [0, -22, 0],
+                    rotate: [0, -7, 0]
+                }}
+                transition={{
+                    duration: 14,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            />
+
+            {/* Decorative Premium Quotes */}
+            <motion.span
+                className={`${style.bgQuote} ${style.bgQuoteLeft}`}
+                animate={{
+                    scale: [1, 1.05, 1],
+                    opacity: [0.08, 0.12, 0.08]
+                }}
+                transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+            >
+                &ldquo;
+            </motion.span>
+            <motion.span
+                className={`${style.bgQuote} ${style.bgQuoteRight}`}
+                animate={{
+                    scale: [1, 1.05, 1],
+                    opacity: [0.08, 0.12, 0.08]
+                }}
+                transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                    delay: 2
+                }}
+            >
+                &rdquo;
+            </motion.span>
 
             <div className={"container " + style.inner}>
                 <motion.div
                     className={style.heading + " row"}
-                    variants={headingVariants}
+                    variants={containerVariants}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.2 }}
                 >
-                    <H2 text={t("homePage.Testimonials")} />
-                    <H3 text={t("homePage.Some of our customer testimonials")} />
+                    <motion.div variants={headingVariants}>
+                        <H2 text={t("homePage.Testimonials")} />
+                        <H3 text={t("homePage.Some of our customer testimonials")} />
+                    </motion.div>
                 </motion.div>
 
                 <div className={"row " + style.sliderRow}>
                     <Swiper
                         modules={[Navigation, Pagination, Autoplay]}
-                        spaceBetween={24}
+                        spaceBetween={28}
                         slidesPerView={1}
-                        pagination={{ clickable: true }}
+                        pagination={{ clickable: true, dynamicBullets: true }}
                         navigation
                         breakpoints={{
                             450: { slidesPerView: 1 },
@@ -54,7 +142,7 @@ export default function Testimonials({ rates }) {
                             1024: { slidesPerView: 3 }
                         }}
                         autoplay={{
-                            delay: 3000,
+                            delay: 3500,
                             disableOnInteraction: false,
                             pauseOnMouseEnter: true,
                         }}

@@ -145,10 +145,76 @@
    RESPONSIVE
    ============================================ */
 
+/* Global responsive fixes for mobile */
+@media (max-width: 991px) {
+  /* Hide ALL floating shapes to prevent overflow */
+  .homePage :global([class*="floatingShape"]) {
+    display: none !important;
+  }
+
+  /* Ensure all sections have proper constraints */
+  .homePage :global(.container),
+  .homePage :global(.container-fluid) {
+    max-width: 100% !important;
+    overflow-x: hidden !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+  }
+
+  /* Fix row overflow */
+  .homePage :global(.row) {
+    margin-left: calc(-1 * var(--space-2)) !important;
+    margin-right: calc(-1 * var(--space-2)) !important;
+  }
+
+  .homePage :global(.row) > * {
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+  }
+}
+
 @media (max-width: 768px) {
   .bgDecorCircle1,
   .bgDecorCircle2 {
     display: none;
+  }
+
+  /* Tighter padding on mobile */
+  .homePage :global(.container),
+  .homePage :global(.container-fluid) {
+    padding-left: var(--space-3) !important;
+    padding-right: var(--space-3) !important;
+  }
+
+  /* Reduce section spacing on mobile */
+  .homePage > section {
+    padding-top: var(--space-12) !important;
+    padding-bottom: var(--space-12) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Even tighter constraints on small phones */
+  .homePage :global(.container),
+  .homePage :global(.container-fluid) {
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+  }
+
+  .homePage :global(.row) {
+    margin-left: calc(-1 * var(--space-1)) !important;
+    margin-right: calc(-1 * var(--space-1)) !important;
+  }
+
+  .homePage :global(.row) > * {
+    padding-left: var(--space-1) !important;
+    padding-right: var(--space-1) !important;
+  }
+
+  /* Reduce section spacing further */
+  .homePage > section {
+    padding-top: var(--space-8) !important;
+    padding-bottom: var(--space-8) !important;
   }
 }
 

@@ -1,35 +1,352 @@
+/* ============================================
+   PRIVACY POLICY - ULTRA PREMIUM DESIGN
+   ============================================ */
+
 .privacySection {
-  padding: 2rem;
-  background-color: var(--bg-color);
+  padding: 4rem 2rem;
+  background: linear-gradient(
+    180deg,
+    var(--bg-body) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-body) 100%
+  );
   color: var(--Text);
   direction: rtl;
   text-align: right;
   line-height: 1.8;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
 }
+
+/* ============================================
+   FLOATING DECORATIVE SHAPES
+   ============================================ */
+
+.floatingShape1,
+.floatingShape2,
+.floatingShape3 {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(92px);
+  opacity: 0.16;
+  z-index: 0;
+}
+
+.floatingShape1 {
+  top: 12%;
+  right: 6%;
+  width: 470px;
+  height: 470px;
+  background: radial-gradient(circle, var(--primary-400), transparent);
+}
+
+.floatingShape2 {
+  bottom: 18%;
+  left: 10%;
+  width: 510px;
+  height: 510px;
+  background: radial-gradient(circle, var(--secondary-400), transparent);
+}
+
+.floatingShape3 {
+  top: 50%;
+  right: 45%;
+  width: 420px;
+  height: 420px;
+  background: radial-gradient(circle, var(--primary-300), transparent);
+}
+
+/* ============================================
+   POLICY CONTENT
+   ============================================ */
 
 .policyContent {
   max-width: 70%;
   margin: 0 auto;
-  background-color: #f8fafc;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-  border: 1px solid var(--lite);
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(248, 250, 252, 0.98) 100%
+  );
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+  border: 2px solid rgba(var(--primary-rgb, 79, 70, 229), 0.1);
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.contentGlow {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(
+    circle at top right,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.12),
+    transparent 60%
+  );
+  opacity: 1;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.policyContent::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--primary-500),
+    var(--secondary-500),
+    var(--primary-500)
+  );
+  box-shadow: 0 4px 16px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
 }
 
 .policyContent h3 {
-  color: var(--primary-color);
-  font-size: 1.25rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  color: var(--primary-600);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  position: relative;
+  padding-right: 1.25rem;
+}
+
+.policyContent h3::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 5px;
+  height: 70%;
+  background: linear-gradient(
+    180deg,
+    var(--primary-500),
+    var(--secondary-500)
+  );
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+}
+
+.policyContent p {
+  margin-bottom: 1.25rem;
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  line-height: 1.9;
 }
 
 .policyContent ul {
-  padding-right: 1.5rem;
-  list-style-type: disc;
+  padding-right: 2rem;
+  list-style-type: none;
+  margin-bottom: 1.5rem;
 }
 
 .policyContent li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.875rem;
+  position: relative;
+  padding-right: 1.5rem;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+}
+
+.policyContent li::before {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0.65rem;
+  width: 8px;
+  height: 8px;
+  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+}
+
+.policyContent li:hover {
+  transform: translateX(-4px);
+  color: var(--primary-600);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1200px) {
+  .policyContent {
+    max-width: 80%;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 380px;
+    height: 380px;
+  }
+}
+
+@media (max-width: 992px) {
+  .policyContent {
+    max-width: 85%;
+    padding: 2.5rem;
+  }
+
+  .policyContent h3 {
+    font-size: 1.35rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 320px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacySection {
+    padding: 3rem 1.5rem;
+  }
+
+  .policyContent {
+    max-width: 95%;
+    padding: 2rem;
+    border-radius: 20px;
+  }
+
+  .policyContent h3 {
+    font-size: 1.25rem;
+    margin-top: 2rem;
+  }
+
+  .policyContent p {
+    font-size: 1rem;
+  }
+
+  .policyContent ul {
+    padding-right: 1.5rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    width: 260px;
+    height: 260px;
+  }
+}
+
+@media (max-width: 480px) {
+  .privacySection {
+    padding: 2rem 1rem;
+  }
+
+  .policyContent {
+    max-width: 100%;
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .policyContent h3 {
+    font-size: 1.15rem;
+    padding-right: 1rem;
+  }
+
+  .policyContent p {
+    font-size: 0.95rem;
+  }
+
+  .policyContent li {
+    padding-right: 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .floatingShape1,
+  .floatingShape2,
+  .floatingShape3 {
+    display: none;
+  }
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+.dark .privacySection {
+  background: linear-gradient(
+    180deg,
+    var(--bg-elevated) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-elevated) 100%
+  );
+}
+
+.dark .policyContent {
+  background: linear-gradient(
+    135deg,
+    rgba(var(--bg-elevated-rgb, 30, 30, 30), 0.95) 0%,
+    rgba(var(--bg-surface-rgb, 20, 20, 20), 0.98) 100%
+  );
+  border-color: rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
+}
+
+.dark .policyContent h3 {
+  color: var(--primary-400);
+}
+
+.dark .policyContent p {
+  color: var(--text-secondary);
+}
+
+.dark .policyContent li {
+  color: var(--text-secondary);
+}
+
+.dark .policyContent li:hover {
+  color: var(--primary-400);
+}
+
+/* ============================================
+   LTR SUPPORT
+   ============================================ */
+
+body[dir="ltr"] .privacySection {
+  text-align: left;
+  direction: ltr;
+}
+
+body[dir="ltr"] .policyContent h3 {
+  padding-left: 1.25rem;
+  padding-right: 0;
+}
+
+body[dir="ltr"] .policyContent h3::before {
+  left: 0;
+  right: auto;
+}
+
+body[dir="ltr"] .policyContent ul {
+  padding-left: 2rem;
+  padding-right: 0;
+}
+
+body[dir="ltr"] .policyContent li {
+  padding-left: 1.5rem;
+  padding-right: 0;
+}
+
+body[dir="ltr"] .policyContent li::before {
+  left: 0;
+  right: auto;
+}
+
+body[dir="ltr"] .policyContent li:hover {
+  transform: translateX(4px);
 }
