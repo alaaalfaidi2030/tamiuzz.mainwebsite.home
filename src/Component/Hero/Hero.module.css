@@ -220,12 +220,53 @@ body[dir="ltr"] .ctaSecondary i {
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE - COMPREHENSIVE BREAKPOINTS
    ============================================ */
 
-@media (max-width: 992px) {
+/* Large screens - Optimize spacing */
+@media (min-width: 1200px) {
+  .heroSection {
+    min-height: 100vh;
+  }
+
+  .mainContent {
+    min-height: 85vh;
+  }
+}
+
+/* Medium Desktop - Slight adjustments */
+@media (min-width: 993px) and (max-width: 1199px) {
+  .heroSection {
+    min-height: 95vh;
+  }
+
+  .gradientText,
+  .orangeText {
+    font-size: clamp(2.5rem, 4.5vw, 3.25rem);
+  }
+
+  .floatingOrb1,
+  .floatingOrb2,
+  .floatingOrb3 {
+    width: 400px;
+    height: 400px;
+  }
+}
+
+/* Tablet Landscape - Critical transition */
+@media (min-width: 769px) and (max-width: 992px) {
   .heroSection {
     min-height: 90vh;
+  }
+
+  .gradientText,
+  .orangeText {
+    font-size: clamp(2.25rem, 4vw, 3rem);
+  }
+
+  .heroDescription {
+    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+    max-width: 600px;
   }
 
   .floatingOrb1,
@@ -234,8 +275,58 @@ body[dir="ltr"] .ctaSecondary i {
     width: 350px;
     height: 350px;
   }
+
+  .btnContainer {
+    gap: var(--space-3);
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    padding: var(--space-3) var(--space-6);
+    font-size: 1rem;
+  }
 }
 
+/* Tablet Portrait - Important transition to mobile */
+@media (min-width: 600px) and (max-width: 768px) {
+  .heroSection {
+    min-height: 100vh;
+    padding: var(--space-12) 0;
+  }
+
+  .mainContent {
+    min-height: auto;
+  }
+
+  .gradientText,
+  .orangeText {
+    font-size: clamp(2rem, 7vw, 2.5rem);
+  }
+
+  .heroDescription {
+    font-size: 1.08rem;
+    max-width: 100%;
+  }
+
+  .btnContainer {
+    gap: var(--space-3);
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    padding: var(--space-3) var(--space-6);
+    font-size: 0.98rem;
+  }
+
+  .floatingOrb1,
+  .floatingOrb2,
+  .floatingOrb3 {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+/* Mobile - Stack layout */
 @media (max-width: 768px) {
   .heroSection {
     min-height: 100vh;
@@ -258,6 +349,7 @@ body[dir="ltr"] .ctaSecondary i {
   .btnContainer {
     flex-direction: column;
     width: 100%;
+    gap: var(--space-3);
   }
 
   .ctaPrimary,
@@ -279,7 +371,34 @@ body[dir="ltr"] .ctaSecondary i {
   }
 }
 
+/* Small Mobile - Tighter layout */
+@media (min-width: 481px) and (max-width: 599px) {
+  .heroSection {
+    padding: var(--space-14) 0;
+  }
+
+  .gradientText,
+  .orangeText {
+    font-size: clamp(1.65rem, 7.5vw, 2.25rem);
+  }
+
+  .heroDescription {
+    font-size: 1.02rem;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    font-size: 0.96rem;
+    padding: var(--space-3) var(--space-5);
+  }
+}
+
+/* Extra Small Mobile */
 @media (max-width: 480px) {
+  .heroSection {
+    padding: var(--space-12) 0;
+  }
+
   .gradientText,
   .orangeText {
     font-size: 1.75rem;
@@ -294,5 +413,29 @@ body[dir="ltr"] .ctaSecondary i {
   .ctaSecondary {
     font-size: 0.95rem;
     padding: var(--space-3) var(--space-5);
+  }
+
+  .floatingOrb1,
+  .floatingOrb2,
+  .floatingOrb3 {
+    display: none;
+  }
+}
+
+/* Tiny screens */
+@media (max-width: 360px) {
+  .gradientText,
+  .orangeText {
+    font-size: 1.6rem;
+  }
+
+  .heroDescription {
+    font-size: 0.95rem;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    font-size: 0.9rem;
+    padding: var(--space-2) var(--space-4);
   }
 }

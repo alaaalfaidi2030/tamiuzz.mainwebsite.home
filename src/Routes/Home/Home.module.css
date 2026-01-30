@@ -142,10 +142,38 @@
 }
 
 /* ============================================
-   RESPONSIVE
+   RESPONSIVE - COMPREHENSIVE BREAKPOINTS
    ============================================ */
 
-/* Global responsive fixes for mobile */
+/* Large Desktop - Optimize for wide screens */
+@media (min-width: 1400px) {
+  .homePage :global(.container) {
+    max-width: 1320px !important;
+  }
+}
+
+/* Desktop - Standard layout */
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .homePage :global(.container) {
+    max-width: 1140px !important;
+  }
+}
+
+/* Small Desktop/Tablet Landscape - Critical transition zone */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .homePage :global(.container) {
+    max-width: 960px !important;
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+  }
+
+  .homePage > section {
+    padding-top: var(--space-14) !important;
+    padding-bottom: var(--space-14) !important;
+  }
+}
+
+/* Tablet - Hide floating shapes and adjust layout */
 @media (max-width: 991px) {
   /* Hide ALL floating shapes to prevent overflow */
   .homePage :global([class*="floatingShape"]) {
@@ -171,8 +199,36 @@
     padding-left: var(--space-2) !important;
     padding-right: var(--space-2) !important;
   }
+
+  .homePage > section {
+    padding-top: var(--space-14) !important;
+    padding-bottom: var(--space-14) !important;
+  }
 }
 
+/* Medium Tablet - Transition to mobile layout */
+@media (min-width: 769px) and (max-width: 991px) {
+  .homePage :global(.container) {
+    padding-left: var(--space-5) !important;
+    padding-right: var(--space-5) !important;
+  }
+}
+
+/* Small Tablet/Large Phone - Important transition */
+@media (min-width: 600px) and (max-width: 768px) {
+  .homePage :global(.container),
+  .homePage :global(.container-fluid) {
+    padding-left: var(--space-4) !important;
+    padding-right: var(--space-4) !important;
+  }
+
+  .homePage > section {
+    padding-top: var(--space-12) !important;
+    padding-bottom: var(--space-12) !important;
+  }
+}
+
+/* Mobile - Standard phones */
 @media (max-width: 768px) {
   .bgDecorCircle1,
   .bgDecorCircle2 {
@@ -193,6 +249,20 @@
   }
 }
 
+/* Small Mobile - Tighter constraints */
+@media (min-width: 481px) and (max-width: 599px) {
+  .homePage :global(.container) {
+    padding-left: var(--space-3) !important;
+    padding-right: var(--space-3) !important;
+  }
+
+  .homePage > section {
+    padding-top: var(--space-10) !important;
+    padding-bottom: var(--space-10) !important;
+  }
+}
+
+/* Very Small Mobile */
 @media (max-width: 480px) {
   /* Even tighter constraints on small phones */
   .homePage :global(.container),
@@ -215,6 +285,19 @@
   .homePage > section {
     padding-top: var(--space-8) !important;
     padding-bottom: var(--space-8) !important;
+  }
+}
+
+/* Extra Small Mobile - 320px-360px */
+@media (max-width: 360px) {
+  .homePage :global(.container) {
+    padding-left: var(--space-2) !important;
+    padding-right: var(--space-2) !important;
+  }
+
+  .homePage > section {
+    padding-top: var(--space-6) !important;
+    padding-bottom: var(--space-6) !important;
   }
 }
 
