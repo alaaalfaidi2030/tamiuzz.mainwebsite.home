@@ -56,6 +56,7 @@ export default function Home() {
                     "sameAs": []
                 }}
             />
+            
             <Hero />
             {homeContent.counter && homeContent.logos.length != 0 &&
                 < AboutSection counter={homeContent.counter} logos={homeContent.logos} services={homeContent.services} />
