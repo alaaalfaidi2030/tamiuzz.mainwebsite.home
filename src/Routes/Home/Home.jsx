@@ -5,6 +5,7 @@ import Spinner from '../../Component/Ui/Spinner/Spinner'
 import { createLazyLoadingComp } from '../../Utilies/LazyLoadingHelper'
 import Projects from '../../Component/Projects/Projects'
 import SEO from '../../Component/SEO/SEO'
+import { organizationSchema, localBusinessSchema, websiteSchema } from '../../Utilies/seoSchemas'
 import style from './Home.module.css'
 
 
@@ -30,30 +31,30 @@ export default function Home() {
                 canonicalPath="/"
                 jsonLd={{
                     "@context": "https://schema.org",
-                    "@type": "Organization",
-                    "name": "Tamiuzz - شركة تميّز",
-                    "url": "https://tamiuzz.com",
-                    "logo": "https://tamiuzz.com/logo.svg",
-                    "description": "شركة تميّز للحلول الرقمية والتسويق الإلكتروني",
-                    "foundingDate": "2018",
-                    "address": [
+                    "@graph": [
                         {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Riyadh",
-                            "addressCountry": "SA"
+                            ...organizationSchema,
+                            "address": [
+                                {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "Riyadh",
+                                    "addressCountry": "SA"
+                                },
+                                {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "Dammam",
+                                    "addressCountry": "SA"
+                                },
+                                {
+                                    "@type": "PostalAddress",
+                                    "addressLocality": "Cairo",
+                                    "addressCountry": "EG"
+                                }
+                            ]
                         },
-                        {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Dammam",
-                            "addressCountry": "SA"
-                        },
-                        {
-                            "@type": "PostalAddress",
-                            "addressLocality": "Cairo",
-                            "addressCountry": "EG"
-                        }
-                    ],
-                    "sameAs": []
+                        localBusinessSchema,
+                        websiteSchema
+                    ]
                 }}
             />
             

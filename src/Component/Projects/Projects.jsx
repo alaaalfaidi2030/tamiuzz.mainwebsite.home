@@ -141,7 +141,11 @@ function ProjectCard({ imageUrl, title, category, index }) {
 
             <motion.img
                 src={imageUrl}
-                alt={title}
+                alt={`${title} - ${category} Project by Tamiuzz`}
+                width="800"
+                height="600"
+                loading="lazy"
+                decoding="async"
                 className={style.image}
                 variants={{
                     rest: { scale: 1 },

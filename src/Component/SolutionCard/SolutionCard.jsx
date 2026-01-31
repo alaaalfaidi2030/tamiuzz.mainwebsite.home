@@ -65,8 +65,14 @@ export default function SolutionCard({
                         className={style["imageWrapper"]}
                         variants={imageWrapperVariants}
                     >
-                        <img loading='lazy' src={"https://tamiuzz.com"+imageUrl} 
-                            alt={title} />
+                        <img
+                            loading='lazy'
+                            src={"https://tamiuzz.com"+imageUrl}
+                            alt={`${title} - Tamiuzz Digital Solution`}
+                            width="600"
+                            height="400"
+                            decoding="async"
+                        />
                     </motion.div>
                 </div>
                 <div className="col-md-6 d-flex justify-content-center gap-3 flex-column">

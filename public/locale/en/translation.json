@@ -22,7 +22,6 @@
   "Language_nav": "ع",
 
   "read more": "read more",
-  "No data founded": "we couldn't find any data here",
   "noData": {
     "title": "No Data Found",
     "message": "We couldn't find any data here. Try again later or explore other sections.",
@@ -39,18 +38,9 @@
     "aboutHomeHeading": "What Sets Us Apart",
     "aboutSectionTitle": "We can provide excellent services to clients",
     "aboutSectionDescription": "Tamayuz Company is a leading technology company in Saudi Arabia and the Middle East, aiming to provide smart technical solutions that meet the needs of companies, institutions, and individuals.",
-    "itConsulting": "IT Consulting",
-    "appDevelopment": "Application Development",
-    "cyberSecurity": "Cyber Security",
-    "itManagement": "IT Management",
-    "uiUxDesign": "UI/UX Design",
-    "dataAnalysis": "Data Analysis",
-    "databaseSecurity": "Database Security",
-    "digitalMarketing": "Digital Marketing",
     "servicesDetailsButton": "Our Services Details",
     "projectsLabel": "Project",
     "clientsLabel": "Satisfied Clients",
-    "expertsLabel": "Experts",
     "aboutImageAlt": "About Tamayuz Company",
     "MoreThanOneHundredBrands": "More than 100 brands trust us",
     "what are we doing?": "what are we doing?",
@@ -92,14 +82,7 @@
 
   "aboutSection": {
     "about-us-page-name": "About Us",
-    "why-are-we-special": "Why Are We Special?",
-    "about-us-intro-paragraph": "We are a Saudi company specialized in software and providing innovative digital solutions. Our team includes top designers and developers who build high-quality applications and websites that serve various sectors.",
     "request-quote-button": "Request a Quote",
-    "tech-enhancement-heading": "We Enhance Business Success Through Technology",
-    "our-goals-heading": "Our Goals",
-    "our-goals-paragraph": "We aim to solve problems and provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
-    "our-vision-heading": "Our Vision",
-    "our-vision-paragraph": "We aim to solve problems and provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
     "about-us-image-alt": "Our Team",
     "our-branches-heading": "Our Branches",
     "riyadh": "Riyadh",
@@ -175,8 +158,6 @@
     "solution details": "Solution details",
     "download_profile": "Download Profile",
     "download_document": "Download Document",
-    "view_profile": "View Profile",
-    "view_document": "View Document",
     "plans": "Plans",
     "features": "Features",
     "popular": "Most Popular",
@@ -186,17 +167,8 @@
     "download_section": "Quick Actions",
     "compare_plans": "Compare features & plans",
     "pdf_format": "PDF format",
-    "full_details": "Complete information",
-    "feature_secure": "Secure & Reliable",
-    "feature_secure_desc": "Enterprise-grade security with 99.9% uptime guarantee",
-    "feature_fast": "High Performance",
-    "feature_fast_desc": "Optimized solutions for maximum speed and efficiency",
-    "feature_support": "24/7 Support",
-    "feature_support_desc": "Round-the-clock expert assistance whenever you need it",
-    "feature_scalable": "Scalable",
-    "feature_scalable_desc": "Grows with your business needs seamlessly"
+    "full_details": "Complete information"
   },
-
 
   "servicesPage": {
     "heading": "Services That Match Your Ambition and Make an Impact",
@@ -207,8 +179,6 @@
     "other-services": "Other Services You May Like",
     "view-all-services": "View All Services"
   },
-
-  "why are we special": "What distinguishes us the most",
 
   "faq": "FAQs",
   "faqPage": {

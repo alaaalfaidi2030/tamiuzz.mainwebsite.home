@@ -72,7 +72,10 @@ export default function ArticleCard({ idx = 0, imageUrl, time, title, author, ta
                 <motion.img
                     loading="lazy"
                     src={imageUrl}
-                    alt={title || "article image"}
+                    alt={title ? `${title} - Tamiuzz Article` : "Tamiuzz Digital Solutions Article"}
+                    width="800"
+                    height="600"
+                    decoding="async"
                     className={styles.image}
                     variants={imageVariants}
                 />

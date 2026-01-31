@@ -312,6 +312,9 @@ export default function AboutSection({ counter, logos, services }) {
                             loading='lazy'
                             src={AboutImage}
                             alt={t("homePage.aboutImageAlt")}
+                            width="600"
+                            height="800"
+                            decoding="async"
                             className={style.image}
                         />
                     </div>
@@ -365,7 +368,14 @@ export default function AboutSection({ counter, logos, services }) {
                                 >
                                     <div className={style.logoInner}>
                                         <div className={style.logoGlow} />
-                                        <img loading='lazy' src={logo.imageUrl} alt={logo.name} />
+                                        <img
+                                            loading='lazy'
+                                            src={logo.imageUrl}
+                                            alt={`${logo.name} - Partner Logo`}
+                                            width="120"
+                                            height="60"
+                                            decoding="async"
+                                        />
                                     </div>
                                 </motion.div>
                             </SwiperSlide>
@@ -408,7 +418,14 @@ function PremiumStatCard({ icon, number, label, delay, gradient }) {
                 }}
                 transition={{ duration: 0.5 }}
             >
-                <img loading='lazy' src={icon} alt={label} />
+                <img
+                    loading='lazy'
+                    src={icon}
+                    alt={`${label} Icon`}
+                    width="48"
+                    height="48"
+                    decoding="async"
+                />
             </motion.div>
 
             <div className={style.statContent}>

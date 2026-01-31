@@ -22,7 +22,6 @@
   "Language_nav": " E",
 
   "read more": "اطلع على المزيد",
-  "No data founded": "لم نستطيع العثور على اى بيانات ",
   "noData": {
     "title": "لا توجد بيانات",
     "message": "لم نتمكن من العثور على أي بيانات هنا. حاول مرة أخرى لاحقاً أو استكشف أقسام أخرى.",
@@ -39,18 +38,9 @@
     "aboutHomeHeading": "اكثر ما يميزنا",
     "aboutSectionTitle": "يمكننا تقديم خدمات مميزة للعملاء",
     "aboutSectionDescription": "شركة تميز هي شركة تقنية رائدة في المملكة العربية السعودية والشرق الاوسط، تهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد.",
-    "itConsulting": "استشارات تكنولوجيا المعلومات",
-    "appDevelopment": "تطوير التطبيقات",
-    "cyberSecurity": "الامن السيبراني",
-    "itManagement": "إدارة تكنولوجيا المعلومات",
-    "uiUxDesign": "تصميم واجهة وتجربة المستخدم",
-    "dataAnalysis": "تحليل البيانات",
-    "databaseSecurity": "امن قاعدة البيانات",
-    "digitalMarketing": "التسوق الرقمي",
     "servicesDetailsButton": "تفاصيل خدماتنا",
     "projectsLabel": "مشروع",
     "clientsLabel": "عملاء راضون",
-    "expertsLabel": "خبراء",
     "aboutImageAlt": "عن شركة تميز",
     "MoreThanOneHundredBrands": "اكثر من 100 علامه تجاريه تثق بنا",
     "what are we doing?": "ما نقوم به؟",
@@ -92,14 +82,7 @@
 
   "aboutSection": {
     "about-us-page-name": "من نحن",
-    "why-are-we-special": "لماذا نحن مميزون؟",
-    "about-us-intro-paragraph": "نحن شركة سعودية متخصصة في مجال البرمجيات وتقديم الحلول الرقمية المبتكرة. فريقنا يضم نخبة من المصممين والمطورين المتخصصين في بناء تطبيقات ومواقع عالية الجودة تخدم مختلف القطاعات.",
     "request-quote-button": "اطلب عرض سعر",
-    "tech-enhancement-heading": "نحن نعزز نجاح اعمالنا باستخدام التكنولوجيا",
-    "our-goals-heading": "اهدافنا",
-    "our-goals-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد",
-    "our-vision-heading": "رؤيتنا",
-    "our-vision-paragraph": "العمل على حل المشكلات نهدف إلى تقديم حلول تقنية ذكية تلبي احتياجات الشركات والمؤسسات والافراد",
     "about-us-image-alt": "فريقنا",
     "our-branches-heading": "فروعنا",
     "riyadh": "الرياض",
@@ -176,8 +159,6 @@
     "solution details": "تفاصيل الحلول",
     "download_profile": "تحميل الملف التعريفي",
     "download_document": "تحميل المستند",
-    "view_profile": "عرض الملف التعريفي",
-    "view_document": "عرض المستند",
     "plans": "الخطط",
     "features": "الميزات",
     "popular": "الأكثر شعبية",
@@ -187,18 +168,8 @@
     "download_section": "إجراءات سريعة",
     "compare_plans": "قارن الميزات والخطط",
     "pdf_format": "صيغة PDF",
-    "full_details": "المعلومات الكاملة",
-    "feature_secure": "آمن وموثوق",
-    "feature_secure_desc": "أمان على مستوى المؤسسات مع ضمان تشغيل 99.9%",
-    "feature_fast": "أداء عالي",
-    "feature_fast_desc": "حلول محسّنة لأقصى سرعة وكفاءة",
-    "feature_support": "دعم على مدار الساعة",
-    "feature_support_desc": "مساعدة فنية متخصصة متاحة في أي وقت تحتاجها",
-    "feature_scalable": "قابل للتوسع",
-    "feature_scalable_desc": "ينمو مع احتياجات عملك بسلاسة"
+    "full_details": "المعلومات الكاملة"
   },
-
-  "why are we special": "اكثر ما يميزنا",
 
   "servicesPage": {
     "heading": "خدمات تواكب طموحك، وتصنع الفارق",

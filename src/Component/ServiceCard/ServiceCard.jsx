@@ -68,9 +68,12 @@ const ServiceCard = ({ idx = 0, iconUrl, title, path, description }) => {
           <motion.div className={styles.iconWrapper} variants={iconVariants}>
             <img
               src={iconUrl}
-              alt=""
-              className={styles.image}
+              alt={`${title} Service Icon`}
+              width="64"
+              height="64"
               loading="lazy"
+              decoding="async"
+              className={styles.image}
             />
           </motion.div>
           <motion.div className={styles.accentLine} variants={lineVariants} />

@@ -43,7 +43,15 @@ export default function TestimonialCard({ idx = 0, imageUrl, name, position, sta
             <div className={style.header}>
                 <div className={style.user}>
                     <div className={style.avatarWrapper}>
-                        <img loading="lazy" src={imageUrl} alt={name} className={style.avatar} />
+                        <img
+                            loading="lazy"
+                            src={imageUrl}
+                            alt={`${name} - ${position}`}
+                            width="80"
+                            height="80"
+                            decoding="async"
+                            className={style.avatar}
+                        />
                         <div className={style.avatarRing} />
                     </div>
                     <div className={style.userInfo}>

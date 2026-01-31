@@ -319,7 +319,14 @@ function PremiumStatCard({ icon, number, label, delay, gradient, t }) {
                 }}
                 transition={{ duration: 0.5 }}
             >
-                <img loading='lazy' src={icon} alt={label} />
+                <img
+                    loading='lazy'
+                    src={icon}
+                    alt={`${label} Icon`}
+                    width="48"
+                    height="48"
+                    decoding="async"
+                />
             </motion.div>
 
             <motion.div

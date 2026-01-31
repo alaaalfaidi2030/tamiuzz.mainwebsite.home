@@ -332,9 +332,10 @@ function SolutionSlider({ solutions, t }) {
                                             <img
                                                 loading='lazy'
                                                 src={solution.iconUrl}
-                                                alt="icon"
+                                                alt={`${solution.title} Icon`}
                                                 width={36}
                                                 height={36}
+                                                decoding="async"
                                             />
                                         </motion.div>
                                     )}
