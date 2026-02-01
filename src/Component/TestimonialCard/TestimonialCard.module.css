@@ -1,73 +1,123 @@
 /* ============================================
-   TESTIMONIAL CARD - PROFESSIONAL REDESIGN
+   TESTIMONIAL CARD - CREATIVE AGENCY STYLE
+   Clean, Bold & Professional Design
    ============================================ */
 
 .card {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: var(--radius-xl);
-  padding: var(--space-6);
-  max-width: 480px;
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 28px 24px;
+  height: 100%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-4);
-  position: relative;
+  gap: 18px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   overflow: hidden;
-  transition: border-color 0.4s ease,
-              box-shadow 0.4s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
 }
 
 .card:hover {
-  border-color: rgba(255, 255, 255, 0.22);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2),
-              0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  border-color: #2644a2;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(38, 68, 162, 0.12);
 }
 
-/* Accent glow on top border */
+/* Top Accent Line */
 .card::before {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
-  left: 50%;
+  inset-inline-start: 50%;
   transform: translateX(-50%);
-  width: 60%;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--primary-400, #818cf8) 30%,
-    var(--primary-500, #6366f1) 50%,
-    var(--primary-400, #818cf8) 70%,
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease, width 0.4s ease;
+  width: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #2644a2, #1d3a8f);
+  border-radius: 0 0 3px 3px;
+  transition: width 0.4s ease;
 }
 
 .card:hover::before {
-  opacity: 1;
-  width: 80%;
+  width: 50%;
 }
 
 /* ============================================
-   HEADER
+   QUOTE WRAPPER
    ============================================ */
 
-.header {
+.quoteWrapper {
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.1), rgba(38, 68, 162, 0.05));
+  border: 1px solid rgba(38, 68, 162, 0.12);
+  border-radius: 14px;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #2644a2;
+  transition: all 0.3s ease;
 }
+
+.card:hover .quoteWrapper {
+  transform: rotate(-5deg) scale(1.05);
+  box-shadow: 0 8px 20px rgba(38, 68, 162, 0.15);
+}
+
+/* ============================================
+   RATING STARS
+   ============================================ */
+
+.rating {
+  display: flex;
+  gap: 4px;
+}
+
+.star {
+  font-size: 14px;
+  color: #cbd5e1;
+  transition: transform 0.3s ease;
+}
+
+.starFilled {
+  color: #e49d23;
+}
+
+.card:hover .star {
+  transform: scale(1.1);
+}
+
+/* ============================================
+   TESTIMONIAL TEXT
+   ============================================ */
+
+.text {
+  flex: 1;
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #64748b;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* ============================================
+   USER INFO
+   ============================================ */
 
 .user {
   display: flex;
-  gap: var(--space-3);
   align-items: center;
+  gap: 14px;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
 }
 
-.avatarWrapper {
+.avatarContainer {
   position: relative;
   flex-shrink: 0;
 }
@@ -77,22 +127,20 @@
   height: 52px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  transition: border-color 0.3s ease, transform 0.3s ease;
+  border: 3px solid #e2e8f0;
+  transition: all 0.3s ease;
 }
 
 .card:hover .avatar {
-  border-color: var(--primary-400, #818cf8);
-  transform: scale(1.05);
+  border-color: #2644a2;
 }
 
-/* Online-style ring around avatar */
-.avatarRing {
+.avatarBorder {
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
   border: 2px solid transparent;
-  background: linear-gradient(135deg, var(--primary-400, #818cf8), var(--primary-600, #4f46e5)) border-box;
+  background: linear-gradient(135deg, #2644a2, #1d3a8f) border-box;
   -webkit-mask:
     linear-gradient(#fff 0 0) padding-box,
     linear-gradient(#fff 0 0);
@@ -102,116 +150,277 @@
   transition: opacity 0.4s ease;
 }
 
-.card:hover .avatarRing {
+.card:hover .avatarBorder {
   opacity: 1;
 }
 
 .userInfo {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 3px;
 }
 
 .userName {
+  font-size: 1rem;
   font-weight: 700;
+  color: #1e293b;
   margin: 0;
-  color: #fff;
-  font-size: 0.95rem;
-  letter-spacing: 0.2px;
+  line-height: 1.3;
 }
 
 .userRole {
-  font-size: 0.78rem;
-  color: var(--primary-300, #a5b4fc);
+  font-size: 0.85rem;
+  color: #2644a2;
   margin: 0;
   font-weight: 500;
 }
 
 /* ============================================
-   QUOTE ICON
+   CORNER ACCENT
    ============================================ */
 
-.quoteIcon {
-  font-size: 1.6rem;
-  color: var(--primary-400, #818cf8);
-  opacity: 0.25;
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-
-.card:hover .quoteIcon {
-  opacity: 0.5;
-  transform: rotate(-8deg) scale(1.1);
-}
-
-/* ============================================
-   STARS
-   ============================================ */
-
-.stars {
-  display: flex;
-  gap: 3px;
-  margin-top: var(--space-1);
-}
-
-.star {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.2);
-  transition: transform 0.3s ease;
-}
-
-.starFilled {
-  color: #fbbf24;
-}
-
-.card:hover .star {
-  transform: scale(1.1);
-}
-
-/* ============================================
-   TEXT
-   ============================================ */
-
-.text {
-  line-height: 1.75;
-  font-weight: 400;
-  font-size: 0.88rem;
-  color: rgba(255, 255, 255, 0.75);
-  margin: 0;
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Bottom decorative line */
-.bottomAccent {
-  width: 40px;
-  height: 3px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, var(--primary-500, #6366f1), var(--primary-300, #a5b4fc));
-  opacity: 0.5;
-  transition: width 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-              opacity 0.3s ease;
-}
-
-.card:hover .bottomAccent {
+.cornerAccent {
+  position: absolute;
+  bottom: 0;
+  inset-inline-end: 0;
   width: 70px;
-  opacity: 0.8;
+  height: 70px;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(38, 68, 162, 0.04) 100%
+  );
+  pointer-events: none;
+  transition: all 0.4s ease;
+}
+
+.card:hover .cornerAccent {
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(38, 68, 162, 0.08) 100%
+  );
+}
+
+/* ============================================
+   DARK MODE
+   ============================================ */
+
+:global(.dark) .card,
+:global(body.dark) .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
+  backdrop-filter: blur(10px);
+}
+
+:global(.dark) .card:hover,
+:global(body.dark) .card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(228, 157, 35, 0.4);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .card::before,
+:global(body.dark) .card::before {
+  background: linear-gradient(90deg, #e49d23, #c4850f);
+}
+
+:global(.dark) .quoteWrapper,
+:global(body.dark) .quoteWrapper {
+  background: linear-gradient(135deg, rgba(228, 157, 35, 0.2), rgba(228, 157, 35, 0.1));
+  border-color: rgba(228, 157, 35, 0.2);
+  color: #e49d23;
+}
+
+:global(.dark) .card:hover .quoteWrapper,
+:global(body.dark) .card:hover .quoteWrapper {
+  box-shadow: 0 8px 20px rgba(228, 157, 35, 0.2);
+}
+
+:global(.dark) .star,
+:global(body.dark) .star {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+:global(.dark) .starFilled,
+:global(body.dark) .starFilled {
+  color: #e49d23;
+}
+
+:global(.dark) .text,
+:global(body.dark) .text {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+:global(.dark) .user,
+:global(body.dark) .user {
+  border-top-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark) .avatar,
+:global(body.dark) .avatar {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+:global(.dark) .card:hover .avatar,
+:global(body.dark) .card:hover .avatar {
+  border-color: #e49d23;
+}
+
+:global(.dark) .avatarBorder,
+:global(body.dark) .avatarBorder {
+  background: linear-gradient(135deg, #e49d23, #c4850f) border-box;
+}
+
+:global(.dark) .userName,
+:global(body.dark) .userName {
+  color: #ffffff;
+}
+
+:global(.dark) .userRole,
+:global(body.dark) .userRole {
+  color: #e49d23;
+}
+
+:global(.dark) .cornerAccent,
+:global(body.dark) .cornerAccent {
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(228, 157, 35, 0.06) 100%
+  );
+}
+
+:global(.dark) .card:hover .cornerAccent,
+:global(body.dark) .card:hover .cornerAccent {
+  background: linear-gradient(
+    135deg,
+    transparent 50%,
+    rgba(228, 157, 35, 0.12) 100%
+  );
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
   .card {
-    padding: var(--space-5);
+    padding: 24px 20px;
+    border-radius: 18px;
+    gap: 16px;
+  }
+
+  .quoteWrapper {
+    width: 48px;
+    height: 48px;
+    font-size: 20px;
+    border-radius: 12px;
+  }
+
+  .text {
+    font-size: 0.9rem;
+  }
+
+  .avatar {
+    width: 48px;
+    height: 48px;
+  }
+
+  .userName {
+    font-size: 0.95rem;
+  }
+
+  .userRole {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .card {
+    padding: 22px 18px;
+    border-radius: 16px;
+    gap: 14px;
+  }
+
+  .quoteWrapper {
+    width: 44px;
+    height: 44px;
+    font-size: 18px;
+    border-radius: 10px;
+  }
+
+  .rating {
+    gap: 3px;
+  }
+
+  .star {
+    font-size: 13px;
+  }
+
+  .text {
+    font-size: 0.88rem;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+  }
+
+  .user {
+    padding-top: 14px;
+    gap: 12px;
   }
 
   .avatar {
     width: 44px;
     height: 44px;
+    border-width: 2px;
+  }
+
+  .userName {
+    font-size: 0.9rem;
+  }
+
+  .userRole {
+    font-size: 0.78rem;
+  }
+
+  .cornerAccent {
+    width: 50px;
+    height: 50px;
+  }
+
+  .card:hover .cornerAccent {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+@media (max-width: 400px) {
+  .card {
+    padding: 20px 16px;
+    border-radius: 14px;
+    gap: 12px;
+  }
+
+  .quoteWrapper {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  .star {
+    font-size: 12px;
+  }
+
+  .text {
+    font-size: 0.85rem;
+  }
+
+  .avatar {
+    width: 40px;
+    height: 40px;
   }
 
   .userName {
@@ -219,14 +428,6 @@
   }
 
   .userRole {
-    font-size: 0.72rem;
-  }
-
-  .text {
-    font-size: 0.82rem;
-  }
-
-  .star {
     font-size: 0.75rem;
   }
 }

@@ -8,22 +8,31 @@ const ANIMATION_VARIANTS = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
-      transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   },
   item: {
-    hidden: { opacity: 0, y: 30, scale: 0.95 },
+    hidden: { opacity: 0, y: 40 },
     visible: {
       opacity: 1,
       y: 0,
-      scale: 1,
       transition: {
         type: "spring",
-        stiffness: 100,
-        damping: 15
+        stiffness: 80,
+        damping: 12
       },
     },
   },
+  float: {
+    animate: {
+      y: [0, -15, 0],
+      transition: {
+        duration: 4,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  }
 };
 
 const NoDataFounded = ({ message, showHomeButton = true }) => {
@@ -31,101 +40,114 @@ const NoDataFounded = ({ message, showHomeButton = true }) => {
 
   return (
     <motion.div
-      className={style.noDataContainer}
+      className={style.wrapper}
       role="status"
       aria-live="polite"
       initial="hidden"
       animate="visible"
       variants={ANIMATION_VARIANTS.container}
     >
-      {/* Floating Decorative Shapes */}
-      <motion.div
-        className={style.floatingShape1}
-        animate={{
-          y: [0, -25, 0],
-          x: [0, 18, 0],
-          rotate: [0, 8, 0]
-        }}
-        transition={{
-          duration: 11,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className={style.floatingShape2}
-        animate={{
-          y: [0, 28, 0],
-          x: [0, -15, 0],
-          scale: [1, 1.1, 1]
-        }}
-        transition={{
-          duration: 9,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-      <motion.div
-        className={style.floatingShape3}
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, -6, 0]
-        }}
-        transition={{
-          duration: 13,
-          repeat: Infinity,
-          ease: "easeInOut"
-        }}
-      />
-
-      {/* Icon */}
-      <motion.div className={style.iconWrapper} variants={ANIMATION_VARIANTS.item}>
+      {/* Gradient Orbs Background */}
+      <div className={style.orbsContainer}>
         <motion.div
-          className={style.iconBg}
-          initial="rest"
-          whileHover="hover"
-          animate="rest"
+          className={style.orb1}
+          animate={{
+            scale: [1, 1.2, 1],
+            x: [0, 30, 0],
+            y: [0, -20, 0],
+          }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className={style.orb2}
+          animate={{
+            scale: [1, 1.15, 1],
+            x: [0, -25, 0],
+            y: [0, 25, 0],
+          }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className={style.orb3}
+          animate={{
+            scale: [1, 1.1, 1],
+            rotate: [0, 180, 360],
+          }}
+          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        />
+      </div>
+
+      {/* Main Glass Card */}
+      <motion.div
+        className={style.glassCard}
+        variants={ANIMATION_VARIANTS.item}
+        whileHover={{ y: -5, transition: { duration: 0.3 } }}
+      >
+        {/* Floating Icon Container */}
+        <motion.div
+          className={style.iconContainer}
+          animate={{ y: [0, -12, 0] }}
+          transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
         >
-          <div className={style.iconGlow} />
-          <motion.i
-            className="fa-solid fa-inbox"
-            aria-hidden="true"
-            variants={{
-              rest: { scale: 1, rotate: 0 },
-              hover: {
-                scale: 1.15,
-                rotate: 360,
-                transition: {
-                  type: "spring",
-                  stiffness: 200,
-                  damping: 12
-                }
-              }
+          {/* Layered 3D Icon */}
+          <div className={style.iconLayers}>
+            <div className={style.iconLayer3} />
+            <div className={style.iconLayer2} />
+            <div className={style.iconLayer1}>
+              <i className="fa-solid fa-box-open" aria-hidden="true" />
+            </div>
+          </div>
+
+          {/* Reflection */}
+          <div className={style.iconReflection} />
+        </motion.div>
+
+        {/* Content */}
+        <motion.div className={style.content} variants={ANIMATION_VARIANTS.item}>
+          <h3 className={style.title}>{t("noData.title")}</h3>
+          <p className={style.message}>{message || t("noData.message")}</p>
+        </motion.div>
+
+        {/* Decorative Lines */}
+        <div className={style.decorLines}>
+          <span />
+          <span />
+          <span />
+        </div>
+
+        {/* Action Button */}
+        {showHomeButton && (
+          <motion.div className={style.actions} variants={ANIMATION_VARIANTS.item}>
+            <Link to="/" className={style.glassButton}>
+              <span className={style.buttonGlow} />
+              <i className="fa-solid fa-home" aria-hidden="true" />
+              <span>{t("noData.goHome")}</span>
+              <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+            </Link>
+          </motion.div>
+        )}
+      </motion.div>
+
+      {/* Floating Particles */}
+      <div className={style.particles}>
+        {[...Array(6)].map((_, i) => (
+          <motion.span
+            key={i}
+            className={style.particle}
+            animate={{
+              y: [0, -100, 0],
+              x: [0, Math.random() * 40 - 20, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 4 + Math.random() * 2,
+              repeat: Infinity,
+              delay: i * 0.5,
+              ease: "easeInOut"
             }}
           />
-        </motion.div>
-      </motion.div>
-
-      {/* Content */}
-      <motion.div className={style.content} variants={ANIMATION_VARIANTS.item}>
-        <h3 className={style.title}>{t("noData.title")}</h3>
-        <p className={style.message}>{message || t("noData.message")}</p>
-      </motion.div>
-
-      {/* Action Button */}
-      {showHomeButton && (
-        <motion.div className={style.actions} variants={ANIMATION_VARIANTS.item}>
-          <Link to="/" className="btn-web btn-web-primary">
-            <motion.i
-              className="fa-solid fa-home"
-              aria-hidden="true"
-              whileHover={{ x: -3 }}
-              transition={{ type: "spring", stiffness: 300 }}
-            />
-            <span>{t("noData.goHome")}</span>
-          </Link>
-        </motion.div>
-      )}
+        ))}
+      </div>
     </motion.div>
   );
 };

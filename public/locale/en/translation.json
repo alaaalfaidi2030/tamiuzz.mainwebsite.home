@@ -5,23 +5,21 @@
   "articles": "Articles",
   "support": "Support",
   "about-us": "About Us",
-  "nav_lang": "العربية",
   "shopping now": "Shop Now",
   "select language": "Select Language",
-  "available languages": "Available Languages",
   "opens in new tab": "Opens in new tab",
   "main navigation": "Main Navigation",
   "toggle navigation": "Toggle Navigation",
   "company logo": "Tamiuzz Company Logo",
 
   "mobile_navbar": "Main Menu",
-  "mobile_solutions": "solutions",
-  "mobile_services": "services",
-  "mobile_support": "support",
-  "mobile_main": "main",
+  "mobile_solutions": "Solutions",
+  "mobile_services": "Services",
+  "mobile_support": "Support",
+  "mobile_main": "Home",
   "Language_nav": "ع",
 
-  "read more": "read more",
+  "read more": "Read More",
   "noData": {
     "title": "No Data Found",
     "message": "We couldn't find any data here. Try again later or explore other sections.",
@@ -31,25 +29,36 @@
   "homePage": {
     "hero_title": "Integrated Software Solutions",
     "hero_subtitle": "For Your Business Success",
+    "badge_text": "Smart Solutions",
     "hero_desc_part1": "We offer innovative solutions that help businesses grow and evolve in the digital age",
     "hero_desc_part2": "Using the latest technologies and best development practices",
     "request-quote-button": "Request a Quote",
     "discover our services": "Discover Our Services",
+    "stats": {
+      "clients_count": "500+",
+      "happy_clients": "Happy Clients",
+      "projects_count": "200+",
+      "projects_completed": "Projects Completed",
+      "experience_years": "10+",
+      "years_experience": "Years of Experience",
+      "support_hours": "24/7",
+      "support_availability": "Support Available"
+    },
     "aboutHomeHeading": "What Sets Us Apart",
-    "aboutSectionTitle": "We can provide excellent services to clients",
-    "aboutSectionDescription": "Tamayuz Company is a leading technology company in Saudi Arabia and the Middle East, aiming to provide smart technical solutions that meet the needs of companies, institutions, and individuals.",
+    "aboutSectionTitle": "We Deliver Exceptional Services to Our Clients",
+    "aboutSectionDescription": "Tamiuzz is a leading technology company in Saudi Arabia and the Middle East, providing smart technical solutions that meet the needs of businesses, institutions, and individuals.",
     "servicesDetailsButton": "Our Services Details",
-    "projectsLabel": "Project",
+    "projectsLabel": "Projects",
     "clientsLabel": "Satisfied Clients",
-    "aboutImageAlt": "About Tamayuz Company",
-    "MoreThanOneHundredBrands": "More than 100 brands trust us",
-    "what are we doing?": "what are we doing?",
-    "what are we doing?_desc": "Providing solutions and enhancing customer service performance by establishing contact centers equipped with global technologies and advanced cloud services for institutions and companies, along with a cloud communication system.",
+    "aboutImageAlt": "About Tamiuzz Company",
+    "MoreThanOneHundredBrands": "More Than 100 Brands Trust Us",
+    "what are we doing?": "What We Do",
+    "what are we doing?_desc": "We provide solutions and enhance customer service performance by establishing contact centers equipped with global technologies and advanced cloud services for institutions and companies, along with cloud communication systems.",
     "Top Articles": "Top Articles",
-    "follow our newest articles": "Follow our newest articles",
-    "keep in touch with us": "stay in touch with us",
+    "follow our newest articles": "Follow Our Latest Articles",
+    "keep in touch with us": "Stay in Touch With Us",
     "Testimonials": "Testimonials",
-    "Some of our customer testimonials": "Some of our customer testimonials"
+    "Some of our customer testimonials": "What Our Clients Say About Us"
   },
 
   "articlePage": {
@@ -64,7 +73,7 @@
   },
 
   "supportPage": {
-    "heading": "Always Here—Because Your Success Matters",
+    "heading": "Always Here — Because Your Success Matters",
     "subheading": "We're here to help you every step of the way, with fast and reliable support 24/7",
     "talk with us": "Talk to Us",
     "contact with us": "Contact Us",
@@ -77,8 +86,8 @@
     "sending": "Sending..."
   },
 
-  "about tamuizz": "About Tamuizz Company",
-  "we present our services in the best way": "We are committed to providing our services at the highest quality standards",
+  "about tamuizz": "About Tamiuzz",
+  "we present our services in the best way": "We Are Committed to Providing Our Services at the Highest Quality Standards",
 
   "aboutSection": {
     "about-us-page-name": "About Us",
@@ -140,22 +149,22 @@
 
   "howWeWork": {
     "title": "How We Work",
-    "description": "Steps to Work with Us",
+    "description": "Steps to Work With Us",
     "ourAchievements": "Our Achievements",
     "weIncreaseSuccess": "We Increase Our Clients' Success",
     "clients": "Satisfied Clients",
-    "projects": "Finished Projects",
+    "projects": "Completed Projects",
     "experts": "Experts"
   },
   "projects": {
     "Our Projects": "Our Projects",
-    "Description": "Our latest successes"
+    "Description": "Our Latest Successes"
   },
   "solutionPage": {
     "heading": "We Create Solutions That Drive Excellence",
     "subheading": "Smart, forward-thinking solutions to drive your business toward excellence",
     "solution_title": "We Offer the Best Solutions",
-    "solution details": "Solution details",
+    "solution details": "Solution Details",
     "download_profile": "Download Profile",
     "download_document": "Download Document",
     "plans": "Plans",
@@ -165,15 +174,15 @@
     "pricing_modal_title": "Plans & Pricing",
     "pricing_section": "Pricing Section",
     "download_section": "Quick Actions",
-    "compare_plans": "Compare features & plans",
-    "pdf_format": "PDF format",
-    "full_details": "Complete information"
+    "compare_plans": "Compare Features & Plans",
+    "pdf_format": "PDF Format",
+    "full_details": "Complete Information"
   },
 
   "servicesPage": {
     "heading": "Services That Match Your Ambition and Make an Impact",
-    "subheading": "A full range of services tailored precisely to meet your needs.",
-    "ServicesSubTitle": "We Offer the Best Solutions",
+    "subheading": "A full range of services tailored precisely to meet your needs",
+    "ServicesSubTitle": "We Offer the Best Quality",
     "serviceDetails": "Service Details",
     "explore-more": "Explore More",
     "other-services": "Other Services You May Like",
@@ -183,14 +192,22 @@
   "faq": "FAQs",
   "faqPage": {
     "headline1": "Keep Your Business Secure",
-    "headline2": "And Ensure High Availability"
+    "headline2": "And Ensure High Availability",
+    "badge": "Frequently Asked Questions",
+    "subtitle": "We answer all your questions to help you make the right decision",
+    "needHelp": "Need Help?",
+    "helpDesc": "Our team is available to answer all your inquiries",
+    "contactUs": "Contact Us",
+    "responseTime": "Response Time",
+    "responseValue": "24 Hours",
+    "totalQuestions": "Questions"
   },
 
   "contact_us": "Contact Us",
   "email_placeholder": "Email Address",
   "email_description": "Please enter your email address to receive the latest news and updates.",
   "quick_links": "Quick Links",
-  "company_description": "Tamuizz is a leading tech company in the Kingdom of Saudi Arabia and the Middle East, aiming to provide smart tech solutions that meet the needs of companies, institutions, and individuals.",
+  "company_description": "Tamiuzz is a leading technology company in the Kingdom of Saudi Arabia and the Middle East, providing smart technical solutions that meet the needs of businesses, institutions, and individuals.",
   "terms_condition": "Terms & Conditions",
   "privacy_policy": "Privacy Policy",
   "form": {
@@ -203,7 +220,7 @@
   "success": {
     "Success": "Success",
     "message sent successfully": "Message Sent Successfully",
-    "successfully subscription": "You have successfully subscribed with us",
+    "successfully subscription": "You Have Successfully Subscribed",
     "OK": "OK"
   },
   "errors": {
@@ -212,6 +229,6 @@
     "Required": "Required",
     "Invalid email address": "Invalid Email Address",
     "Must be 10 characters or more": "Must be 10 characters or more",
-    "Something went wrong, please try again later": "Something went wrong, please try again later"
+    "Something went wrong, please try again later": "Something went wrong. Please try again later."
   }
 }

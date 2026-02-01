@@ -1,17 +1,32 @@
-import React from "react";
+import style from "./Spinner.module.css";
 
-export default function Spinner({ sectionFlag = true }) {
-  //sectionFlag is a flag to determine the spinner location
+export default function Spinner({ sectionFlag = true, size = "default" }) {
   return (
     <div
-      className="w-100 p-5 d-flex h-100 "
-      style={{
-        backgroundColor: "var(--bg-color)",
-        // flexGrow: sectionFlag ? "1" : "0",
-        minHeight: sectionFlag ? "70vh" : "auto"
-      }}
+      className={`${style.spinnerContainer} ${sectionFlag ? style.fullSection : style.inline}`}
+      role="status"
+      aria-label="Loading"
     >
-      <i className="fa-solid fa-spinner fa-spin fa-spin-plus m-auto fs-1 text-primary"></i>
+      <div className={`${style.spinner} ${style[size]}`}>
+        {/* Outer Ring */}
+        <div className={style.outerRing} aria-hidden="true" />
+
+        {/* Inner Ring */}
+        <div className={style.innerRing} aria-hidden="true" />
+
+        {/* Center Dot */}
+        <div className={style.centerDot} aria-hidden="true" />
+
+        {/* Orbiting Dots */}
+        <div className={style.orbitContainer} aria-hidden="true">
+          <span className={style.orbitDot} />
+          <span className={style.orbitDot} />
+          <span className={style.orbitDot} />
+        </div>
+      </div>
+
+      {/* Ambient Glow */}
+      <div className={style.ambientGlow} aria-hidden="true" />
     </div>
   );
 }

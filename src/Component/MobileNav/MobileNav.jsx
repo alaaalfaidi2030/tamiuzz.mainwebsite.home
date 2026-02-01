@@ -4,19 +4,19 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { IsMobileContext } from "../../Context/isMobileContext";
 import { isThemeModeContext } from "../../Context/isThemeModeContext";
-import NavbarTop from "../Ui/NavbarTop/NavbarTop";
+import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import i18n from "../../i18n";
 import logo from "/logo.svg";
 import whiteLogo from "/logo-white.svg";
 import style from "./MobileNav.module.css";
 
 const SIDEBAR_LINKS = [
-  { id: "home", to: "/home" },
-  { id: "solutions", to: "/solutions" },
-  { id: "services", to: "/services" },
-  { id: "articles", to: "/articles" },
-  { id: "support", to: "/support" },
-  { id: "about-us", to: "/about-us" },
+  { id: "home", to: "/home", icon: "fa-house" },
+  { id: "solutions", to: "/solutions", icon: "fa-lightbulb" },
+  { id: "services", to: "/services", icon: "fa-computer" },
+  { id: "articles", to: "/articles", icon: "fa-newspaper" },
+  { id: "support", to: "/support", icon: "fa-headset" },
+  { id: "about-us", to: "/about-us", icon: "fa-users" },
 ];
 
 const BOTTOM_NAV_LINKS = [
@@ -37,8 +37,8 @@ const MobileNav = () => {
   const [activeItem, setActiveItem] = useState("home");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  const navBarRef = useRef(null);
-  const navBarTopRef = useRef(null);
+  const headerRef = useRef(null);
+  const bottomNavRef = useRef(null);
 
   const sidebarLinks = useMemo(
     () => SIDEBAR_LINKS.map((link) => ({ ...link, label: t(link.id) })),
@@ -49,12 +49,6 @@ const MobileNav = () => {
     () => BOTTOM_NAV_LINKS.map((link) => ({ ...link, label: t(link.labelKey) })),
     [t]
   );
-
-  const toggleLanguage = useCallback(async () => {
-    const newLang = i18n.language === "en" ? "ar" : "en";
-    await i18n.changeLanguage(newLang);
-    window.location.reload();
-  }, []);
 
   const handleNavClick = useCallback((itemId) => {
     setActiveItem(itemId);
@@ -92,15 +86,17 @@ const MobileNav = () => {
     }
 
     const updatePadding = () => {
-      if (navBarRef.current && navBarTopRef.current) {
-        document.body.style.paddingBottom = `${navBarRef.current.clientHeight}px`;
-        document.body.style.paddingTop = `${navBarTopRef.current.clientHeight}px`;
+      if (headerRef.current && bottomNavRef.current) {
+        document.body.style.paddingTop = `${headerRef.current.offsetHeight + 10}px`;
+        document.body.style.paddingBottom = `${bottomNavRef.current.offsetHeight + 12}px`;
       }
     };
 
     updatePadding();
+    window.addEventListener("resize", updatePadding);
 
     return () => {
+      window.removeEventListener("resize", updatePadding);
       document.body.style.paddingBottom = "0px";
       document.body.style.paddingTop = "0px";
     };
@@ -121,54 +117,62 @@ const MobileNav = () => {
 
   const logoSrc = isDarkMode ? whiteLogo : logo;
   const isMenuActive = MENU_TRIGGER_ITEMS.includes(activeItem);
+  const isRTL = i18n.dir() === "rtl";
+  const sidebarSlideDirection = isRTL ? "100%" : "-100%";
 
   return (
     <>
-      {/* Top Navigation Bar */}
-      <header className={style.navtop} ref={navBarTopRef}>
-        <NavbarTop />
-        <div className="container d-flex justify-content-between align-items-center py-2">
-          <Link className="navbar-brand" to="/" aria-label={t("home")}>
-            <motion.img
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.4 }}
+      {/* Top Header - Floating Card */}
+      <header className={style.topHeader} ref={headerRef}>
+        <motion.div
+          className={style.headerCard}
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Logo */}
+          <Link to="/" aria-label={t("home")}>
+            <img
               src={logoSrc}
               className={style.logo}
               alt={t("company logo")}
             />
           </Link>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
-            className="d-flex gap-2 align-items-center"
-          >
-            <button
-              className={style.langButton}
-              onClick={toggleLanguage}
-              aria-label={t("change language")}
+          {/* Actions */}
+          <div className={style.headerActions}>
+            <LanguageDropdown />
+            <a
+              href="https://shop.tamiuzz.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={style.shopButton}
+              aria-label={t("shopping now")}
             >
-              {t("Language_nav")}
-            </button>
-          </motion.div>
-        </div>
+              <i className="fa-solid fa-bag-shopping" aria-hidden="true" />
+            </a>
+          </div>
+        </motion.div>
       </header>
 
-      {/* Bottom Navigation Bar */}
+      {/* Bottom Navigation - Floating Card */}
       <nav
         dir="ltr"
-        className={`fixed-bottom w-100`}
-        ref={navBarRef}
+        className={style.bottomNav}
+        ref={bottomNavRef}
         role="navigation"
         aria-label={t("bottom navigation")}
       >
-        <div className={style.navigation}>
-          <ul>
+        <motion.div
+          className={style.navCard}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          <ul className={style.navList}>
             {/* Menu Toggle Button */}
             <li
-              className={`${style.list} ${isMenuActive ? style.active : ""}`}
+              className={`${style.navItem} ${isMenuActive ? style.navItemActive : ""}`}
               onClick={openSidebar}
               role="none"
             >
@@ -178,10 +182,10 @@ const MobileNav = () => {
                 aria-controls="mobile-sidebar"
                 aria-label={t("open menu")}
               >
-                <span className={style.icon}>
+                <span className={style.navIcon}>
                   <i className="fa-solid fa-bars" aria-hidden="true" />
                 </span>
-                <span className={style.text}>{t("mobile_navbar")}</span>
+                <span className={style.navLabel}>{t("mobile_navbar")}</span>
               </button>
             </li>
 
@@ -189,15 +193,15 @@ const MobileNav = () => {
             {bottomNavLinks.map(({ id, icon, label, path }) => (
               <li
                 key={id}
-                className={`${style.list} ${activeItem === id ? style.active : ""}`}
+                className={`${style.navItem} ${activeItem === id ? style.navItemActive : ""}`}
                 onClick={() => handleNavClick(id)}
                 role="none"
               >
                 <Link to={path} aria-current={activeItem === id ? "page" : undefined}>
-                  <span className={style.icon}>
+                  <span className={style.navIcon}>
                     <i className={`fa-solid ${icon}`} aria-hidden="true" />
                   </span>
-                  <span className={style.text}>{label}</span>
+                  <span className={style.navLabel}>{label}</span>
                 </Link>
               </li>
             ))}
@@ -205,55 +209,16 @@ const MobileNav = () => {
             {/* Floating Indicator */}
             <div className={style.indicator} aria-hidden="true" />
           </ul>
-        </div>
+        </motion.div>
       </nav>
 
-      {/* Sidebar Menu */}
+      {/* Sidebar */}
       <AnimatePresence>
         {isSidebarOpen && (
           <>
-            <motion.aside
-              id="mobile-sidebar"
-              className={`${style.sidebar} ${style.active}`}
-              initial={{ x: "100%" }}
-              animate={{ x: 0 }}
-              exit={{ x: "100%" }}
-              transition={{ type: "tween", duration: 0.3 }}
-              role="dialog"
-              aria-modal="true"
-              aria-label={t("navigation menu")}
-            >
-              <div className={style.sidebarHeader}>
-                <h2 className={style.headmenue}>{t("mobile_navbar")}</h2>
-                <button
-                  className={style.closeBtn}
-                  onClick={closeSidebar}
-                  aria-label={t("close menu")}
-                >
-                  <i className="fa-solid fa-times" aria-hidden="true" />
-                </button>
-              </div>
-
-              <ul className={style.menuList} role="menu">
-                {sidebarLinks.map((item) => (
-                  <li key={item.id} className={style.menuItem} role="none">
-                    <Link
-                      to={item.to}
-                      className={`${style.menuLink} ${activeItem === item.id ? style.active : ""}`}
-                      onClick={() => handleSidebarLinkClick(item.id)}
-                      role="menuitem"
-                      aria-current={activeItem === item.id ? "page" : undefined}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.aside>
-
             {/* Overlay */}
             <motion.div
-              className={`${style.overlay} ${style.active}`}
+              className={style.overlay}
               onClick={closeSidebar}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -261,6 +226,72 @@ const MobileNav = () => {
               transition={{ duration: 0.2 }}
               aria-hidden="true"
             />
+
+            {/* Sidebar Panel */}
+            <motion.aside
+              id="mobile-sidebar"
+              className={style.sidebar}
+              initial={{ x: sidebarSlideDirection, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: sidebarSlideDirection, opacity: 0 }}
+              transition={{ type: "spring", damping: 25, stiffness: 300 }}
+              role="dialog"
+              aria-modal="true"
+              aria-label={t("navigation menu")}
+            >
+              {/* Header */}
+              <div className={style.sidebarHeader}>
+                <h2 className={style.sidebarTitle}>{t("mobile_navbar")}</h2>
+                <button
+                  className={style.closeButton}
+                  onClick={closeSidebar}
+                  aria-label={t("close menu")}
+                >
+                  <i className="fa-solid fa-xmark" aria-hidden="true" />
+                </button>
+              </div>
+
+              {/* Menu List */}
+              <ul className={style.menuList} role="menu">
+                {sidebarLinks.map((item, index) => (
+                  <motion.li
+                    key={item.id}
+                    className={style.menuItem}
+                    role="none"
+                    initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.05 * index, duration: 0.3 }}
+                  >
+                    <Link
+                      to={item.to}
+                      className={`${style.menuLink} ${activeItem === item.id ? style.menuLinkActive : ""}`}
+                      onClick={() => handleSidebarLinkClick(item.id)}
+                      role="menuitem"
+                      aria-current={activeItem === item.id ? "page" : undefined}
+                    >
+                      <span className={style.menuIcon}>
+                        <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
+                      </span>
+                      <span className={style.menuText}>{item.label}</span>
+                      <i className={`fa-solid ${isRTL ? "fa-chevron-left" : "fa-chevron-right"} ${style.menuChevron}`} aria-hidden="true" />
+                    </Link>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Footer */}
+              <div className={style.sidebarFooter}>
+                <a
+                  href="https://shop.tamiuzz.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={style.sidebarShopButton}
+                >
+                  <i className="fa-solid fa-bag-shopping" aria-hidden="true" />
+                  <span>{t("shopping now")}</span>
+                </a>
+              </div>
+            </motion.aside>
           </>
         )}
       </AnimatePresence>

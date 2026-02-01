@@ -1,132 +1,190 @@
 /* ============================================
-   NO DATA FOUND - ULTRA PREMIUM DESIGN
+   NO DATA FOUND - 3D GLASSMORPHISM DESIGN
+   Frosted glass with depth & layered elements
    ============================================ */
 
-.noDataContainer {
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  padding: 48px 24px;
+  position: relative;
+  overflow: hidden;
+  /* background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%); */
+  border-radius: 24px;
+}
+
+/* ============================================
+   GRADIENT ORBS BACKGROUND
+   ============================================ */
+
+.orbsContainer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.orb1,
+.orb2,
+.orb3 {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+}
+
+.orb1 {
+  top: -10%;
+  inset-inline-end: -5%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(38, 68, 162, 0.6), transparent 70%);
+}
+
+.orb2 {
+  bottom: -15%;
+  inset-inline-start: -10%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(228, 157, 35, 0.5), transparent 70%);
+}
+
+.orb3 {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.4), transparent 70%);
+}
+
+/* ============================================
+   MAIN GLASS CARD
+   ============================================ */
+
+.glassCard {
+  position: relative;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-height: 500px;
-  padding: var(--space-16);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(
-    180deg,
-    var(--bg-body) 0%,
-    var(--bg-surface) 50%,
-    var(--bg-body) 100%
-  );
-  border-radius: var(--radius-2xl);
+  padding: 56px 48px 48px;
+  max-width: 480px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset,
+    0 32px 64px -12px rgba(0, 0, 0, 0.4);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ============================================
-   FLOATING DECORATIVE SHAPES
-   ============================================ */
-
-.floatingShape1,
-.floatingShape2,
-.floatingShape3 {
+.glassCard::before {
+  content: '';
   position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(88px);
-  opacity: 0.2;
-  z-index: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
 }
 
-.floatingShape1 {
-  top: 10%;
-  right: 8%;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, var(--primary-300), transparent);
-}
-
-.floatingShape2 {
-  bottom: 15%;
-  left: 10%;
-  width: 460px;
-  height: 460px;
-  background: radial-gradient(circle, var(--secondary-400), transparent);
-}
-
-.floatingShape3 {
-  top: 50%;
-  left: 50%;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, var(--primary-400), transparent);
-  transform: translate(-50%, -50%);
+.glassCard:hover {
+  box-shadow:
+    0 12px 48px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset,
+    0 40px 80px -16px rgba(0, 0, 0, 0.5);
 }
 
 /* ============================================
-   ICON
+   3D LAYERED ICON
    ============================================ */
 
-.iconWrapper {
+.iconContainer {
   position: relative;
-  z-index: 1;
-  margin-bottom: var(--space-8);
+  margin-bottom: 32px;
 }
 
-.iconBg {
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(135deg, var(--primary-100) 0%, var(--primary-50) 100%);
-  border-radius: var(--radius-2xl);
+.iconLayers {
   position: relative;
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.15);
+  width: 120px;
+  height: 120px;
+  perspective: 1000px;
+}
+
+.iconLayer1,
+.iconLayer2,
+.iconLayer3 {
+  position: absolute;
+  inset: 0;
+  border-radius: 28px;
   transition: all 0.4s ease;
 }
 
-.iconGlow {
+.iconLayer3 {
+  transform: translateZ(-30px) scale(0.9);
+  background: rgba(228, 157, 35, 0.2);
+  filter: blur(2px);
+}
+
+.iconLayer2 {
+  transform: translateZ(-15px) scale(0.95);
+  background: rgba(38, 68, 162, 0.3);
+  filter: blur(1px);
+}
+
+.iconLayer1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.9), rgba(29, 58, 143, 0.9));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 10px 40px rgba(38, 68, 162, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.iconLayer1 i {
+  font-size: 3rem;
+  color: #ffffff;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.iconContainer:hover .iconLayer3 {
+  transform: translateZ(-40px) scale(0.85) rotateY(-5deg);
+}
+
+.iconContainer:hover .iconLayer2 {
+  transform: translateZ(-20px) scale(0.92) rotateY(-3deg);
+}
+
+.iconContainer:hover .iconLayer1 {
+  transform: translateZ(0) rotateY(5deg);
+  box-shadow:
+    0 15px 50px rgba(38, 68, 162, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.15) inset;
+}
+
+/* Icon Reflection */
+.iconReflection {
   position: absolute;
-  inset: -20px;
-  background: radial-gradient(
-    circle at center,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.3),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-.iconBg:hover .iconGlow {
-  opacity: 1;
-}
-
-.iconBg::before {
-  content: "";
-  position: absolute;
-  inset: -3px;
-  background: linear-gradient(135deg, var(--primary-400), var(--secondary-400));
-  border-radius: var(--radius-2xl);
-  z-index: -1;
-  opacity: 0.4;
-}
-
-.iconBg:hover {
-  box-shadow: 0 12px 36px rgba(var(--primary-rgb, 79, 70, 229), 0.25);
-  transform: translateY(-4px);
-}
-
-.iconBg i {
-  font-size: 3.5rem;
-  color: var(--primary-500);
-  transition: all 0.3s ease;
-  position: relative;
-  z-index: 1;
-}
-
-.iconBg:hover i {
-  color: var(--primary-600);
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 20px;
+  background: radial-gradient(ellipse, rgba(38, 68, 162, 0.3), transparent 70%);
+  filter: blur(8px);
 }
 
 /* ============================================
@@ -134,201 +192,391 @@
    ============================================ */
 
 .content {
-  position: relative;
-  z-index: 1;
-  max-width: 500px;
-  margin-bottom: var(--space-8);
+  text-align: center;
+  margin-bottom: 24px;
 }
 
 .title {
-  font-size: var(--font-size-3xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--text-primary);
-  margin-bottom: var(--space-4);
-  line-height: var(--leading-tight);
-  background: linear-gradient(135deg, var(--primary-600), var(--secondary-600));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 12px;
+  line-height: 1.3;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 .message {
-  font-size: var(--font-size-xl);
-  color: var(--text-secondary);
-  line-height: var(--leading-relaxed);
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.65);
+  line-height: 1.7;
   margin: 0;
 }
 
 /* ============================================
-   ACTIONS
+   DECORATIVE LINES
+   ============================================ */
+
+.decorLines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.decorLines span {
+  height: 3px;
+  border-radius: 3px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.decorLines span:nth-child(1) {
+  width: 24px;
+}
+
+.decorLines span:nth-child(2) {
+  width: 48px;
+  background: linear-gradient(90deg, #2644a2, #e49d23);
+}
+
+.decorLines span:nth-child(3) {
+  width: 24px;
+}
+
+/* ============================================
+   GLASS BUTTON
    ============================================ */
 
 .actions {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.glassButton {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.glassButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 50%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.1), transparent);
+  pointer-events: none;
+}
+
+.buttonGlow {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.4), rgba(228, 157, 35, 0.4));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.glassButton:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  color: #ffffff;
+}
+
+.glassButton:hover .buttonGlow {
+  opacity: 1;
+}
+
+.glassButton i {
+  position: relative;
+  z-index: 1;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+.glassButton span {
   position: relative;
   z-index: 1;
 }
 
-.actions .btn-web {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-3);
-  padding: var(--space-4) var(--space-8);
-  font-size: 1.05rem;
-  font-weight: 700;
-  border-radius: var(--radius-xl);
-  box-shadow: 0 6px 20px rgba(var(--primary-rgb, 79, 70, 229), 0.25);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
+.glassButton:hover i:last-child {
+  transform: translateX(-4px);
+}
+
+body[dir="ltr"] .glassButton i:last-child {
+  transform: rotate(180deg);
+}
+
+body[dir="ltr"] .glassButton:hover i:last-child {
+  transform: rotate(180deg) translateX(-4px);
+}
+
+/* ============================================
+   FLOATING PARTICLES
+   ============================================ */
+
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
   overflow: hidden;
 }
 
-.actions .btn-web::before {
-  content: "";
+.particle {
   position: absolute;
-  inset: 0;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  bottom: 20%;
+}
+
+.particle:nth-child(1) { left: 10%; }
+.particle:nth-child(2) { left: 25%; }
+.particle:nth-child(3) { left: 40%; }
+.particle:nth-child(4) { left: 55%; }
+.particle:nth-child(5) { left: 70%; }
+.particle:nth-child(6) { left: 85%; }
+
+/* ============================================
+   LIGHT MODE
+   ============================================ */
+
+:global(body:not(.dark)) .wrapper {
+  background: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 50%, #e2e8f0 100%);
+}
+
+:global(body:not(.dark)) .orb1 {
+  background: radial-gradient(circle, rgba(38, 68, 162, 0.25), transparent 70%);
+}
+
+:global(body:not(.dark)) .orb2 {
+  background: radial-gradient(circle, rgba(228, 157, 35, 0.2), transparent 70%);
+}
+
+:global(body:not(.dark)) .orb3 {
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.15), transparent 70%);
+}
+
+:global(body:not(.dark)) .glassCard {
+  background: rgba(255, 255, 255, 0.7);
+  border-color: rgba(255, 255, 255, 0.8);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.08),
+    0 0 0 1px rgba(255, 255, 255, 0.9) inset,
+    0 32px 64px -12px rgba(0, 0, 0, 0.1);
+}
+
+:global(body:not(.dark)) .glassCard::before {
   background: linear-gradient(
-    135deg,
+    90deg,
     transparent,
-    rgba(255, 255, 255, 0.2),
+    rgba(255, 255, 255, 0.8),
     transparent
   );
-  transform: translateX(-100%);
-  transition: transform 0.6s ease;
 }
 
-.actions .btn-web:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 32px rgba(var(--primary-rgb, 79, 70, 229), 0.35);
+:global(body:not(.dark)) .iconLayer3 {
+  background: rgba(228, 157, 35, 0.15);
 }
 
-.actions .btn-web:hover::before {
-  transform: translateX(100%);
+:global(body:not(.dark)) .iconLayer2 {
+  background: rgba(38, 68, 162, 0.2);
+}
+
+:global(body:not(.dark)) .iconLayer1 {
+  box-shadow:
+    0 10px 40px rgba(38, 68, 162, 0.25),
+    0 0 0 1px rgba(255, 255, 255, 0.3) inset;
+}
+
+:global(body:not(.dark)) .iconReflection {
+  background: radial-gradient(ellipse, rgba(38, 68, 162, 0.15), transparent 70%);
+}
+
+:global(body:not(.dark)) .title {
+  color: #1e293b;
+  text-shadow: none;
+}
+
+:global(body:not(.dark)) .message {
+  color: #64748b;
+}
+
+:global(body:not(.dark)) .decorLines span {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+:global(body:not(.dark)) .decorLines span:nth-child(2) {
+  background: linear-gradient(90deg, #2644a2, #e49d23);
+}
+
+:global(body:not(.dark)) .glassButton {
+  background: rgba(38, 68, 162, 0.1);
+  border-color: rgba(38, 68, 162, 0.2);
+  color: #2644a2;
+}
+
+:global(body:not(.dark)) .glassButton:hover {
+  background: rgba(38, 68, 162, 0.15);
+  border-color: rgba(38, 68, 162, 0.3);
+  color: #2644a2;
+  box-shadow: 0 10px 30px rgba(38, 68, 162, 0.15);
+}
+
+:global(body:not(.dark)) .particle {
+  background: rgba(38, 68, 162, 0.3);
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 
-@media (max-width: 992px) {
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
-    width: 350px;
-    height: 350px;
-  }
-}
-
 @media (max-width: 768px) {
-  .noDataContainer {
-    min-height: 400px;
-    padding: var(--space-12);
+  .wrapper {
+    min-height: 450px;
+    padding: 32px 16px;
   }
 
-  .iconBg {
-    width: 120px;
-    height: 120px;
+  .glassCard {
+    padding: 44px 32px 36px;
+    border-radius: 24px;
   }
 
-  .iconBg i {
-    font-size: 3rem;
-  }
-
-  .title {
-    font-size: var(--font-size-2xl);
-  }
-
-  .message {
-    font-size: var(--font-size-lg);
-  }
-
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
-    width: 280px;
-    height: 280px;
-  }
-}
-
-@media (max-width: 480px) {
-  .noDataContainer {
-    min-height: 350px;
-    padding: var(--space-8);
-  }
-
-  .iconBg {
+  .iconLayers {
     width: 100px;
     height: 100px;
   }
 
-  .iconBg i {
+  .iconLayer1,
+  .iconLayer2,
+  .iconLayer3 {
+    border-radius: 22px;
+  }
+
+  .iconLayer1 i {
     font-size: 2.5rem;
   }
 
   .title {
-    font-size: var(--font-size-xl);
+    font-size: 1.5rem;
   }
 
   .message {
-    font-size: var(--font-size-base);
+    font-size: 1rem;
   }
 
-  .actions .btn-web {
-    padding: var(--space-3) var(--space-6);
+  .orb1,
+  .orb2,
+  .orb3 {
+    width: 300px;
+    height: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .wrapper {
+    min-height: 400px;
+    padding: 24px 12px;
+    border-radius: 20px;
+  }
+
+  .glassCard {
+    padding: 36px 24px 28px;
+    border-radius: 20px;
+  }
+
+  .iconContainer {
+    margin-bottom: 24px;
+  }
+
+  .iconLayers {
+    width: 80px;
+    height: 80px;
+  }
+
+  .iconLayer1,
+  .iconLayer2,
+  .iconLayer3 {
+    border-radius: 18px;
+  }
+
+  .iconLayer1 i {
+    font-size: 2rem;
+  }
+
+  .title {
+    font-size: 1.25rem;
+  }
+
+  .message {
     font-size: 0.95rem;
   }
 
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
+  .decorLines {
+    margin-bottom: 20px;
+  }
+
+  .glassButton {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+    gap: 10px;
+    border-radius: 12px;
+  }
+
+  .orb1,
+  .orb2,
+  .orb3 {
+    width: 200px;
+    height: 200px;
+    filter: blur(60px);
+  }
+
+  .particles {
     display: none;
   }
 }
 
-/* ============================================
-   DARK MODE
-   ============================================ */
+@media (max-width: 360px) {
+  .glassCard {
+    padding: 28px 20px 24px;
+  }
 
-.dark .noDataContainer {
-  background: linear-gradient(
-    180deg,
-    var(--bg-elevated) 0%,
-    var(--bg-surface) 50%,
-    var(--bg-elevated) 100%
-  );
-}
+  .iconLayers {
+    width: 70px;
+    height: 70px;
+  }
 
-.dark .iconBg {
-  background: linear-gradient(135deg, var(--primary-900) 0%, var(--bg-tertiary) 100%);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
+  .iconLayer1 i {
+    font-size: 1.75rem;
+  }
 
-.dark .iconBg::before {
-  background: linear-gradient(135deg, var(--primary-700), var(--secondary-700));
-}
+  .title {
+    font-size: 1.15rem;
+  }
 
-.dark .iconBg:hover {
-  box-shadow: 0 12px 36px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
-}
+  .message {
+    font-size: 0.9rem;
+  }
 
-.dark .iconBg i {
-  color: var(--primary-400);
-}
-
-.dark .iconBg:hover i {
-  color: var(--primary-300);
-}
-
-.dark .title {
-  background: linear-gradient(135deg, var(--primary-400), var(--secondary-400));
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.dark .actions .btn-web {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
-}
-
-.dark .actions .btn-web:hover {
-  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.6);
+  .glassButton {
+    padding: 12px 20px;
+    font-size: 0.9rem;
+  }
 }

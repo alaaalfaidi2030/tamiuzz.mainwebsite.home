@@ -1,441 +1,653 @@
 /* ============================================
-   HERO - ULTRA PREMIUM DESIGN
+   HERO - FLOATING CARD PREMIUM DESIGN
+   Matches Navbar Floating Card Aesthetic
    ============================================ */
 
-.heroSection {
-  color: var(--text-inverse);
-  overflow: hidden;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
+.hero {
   position: relative;
-  z-index: 1;
-  padding-bottom: var(--space-8);
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* Dark overlay with premium gradient */
-.heroSection::after {
-  content: "";
+/* Premium Gradient Overlay */
+.overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
-    135deg,
-    rgba(10, 17, 41, 0.85) 0%,
-    rgba(26, 58, 143, 0.75) 50%,
-    rgba(10, 17, 41, 0.85) 100%
+    160deg,
+    rgba(8, 15, 35, 0.92) 0%,
+    rgba(38, 68, 162, 0.85) 50%,
+    rgba(8, 15, 35, 0.92) 100%
   );
-  z-index: 0;
-  pointer-events: none;
-}
-
-body[dir="ltr"] .heroSection {
-  transform: scaleX(-1);
-}
-
-body[dir="ltr"] .contentContainer {
-  transform: scaleX(-1);
-}
-
-/* ============================================
-   FLOATING ORBS
-   ============================================ */
-
-.floatingOrb1,
-.floatingOrb2,
-.floatingOrb3 {
-  position: absolute;
-  border-radius: 50%;
-  pointer-events: none;
-  filter: blur(100px);
-  opacity: 0.3;
   z-index: 1;
 }
 
-.floatingOrb1 {
-  top: 15%;
-  right: 10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--primary-400), transparent);
+/* Ambient Glow Effects */
+.ambientGlow {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
 }
 
-.floatingOrb2 {
-  bottom: 20%;
-  left: 5%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, var(--secondary-400), transparent);
+.glowOrb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
 }
 
-.floatingOrb3 {
-  top: 40%;
-  left: 50%;
+.glowOrb1 {
+  top: 10%;
+  inset-inline-end: 15%;
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, var(--primary-300), transparent);
+  background: #2644a2;
+}
+
+.glowOrb2 {
+  bottom: 20%;
+  inset-inline-start: 10%;
+  width: 350px;
+  height: 350px;
+  background: #e49d23;
 }
 
 /* ============================================
-   PARTICLE EFFECTS
+   MAIN CONTENT AREA
    ============================================ */
 
-.particle {
-  position: absolute;
-  width: 6px;
-  height: 6px;
-  background: radial-gradient(circle, var(--primary-300), transparent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 1;
-}
-
-/* ============================================
-   CONTENT
-   ============================================ */
-
-.contentContainer {
+.content {
   position: relative;
-  z-index: 2;
-  width: 100%;
+  z-index: 10;
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 120px 24px 80px;
 }
 
-.mainContent {
-  min-height: 80vh;
-  display: flex;
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Floating Card - Matches Navbar Style */
+.card {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 60px;
+  box-shadow:
+    0 4px 8px rgba(0, 0, 0, 0.1),
+    0 16px 32px rgba(0, 0, 0, 0.15),
+    0 32px 64px rgba(0, 0, 0, 0.1);
+}
+
+.cardInner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
   align-items: center;
 }
 
-.heading {
-  text-align: start;
-}
-
-/* Premium Gradient Text */
-.gradientText {
-  background: linear-gradient(
-    135deg,
-    #ffffff 0%,
-    var(--primary-200) 30%,
-    var(--secondary-300) 60%,
-    #ffffff 100%
-  );
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  font-weight: 900;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.2;
-  text-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-}
-
-.orangeText {
-  color: var(--secondary-500);
-  font-weight: 900;
-  font-size: clamp(2rem, 5vw, 3.5rem);
-  line-height: 1.2;
-  display: inline-block;
-}
-
-.heroDescription {
-  font-size: clamp(1.05rem, 2vw, 1.25rem);
-  line-height: 1.8;
-  font-weight: 400;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
-  max-width: 650px;
-}
-
 /* ============================================
-   PREMIUM BUTTONS
+   TEXT COLUMN
    ============================================ */
 
-.btnContainer {
+.textColumn {
   display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-4);
+  flex-direction: column;
+  gap: 28px;
 }
 
-.ctaPrimary,
-.ctaSecondary {
-  position: relative;
+/* Badge - Pill Style */
+.badge {
   display: inline-flex;
   align-items: center;
+  gap: 10px;
+  padding: 8px 18px;
+  background: rgba(228, 157, 35, 0.15);
+  border: 1px solid rgba(228, 157, 35, 0.3);
+  border-radius: 100px;
+  width: fit-content;
+}
+
+.badgeIcon {
+  display: flex;
+  align-items: center;
   justify-content: center;
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-xl);
-  font-weight: 700;
-  font-size: 1.05rem;
-  text-decoration: none;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  overflow: hidden;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: 24px;
+  height: 24px;
+  background: #e49d23;
+  border-radius: 50%;
+  color: #ffffff;
+  font-size: 11px;
+}
+
+.badgeText {
+  color: #f0b54a;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* Headline */
+.headline {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  margin: 0;
+}
+
+.headlineWhite {
+  display: block;
+  color: #ffffff;
+}
+
+.headlineGold {
+  display: block;
+  color: #f0b54a;
+  margin-top: 8px;
+}
+
+/* Description */
+.description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+  max-width: 500px;
+  margin: 0;
+}
+
+/* ============================================
+   CTA BUTTONS
+   ============================================ */
+
+.ctaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
 }
 
 .ctaPrimary {
-  background: linear-gradient(135deg, var(--secondary-500), var(--secondary-600));
-  color: var(--text-inverse);
-  border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: #e49d23;
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(228, 157, 35, 0.3);
 }
 
 .ctaPrimary:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(228, 157, 35, 0.4);
+  background: #c4850f;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(228, 157, 35, 0.4);
 }
 
-.buttonContent {
-  position: relative;
-  z-index: 2;
+.ctaPrimary:active {
+  transform: translateY(0);
 }
 
-.buttonGlow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle, var(--secondary-400), transparent);
-  opacity: 0.3;
-  pointer-events: none;
-}
-
-.ctaSecondary {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  color: var(--text-inverse);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-}
-
-.ctaSecondary:hover {
-  background: rgba(255, 255, 255, 0.2);
-  border-color: var(--primary-300);
-  transform: translateY(-4px);
-  box-shadow: 0 12px 36px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
-}
-
-.ctaSecondary i {
+.ctaPrimary i {
+  font-size: 13px;
   transition: transform 0.3s ease;
 }
 
-body[dir="ltr"] .ctaSecondary i {
-  transform: rotate(180deg);
+.ctaPrimary:hover i {
+  transform: translateX(-4px);
+}
+
+body[dir="ltr"] .ctaPrimary:hover i {
+  transform: translateX(4px);
+}
+
+.ctaSecondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 14px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.ctaSecondary:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.ctaSecondary i {
+  font-size: 13px;
+  transition: transform 0.3s ease;
+}
+
+.ctaSecondary:hover i {
+  transform: translateX(-4px);
+}
+
+body[dir="ltr"] .ctaSecondary:hover i {
+  transform: translateX(4px);
 }
 
 /* ============================================
-   RESPONSIVE - COMPREHENSIVE BREAKPOINTS
+   VISUAL COLUMN
    ============================================ */
 
-/* Large screens - Optimize spacing */
-@media (min-width: 1200px) {
-  .heroSection {
-    min-height: 100vh;
+.visualColumn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  width: 100%;
+  max-width: 380px;
+}
+
+.statCard {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 28px 24px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.statCard:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-4px);
+}
+
+.statIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  background: rgba(38, 68, 162, 0.3);
+  border-radius: 14px;
+  color: #5a7ae0;
+  font-size: 20px;
+}
+
+.statCard:nth-child(2) .statIcon {
+  background: rgba(228, 157, 35, 0.2);
+  color: #f0b54a;
+}
+
+.statCard:nth-child(3) .statIcon {
+  background: rgba(228, 157, 35, 0.2);
+  color: #f0b54a;
+}
+
+.statValue {
+  display: block;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  font-weight: 500;
+}
+
+/* ============================================
+   BOTTOM WAVE DIVIDER
+   ============================================ */
+
+.waveDivider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  line-height: 0;
+}
+
+.waveDivider svg {
+  width: 100%;
+  height: 80px;
+  display: block;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 1100px) {
+  .card {
+    padding: 48px;
   }
 
-  .mainContent {
-    min-height: 85vh;
+  .cardInner {
+    gap: 48px;
+  }
+
+  .headline {
+    font-size: clamp(2.25rem, 4.5vw, 3rem);
+  }
+
+  .statsGrid {
+    max-width: 340px;
+  }
+
+  .statCard {
+    padding: 24px 20px;
+  }
+
+  .statValue {
+    font-size: 1.75rem;
   }
 }
 
-/* Medium Desktop - Slight adjustments */
-@media (min-width: 993px) and (max-width: 1199px) {
-  .heroSection {
-    min-height: 95vh;
+@media (max-width: 991px) {
+  .content {
+    padding: 100px 16px 60px;
   }
 
-  .gradientText,
-  .orangeText {
-    font-size: clamp(2.5rem, 4.5vw, 3.25rem);
+  .card {
+    padding: 40px 32px;
   }
 
-  .floatingOrb1,
-  .floatingOrb2,
-  .floatingOrb3 {
-    width: 400px;
-    height: 400px;
-  }
-}
-
-/* Tablet Landscape - Critical transition */
-@media (min-width: 769px) and (max-width: 992px) {
-  .heroSection {
-    min-height: 90vh;
+  .cardInner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
   }
 
-  .gradientText,
-  .orangeText {
-    font-size: clamp(2.25rem, 4vw, 3rem);
+  .textColumn {
+    align-items: center;
   }
 
-  .heroDescription {
-    font-size: clamp(1.05rem, 1.8vw, 1.2rem);
+  .description {
     max-width: 600px;
   }
 
-  .floatingOrb1,
-  .floatingOrb2,
-  .floatingOrb3 {
-    width: 350px;
-    height: 350px;
+  .ctaGroup {
+    justify-content: center;
   }
 
-  .btnContainer {
-    gap: var(--space-3);
+  .visualColumn {
+    order: -1;
   }
 
-  .ctaPrimary,
-  .ctaSecondary {
-    padding: var(--space-3) var(--space-6);
+  .statsGrid {
+    max-width: 360px;
+  }
+
+  .glowOrb1 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .glowOrb2 {
+    width: 250px;
+    height: 250px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 90px 12px 50px;
+  }
+
+  .card {
+    padding: 32px 24px;
+    border-radius: 22px;
+  }
+
+  .cardInner {
+    gap: 32px;
+  }
+
+  .headline {
+    font-size: clamp(1.75rem, 7vw, 2.25rem);
+  }
+
+  .description {
     font-size: 1rem;
   }
-}
 
-/* Tablet Portrait - Important transition to mobile */
-@media (min-width: 600px) and (max-width: 768px) {
-  .heroSection {
-    min-height: 100vh;
-    padding: var(--space-12) 0;
-  }
-
-  .mainContent {
-    min-height: auto;
-  }
-
-  .gradientText,
-  .orangeText {
-    font-size: clamp(2rem, 7vw, 2.5rem);
-  }
-
-  .heroDescription {
-    font-size: 1.08rem;
-    max-width: 100%;
-  }
-
-  .btnContainer {
-    gap: var(--space-3);
-  }
-
-  .ctaPrimary,
-  .ctaSecondary {
-    padding: var(--space-3) var(--space-6);
-    font-size: 0.98rem;
-  }
-
-  .floatingOrb1,
-  .floatingOrb2,
-  .floatingOrb3 {
-    width: 280px;
-    height: 280px;
-  }
-}
-
-/* Mobile - Stack layout */
-@media (max-width: 768px) {
-  .heroSection {
-    min-height: 100vh;
-    padding: var(--space-16) 0;
-  }
-
-  .mainContent {
-    min-height: auto;
-  }
-
-  .gradientText,
-  .orangeText {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
-  }
-
-  .heroDescription {
-    font-size: 1.05rem;
-  }
-
-  .btnContainer {
+  .ctaGroup {
     flex-direction: column;
     width: 100%;
-    gap: var(--space-3);
   }
 
   .ctaPrimary,
   .ctaSecondary {
     width: 100%;
     justify-content: center;
-    padding: var(--space-3) var(--space-6);
+    padding: 14px 24px;
+    font-size: 14px;
   }
 
-  .floatingOrb1,
-  .floatingOrb2,
-  .floatingOrb3 {
-    width: 250px;
-    height: 250px;
+  .statsGrid {
+    gap: 12px;
+    max-width: 100%;
   }
 
-  .particle {
+  .statCard {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .statIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    margin-bottom: 12px;
+  }
+
+  .statValue {
+    font-size: 1.5rem;
+  }
+
+  .statLabel {
+    font-size: 12px;
+  }
+
+  .waveDivider svg {
+    height: 50px;
+  }
+
+  .glowOrb1,
+  .glowOrb2 {
     display: none;
   }
 }
 
-/* Small Mobile - Tighter layout */
-@media (min-width: 481px) and (max-width: 599px) {
-  .heroSection {
-    padding: var(--space-14) 0;
+@media (max-width: 400px) {
+  .card {
+    padding: 24px 20px;
+    border-radius: 18px;
   }
 
-  .gradientText,
-  .orangeText {
-    font-size: clamp(1.65rem, 7.5vw, 2.25rem);
+  .badge {
+    padding: 6px 14px;
   }
 
-  .heroDescription {
-    font-size: 1.02rem;
+  .badgeText {
+    font-size: 12px;
   }
 
-  .ctaPrimary,
-  .ctaSecondary {
-    font-size: 0.96rem;
-    padding: var(--space-3) var(--space-5);
-  }
-}
-
-/* Extra Small Mobile */
-@media (max-width: 480px) {
-  .heroSection {
-    padding: var(--space-12) 0;
-  }
-
-  .gradientText,
-  .orangeText {
-    font-size: 1.75rem;
-  }
-
-  .heroDescription {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .ctaPrimary,
-  .ctaSecondary {
-    font-size: 0.95rem;
-    padding: var(--space-3) var(--space-5);
-  }
-
-  .floatingOrb1,
-  .floatingOrb2,
-  .floatingOrb3 {
-    display: none;
-  }
-}
-
-/* Tiny screens */
-@media (max-width: 360px) {
-  .gradientText,
-  .orangeText {
+  .headline {
     font-size: 1.6rem;
   }
 
-  .heroDescription {
-    font-size: 0.95rem;
+  .statCard {
+    padding: 16px 12px;
+  }
+
+  .statValue {
+    font-size: 1.35rem;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - TINY MOBILE (max-width: 360px)
+   ============================================ */
+
+@media (max-width: 360px) {
+  .content {
+    padding: 80px 8px 40px;
+  }
+
+  .card {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .cardInner {
+    gap: 24px;
+  }
+
+  .badge {
+    padding: 5px 12px;
+    gap: 6px;
+  }
+
+  .badgeIcon {
+    width: 20px;
+    height: 20px;
+    font-size: 9px;
+  }
+
+  .badgeText {
+    font-size: 11px;
+  }
+
+  .headline {
+    font-size: 1.4rem;
+  }
+
+  .description {
+    font-size: 0.9rem;
+    line-height: 1.7;
   }
 
   .ctaPrimary,
   .ctaSecondary {
-    font-size: 0.9rem;
-    padding: var(--space-2) var(--space-4);
+    padding: 12px 20px;
+    font-size: 13px;
+    gap: 8px;
+    border-radius: 12px;
+  }
+
+  .statsGrid {
+    gap: 10px;
+  }
+
+  .statCard {
+    padding: 14px 10px;
+    border-radius: 14px;
+  }
+
+  .statIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+
+  .statValue {
+    font-size: 1.2rem;
+  }
+
+  .statLabel {
+    font-size: 11px;
+  }
+
+  .waveDivider svg {
+    height: 40px;
+  }
+}
+
+/* ============================================
+   RESPONSIVE - EXTRA TINY (max-width: 320px)
+   ============================================ */
+
+@media (max-width: 320px) {
+  .content {
+    padding: 70px 6px 30px;
+  }
+
+  .card {
+    padding: 16px 12px;
+    border-radius: 14px;
+  }
+
+  .cardInner {
+    gap: 20px;
+  }
+
+  .headline {
+    font-size: 1.25rem;
+  }
+
+  .description {
+    font-size: 0.85rem;
+  }
+
+  .ctaPrimary,
+  .ctaSecondary {
+    padding: 10px 16px;
+    font-size: 12px;
+    border-radius: 10px;
+  }
+
+  .statCard {
+    padding: 12px 8px;
+    border-radius: 12px;
+  }
+
+  .statIcon {
+    width: 32px;
+    height: 32px;
+    font-size: 12px;
+    margin-bottom: 8px;
+    border-radius: 8px;
+  }
+
+  .statValue {
+    font-size: 1.1rem;
+  }
+
+  .statLabel {
+    font-size: 10px;
   }
 }

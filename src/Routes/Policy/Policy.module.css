@@ -1,352 +1,580 @@
 /* ============================================
-   PRIVACY POLICY - ULTRA PREMIUM DESIGN
+   PRIVACY POLICY - CREATIVE AGENCY DESIGN
+   Light-mode-first approach
+   Brand Colors: #2644a2 (Primary Blue), #e49d23 (Gold)
    ============================================ */
 
-.privacySection {
-  padding: 4rem 2rem;
+/* ============================================
+   SECTION BASE
+   ============================================ */
+
+.section {
+  position: relative;
+  padding: 5rem 2rem;
   background: linear-gradient(
     180deg,
-    var(--bg-body) 0%,
-    var(--bg-surface) 50%,
-    var(--bg-body) 100%
+    #ffffff 0%,
+    #f8fafc 50%,
+    #ffffff 100%
   );
-  color: var(--Text);
-  direction: rtl;
-  text-align: right;
-  line-height: 1.8;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  position: relative;
   overflow: hidden;
   min-height: 100vh;
 }
 
+:global(.dark) .section {
+  background: linear-gradient(
+    180deg,
+    #0a0a0f 0%,
+    #12121a 50%,
+    #0a0a0f 100%
+  );
+}
+
 /* ============================================
-   FLOATING DECORATIVE SHAPES
+   BACKGROUND SHAPES
    ============================================ */
 
-.floatingShape1,
-.floatingShape2,
-.floatingShape3 {
+.bgShape1,
+.bgShape2 {
   position: absolute;
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(92px);
-  opacity: 0.16;
+  filter: blur(100px);
+  opacity: 0.15;
   z-index: 0;
 }
 
-.floatingShape1 {
-  top: 12%;
-  right: 6%;
-  width: 470px;
-  height: 470px;
-  background: radial-gradient(circle, var(--primary-400), transparent);
+.bgShape1 {
+  top: 10%;
+  inset-inline-end: 5%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, #2644a2, transparent 70%);
+  animation: floatShape1 20s ease-in-out infinite;
 }
 
-.floatingShape2 {
-  bottom: 18%;
-  left: 10%;
-  width: 510px;
-  height: 510px;
-  background: radial-gradient(circle, var(--secondary-400), transparent);
+.bgShape2 {
+  bottom: 15%;
+  inset-inline-start: 8%;
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, #e49d23, transparent 70%);
+  animation: floatShape2 18s ease-in-out infinite;
 }
 
-.floatingShape3 {
-  top: 50%;
-  right: 45%;
-  width: 420px;
-  height: 420px;
-  background: radial-gradient(circle, var(--primary-300), transparent);
+:global(.dark) .bgShape1 {
+  opacity: 0.12;
+}
+
+:global(.dark) .bgShape2 {
+  opacity: 0.1;
+}
+
+@keyframes floatShape1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-30px, 20px) scale(1.05); }
+}
+
+@keyframes floatShape2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(25px, -15px) scale(1.03); }
 }
 
 /* ============================================
-   POLICY CONTENT
+   CONTAINER
    ============================================ */
 
-.policyContent {
-  max-width: 70%;
-  margin: 0 auto;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.95) 0%,
-    rgba(248, 250, 252, 0.98) 100%
-  );
-  padding: 3rem;
-  border-radius: 24px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
-  border: 2px solid rgba(var(--primary-rgb, 79, 70, 229), 0.1);
+.container {
   position: relative;
   z-index: 1;
-  backdrop-filter: blur(10px);
-  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.contentGlow {
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(
-    circle at top right,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.12),
-    transparent 60%
-  );
-  opacity: 1;
-  pointer-events: none;
-  z-index: -1;
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  text-align: center;
+  margin-bottom: 4rem;
 }
 
-.policyContent::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(
-    90deg,
-    var(--primary-500),
-    var(--secondary-500),
-    var(--primary-500)
-  );
-  box-shadow: 0 4px 16px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
-}
-
-.policyContent h3 {
-  color: var(--primary-600);
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 1rem;
-  position: relative;
-  padding-right: 1.25rem;
-}
-
-.policyContent h3::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 5px;
-  height: 70%;
-  background: linear-gradient(
-    180deg,
-    var(--primary-500),
-    var(--secondary-500)
-  );
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
-}
-
-.policyContent p {
-  margin-bottom: 1.25rem;
-  color: var(--text-secondary);
-  font-size: 1.05rem;
-  line-height: 1.9;
-}
-
-.policyContent ul {
-  padding-right: 2rem;
-  list-style-type: none;
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.1), rgba(228, 157, 35, 0.1));
+  border: 1px solid rgba(38, 68, 162, 0.2);
+  border-radius: 50px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #2644a2;
   margin-bottom: 1.5rem;
 }
 
-.policyContent li {
-  margin-bottom: 0.875rem;
+.badge i {
+  font-size: 0.875rem;
+  color: #e49d23;
+}
+
+:global(.dark) .badge {
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.2), rgba(228, 157, 35, 0.15));
+  border-color: rgba(228, 157, 35, 0.3);
+  color: #e49d23;
+}
+
+:global(.dark) .badge i {
+  color: #e49d23;
+}
+
+.title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #1a1a2e;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+:global(.dark) .title {
+  color: #ffffff;
+}
+
+.subtitle {
+  font-size: 1.125rem;
+  color: #64748b;
+  max-width: 700px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+:global(.dark) .subtitle {
+  color: #94a3b8;
+}
+
+/* ============================================
+   CARDS GRID
+   ============================================ */
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+/* ============================================
+   CARD
+   ============================================ */
+
+.card {
   position: relative;
-  padding-right: 1.5rem;
-  color: var(--text-secondary);
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.06),
+    0 1px 3px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(38, 68, 162, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #2644a2, #e49d23);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 20px 40px rgba(38, 68, 162, 0.12),
+    0 8px 16px rgba(0, 0, 0, 0.06);
+  border-color: rgba(38, 68, 162, 0.15);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+:global(.dark) .card {
+  background: linear-gradient(
+    145deg,
+    rgba(30, 32, 44, 0.9),
+    rgba(20, 22, 34, 0.95)
+  );
+  border-color: rgba(228, 157, 35, 0.15);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+:global(.dark) .card:hover {
+  box-shadow:
+    0 20px 40px rgba(228, 157, 35, 0.08),
+    0 8px 16px rgba(0, 0, 0, 0.4);
+  border-color: rgba(228, 157, 35, 0.3);
+}
+
+/* ============================================
+   CARD HEADER
+   ============================================ */
+
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2644a2, #1d3a8f);
+  border-radius: 14px;
+  color: #ffffff;
+  font-size: 1.375rem;
+  box-shadow: 0 8px 20px rgba(38, 68, 162, 0.3);
   transition: all 0.3s ease;
 }
 
-.policyContent li::before {
-  content: "";
-  position: absolute;
-  right: 0;
-  top: 0.65rem;
-  width: 8px;
-  height: 8px;
-  background: linear-gradient(135deg, var(--primary-500), var(--secondary-500));
-  border-radius: 50%;
-  box-shadow: 0 2px 6px rgba(var(--primary-rgb, 79, 70, 229), 0.3);
+.card:hover .cardIcon {
+  transform: scale(1.08) rotate(-3deg);
+  box-shadow: 0 12px 28px rgba(38, 68, 162, 0.4);
 }
 
-.policyContent li:hover {
-  transform: translateX(-4px);
-  color: var(--primary-600);
+:global(.dark) .cardIcon {
+  background: linear-gradient(135deg, #e49d23, #c4850f);
+  box-shadow: 0 8px 20px rgba(228, 157, 35, 0.25);
+}
+
+:global(.dark) .card:hover .cardIcon {
+  box-shadow: 0 12px 28px rgba(228, 157, 35, 0.35);
+}
+
+.cardNumber {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: rgba(38, 68, 162, 0.08);
+  line-height: 1;
+  font-feature-settings: "tnum";
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardNumber {
+  color: rgba(38, 68, 162, 0.15);
+}
+
+:global(.dark) .cardNumber {
+  color: rgba(228, 157, 35, 0.1);
+}
+
+:global(.dark) .card:hover .cardNumber {
+  color: rgba(228, 157, 35, 0.2);
 }
 
 /* ============================================
-   RESPONSIVE
+   CARD CONTENT
    ============================================ */
 
-@media (max-width: 1200px) {
-  .policyContent {
-    max-width: 80%;
+.cardTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 0.875rem;
+  transition: color 0.3s ease;
+}
+
+.card:hover .cardTitle {
+  color: #2644a2;
+}
+
+:global(.dark) .cardTitle {
+  color: #ffffff;
+}
+
+:global(.dark) .card:hover .cardTitle {
+  color: #e49d23;
+}
+
+.cardContent {
+  font-size: 0.975rem;
+  color: #64748b;
+  line-height: 1.75;
+  margin-bottom: 0;
+}
+
+:global(.dark) .cardContent {
+  color: #94a3b8;
+}
+
+/* ============================================
+   CARD LIST
+   ============================================ */
+
+.cardList {
+  margin-top: 1rem;
+  padding: 0;
+  list-style: none;
+}
+
+.cardList li {
+  position: relative;
+  padding-inline-start: 1.5rem;
+  margin-bottom: 0.625rem;
+  font-size: 0.925rem;
+  color: #64748b;
+  line-height: 1.6;
+  transition: all 0.3s ease;
+}
+
+.cardList li::before {
+  content: "";
+  position: absolute;
+  inset-inline-start: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #2644a2, #e49d23);
+  border-radius: 50%;
+  transition: transform 0.3s ease;
+}
+
+.cardList li:hover {
+  color: #2644a2;
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .cardList li:hover {
+  transform: translateX(-4px);
+}
+
+:global(.dark) .cardList li {
+  color: #94a3b8;
+}
+
+:global(.dark) .cardList li:hover {
+  color: #e49d23;
+}
+
+:global(.dark) .cardList li::before {
+  background: linear-gradient(135deg, #e49d23, #2644a2);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.06), rgba(228, 157, 35, 0.04));
+  border-radius: 16px;
+  border: 1px solid rgba(38, 68, 162, 0.1);
+}
+
+:global(.dark) .footer {
+  background: linear-gradient(135deg, rgba(38, 68, 162, 0.15), rgba(228, 157, 35, 0.08));
+  border-color: rgba(228, 157, 35, 0.2);
+}
+
+.footerIcon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2644a2, #1d3a8f);
+  border-radius: 12px;
+  color: #ffffff;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+
+:global(.dark) .footerIcon {
+  background: linear-gradient(135deg, #e49d23, #c4850f);
+}
+
+.footerText {
+  font-size: 1rem;
+  color: #64748b;
+  margin: 0;
+}
+
+.footerText strong {
+  color: #2644a2;
+  font-weight: 700;
+}
+
+:global(.dark) .footerText {
+  color: #94a3b8;
+}
+
+:global(.dark) .footerText strong {
+  color: #e49d23;
+}
+
+/* ============================================
+   RESPONSIVE - TABLET (max-width: 1024px)
+   ============================================ */
+
+@media (max-width: 1024px) {
+  .section {
+    padding: 4rem 1.5rem;
   }
 
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
-    width: 380px;
-    height: 380px;
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .title {
+    font-size: 2.25rem;
+  }
+
+  .bgShape1,
+  .bgShape2 {
+    width: 350px;
+    height: 350px;
   }
 }
 
-@media (max-width: 992px) {
-  .policyContent {
-    max-width: 85%;
-    padding: 2.5rem;
-  }
-
-  .policyContent h3 {
-    font-size: 1.35rem;
-  }
-
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
-    width: 320px;
-    height: 320px;
-  }
-}
+/* ============================================
+   RESPONSIVE - MOBILE LARGE (max-width: 768px)
+   ============================================ */
 
 @media (max-width: 768px) {
-  .privacySection {
-    padding: 3rem 1.5rem;
+  .section {
+    padding: 3rem 1rem;
   }
 
-  .policyContent {
-    max-width: 95%;
-    padding: 2rem;
-    border-radius: 20px;
+  .header {
+    margin-bottom: 3rem;
   }
 
-  .policyContent h3 {
-    font-size: 1.25rem;
-    margin-top: 2rem;
+  .title {
+    font-size: 1.875rem;
   }
 
-  .policyContent p {
+  .subtitle {
     font-size: 1rem;
   }
 
-  .policyContent ul {
-    padding-right: 1.5rem;
+  .cardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
   }
 
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
-    width: 260px;
-    height: 260px;
+  .card {
+    padding: 1.5rem;
+  }
+
+  .cardIcon {
+    width: 48px;
+    height: 48px;
+    font-size: 1.25rem;
+    border-radius: 12px;
+  }
+
+  .cardNumber {
+    font-size: 2rem;
+  }
+
+  .cardTitle {
+    font-size: 1.125rem;
+  }
+
+  .bgShape1,
+  .bgShape2 {
+    width: 280px;
+    height: 280px;
+    filter: blur(80px);
+  }
+
+  .footer {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding: 1.25rem 1.5rem;
   }
 }
 
+/* ============================================
+   RESPONSIVE - MOBILE SMALL (max-width: 480px)
+   ============================================ */
+
 @media (max-width: 480px) {
-  .privacySection {
-    padding: 2rem 1rem;
+  .section {
+    padding: 2rem 0.75rem;
   }
 
-  .policyContent {
-    max-width: 100%;
-    padding: 1.5rem;
+  .badge {
+    padding: 0.4rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .title {
+    font-size: 1.625rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .card {
+    padding: 1.25rem;
     border-radius: 16px;
   }
 
-  .policyContent h3 {
-    font-size: 1.15rem;
-    padding-right: 1rem;
+  .cardIcon {
+    width: 44px;
+    height: 44px;
+    font-size: 1.125rem;
   }
 
-  .policyContent p {
-    font-size: 0.95rem;
+  .cardNumber {
+    font-size: 1.75rem;
   }
 
-  .policyContent li {
-    padding-right: 1.25rem;
-    font-size: 0.95rem;
+  .cardTitle {
+    font-size: 1.05rem;
   }
 
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
+  .cardContent {
+    font-size: 0.9rem;
+  }
+
+  .cardList li {
+    font-size: 0.875rem;
+  }
+
+  .bgShape1,
+  .bgShape2 {
     display: none;
   }
-}
 
-/* ============================================
-   DARK MODE
-   ============================================ */
+  .footerIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
 
-.dark .privacySection {
-  background: linear-gradient(
-    180deg,
-    var(--bg-elevated) 0%,
-    var(--bg-surface) 50%,
-    var(--bg-elevated) 100%
-  );
-}
-
-.dark .policyContent {
-  background: linear-gradient(
-    135deg,
-    rgba(var(--bg-elevated-rgb, 30, 30, 30), 0.95) 0%,
-    rgba(var(--bg-surface-rgb, 20, 20, 20), 0.98) 100%
-  );
-  border-color: rgba(var(--primary-rgb, 79, 70, 229), 0.3);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6);
-}
-
-.dark .policyContent h3 {
-  color: var(--primary-400);
-}
-
-.dark .policyContent p {
-  color: var(--text-secondary);
-}
-
-.dark .policyContent li {
-  color: var(--text-secondary);
-}
-
-.dark .policyContent li:hover {
-  color: var(--primary-400);
-}
-
-/* ============================================
-   LTR SUPPORT
-   ============================================ */
-
-body[dir="ltr"] .privacySection {
-  text-align: left;
-  direction: ltr;
-}
-
-body[dir="ltr"] .policyContent h3 {
-  padding-left: 1.25rem;
-  padding-right: 0;
-}
-
-body[dir="ltr"] .policyContent h3::before {
-  left: 0;
-  right: auto;
-}
-
-body[dir="ltr"] .policyContent ul {
-  padding-left: 2rem;
-  padding-right: 0;
-}
-
-body[dir="ltr"] .policyContent li {
-  padding-left: 1.5rem;
-  padding-right: 0;
-}
-
-body[dir="ltr"] .policyContent li::before {
-  left: 0;
-  right: auto;
-}
-
-body[dir="ltr"] .policyContent li:hover {
-  transform: translateX(4px);
+  .footerText {
+    font-size: 0.9rem;
+  }
 }

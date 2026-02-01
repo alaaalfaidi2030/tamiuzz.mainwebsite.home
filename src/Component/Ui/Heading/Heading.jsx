@@ -62,7 +62,7 @@ export default function Heading({ heading, subHeading, pageName }) {
 
     return (
         <motion.div
-            className={"d-flex justify-content-center align-items-center flex-column " + style.heading}
+            className={"d-flex mt-5 justify-content-center align-items-center flex-column " + style.heading}
             style={{ backgroundImage: `url(${headingBackground})` }}
             variants={ANIMATION_VARIANTS.container}
             initial="hidden"

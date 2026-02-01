@@ -1,158 +1,159 @@
-import React from 'react';
-import Heading from '../../Component/Ui/Heading/Heading';
 import { useTranslation } from 'react-i18next';
-import SEO from '../../Component/SEO/SEO';
 import { motion } from 'framer-motion';
+import Heading from '../../Component/Ui/Heading/Heading';
+import SEO from '../../Component/SEO/SEO';
 import style from './Policy.module.css';
 
-const ANIMATION_VARIANTS = {
-    fadeInUp: {
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            transition: {
-                type: "spring",
-                stiffness: 80,
-                damping: 15
-            },
-        },
-    },
-    staggerContainer: {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-        },
-    },
-    staggerItem: {
-        hidden: { opacity: 0, y: 20 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                type: "spring",
-                stiffness: 100,
-                damping: 15
-            },
-        },
-    },
-};
+const policyData = [
+  {
+    icon: "fa-solid fa-database",
+    titleKey: "policy.section1.title",
+    titleFallback: "جمع المعلومات",
+    contentKey: "policy.section1.content",
+    contentFallback: "نقوم بجمع المعلومات التالية عند استخدامك لموقعنا:",
+    items: [
+      "معلومات اتصال مثل البريد الإلكتروني ورقم الهاتف.",
+      "معلومات تقنية مثل عنوان IP، نوع المتصفح، الصفحات التي تزورها، ومدة الاستخدام.",
+      "أي معلومات تقدمها طوعاً عبر النماذج أو استفسارات الدعم."
+    ]
+  },
+  {
+    icon: "fa-solid fa-chart-line",
+    titleKey: "policy.section2.title",
+    titleFallback: "استخدام المعلومات",
+    contentKey: "policy.section2.content",
+    contentFallback: "نستخدم البيانات التي نجمعها للأغراض التالية:",
+    items: [
+      "تحسين تجربة المستخدم على الموقع.",
+      "الرد على الاستفسارات وتقديم الدعم الفني.",
+      "إرسال التحديثات أو العروض في حال الموافقة على ذلك.",
+      "تحليل أداء الموقع وتطوير خدماتنا."
+    ]
+  },
+  {
+    icon: "fa-solid fa-shield-halved",
+    titleKey: "policy.section3.title",
+    titleFallback: "حماية البيانات",
+    contentKey: "policy.section3.content",
+    contentFallback: "نتخذ كافة الإجراءات التقنية والتنظيمية المناسبة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الفقد أو التلف."
+  },
+  {
+    icon: "fa-solid fa-share-nodes",
+    titleKey: "policy.section4.title",
+    titleFallback: "مشاركة المعلومات",
+    contentKey: "policy.section4.content",
+    contentFallback: "لا نقوم ببيع أو مشاركة بياناتك الشخصية مع أي جهة خارجية، باستثناء الحالات التي يتطلبها القانون أو بموافقتك المسبقة. نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك."
+  },
+  {
+    icon: "fa-solid fa-scale-balanced",
+    titleKey: "policy.section5.title",
+    titleFallback: "حقوقك",
+    contentKey: "policy.section5.content",
+    contentFallback: "يحق لك:",
+    items: [
+      "طلب الاطلاع على بياناتك الشخصية التي نحتفظ بها.",
+      "طلب تعديل أو حذف معلوماتك.",
+      "سحب موافقتك في أي وقت."
+    ]
+  },
+  {
+    icon: "fa-solid fa-rotate",
+    titleKey: "policy.section6.title",
+    titleFallback: "التعديلات",
+    contentKey: "policy.section6.content",
+    contentFallback: "قد نقوم بتحديث سياسة الخصوصية من وقت لآخر، وسيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ آخر تعديل."
+  }
+];
 
 export default function Policy() {
-    const { t } = useTranslation();
+  const { t } = useTranslation();
 
-    return (
-        <section className={style.privacySection}>
-            <SEO
-                title={t("seo.policy.title", "سياسة الخصوصية - شركة تميّز | Tamiuzz Privacy Policy")}
-                description={t("seo.policy.description", "سياسة الخصوصية لشركة تميّز للحلول الرقمية. تعرّف على كيفية جمع واستخدام وحماية بياناتك الشخصية.")}
-            />
+  return (
+    <>
+      <SEO
+        title={t("seo.policy.title", "سياسة الخصوصية - شركة تميّز | Tamiuzz Privacy Policy")}
+        description={t("seo.policy.description", "سياسة الخصوصية لشركة تميّز للحلول الرقمية. تعرّف على كيفية جمع واستخدام وحماية بياناتك الشخصية.")}
+      />
 
-            {/* Floating Decorative Shapes */}
-            <motion.div
-                className={style.floatingShape1}
-                animate={{
-                    y: [0, -28, 0],
-                    x: [0, 22, 0],
-                    rotate: [0, 9, 0]
-                }}
-                transition={{
-                    duration: 14,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-            />
-            <motion.div
-                className={style.floatingShape2}
-                animate={{
-                    y: [0, 30, 0],
-                    x: [0, -20, 0],
-                    scale: [1, 1.12, 1]
-                }}
-                transition={{
-                    duration: 12,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-            />
-            <motion.div
-                className={style.floatingShape3}
-                animate={{
-                    y: [0, -25, 0],
-                    rotate: [0, -8, 0]
-                }}
-                transition={{
-                    duration: 16,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                }}
-            />
+      <Heading pageName={"privacy_policy"} />
 
-            <Heading pageName={"privacy_policy"} />
+      <section className={style.section}>
+        {/* Background Shapes */}
+        <div className={style.bgShape1} aria-hidden="true" />
+        <div className={style.bgShape2} aria-hidden="true" />
 
-            <motion.div
-                className={style.policyContent}
-                variants={ANIMATION_VARIANTS.fadeInUp}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-            >
-                <div className={style.contentGlow} />
+        <div className={style.container}>
+          {/* Header */}
+          <motion.div
+            className={style.header}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={style.badge}>
+              <i className="fa-solid fa-lock" aria-hidden="true" />
+              <span>{t("policy.badge", "الخصوصية والأمان")}</span>
+            </div>
+            <h1 className={style.title}>{t("policy.title", "سياسة الخصوصية")}</h1>
+            <p className={style.subtitle}>
+              {t("policy.subtitle", "في شركة تميز، نلتزم بحماية خصوصية معلوماتك الشخصية، ونوضح في هذه السياسة كيف نقوم بجمع واستخدام وحماية البيانات.")}
+            </p>
+          </motion.div>
 
-                <motion.p variants={ANIMATION_VARIANTS.staggerItem}>
-                    في شركة تميز، نلتزم بحماية خصوصية معلوماتك الشخصية، ونوضح في هذه السياسة كيف نقوم بجمع واستخدام وحماية البيانات التي يتم جمعها من زوار موقعنا.
-                </motion.p>
+          {/* Policy Cards */}
+          <div className={style.cardsGrid}>
+            {policyData.map((section, idx) => (
+              <motion.article
+                key={idx}
+                className={style.card}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: idx * 0.1 }}
+              >
+                <div className={style.cardHeader}>
+                  <div className={style.cardIcon}>
+                    <i className={section.icon} aria-hidden="true" />
+                  </div>
+                  <div className={style.cardNumber}>
+                    {String(idx + 1).padStart(2, '0')}
+                  </div>
+                </div>
+                <h3 className={style.cardTitle}>
+                  {t(section.titleKey, section.titleFallback)}
+                </h3>
+                <p className={style.cardContent}>
+                  {t(section.contentKey, section.contentFallback)}
+                </p>
+                {section.items && (
+                  <ul className={style.cardList}>
+                    {section.items.map((item, itemIdx) => (
+                      <li key={itemIdx}>{item}</li>
+                    ))}
+                  </ul>
+                )}
+              </motion.article>
+            ))}
+          </div>
 
-                <motion.div variants={ANIMATION_VARIANTS.staggerItem}>
-                    <h3>1. جمع المعلومات</h3>
-                    <p>نقوم بجمع المعلومات التالية عند استخدامك لموقعنا:</p>
-                    <ul>
-                        <li>معلومات اتصال مثل البريد الإلكتروني ورقم الهاتف.</li>
-                        <li>معلومات تقنية مثل عنوان IP، نوع المتصفح، الصفحات التي تزورها، ومدة الاستخدام.</li>
-                        <li>أي معلومات تقدمها طوعاً عبر النماذج أو استفسارات الدعم.</li>
-                    </ul>
-                </motion.div>
-
-                <motion.div variants={ANIMATION_VARIANTS.staggerItem}>
-                    <h3>2. استخدام المعلومات</h3>
-                    <p>نستخدم البيانات التي نجمعها للأغراض التالية:</p>
-                    <ul>
-                        <li>تحسين تجربة المستخدم على الموقع.</li>
-                        <li>الرد على الاستفسارات وتقديم الدعم الفني.</li>
-                        <li>إرسال التحديثات أو العروض في حال الموافقة على ذلك.</li>
-                        <li>تحليل أداء الموقع وتطوير خدماتنا.</li>
-                    </ul>
-                </motion.div>
-
-                <motion.div variants={ANIMATION_VARIANTS.staggerItem}>
-                    <h3>3. حماية البيانات</h3>
-                    <p>نتخذ كافة الإجراءات التقنية والتنظيمية المناسبة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الفقد أو التلف.</p>
-                </motion.div>
-
-                <motion.div variants={ANIMATION_VARIANTS.staggerItem}>
-                    <h3>4. مشاركة المعلومات</h3>
-                    <p>لا نقوم ببيع أو مشاركة بياناتك الشخصية مع أي جهة خارجية، باستثناء الحالات التي يتطلبها القانون أو بموافقتك المسبقة.</p>
-                    <p>نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك. يمكنك التحكم في تفعيل أو تعطيل الكوكيز من خلال إعدادات المتصفح.</p>
-                </motion.div>
-
-                <motion.div variants={ANIMATION_VARIANTS.staggerItem}>
-                    <h3>5. حقوقك</h3>
-                    <p>يحق لك:</p>
-                    <ul>
-                        <li>طلب الاطلاع على بياناتك الشخصية التي نحتفظ بها.</li>
-                        <li>طلب تعديل أو حذف معلوماتك.</li>
-                        <li>سحب موافقتك في أي وقت.</li>
-                    </ul>
-                </motion.div>
-
-                <motion.div variants={ANIMATION_VARIANTS.staggerItem}>
-                    <h3>6. التعديلات</h3>
-                    <p>قد نقوم بتحديث سياسة الخصوصية من وقت لآخر، وسيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ آخر تعديل.</p>
-                    <p>تاريخ التحديث: 20 يونيو 2025</p>
-                </motion.div>
-            </motion.div>
-        </section>
-    );
+          {/* Footer Note */}
+          <motion.div
+            className={style.footer}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
+            <div className={style.footerIcon}>
+              <i className="fa-solid fa-calendar-check" aria-hidden="true" />
+            </div>
+            <p className={style.footerText}>
+              {t("policy.lastUpdate", "تاريخ آخر تحديث:")} <strong>20 {t("policy.june", "يونيو")} 2025</strong>
+            </p>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
 }

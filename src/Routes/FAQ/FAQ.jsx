@@ -1,44 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { motion, AnimatePresence } from 'framer-motion';
+import axios from 'axios';
 import style from './FAQ.module.css';
-import AboutImage from '../../assets/Images/Home/about-img.png';
 import H2 from '../../Component/Ui/H2/H2';
 import Heading from '../../Component/Ui/Heading/Heading';
-import { motion } from 'framer-motion';
-import axios from 'axios';
 import { baseURL, getHeaders } from '../../Utilies/data';
-import { useEffect } from 'react';
 import Spinner from '../../Component/Ui/Spinner/Spinner';
 import NoDataFounded from '../../Component/Ui/NoDataFounded/NoDataFounded';
 import ErrorComp from '../../Component/Ui/ErrorComp/ErrorComp';
 import SEO from '../../Component/SEO/SEO';
 
 const ANIMATION_VARIANTS = {
-    fadeInUp: {
-        hidden: { opacity: 0, y: 40, scale: 0.95 },
+    container: {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { staggerChildren: 0.08, delayChildren: 0.1 },
+        },
+    },
+    item: {
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
         visible: {
             opacity: 1,
             y: 0,
             scale: 1,
-            transition: {
-                type: "spring",
-                stiffness: 80,
-                damping: 15
-            },
-        },
-    },
-    staggerContainer: {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-        },
-    },
-    staggerItem: {
-        hidden: { opacity: 0, x: -20 },
-        visible: {
-            opacity: 1,
-            x: 0,
             transition: {
                 type: "spring",
                 stiffness: 100,
@@ -50,54 +36,39 @@ const ANIMATION_VARIANTS = {
 
 function FAQ() {
     const { t } = useTranslation();
-    const [activeIndex, setActiveIndex] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(null);
     const [faq, setFaq] = useState([]);
-    const [errorFlag, setErrorFlag] = useState(false)
-    const [loading, setLoading] = useState(false)
-
+    const [errorFlag, setErrorFlag] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const getFaq = async () => {
         try {
-            setLoading(true)
-            setErrorFlag(false)
+            setLoading(true);
+            setErrorFlag(false);
             setFaq([]);
             const { data } = await axios.get(baseURL + "/faqs", {
                 headers: getHeaders(),
             });
             if (data.success && data.data && data.data.length !== 0) {
                 setFaq(data.data);
-                setLoading(false)
+                setLoading(false);
             } else {
                 setFaq([]);
-                setLoading(false)
+                setLoading(false);
             }
         } catch (error) {
-            setLoading(false)
-            setErrorFlag(true)
+            setLoading(false);
+            setErrorFlag(true);
         }
     };
-
 
     const toggleItem = (index) => {
         setActiveIndex(index === activeIndex ? null : index);
     };
 
-    const containerVariants = {
-        hidden: { opacity: 0, y: 30 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: {
-                duration: 0.6,
-                ease: 'easeOut'
-            }
-        }
-    };
-
     useEffect(() => {
-
         getFaq();
-    }, [])
+    }, []);
 
     return (
         <>
@@ -119,178 +90,186 @@ function FAQ() {
             />
             <Heading pageName="faq" />
             <H2 text={t("faq")} />
-            {
 
-                (!loading) ?
-                    <motion.section
-                        className={`${style.faqSection} border-bottom border-5 border-white`}
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.25 }}
-                    >
-                        {/* Floating Decorative Shapes */}
+            {loading ? (
+                <Spinner sectionFlag={true} />
+            ) : (
+                <section className={style.faqSection}>
+                    {/* Animated Gradient Orbs */}
+                    <div className={style.orbsContainer}>
                         <motion.div
-                            className={style.floatingShape1}
+                            className={style.orb1}
                             animate={{
+                                scale: [1, 1.2, 1],
+                                x: [0, 40, 0],
                                 y: [0, -30, 0],
-                                x: [0, 20, 0],
-                                rotate: [0, 8, 0]
                             }}
-                            transition={{
-                                duration: 13,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
+                            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
                         />
                         <motion.div
-                            className={style.floatingShape2}
+                            className={style.orb2}
                             animate={{
-                                y: [0, 32, 0],
-                                x: [0, -18, 0],
-                                scale: [1, 1.1, 1]
+                                scale: [1, 1.15, 1],
+                                x: [0, -35, 0],
+                                y: [0, 35, 0],
                             }}
-                            transition={{
-                                duration: 11,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
+                            transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
                         />
                         <motion.div
-                            className={style.floatingShape3}
+                            className={style.orb3}
                             animate={{
-                                y: [0, -22, 0],
-                                rotate: [0, -7, 0]
+                                scale: [1, 1.1, 1],
+                                rotate: [0, 180, 360],
                             }}
-                            transition={{
-                                duration: 15,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
+                            transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
                         />
+                    </div>
 
-                        {
-                            errorFlag ?
-                                <ErrorComp />
+                    {/* Grid Pattern Overlay */}
+                    <div className={style.gridPattern} />
 
-                                :
-                                <div className="container">
-                                    {faq.length == 0 ?
-                                        <NoDataFounded />
-                                        :
-                                        <div className="row">
-                                            <div className="col-md-7 d-flex flex-column gap-5">
+                    <div className="container">
+                        {errorFlag ? (
+                            <ErrorComp />
+                        ) : faq.length === 0 ? (
+                            <NoDataFounded />
+                        ) : (
+                            <div className={style.content}>
+                                {/* Header */}
+                                <motion.div
+                                    className={style.header}
+                                    initial={{ opacity: 0, y: 30 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.6 }}
+                                    viewport={{ once: true }}
+                                >
+                                    <div className={style.headerBadge}>
+                                        <i className="fa-solid fa-circle-question" />
+                                        <span>{t('faqPage.badge', 'الأسئلة الشائعة')}</span>
+                                    </div>
+                                    <h2 className={style.title}>
+                                        {t('faqPage.headline1')}
+                                        <span className={style.titleHighlight}> {t('faqPage.headline2')}</span>
+                                    </h2>
+                                    <p className={style.subtitle}>
+                                        {t('faqPage.subtitle', 'نجيب على جميع استفساراتك لمساعدتك في اتخاذ القرار الصحيح')}
+                                    </p>
+                                </motion.div>
 
-                                                <>
-                                                    <motion.h2
-                                                        className={style.heading}
-                                                        initial={{ opacity: 0, y: 20 }}
-                                                        whileInView={{ opacity: 1, y: 0 }}
-                                                        transition={{
-                                                            delay: 0.2,
-                                                            duration: 0.6,
-                                                            type: "spring",
-                                                            stiffness: 80,
-                                                            damping: 15
-                                                        }}
-                                                        viewport={{ once: true }}
+                                {/* FAQ Grid */}
+                                <div className={style.faqGrid}>
+                                    {/* Accordion */}
+                                    <motion.div
+                                        className={style.accordion}
+                                        variants={ANIMATION_VARIANTS.container}
+                                        initial="hidden"
+                                        whileInView="visible"
+                                        viewport={{ once: true, amount: 0.1 }}
+                                    >
+                                        {faq.map((item, index) => (
+                                            <motion.div
+                                                key={index}
+                                                className={`${style.faqItem} ${activeIndex === index ? style.active : ''}`}
+                                                variants={ANIMATION_VARIANTS.item}
+                                            >
+                                                {/* Glass Card */}
+                                                <div className={style.glassCard}>
+                                                    {/* Number Badge */}
+                                                    <div className={style.numberBadge}>
+                                                        <span>{String(index + 1).padStart(2, '0')}</span>
+                                                    </div>
+
+                                                    {/* Question */}
+                                                    <button
+                                                        className={style.question}
+                                                        onClick={() => toggleItem(index)}
+                                                        aria-expanded={activeIndex === index}
                                                     >
-                                                        {t('faqPage.headline1')}<br />{t('faqPage.headline2')}
-                                                    </motion.h2>
+                                                        <span className={style.questionText}>{item.question}</span>
+                                                        <motion.div
+                                                            className={style.iconWrapper}
+                                                            animate={{ rotate: activeIndex === index ? 45 : 0 }}
+                                                            transition={{ duration: 0.3 }}
+                                                        >
+                                                            <i className="fa-solid fa-plus" />
+                                                        </motion.div>
+                                                    </button>
 
-                                                    <motion.div
-                                                        className={style.accordion}
-                                                        variants={ANIMATION_VARIANTS.staggerContainer}
-                                                        initial="hidden"
-                                                        whileInView="visible"
-                                                        viewport={{ once: true, amount: 0.2 }}
-                                                    >
-                                                        {faq.map((item, index) => (
+                                                    {/* Answer */}
+                                                    <AnimatePresence>
+                                                        {activeIndex === index && (
                                                             <motion.div
-                                                                key={index}
-                                                                className={`${style.item} ${activeIndex === index ? style.active : ''}`}
-                                                                variants={ANIMATION_VARIANTS.staggerItem}
-                                                                initial="rest"
-                                                                whileHover="hover"
-                                                                animate="rest"
+                                                                className={style.answer}
+                                                                initial={{ height: 0, opacity: 0 }}
+                                                                animate={{ height: 'auto', opacity: 1 }}
+                                                                exit={{ height: 0, opacity: 0 }}
+                                                                transition={{ duration: 0.3, ease: "easeInOut" }}
                                                             >
-                                                                <div className={style.itemGlow} />
-                                                                <motion.div
-                                                                    className={style.question}
-                                                                    onClick={() => toggleItem(index)}
-                                                                >
-                                                                    <span>{item.question}</span>
-                                                                    <motion.i
-                                                                        className={`fa-solid ${activeIndex === index ? 'fa-chevron-up' : 'fa-chevron-down'}`}
-                                                                        animate={{
-                                                                            rotate: activeIndex === index ? 180 : 0
-                                                                        }}
-                                                                        transition={{
-                                                                            type: "spring",
-                                                                            stiffness: 200,
-                                                                            damping: 15
-                                                                        }}
-                                                                    />
-                                                                </motion.div>
-                                                                {activeIndex === index && (
-                                                                    <motion.div
-                                                                        className={style.answer}
-                                                                        initial={{ opacity: 0, height: 0 }}
-                                                                        animate={{ opacity: 1, height: 'auto' }}
-                                                                        exit={{ opacity: 0, height: 0 }}
-                                                                        transition={{
-                                                                            duration: 0.4,
-                                                                            type: "spring",
-                                                                            stiffness: 100,
-                                                                            damping: 20
-                                                                        }}
-                                                                    >
-                                                                        <strong>{item.question}</strong>
-                                                                        <p>{item.answer}</p>
-                                                                    </motion.div>
-                                                                )}
+                                                                <div className={style.answerContent}>
+                                                                    <div className={style.answerIcon}>
+                                                                        <i className="fa-solid fa-lightbulb" />
+                                                                    </div>
+                                                                    <p>{item.answer}</p>
+                                                                </div>
                                                             </motion.div>
-                                                        ))}
-                                                    </motion.div>
-                                                </>
+                                                        )}
+                                                    </AnimatePresence>
+                                                </div>
+                                            </motion.div>
+                                        ))}
+                                    </motion.div>
+
+                                    {/* Side Panel */}
+                                    <motion.div
+                                        className={style.sidePanel}
+                                        initial={{ opacity: 0, x: 30 }}
+                                        whileInView={{ opacity: 1, x: 0 }}
+                                        transition={{ duration: 0.6, delay: 0.3 }}
+                                        viewport={{ once: true }}
+                                    >
+                                        {/* Stats Card */}
+                                        <div className={style.statsCard}>
+                                            <div className={style.statsIcon}>
+                                                <i className="fa-solid fa-headset" />
                                             </div>
-                                            <div className="col-md-5 d-flex justify-content-center align-items-center">
-                                                <motion.div
-                                                    className={style.imageWrapper}
-                                                    initial={{ opacity: 0, scale: 0.9 }}
-                                                    whileInView={{ opacity: 1, scale: 1 }}
-                                                    transition={{
-                                                        duration: 0.6,
-                                                        delay: 0.3,
-                                                        type: "spring",
-                                                        stiffness: 80,
-                                                        damping: 15
-                                                    }}
-                                                    viewport={{ once: true }}
-                                                >
-                                                    <motion.img
-                                                        loading='lazy'
-                                                        src={AboutImage}
-                                                        alt="business team"
-                                                        className={style.image}
-                                                        whileHover={{
-                                                            scale: 1.05,
-                                                            transition: {
-                                                                type: "spring",
-                                                                stiffness: 300
-                                                            }
-                                                        }}
-                                                    />
-                                                </motion.div>
+                                            <h3>{t('faqPage.needHelp', 'تحتاج مساعدة؟')}</h3>
+                                            <p>{t('faqPage.helpDesc', 'فريقنا متاح للإجابة على جميع استفساراتك')}</p>
+                                            <a href="/contact" className={style.contactBtn}>
+                                                <span>{t('faqPage.contactUs', 'تواصل معنا')}</span>
+                                                <i className="fa-solid fa-arrow-left" />
+                                            </a>
+                                        </div>
+
+                                        {/* Info Cards */}
+                                        <div className={style.infoCards}>
+                                            <div className={style.infoCard}>
+                                                <div className={style.infoIcon}>
+                                                    <i className="fa-solid fa-clock" />
+                                                </div>
+                                                <div className={style.infoContent}>
+                                                    <span className={style.infoLabel}>{t('faqPage.responseTime', 'وقت الرد')}</span>
+                                                    <span className={style.infoValue}>{t('faqPage.responseValue', '24 ساعة')}</span>
+                                                </div>
+                                            </div>
+                                            <div className={style.infoCard}>
+                                                <div className={style.infoIcon}>
+                                                    <i className="fa-solid fa-comments" />
+                                                </div>
+                                                <div className={style.infoContent}>
+                                                    <span className={style.infoLabel}>{t('faqPage.totalQuestions', 'الأسئلة')}</span>
+                                                    <span className={style.infoValue}>{faq.length}+</span>
+                                                </div>
                                             </div>
                                         </div>
-                                    }
+                                    </motion.div>
                                 </div>
-                        }
-                    </motion.section > : <Spinner sectionFlag={true} />
-            }
+                            </div>
+                        )}
+                    </div>
+                </section>
+            )}
         </>
     );
-};
+}
 
 export default FAQ;

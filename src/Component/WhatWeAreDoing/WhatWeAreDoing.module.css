@@ -1,813 +1,674 @@
 /* ============================================
-   WHAT WE ARE DOING - ULTRA PREMIUM DESIGN
+   WHAT WE ARE DOING - CREATIVE AGENCY STYLE
+   Bold, Artistic & Unique Design
    ============================================ */
 
-.WhatWeAreDoing {
-  background-position: center center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  padding: var(--space-20) var(--space-4);
+.section {
+  padding: 120px 0;
+  background: linear-gradient(165deg, #f1f5f9 0%, #e2e8f0 100%);
   position: relative;
   overflow: hidden;
 }
 
-/* Premium dark overlay with gradient */
-.overlay {
+/* Decorative Shapes */
+.section::before {
+  content: '';
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    135deg,
-    rgba(10, 17, 41, 0.9) 0%,
-    rgba(26, 58, 143, 0.85) 50%,
-    rgba(10, 17, 41, 0.92) 100%
-  );
-  z-index: 0;
-}
-
-/* ============================================
-   FLOATING DECORATIVE SHAPES
-   ============================================ */
-
-.floatingShape1,
-.floatingShape2,
-.floatingShape3 {
-  position: absolute;
+  top: -20%;
+  inset-inline-end: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(38, 68, 162, 0.08) 0%, transparent 60%);
   border-radius: 50%;
   pointer-events: none;
-  filter: blur(90px);
-  opacity: 0.2;
-  z-index: 0;
 }
 
-.floatingShape1 {
-  top: 12%;
-  right: 8%;
-  width: 450px;
-  height: 450px;
-  background: radial-gradient(circle, var(--primary-400), transparent);
+.section::after {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  inset-inline-start: -15%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(228, 157, 35, 0.08) 0%, transparent 60%);
+  border-radius: 50%;
+  pointer-events: none;
 }
 
-.floatingShape2 {
-  bottom: 18%;
-  left: 10%;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, var(--secondary-400), transparent);
-}
-
-.floatingShape3 {
-  top: 45%;
-  right: 40%;
-  width: 380px;
-  height: 380px;
-  background: radial-gradient(circle, var(--primary-300), transparent);
-}
-
-.innerContainer {
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
   position: relative;
   z-index: 1;
 }
 
-.description {
-  font-weight: 600;
-  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 1);
-  margin-bottom: var(--space-10);
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.5), 0 4px 24px rgba(0, 0, 0, 0.3);
+/* ============================================
+   HEADER
+   ============================================ */
+
+.header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.headerDesc {
+  max-width: 600px;
+  margin: 20px auto 0;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #64748b;
 }
 
 /* ============================================
-   SLIDER CONTAINER
+   SLIDER
    ============================================ */
 
-.sliderContainer {
-  padding: var(--space-2) 0;
+.sliderWrapper {
+  margin-bottom: 64px;
 }
 
-.slideWrapper {
-  padding: var(--space-10) var(--space-2);
+.swiper {
+  padding: 20px 8px 56px;
+}
+
+.swiper :global(.swiper-slide) {
   height: auto;
 }
 
 /* ============================================
-   PREMIUM SOLUTION CARD
+   SOLUTION CARD - CREATIVE
    ============================================ */
 
-.cardLink {
-  text-decoration: none;
-  color: inherit;
-  display: block;
-}
-
 .card {
-  width: 100%;
-  max-width: 380px;
-  border-radius: var(--radius-2xl);
-  overflow: hidden;
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.15), 0 4px 12px rgba(0, 0, 0, 0.1);
-  background: var(--bg-surface);
-  border: 2px solid var(--border-light);
   display: flex;
   flex-direction: column;
-  direction: rtl;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  cursor: pointer;
-  position: relative;
-}
-
-/* Premium Card Glow */
-.cardGlow {
-  position: absolute;
-  inset: -40px;
-  background: radial-gradient(
-    circle at center,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.2),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.card:hover .cardGlow {
-  opacity: 1;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  text-decoration: none;
+  border: 1px solid #e2e8f0;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
 }
 
 .card:hover {
+  background: #ffffff;
+  border-color: #2644a2;
   transform: translateY(-8px);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25), 0 8px 24px rgba(0, 0, 0, 0.15);
-  border-color: var(--primary-300);
+  box-shadow: 0 24px 48px rgba(38, 68, 162, 0.15);
 }
 
-.card:focus-within {
-  outline: 2px solid var(--primary-400);
-  outline-offset: 2px;
-}
-
-/* Image Section */
-.imageWrapper {
-  width: 100%;
-  height: 230px;
-  overflow: hidden;
+/* Card Image */
+.cardImage {
   position: relative;
-  background: var(--bg-elevated);
+  height: 200px;
+  overflow: hidden;
 }
 
-.image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-.imageOverlay {
+.cardImage::after {
+  content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    180deg,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 0.2) 60%,
-    rgba(0, 0, 0, 0.4) 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  z-index: 1;
-}
-
-.card:hover .imageOverlay {
-  opacity: 1;
-}
-
-/* Premium Icon Badge with Organic Morphing */
-.iconBadge {
-  position: absolute;
-  top: -32px;
-  right: var(--space-5);
-  width: 72px;
-  height: 72px;
-  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-  border-radius: var(--radius-xl);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
-  z-index: 2;
-  border: 3px solid var(--bg-surface);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-}
-
-.iconBadgeGlow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(
-    circle at center,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.4),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  background: linear-gradient(180deg, transparent 40%, rgba(0, 0, 0, 0.6) 100%);
   pointer-events: none;
 }
 
-.card:hover .iconBadgeGlow {
-  opacity: 1;
+.cardImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-body[dir="ltr"] .iconBadge {
-  right: auto;
-  left: var(--space-5);
+.card:hover .cardImage img {
+  transform: scale(1.1);
 }
 
-.iconBadge img {
-  filter: brightness(0) invert(1);
-  transition: transform 0.4s ease;
-  position: relative;
-  z-index: 1;
-}
-
-/* Content Section */
-.content {
-  position: relative;
-  padding: var(--space-6) var(--space-5);
-  text-align: start;
+/* Card Icon - Floating */
+.cardIcon {
+  position: absolute;
+  bottom: 10px;
+  inset-inline-end: 24px;
+  z-index: 5;
+  width: 52px;
+  height: 52px;
+  background: linear-gradient(135deg, #e49d23, #c4850f);
+  border-radius: 14px;
   display: flex;
-  background-color: var(--bg-surface);
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(228, 157, 35, 0.4);
+  transition: all 0.3s ease;
+}
+
+.card:hover .cardIcon {
+  transform: rotate(-5deg) scale(1.1n);
+  -webkit-transform: rotate(-5deg) scale(1.1n);
+  -moz-transform: rotate(-5deg) scale(1.1n);
+  -ms-transform: rotate(-5deg) scale(1.1n);
+  -o-transform: rotate(-5deg) scale(1.1n);
+}
+
+.cardIcon img {
+  width: 22px;
+  height: 22px;
+  filter: brightness(0) invert(1);
+}
+
+/* Card Body */
+.cardBody {
+  padding: 36px 24px 28px;
+  flex: 1;
+  display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  padding-top: calc(var(--space-6) + 32px);
-  transition: all 0.3s ease;
-  z-index: 1;
 }
 
-.content h3 {
+.cardTitle {
+  font-size: 1.15rem;
   font-weight: 700;
-  font-size: 1.2rem;
+  color: #1e293b;
+  margin: 0 0 12px 0;
   line-height: 1.4;
-  color: var(--text-heading);
-  margin: 0 0 var(--space-1) 0;
-  transition: all 0.3s ease;
 }
 
-.card:hover .content h3 {
-  background: linear-gradient(135deg, var(--primary-600), var(--primary-500));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.cardDescription {
-  font-weight: 400;
-  font-size: 0.95rem;
+.cardDesc {
+  font-size: 0.9rem;
   line-height: 1.7;
-  color: var(--text-secondary);
+  color: #64748b;
+  margin: 0 0 20px 0;
+  flex: 1;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  text-overflow: ellipsis;
-  margin: 0;
 }
 
-/* Read More Link */
-.readMore {
+.cardLink {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
-  color: var(--primary-500);
+  gap: 8px;
+  font-size: 14px;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-top: var(--space-2);
-  transition: gap 0.3s ease;
-}
-
-.card:hover .readMore {
-  gap: var(--space-3);
-  color: var(--primary-600);
-}
-
-.readMore i {
-  font-size: 0.75rem;
-  transition: transform 0.3s ease;
-}
-
-body[dir="ltr"] .readMore i {
-  transform: rotate(180deg);
-}
-
-body[dir="ltr"] .card:hover .readMore i {
-  transform: translateX(3px) rotate(180deg);
-}
-
-/* Decorative Corner */
-.cardCorner {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 80px;
-  height: 80px;
-  background: linear-gradient(
-    135deg,
-    var(--primary-100) 0%,
-    transparent 50%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-}
-
-body[dir="ltr"] .cardCorner {
-  right: auto;
-  left: 0;
-  background: linear-gradient(
-    225deg,
-    var(--primary-100) 0%,
-    transparent 50%
-  );
-}
-
-.card:hover .cardCorner {
-  opacity: 0.3;
-}
-
-/* Swiper Navigation */
-.WhatWeAreDoing :global(.swiper-button-prev),
-.WhatWeAreDoing :global(.swiper-button-next) {
-  color: var(--text-inverse);
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(12px);
-  width: 52px;
-  height: 52px;
-  border-radius: 50%;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 2px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-}
-
-.WhatWeAreDoing :global(.swiper-button-prev):hover,
-.WhatWeAreDoing :global(.swiper-button-next):hover {
-  background: var(--primary-500);
-  transform: scale(1.1);
-  border-color: var(--primary-400);
-  box-shadow: 0 8px 24px rgba(var(--primary-rgb, 79, 70, 229), 0.4);
-}
-
-.WhatWeAreDoing :global(.swiper-button-prev)::after,
-.WhatWeAreDoing :global(.swiper-button-next)::after {
-  font-size: 1.15rem;
-  font-weight: 800;
-}
-
-.WhatWeAreDoing :global(.swiper-pagination) {
-  bottom: 0;
-}
-
-.WhatWeAreDoing :global(.swiper-pagination-bullet) {
-  background: rgba(255, 255, 255, 0.6);
-  opacity: 1;
-  width: 10px;
-  height: 10px;
+  color: #e49d23;
   transition: all 0.3s ease;
 }
 
-.WhatWeAreDoing :global(.swiper-pagination-bullet-active) {
-  background: var(--secondary-500);
-  width: 32px;
-  border-radius: 6px;
-  box-shadow: 0 4px 12px rgba(228, 157, 35, 0.4);
+.card:hover .cardLink {
+  gap: 12px;
 }
 
-/* ============================================
-   PREMIUM INFO BOX
-   ============================================ */
-
-.info {
-  background: linear-gradient(135deg, var(--primary-500), var(--primary-600));
-  color: var(--text-inverse);
-  padding: var(--space-8) var(--space-6);
-  border-radius: var(--radius-2xl);
-  text-align: start;
-  margin-top: var(--space-12);
-  box-shadow: 0 16px 48px rgba(var(--primary-rgb, 79, 70, 229), 0.35);
-  position: relative;
-  overflow: hidden;
-  border: 2px solid rgba(255, 255, 255, 0.1);
-}
-
-.info::before {
-  content: "";
-  position: absolute;
-  top: -120px;
-  right: -120px;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(255, 255, 255, 0.15) 0%,
-    transparent 70%
-  );
-  pointer-events: none;
-}
-
-/* Premium Glow Effect for Info Box */
-.infoGlow {
-  position: absolute;
-  inset: -50px;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.1),
-    transparent 60%
-  );
-  opacity: 0.5;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.infoHeading {
-  font-weight: 700;
-  font-size: 1.25rem;
-  line-height: 1.4;
-  position: relative;
-  z-index: 1;
-}
-
-/* Premium Icon Wrapper */
-.iconWrapper {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.25);
-  backdrop-filter: blur(10px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: var(--space-3);
-  flex-shrink: 0;
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  border: 2px solid rgba(255, 255, 255, 0.35);
-  position: relative;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-}
-
-.iconGlow {
-  position: absolute;
-  inset: -15px;
-  background: radial-gradient(
-    circle at center,
-    rgba(255, 255, 255, 0.3),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  pointer-events: none;
-  border-radius: 50%;
-}
-
-.iconWrapper:hover .iconGlow {
-  opacity: 1;
-}
-
-body[dir="ltr"] .iconWrapper {
-  margin-left: 0;
-  margin-right: var(--space-3);
-}
-
-.iconWrapper i {
-  color: var(--text-inverse);
-  font-size: 1.35rem;
-  position: relative;
-  z-index: 1;
-}
-
-.contactLabel {
-  font-weight: 600;
-  font-size: 0.98rem;
-  line-height: 1.5;
-  margin: 0;
-  margin-bottom: var(--space-1);
-}
-
-.contactValue {
-  font-size: 0.9rem;
-  opacity: 0.95;
-  font-weight: 500;
-}
-
-/* Premium CTA Button */
-.ctaButton {
-  display: inline-flex;
-  align-items: center;
-  gap: var(--space-2);
-  padding: var(--space-4) var(--space-7);
-  background: var(--text-inverse);
-  color: var(--primary-600);
-  text-decoration: none;
-  border-radius: var(--radius-xl);
-  font-weight: 700;
-  font-size: 1rem;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  position: relative;
-  overflow: hidden;
-}
-
-.buttonGlow {
-  position: absolute;
-  inset: -20px;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-  opacity: 0.4;
-  pointer-events: none;
-}
-
-.buttonContent {
-  position: relative;
-  z-index: 2;
-}
-
-.ctaButton::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 1));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: 1;
-}
-
-.ctaButton:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.ctaButton:hover::before {
-  opacity: 1;
-}
-
-.ctaButton > * {
-  position: relative;
-  z-index: 2;
-}
-
-.buttonArrow {
-  font-size: 0.85rem;
+.cardLink i {
+  font-size: 11px;
   transition: transform 0.3s ease;
 }
 
-body[dir="ltr"] .buttonArrow i {
+.card:hover .cardLink i {
+  transform: translateX(-4px);
+}
+
+body[dir="ltr"] .cardLink i {
   transform: rotate(180deg);
+}
+
+body[dir="ltr"] .card:hover .cardLink i {
+  transform: rotate(180deg) translateX(-4px);
+}
+
+/* ============================================
+   SWIPER NAVIGATION
+   ============================================ */
+
+.section :global(.swiper-button-prev),
+.section :global(.swiper-button-next) {
+  width: 50px;
+  height: 50px;
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e2e8f0;
+  color: #2644a2;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.section :global(.swiper-button-prev):hover,
+.section :global(.swiper-button-next):hover {
+  background: #2644a2;
+  border-color: #2644a2;
+  color: #ffffff;
+  transform: scale(1.05);
+}
+
+.section :global(.swiper-button-prev)::after,
+.section :global(.swiper-button-next)::after {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.section :global(.swiper-pagination-bullet) {
+  width: 10px;
+  height: 10px;
+  background: #cbd5e1;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.section :global(.swiper-pagination-bullet-active) {
+  background: #2644a2;
+  width: 32px;
+  border-radius: 5px;
+}
+
+/* ============================================
+   CONTACT BAR - CREATIVE
+   ============================================ */
+
+.contactBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  padding: 32px 40px;
+  background: linear-gradient(135deg, #2644a2, #1d3a8f);
+  border-radius: 24px;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(38, 68, 162, 0.25);
+}
+
+.contactBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #e49d23, #5a7ae0);
+  border-radius: 4px 0 0 4px;
+}
+
+.contactTitle {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #ffffff;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.contactTitle i {
+  font-size: 22px;
+  color: #e49d23;
+}
+
+.contactItems {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  flex: 1;
+  justify-content: center;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.contactIcon {
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #e49d23;
+  font-size: 18px;
+  flex-shrink: 0;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.contactInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.contactLabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.5);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.contactValue {
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.contactBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 32px;
+  background: linear-gradient(135deg, #e49d23, #c4850f);
+  color: #ffffff;
+  font-size: 15px;
+  font-weight: 700;
+  text-decoration: none;
+  border-radius: 14px;
+  white-space: nowrap;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 24px rgba(228, 157, 35, 0.3);
+}
+
+.contactBtn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(228, 157, 35, 0.4);
+  color: #ffffff;
+}
+
+.contactBtn i {
+  font-size: 12px;
+  transition: transform 0.3s ease;
+}
+
+.contactBtn:hover i {
+  transform: translateX(-4px);
+}
+
+body[dir="ltr"] .contactBtn i {
+  transform: rotate(180deg);
+}
+
+body[dir="ltr"] .contactBtn:hover i {
+  transform: rotate(180deg) translateX(-4px);
 }
 
 /* ============================================
    DARK MODE
    ============================================ */
 
-.dark .card {
-  background: var(--bg-elevated);
-  border-color: var(--border-default);
-  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.3);
+:global(.dark) .section,
+:global(body.dark) .section {
+  background: linear-gradient(165deg, #1d3a8f 0%, #14265e 50%, #0a1428 100%);
 }
 
-.dark .card:hover {
-  border-color: var(--primary-400);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6), 0 8px 24px rgba(0, 0, 0, 0.4);
+:global(.dark) .headerDesc,
+:global(body.dark) .headerDesc {
+  color: rgba(255, 255, 255, 0.7);
 }
 
-.dark .iconBadge {
-  border-color: var(--bg-elevated);
+:global(.dark) .card,
+:global(body.dark) .card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: none;
 }
 
-.dark .content {
-  background-color: var(--bg-elevated);
+:global(.dark) .card:hover,
+:global(body.dark) .card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.3);
+}
+
+:global(.dark) .cardTitle,
+:global(body.dark) .cardTitle {
+  color: #ffffff;
+}
+
+:global(.dark) .cardDesc,
+:global(body.dark) .cardDesc {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+:global(.dark) .section :global(.swiper-button-prev),
+:global(.dark) .section :global(.swiper-button-next),
+:global(body.dark) .section :global(.swiper-button-prev),
+:global(body.dark) .section :global(.swiper-button-next) {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  box-shadow: none;
+}
+
+:global(.dark) .section :global(.swiper-button-prev):hover,
+:global(.dark) .section :global(.swiper-button-next):hover,
+:global(body.dark) .section :global(.swiper-button-prev):hover,
+:global(body.dark) .section :global(.swiper-button-next):hover {
+  background: #e49d23;
+  border-color: #e49d23;
+}
+
+:global(.dark) .section :global(.swiper-pagination-bullet),
+:global(body.dark) .section :global(.swiper-pagination-bullet) {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+:global(.dark) .section :global(.swiper-pagination-bullet-active),
+:global(body.dark) .section :global(.swiper-pagination-bullet-active) {
+  background: #e49d23;
 }
 
 /* ============================================
    RESPONSIVE
    ============================================ */
 
-/* Hide floating shapes on mobile to prevent overflow */
-@media (max-width: 991px) {
-  .floatingShape1,
-  .floatingShape2,
-  .floatingShape3 {
-    display: none !important;
+@media (max-width: 1100px) {
+  .contactBar {
+    flex-wrap: wrap;
+    padding: 28px 32px;
   }
 
-  .WhatWeAreDoing {
-    overflow-x: hidden;
-  }
-}
-
-@media (max-width: 992px) {
-  .description {
-    font-size: 1.2rem;
+  .contactTitle {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 8px;
   }
 
-  .card {
-    max-width: 100%;
+  .contactItems {
+    width: 100%;
+    gap: 32px;
+    margin-bottom: 8px;
   }
 
-  .info {
-    padding: var(--space-6) var(--space-5);
-  }
-
-  .slideWrapper {
-    padding: var(--space-8) var(--space-2);
+  .contactBtn {
+    width: 100%;
+    justify-content: center;
   }
 }
 
 @media (max-width: 768px) {
-  .WhatWeAreDoing {
-    padding: var(--space-16) var(--space-3);
+  .section {
+    padding: 100px 0;
   }
 
-  .description {
-    font-size: 1.05rem;
-    margin-bottom: var(--space-8);
+  .container {
+    padding: 0 16px;
   }
 
-  .imageWrapper {
-    height: 200px;
+  .header {
+    margin-bottom: 48px;
   }
 
-  .content h3 {
-    font-size: 1.08rem;
-  }
-
-  .cardDescription {
-    font-size: 0.9rem;
-  }
-
-  .info {
-    padding: var(--space-5) var(--space-4);
-    border-radius: var(--radius-xl);
-    margin-top: var(--space-10);
-    text-align: center;
-  }
-
-  .infoHeading {
-    font-size: 1.15rem;
-    margin-bottom: var(--space-4);
-    text-align: center;
-  }
-
-  /* Stack contact items vertically on tablet */
-  .info > div {
-    flex-basis: 100%;
-    justify-content: center;
-  }
-
-  .iconBadge {
-    width: 64px;
-    height: 64px;
-    top: -30px;
-  }
-
-  .iconBadge img {
-    width: 32px;
-    height: 32px;
-  }
-
-  .slideWrapper {
-    padding: var(--space-6) var(--space-1);
-  }
-}
-
-@media (max-width: 480px) {
-  .WhatWeAreDoing {
-    padding: var(--space-12) var(--space-2);
-  }
-
-  .description {
+  .headerDesc {
     font-size: 1rem;
-    line-height: 1.6;
   }
 
-  .imageWrapper {
+  .sliderWrapper {
+    margin-bottom: 48px;
+  }
+
+  .swiper {
+    padding: 16px 4px 48px;
+  }
+
+  .cardImage {
     height: 180px;
   }
 
-  .content {
-    padding: var(--space-5) var(--space-4);
-    padding-top: calc(var(--space-5) + 30px);
+  .cardIcon {
+    width: 46px;
+    height: 46px;
+    bottom: -23px;
+    inset-inline-end: 20px;
   }
 
-  .info {
-    padding: var(--space-4) var(--space-3);
-    gap: var(--space-4) !important;
+  .cardIcon img {
+    width: 20px;
+    height: 20px;
   }
 
-  .info > div {
-    width: 100%;
-    flex-basis: 100%;
-    margin-bottom: var(--space-2);
+  .cardBody {
+    padding: 32px 20px 24px;
   }
 
-  .info > div:not(:last-child) {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-    padding-bottom: var(--space-3);
+  .cardTitle {
+    font-size: 1.05rem;
   }
 
-  .iconWrapper {
-    width: 48px;
-    height: 48px;
-    margin-left: var(--space-2);
+  .contactBar {
+    padding: 24px 20px;
+    gap: 20px;
+    border-radius: 20px;
   }
 
-  body[dir="ltr"] .iconWrapper {
-    margin-left: 0;
-    margin-right: var(--space-2);
+  .contactTitle {
+    font-size: 15px;
   }
 
-  .iconWrapper i {
-    font-size: 1.15rem;
+  .contactItems {
+    flex-direction: column;
+    gap: 16px;
   }
 
-  .contactLabel {
-    font-size: 0.88rem;
-  }
-
-  .contactValue {
-    font-size: 0.8rem;
-  }
-
-  .ctaButton {
+  .contactItem {
     width: 100%;
     justify-content: center;
-    padding: var(--space-3) var(--space-5);
-    font-size: 0.92rem;
   }
 
-  .infoHeading {
-    font-size: 1.05rem;
-    margin-bottom: var(--space-4);
-    text-align: center;
-    width: 100%;
+  .contactIcon {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
   }
 
-  .slideWrapper {
-    padding: var(--space-5) 0;
-  }
-
-  .iconBadge {
-    width: 58px;
-    height: 58px;
-    top: -28px;
-  }
-
-  .iconBadge img {
-    width: 30px;
-    height: 30px;
+  .contactBtn {
+    padding: 14px 28px;
+    font-size: 14px;
   }
 }
 
-/* Extra small devices */
-@media (max-width: 360px) {
-  .WhatWeAreDoing {
-    padding: var(--space-10) var(--space-2);
+@media (max-width: 600px) {
+  .section {
+    padding: 80px 0;
   }
 
-  .info {
-    padding: var(--space-3) var(--space-2);
+  .section::before,
+  .section::after {
+    display: none;
   }
 
-  .infoHeading {
-    font-size: 0.95rem;
+  .card {
+    border-radius: 16px;
   }
 
-  .iconWrapper {
+  .cardImage {
+    height: 160px;
+  }
+
+  .cardIcon {
     width: 42px;
     height: 42px;
+    bottom: -21px;
+    inset-inline-end: 16px;
   }
 
-  .iconWrapper i {
+  .cardIcon img {
+    width: 18px;
+    height: 18px;
+  }
+
+  .cardBody {
+    padding: 28px 18px 22px;
+  }
+
+  .cardTitle {
     font-size: 1rem;
   }
 
+  .cardDesc {
+    font-size: 0.85rem;
+  }
+
+  .contactBar {
+    padding: 20px 16px;
+  }
+
+  .contactTitle {
+    font-size: 14px;
+    gap: 10px;
+  }
+
+  .contactTitle i {
+    font-size: 18px;
+  }
+
+  .contactIcon {
+    width: 40px;
+    height: 40px;
+    font-size: 15px;
+  }
+
   .contactLabel {
-    font-size: 0.8rem;
+    font-size: 11px;
   }
 
   .contactValue {
-    font-size: 0.75rem;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .cardImage {
+    height: 140px;
   }
 
-  .ctaButton {
-    padding: var(--space-2) var(--space-4);
-    font-size: 0.88rem;
+  .cardIcon {
+    width: 38px;
+    height: 38px;
+    bottom: -19px;
   }
 
-  .iconBadge {
-    width: 54px;
-    height: 54px;
-    top: -26px;
+  .cardBody {
+    padding: 24px 16px 20px;
   }
 
-  .iconBadge img {
-    width: 28px;
-    height: 28px;
+  .cardTitle {
+    font-size: 0.95rem;
+  }
+
+  .cardDesc {
+    font-size: 0.82rem;
+  }
+
+  .contactBar {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .contactIcon {
+    width: 36px;
+    height: 36px;
+    font-size: 14px;
+    border-radius: 10px;
   }
 }

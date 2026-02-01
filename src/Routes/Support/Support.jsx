@@ -1,37 +1,10 @@
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import Heading from "../../Component/Ui/Heading/Heading";
-import H2 from "../../Component/Ui/H2/H2";
 import ContactForm from "../../Component/ContactForm/ContactForm";
 import { phoneAndEmail, socialMedia } from "../../Utilies/data";
 import SEO from "../../Component/SEO/SEO";
 import style from "./Support.module.css";
-
-const ANIMATION_VARIANTS = {
-  fadeIn: {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  },
-  staggerContainer: {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.1 },
-    },
-  },
-  staggerItem: {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.4, ease: "easeOut" },
-    },
-  },
-};
 
 const CONTACT_LABELS = {
   "fa-phone": "phone",
@@ -48,100 +21,193 @@ const Support = () => {
         title={t("seo.support.title", "تواصل معنا - شركة تميّز | Tamiuzz Support")}
         description={t("seo.support.description", "تواصل مع فريق شركة تميّز للحلول الرقمية. نحن هنا لمساعدتك في تحقيق أهدافك الرقمية.")}
       />
-      <Heading
-        heading={t("supportPage.heading")}
-        subHeading={t("supportPage.subheading")}
-        pageName="support"
-      />
 
-      <H2 text={t("supportPage.talk with us")} />
+      <Heading pageName="support" />
 
-      <div className="container">
-        <div className={`row ${style.contentWrapper}`}>
-          {/* Contact Form Section */}
-          <div className={`col-lg-7 ${style.formSection}`}>
-            <ContactForm />
-          </div>
+      <section className={style.section}>
+        {/* Background Shapes */}
+        <div className={style.bgShape1} aria-hidden="true" />
+        <div className={style.bgShape2} aria-hidden="true" />
+        <div className={style.bgShape3} aria-hidden="true" />
 
-          {/* Contact Info Section */}
-          <div className={`col-lg-5 ${style.contactSection}`}>
+        <div className={style.container}>
+          {/* Header */}
+          <motion.div
+            className={style.header}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <div className={style.badge}>
+              <i className="fa-solid fa-headset" aria-hidden="true" />
+              <span>{t("supportPage.getInTouch", "تواصل معنا")}</span>
+            </div>
+            <h2 className={style.title}>{t("supportPage.talk with us", "دعنا نتحدث")}</h2>
+            <p className={style.subtitle}>
+              {t("supportPage.heroSubtitle", "نحن هنا للإجابة على استفساراتك ومساعدتك في تحقيق أهدافك الرقمية")}
+            </p>
+          </motion.div>
+
+          {/* Content Grid */}
+          <div className={style.contentGrid}>
+            {/* Contact Form */}
             <motion.div
-              className={style.contactCard}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              variants={ANIMATION_VARIANTS.fadeIn}
+              className={style.formWrapper}
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
             >
-              <div className={style.contactHeader}>
-                <h2 className={style.contactTitle}>
-                  {t("supportPage.contact with us")}
-                </h2>
-                <p className={style.contactSubtitle}>
-                  {t("supportPage.contact subtitle")}
-                </p>
+              <div className={style.formCard}>
+                <div className={style.formHeader}>
+                  <div className={style.formIcon}>
+                    <i className="fa-solid fa-paper-plane" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className={style.formTitle}>
+                      {t("supportPage.sendMessage", "أرسل رسالتك")}
+                    </h3>
+                    <p className={style.formSubtitle}>
+                      {t("supportPage.formSubtitle", "سنرد عليك في أقرب وقت ممكن")}
+                    </p>
+                  </div>
+                </div>
+                <ContactForm />
+              </div>
+            </motion.div>
+
+            {/* Contact Info */}
+            <motion.div
+              className={style.infoWrapper}
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+            >
+              {/* Contact Card */}
+              <div className={style.contactCard}>
+                <div className={style.contactHeader}>
+                  <div className={style.contactIcon}>
+                    <i className="fa-solid fa-address-book" aria-hidden="true" />
+                  </div>
+                  <div>
+                    <h3 className={style.contactTitle}>
+                      {t("supportPage.contact with us", "معلومات التواصل")}
+                    </h3>
+                    <p className={style.contactSubtitle}>
+                      {t("supportPage.contact subtitle", "تواصل معنا مباشرة")}
+                    </p>
+                  </div>
+                </div>
+
+                <div className={style.contactList}>
+                  {phoneAndEmail.map((item, idx) => {
+                    const labelKey = CONTACT_LABELS[item.icon] || "contact";
+                    return (
+                      <motion.a
+                        key={idx}
+                        href={item.link}
+                        className={style.contactItem}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.4, delay: 0.3 + idx * 0.1 }}
+                        aria-label={`${t(`supportPage.${labelKey}`)}: ${item.text}`}
+                      >
+                        <span className={style.itemIcon} aria-hidden="true">
+                          <i className={`fa-solid ${item.icon}`} />
+                        </span>
+                        <div className={style.itemContent}>
+                          <span className={style.itemLabel}>
+                            {t(`supportPage.${labelKey}`)}
+                          </span>
+                          <span className={style.itemText} dir="ltr">
+                            {item.text}
+                          </span>
+                        </div>
+                        <span className={style.itemArrow} aria-hidden="true">
+                          <i className="fa-solid fa-arrow-left" />
+                        </span>
+                      </motion.a>
+                    );
+                  })}
+                </div>
+
+                {/* Social Links */}
+                {socialMedia && socialMedia.length > 0 && (
+                  <div className={style.socialSection}>
+                    <p className={style.socialLabel}>
+                      {t("supportPage.followUs", "تابعنا على")}
+                    </p>
+                    <div className={style.socialLinks}>
+                      {socialMedia.slice(0, 4).map((item, idx) => (
+                        <motion.a
+                          key={idx}
+                          href={item.link}
+                          className={style.socialLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={item.className}
+                          initial={{ opacity: 0, scale: 0.8 }}
+                          whileInView={{ opacity: 1, scale: 1 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.3, delay: 0.5 + idx * 0.1 }}
+                        >
+                          <i className={`fa-brands ${item.icon}`} aria-hidden="true" />
+                        </motion.a>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
 
-              <motion.div
-                className={style.contactList}
-                variants={ANIMATION_VARIANTS.staggerContainer}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.2 }}
-              >
-                {phoneAndEmail.map((item, idx) => {
-                  const labelKey = CONTACT_LABELS[item.icon] || "contact";
-                  return (
-                    <motion.a
-                      key={idx}
-                      href={item.link}
-                      className={style.contactItem}
-                      variants={ANIMATION_VARIANTS.staggerItem}
-                      aria-label={`${t(`supportPage.${labelKey}`)}: ${item.text}`}
-                    >
-                      <span className={style.contactIcon} aria-hidden="true">
-                        <i className={`fa-solid ${item.icon}`} />
-                      </span>
-                      <div className={style.contactContent}>
-                        <span className={style.contactLabel}>
-                          {t(`supportPage.${labelKey}`)}
-                        </span>
-                        <span className={style.contactText} dir="ltr">
-                          {item.text}
-                        </span>
-                      </div>
-                    </motion.a>
-                  );
-                })}
-              </motion.div>
-
-              {/* Social Links */}
-              {socialMedia && socialMedia.length > 0 && (
+              {/* Quick Info Cards */}
+              <div className={style.quickInfoGrid}>
                 <motion.div
-                  className={style.socialLinks}
-                  variants={ANIMATION_VARIANTS.staggerContainer}
-                  initial="hidden"
-                  whileInView="visible"
+                  className={style.quickCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.4 }}
                 >
-                  {socialMedia.slice(0, 4).map((item, idx) => (
-                    <motion.a
-                      key={idx}
-                      href={item.link}
-                      className={style.socialLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={item.className}
-                      variants={ANIMATION_VARIANTS.staggerItem}
-                    >
-                      <i className={`fa-brands ${item.icon}`} aria-hidden="true" />
-                    </motion.a>
-                  ))}
+                  <div className={style.quickIcon}>
+                    <i className="fa-solid fa-clock" aria-hidden="true" />
+                  </div>
+                  <div className={style.quickContent}>
+                    <h4 className={style.quickTitle}>
+                      {t("supportPage.responseTime", "وقت الاستجابة")}
+                    </h4>
+                    <p className={style.quickText}>
+                      {t("supportPage.responseValue", "خلال 24 ساعة")}
+                    </p>
+                  </div>
                 </motion.div>
-              )}
+
+                <motion.div
+                  className={style.quickCard}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: 0.5 }}
+                >
+                  <div className={style.quickIcon}>
+                    <i className="fa-solid fa-shield-check" aria-hidden="true" />
+                  </div>
+                  <div className={style.quickContent}>
+                    <h4 className={style.quickTitle}>
+                      {t("supportPage.secureData", "بياناتك آمنة")}
+                    </h4>
+                    <p className={style.quickText}>
+                      {t("supportPage.secureValue", "حماية 100%")}
+                    </p>
+                  </div>
+                </motion.div>
+              </div>
             </motion.div>
           </div>
         </div>
-      </div>
+      </section>
     </main>
   );
 };

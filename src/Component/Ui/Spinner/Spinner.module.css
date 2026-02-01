@@ -1,0 +1,350 @@
+/* ============================================
+   SPINNER - CREATIVE AGENCY DESIGN
+   Light-mode-first approach
+   Brand Colors: #2644a2 (Primary Blue), #e49d23 (Gold)
+   ============================================ */
+
+/* ============================================
+   CONTAINER
+   ============================================ */
+
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #ffffff;
+}
+
+:global(.dark) .spinnerContainer {
+  background: #0a0a0f;
+}
+
+.fullSection {
+  width: 100%;
+  min-height: 70vh;
+  padding: 3rem;
+}
+
+.inline {
+  padding: 2rem;
+}
+
+/* ============================================
+   SPINNER WRAPPER
+   ============================================ */
+
+.spinner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Size Variants */
+.default {
+  width: 80px;
+  height: 80px;
+}
+
+.small {
+  width: 48px;
+  height: 48px;
+}
+
+.large {
+  width: 120px;
+  height: 120px;
+}
+
+/* ============================================
+   OUTER RING
+   ============================================ */
+
+.outerRing {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 3px solid rgba(38, 68, 162, 0.15);
+  border-top-color: #2644a2;
+  animation: spinClockwise 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.small .outerRing {
+  border-width: 2px;
+}
+
+.large .outerRing {
+  border-width: 4px;
+}
+
+:global(.dark) .outerRing {
+  border-color: rgba(228, 157, 35, 0.15);
+  border-top-color: #e49d23;
+}
+
+/* ============================================
+   INNER RING
+   ============================================ */
+
+.innerRing {
+  position: absolute;
+  inset: 12px;
+  border-radius: 50%;
+  border: 2px solid rgba(228, 157, 35, 0.15);
+  border-bottom-color: #e49d23;
+  animation: spinCounterClockwise 0.9s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+}
+
+.small .innerRing {
+  inset: 8px;
+  border-width: 1.5px;
+}
+
+.large .innerRing {
+  inset: 18px;
+  border-width: 3px;
+}
+
+:global(.dark) .innerRing {
+  border-color: rgba(38, 68, 162, 0.15);
+  border-bottom-color: #5a7ae0;
+}
+
+/* ============================================
+   CENTER DOT
+   ============================================ */
+
+.centerDot {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2644a2, #e49d23);
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 0 20px rgba(38, 68, 162, 0.4);
+}
+
+.small .centerDot {
+  width: 8px;
+  height: 8px;
+}
+
+.large .centerDot {
+  width: 16px;
+  height: 16px;
+}
+
+:global(.dark) .centerDot {
+  background: linear-gradient(135deg, #e49d23, #2644a2);
+  box-shadow: 0 0 20px rgba(228, 157, 35, 0.4);
+}
+
+/* ============================================
+   ORBITING DOTS
+   ============================================ */
+
+.orbitContainer {
+  position: absolute;
+  inset: -8px;
+  animation: spinClockwise 3s linear infinite;
+}
+
+.small .orbitContainer {
+  inset: -6px;
+}
+
+.large .orbitContainer {
+  inset: -12px;
+}
+
+.orbitDot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2644a2;
+  box-shadow: 0 0 8px rgba(38, 68, 162, 0.5);
+}
+
+.small .orbitDot {
+  width: 4px;
+  height: 4px;
+}
+
+.large .orbitDot {
+  width: 8px;
+  height: 8px;
+}
+
+.orbitDot:nth-child(1) {
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #2644a2;
+}
+
+.orbitDot:nth-child(2) {
+  bottom: 15%;
+  left: 10%;
+  background: #e49d23;
+  box-shadow: 0 0 8px rgba(228, 157, 35, 0.5);
+}
+
+.orbitDot:nth-child(3) {
+  bottom: 15%;
+  right: 10%;
+  background: #1d3a8f;
+  box-shadow: 0 0 8px rgba(29, 58, 143, 0.5);
+}
+
+:global(.dark) .orbitDot:nth-child(1) {
+  background: #e49d23;
+  box-shadow: 0 0 8px rgba(228, 157, 35, 0.5);
+}
+
+:global(.dark) .orbitDot:nth-child(2) {
+  background: #5a7ae0;
+  box-shadow: 0 0 8px rgba(90, 122, 224, 0.5);
+}
+
+:global(.dark) .orbitDot:nth-child(3) {
+  background: #f0b54a;
+  box-shadow: 0 0 8px rgba(240, 181, 74, 0.5);
+}
+
+/* ============================================
+   AMBIENT GLOW
+   ============================================ */
+
+.ambientGlow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(38, 68, 162, 0.08) 0%,
+    transparent 70%
+  );
+  animation: glowPulse 2s ease-in-out infinite;
+  pointer-events: none;
+}
+
+:global(.dark) .ambientGlow {
+  background: radial-gradient(
+    circle,
+    rgba(228, 157, 35, 0.08) 0%,
+    transparent 70%
+  );
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+
+@keyframes spinClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spinCounterClockwise {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(-360deg);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(0.85);
+    opacity: 0.7;
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.3;
+  }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+  .fullSection {
+    min-height: 50vh;
+    padding: 2rem;
+  }
+
+  .default {
+    width: 64px;
+    height: 64px;
+  }
+
+  .innerRing {
+    inset: 10px;
+  }
+
+  .centerDot {
+    width: 10px;
+    height: 10px;
+  }
+
+  .orbitDot {
+    width: 5px;
+    height: 5px;
+  }
+
+  .ambientGlow {
+    width: 120px;
+    height: 120px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fullSection {
+    min-height: 40vh;
+    padding: 1.5rem;
+  }
+
+  .default {
+    width: 56px;
+    height: 56px;
+  }
+
+  .innerRing {
+    inset: 8px;
+  }
+
+  .centerDot {
+    width: 8px;
+    height: 8px;
+  }
+
+  .orbitDot {
+    width: 4px;
+    height: 4px;
+  }
+
+  .ambientGlow {
+    width: 100px;
+    height: 100px;
+  }
+}
