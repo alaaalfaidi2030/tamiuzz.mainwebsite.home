@@ -9,6 +9,7 @@ import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
 import ContactSection from "../../Component/ContactSection/ContactSection";
 import { baseURL, getHeaders } from "../../Utilies/data";
 import SEO from "../../Component/SEO/SEO";
+import { createArticleSchema, createBreadcrumbSchema } from "../../Utilies/seoSchemas";
 import style from "./ArticleDetails.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -157,16 +158,21 @@ const ArticleDetails = () => {
         ogImage={article.imageUrl || undefined}
         jsonLd={{
           "@context": "https://schema.org",
-          "@type": "Article",
-          "headline": article.title,
-          "image": article.imageUrl || undefined,
-          "author": article.author ? { "@type": "Person", "name": article.author } : { "@type": "Organization", "name": "Tamiuzz" },
-          "datePublished": article.date || undefined,
-          "publisher": {
-            "@type": "Organization",
-            "name": "Tamiuzz - شركة تميّز",
-            "logo": { "@type": "ImageObject", "url": "https://tamiuzz.com/logo.svg" }
-          }
+          "@graph": [
+            createArticleSchema({
+              title: article.title,
+              description: article.description?.replace(/<[^>]*>/g, "").slice(0, 300),
+              image: article.imageUrl,
+              datePublished: article.date,
+              dateModified: article.updatedAt || article.date,
+              author: article.author
+            }),
+            createBreadcrumbSchema([
+              { name: t("home"), url: "https://tamiuzz.com/" },
+              { name: t("articlePage.heading"), url: "https://tamiuzz.com/articles" },
+              { name: article.title, url: `https://tamiuzz.com/articles/${id}` }
+            ])
+          ]
         }}
       />
       <Heading

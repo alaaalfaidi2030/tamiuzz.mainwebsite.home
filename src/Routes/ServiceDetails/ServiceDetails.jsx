@@ -10,6 +10,7 @@ import ErrorComp from "../../Component/Ui/ErrorComp/ErrorComp";
 import NoDataFounded from "../../Component/Ui/NoDataFounded/NoDataFounded";
 import { baseURL, getHeaders } from "../../Utilies/data";
 import SEO from "../../Component/SEO/SEO";
+import { createServiceSchema, createBreadcrumbSchema } from "../../Utilies/seoSchemas";
 import style from "./ServiceDetails.module.css";
 
 const ANIMATION_VARIANTS = {
@@ -115,6 +116,23 @@ const ServiceDetails = () => {
           title={`${service.title} - Tamiuzz`}
           description={service.description?.replace(/<[^>]*>/g, "").slice(0, 160) || t("seo.services.description", "خدمات شركة تميّز للحلول الرقمية")}
           ogImage={service.imageUrl ? baseURL + service.imageUrl : undefined}
+          jsonLd={{
+            "@context": "https://schema.org",
+            "@graph": [
+              createServiceSchema({
+                name: service.title,
+                description: service.description,
+                url: `https://tamiuzz.com/services/${service.path || id}`,
+                image: service.imageUrl ? baseURL + service.imageUrl : undefined,
+                category: service.category || "Digital Marketing"
+              }),
+              createBreadcrumbSchema([
+                { name: t("home"), url: "https://tamiuzz.com/" },
+                { name: t("servicesPage.heading"), url: "https://tamiuzz.com/services" },
+                { name: service.title, url: `https://tamiuzz.com/services/${service.path || id}` }
+              ])
+            ]
+          }}
         />
       )}
       <Heading

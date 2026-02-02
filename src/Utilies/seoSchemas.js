@@ -5,6 +5,15 @@
 
 const BASE_URL = "https://tamiuzz.com";
 
+// Social media links - update with actual links
+const SOCIAL_LINKS = {
+  facebook: "https://facebook.com/tamiuzz",
+  twitter: "https://twitter.com/tamiuzz",
+  instagram: "https://instagram.com/tamiuzz",
+  linkedin: "https://linkedin.com/company/tamiuzz",
+  youtube: "https://youtube.com/@tamiuzz"
+};
+
 /**
  * Organization Schema - Use on homepage
  */
@@ -14,16 +23,27 @@ export const organizationSchema = {
   name: "Tamiuzz - تميّز",
   alternateName: "شركة تميّز للحلول الرقمية",
   url: BASE_URL,
-  logo: `${BASE_URL}/logo.svg`,
-  description: "شركة تميّز للحلول الرقمية والتسويق الإلكتروني تقدم خدمات SEO وتصميم مواقع وحملات PPC وإدارة التواصل الاجتماعي",
+  logo: {
+    "@type": "ImageObject",
+    url: `${BASE_URL}/logo.svg`,
+    width: 200,
+    height: 60
+  },
+  description: "شركة تميّز للحلول الرقمية والتسويق الإلكتروني تقدم خدمات SEO وتصميم مواقع وحملات PPC وإدارة التواصل الاجتماعي في المملكة العربية السعودية والخليج",
   foundingDate: "2018",
-  sameAs: [
-    // Add social media links here
-  ],
+  sameAs: Object.values(SOCIAL_LINKS),
   contactPoint: {
     "@type": "ContactPoint",
+    telephone: "+966-XXX-XXX-XXXX", // TODO: Replace with actual phone
     contactType: "Customer Service",
+    areaServed: ["SA", "AE", "KW", "BH", "QA", "OM"],
     availableLanguage: ["Arabic", "English"]
+  },
+  address: {
+    "@type": "PostalAddress",
+    addressCountry: "SA",
+    addressRegion: "الرياض", // TODO: Update with actual region
+    addressLocality: "الرياض"
   }
 };
 
@@ -32,33 +52,90 @@ export const organizationSchema = {
  */
 export const localBusinessSchema = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "ProfessionalService",
   "@id": `${BASE_URL}/#organization`,
   name: "Tamiuzz - تميّز",
+  alternateName: "شركة تميّز للحلول الرقمية والتسويق الإلكتروني",
   image: `${BASE_URL}/og-image.png`,
   url: BASE_URL,
-  telephone: "+20-XXX-XXX-XXXX", // Replace with actual phone
+  telephone: "+966-XXX-XXX-XXXX", // TODO: Replace with actual phone
+  email: "info@tamiuzz.com", // TODO: Replace with actual email
   priceRange: "$$",
+  currenciesAccepted: "SAR",
+  paymentAccepted: "Cash, Credit Card, Bank Transfer",
   address: {
     "@type": "PostalAddress",
-    addressCountry: "EG",
-    addressRegion: "Cairo" // Update with actual region
+    streetAddress: "", // TODO: Add street address
+    addressLocality: "الرياض",
+    addressRegion: "الرياض",
+    postalCode: "", // TODO: Add postal code
+    addressCountry: "SA"
   },
   geo: {
     "@type": "GeoCoordinates",
-    // Add actual coordinates if available
+    latitude: 24.7136, // TODO: Update with actual coordinates
+    longitude: 46.6753
   },
-  openingHoursSpecification: {
-    "@type": "OpeningHoursSpecification",
-    dayOfWeek: [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday"
-    ],
-    opens: "09:00",
-    closes: "18:00"
+  areaServed: [
+    {
+      "@type": "Country",
+      name: "Saudi Arabia"
+    },
+    {
+      "@type": "Country",
+      name: "United Arab Emirates"
+    },
+    {
+      "@type": "GeoCircle",
+      geoMidpoint: {
+        "@type": "GeoCoordinates",
+        latitude: 24.7136,
+        longitude: 46.6753
+      },
+      geoRadius: "2000 km"
+    }
+  ],
+  openingHoursSpecification: [
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday"],
+      opens: "09:00",
+      closes: "18:00"
+    }
+  ],
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Digital Marketing Services",
+    itemListElement: [
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "SEO - تحسين محركات البحث"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "تصميم وتطوير المواقع"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "إدارة وسائل التواصل الاجتماعي"
+        }
+      },
+      {
+        "@type": "Offer",
+        itemOffered: {
+          "@type": "Service",
+          name: "حملات PPC الإعلانية"
+        }
+      }
+    ]
   }
 };
 
@@ -146,22 +223,82 @@ export const websiteSchema = {
 
 /**
  * Service Schema Generator
- * @param {Object} serviceData - {name, description, url, image}
+ * @param {Object} serviceData - {name, description, url, image, category}
  */
 export const createServiceSchema = (serviceData) => ({
   "@context": "https://schema.org",
   "@type": "Service",
+  "@id": serviceData.url,
   name: serviceData.name,
-  description: serviceData.description,
+  description: serviceData.description?.replace(/<[^>]*>/g, "").slice(0, 300),
   provider: {
     "@type": "Organization",
-    name: "Tamiuzz"
+    name: "Tamiuzz - تميّز",
+    url: BASE_URL
   },
-  areaServed: {
-    "@type": "Country",
-    name: ["Egypt", "Saudi Arabia", "UAE", "Gulf Region"]
-  },
-  serviceType: "Digital Marketing",
+  areaServed: [
+    { "@type": "Country", name: "Saudi Arabia" },
+    { "@type": "Country", name: "United Arab Emirates" },
+    { "@type": "Country", name: "Kuwait" },
+    { "@type": "Country", name: "Bahrain" },
+    { "@type": "Country", name: "Qatar" },
+    { "@type": "Country", name: "Oman" }
+  ],
+  serviceType: serviceData.category || "Digital Marketing",
   url: serviceData.url,
-  image: serviceData.image
+  image: serviceData.image,
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceCurrency: "SAR",
+    priceSpecification: {
+      "@type": "PriceSpecification",
+      priceCurrency: "SAR"
+    }
+  }
+});
+
+/**
+ * Solution/Product Schema Generator
+ * @param {Object} solutionData - {name, description, url, image, category}
+ */
+export const createSolutionSchema = (solutionData) => ({
+  "@context": "https://schema.org",
+  "@type": "Product",
+  name: solutionData.name,
+  description: solutionData.description?.replace(/<[^>]*>/g, "").slice(0, 300),
+  brand: {
+    "@type": "Organization",
+    name: "Tamiuzz - تميّز"
+  },
+  manufacturer: {
+    "@type": "Organization",
+    name: "Tamiuzz - تميّز",
+    url: BASE_URL
+  },
+  url: solutionData.url,
+  image: solutionData.image,
+  category: solutionData.category || "Digital Solutions",
+  offers: {
+    "@type": "Offer",
+    availability: "https://schema.org/InStock",
+    priceCurrency: "SAR",
+    seller: {
+      "@type": "Organization",
+      name: "Tamiuzz"
+    }
+  }
+});
+
+/**
+ * Combined Graph Schema for Homepage
+ * Creates a @graph with multiple schemas
+ */
+export const createHomepageSchema = () => ({
+  "@context": "https://schema.org",
+  "@graph": [
+    { ...organizationSchema, "@context": undefined },
+    { ...localBusinessSchema, "@context": undefined },
+    { ...websiteSchema, "@context": undefined }
+  ]
 });

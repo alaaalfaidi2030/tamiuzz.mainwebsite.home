@@ -1,62 +1,141 @@
-import React from 'react';
 import styles from './H2.module.css';
 import { motion } from 'framer-motion';
 
-const H2 = ({ text, textColorWhite }) => {
-  const containerVariants = {
+const ANIMATION_VARIANTS = {
+  container: {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        delayChildren: 0.2,
-        staggerChildren: 0.1
+        delayChildren: 0.1,
+        staggerChildren: 0.06
       }
     }
-  };
+  },
+  arrowLeft: {
+    hidden: { opacity: 0, x: -30, rotate: -15 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 200, damping: 15 }
+    }
+  },
+  arrowRight: {
+    hidden: { opacity: 0, x: 30, rotate: 15 },
+    visible: {
+      opacity: 1,
+      x: 0,
+      rotate: 0,
+      transition: { type: 'spring', stiffness: 200, damping: 15 }
+    }
+  },
+  line: {
+    hidden: { scaleX: 0, opacity: 0 },
+    visible: {
+      scaleX: 1,
+      opacity: 1,
+      transition: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1] }
+    }
+  },
+  heading: {
+    hidden: { y: 30, opacity: 0, filter: 'blur(8px)' },
+    visible: {
+      y: 0,
+      opacity: 1,
+      filter: 'blur(0px)',
+      transition: { type: 'spring', stiffness: 100, damping: 12, mass: 0.8 }
+    }
+  },
+  glow: {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      transition: { duration: 0.8, delay: 0.3 }
+    }
+  }
+};
 
-  const arrowVariants = {
-    hidden: { opacity: 0, x: -20 },
-    visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 120 } },
-    exit: { opacity: 0, x: -20 }
-  };
-
-  const lineVariants = {
-    hidden: { scaleX: 0 },
-    visible: { scaleX: 1, transition: { duration: 0.5, ease: "easeOut" } },
-    exit: { scaleX: 0 }
-  };
-
-  const headingVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: { y: 0, opacity: 1, transition: { type: 'spring', stiffness: 100 } },
-    exit: { y: 20, opacity: 0 }
-  };
-
+const H2 = ({ text, textColorWhite, id }) => {
   return (
     <motion.div
       className={styles.container}
-      variants={containerVariants}
+      variants={ANIMATION_VARIANTS.container}
       style={{
-        // change value of the main color for the heading
         '--heading-color-H2-component': textColorWhite ? "white" : "var(--primary-color)"
       }}
       initial="hidden"
       whileInView="visible"
-      animate="visible"
-      viewport={{ once: true, amount: 0.2 }} // Adjust when the animation should trigger
+      viewport={{ once: true, amount: 0.3 }}
     >
-      <motion.span className={styles.arrow} variants={arrowVariants}>&lt;</motion.span>
-      <motion.div className={styles.line} variants={lineVariants}></motion.div>
-      <motion.h2 className={styles.heading} variants={headingVariants}>{text}</motion.h2>
-      <motion.div className={styles.line} variants={lineVariants}></motion.div>
+      {/* Background glow effect */}
+      <motion.div
+        className={styles.glowEffect}
+        variants={ANIMATION_VARIANTS.glow}
+        aria-hidden="true"
+      />
+
       <motion.span
         className={styles.arrow}
-        variants={{
-          ...arrowVariants,
-          hidden: { opacity: 0, x: 20 },
-          exit: { opacity: 0, x: 20 }
-        }}
-      >&gt;</motion.span>
+        variants={ANIMATION_VARIANTS.arrowLeft}
+        whileHover={{ scale: 1.2, x: -5 }}
+        transition={{ type: 'spring', stiffness: 400 }}
+        aria-hidden="true"
+      >
+        &lt;
+      </motion.span>
+
+      <motion.div className={styles.lineWrapper}>
+        <motion.div
+          className={styles.line}
+          variants={ANIMATION_VARIANTS.line}
+          aria-hidden="true"
+        />
+        <motion.div
+          className={styles.lineDot}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{ delay: 0.5, type: 'spring', stiffness: 300 }}
+          aria-hidden="true"
+        />
+      </motion.div>
+
+      <motion.h2
+        id={id}
+        className={styles.heading}
+        variants={ANIMATION_VARIANTS.heading}
+        whileHover={{ scale: 1.03 }}
+        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+      >
+        <span className={styles.headingText}>{text}</span>
+        <span className={styles.headingShimmer} aria-hidden="true" />
+      </motion.h2>
+
+      <motion.div className={styles.lineWrapper}>
+        <motion.div
+          className={styles.lineDot}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+          transition={{ delay: 0.5, type: 'spring', stiffness: 300 }}
+          aria-hidden="true"
+        />
+        <motion.div
+          className={styles.line}
+          variants={ANIMATION_VARIANTS.line}
+          aria-hidden="true"
+        />
+      </motion.div>
+
+      <motion.span
+        className={styles.arrow}
+        variants={ANIMATION_VARIANTS.arrowRight}
+        whileHover={{ scale: 1.2, x: 5 }}
+        transition={{ type: 'spring', stiffness: 400 }}
+        aria-hidden="true"
+      >
+        &gt;
+      </motion.span>
     </motion.div>
   );
 };

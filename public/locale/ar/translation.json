@@ -5,10 +5,8 @@
   "articles": "المقالات",
   "support": "الدعم",
   "about-us": "من نحن",
-  "nav_lang": "English",
   "shopping now": "تسوّق الآن",
   "select language": "اختر اللغة",
-  "available languages": "اللغات المتاحة",
   "opens in new tab": "يفتح في علامة تبويب جديدة",
   "main navigation": "القائمة الرئيسية",
   "toggle navigation": "فتح/إغلاق القائمة",
@@ -19,7 +17,6 @@
   "mobile_services": "الخدمات",
   "mobile_support": "الدعم",
   "mobile_main": "الرئيسية",
-  "Language_nav": "E",
 
   "read more": "اطّلع على المزيد",
   "noData": {
@@ -77,6 +74,8 @@
   "supportPage": {
     "heading": "معك دائماً... لأن نجاحك يهمّنا",
     "subheading": "نحن هنا لمساعدتك في كل خطوة، بدعم سريع وفعّال على مدار الساعة",
+    "heroSubtitle": "نحن هنا لدعمك على مدار الساعة",
+    "getInTouch": "تواصل معنا",
     "talk with us": "تحدّث معنا",
     "contact with us": "تواصل معنا",
     "contact subtitle": "نحن دائماً على استعداد لمساعدتك. تواصل معنا عبر أي من القنوات التالية",
@@ -85,7 +84,12 @@
     "whatsapp": "واتساب",
     "how can we help": "كيف يمكننا مساعدتك؟",
     "send": "إرسال",
-    "sending": "جارٍ الإرسال..."
+    "sending": "جارٍ الإرسال...",
+    "sendMessage": "أرسل رسالتك",
+    "formSubtitle": "سنرد عليك في أقرب وقت ممكن",
+    "followUs": "تابعنا على",
+    "secureData": "بياناتك آمنة",
+    "secureValue": "حماية 100%"
   },
 
   "about tamuizz": "عن شركة تميّز",
@@ -151,8 +155,6 @@
   "howWeWork": {
     "title": "كيف نعمل",
     "description": "خطوات العمل معنا",
-    "ourAchievements": "إنجازاتنا",
-    "weIncreaseSuccess": "نساهم في زيادة نجاح عملائنا",
     "clients": "عملاء راضون",
     "projects": "مشاريع منفّذة",
     "experts": "خبراء"

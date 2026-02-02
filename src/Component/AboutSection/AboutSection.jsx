@@ -95,7 +95,7 @@ export default function AboutSection({ counter, logos, services }) {
           </motion.div>
         </div>
 
-        {/* Partners */}
+        {/* Partners Section */}
         <motion.div
           className={style.partners}
           initial={{ opacity: 0, y: 30 }}
@@ -103,40 +103,42 @@ export default function AboutSection({ counter, logos, services }) {
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          <p className={style.partnersLabel}>
-            {t("homePage.MoreThanOneHundredBrands")}
-          </p>
-          <div className={style.partnersSlider}>
-            <Swiper
-              spaceBetween={28}
-              loop={true}
-              autoplay={{
-                delay: 2000,
-                disableOnInteraction: false,
-              }}
-              breakpoints={{
-                320: { slidesPerView: 2, spaceBetween: 16 },
-                480: { slidesPerView: 3, spaceBetween: 20 },
-                768: { slidesPerView: 4, spaceBetween: 24 },
-                1024: { slidesPerView: 5, spaceBetween: 28 },
-              }}
-              modules={[Autoplay]}
-            >
-              {logos.map((logo, idx) => (
-                <SwiperSlide key={idx}>
-                  <div className={style.logoBox}>
-                    <img
-                      loading="lazy"
-                      src={"https://tamiuzz.com/"+logo.imageUrl}
-                      alt={logo.name}
-                      width="100"
-                      height="50"
-                    />
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+          <div className={style.partnersHeader}>
+            <span className={style.partnersBadge}>
+              <i className="fa-solid fa-handshake" aria-hidden="true" />
+              {t("homePage.MoreThanOneHundredBrands")}
+            </span>
           </div>
+
+          <Swiper
+            spaceBetween={32}
+            loop={true}
+            centeredSlides={true}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            breakpoints={{
+              320: { slidesPerView: 2, spaceBetween: 20 },
+              480: { slidesPerView: 3, spaceBetween: 24 },
+              768: { slidesPerView: 4, spaceBetween: 28 },
+              1024: { slidesPerView: 5, spaceBetween: 32 },
+            }}
+            modules={[Autoplay]}
+            className={style.partnersSwiper}
+          >
+            {logos.map((logo, idx) => (
+              <SwiperSlide key={idx}>
+                <div className={style.logoBox}>
+                  <img
+                    loading="lazy"
+                    src={"https://tamiuzz.com/" + logo.imageUrl}
+                    alt={logo.name}
+                  />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </motion.div>
       </div>
     </section>

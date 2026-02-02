@@ -14,163 +14,176 @@ const STATS = [
 const Hero = () => {
   const { t } = useTranslation();
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.12,
-        delayChildren: 0.2
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
-  const cardVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: {
-        duration: 0.6,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    }
-  };
-
-  const statVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        delay: 0.4 + i * 0.1,
-        ease: [0.16, 1, 0.3, 1]
-      }
-    })
-  };
-
   return (
     <section
       className={style.hero}
-      style={{ backgroundImage: `url(${heroBackground})` }}
+      style={{ background: `url(${heroBackground})` , backgroundSize: 'cover', backgroundPosition: 'center' }}
       aria-label={t("homePage.hero_title")}
     >
-      {/* Gradient Overlay */}
-      <div className={style.overlay} aria-hidden="true" />
+      {/* Background Elements */}
+      <div className={style.bgPattern} aria-hidden="true">
+        <div className={style.gridLines} />
+        <div className={style.gradientOrb1} />
+        <div className={style.gradientOrb2} />
+        <div className={style.gradientOrb3} />
+      </div>
 
-      {/* Ambient Glow Effects */}
-      <div className={style.ambientGlow} aria-hidden="true">
-        <div className={`${style.glowOrb} ${style.glowOrb1}`} />
-        <div className={`${style.glowOrb} ${style.glowOrb2}`} />
+      {/* Floating Shapes */}
+      <div className={style.floatingShapes} aria-hidden="true">
+        <motion.div
+          className={style.shape1}
+          animate={{ y: [-20, 20, -20], rotate: [0, 5, 0] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className={style.shape2}
+          animate={{ y: [20, -20, 20], rotate: [0, -5, 0] }}
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className={style.shape3}
+          animate={{ y: [-15, 15, -15], x: [-10, 10, -10] }}
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
       </div>
 
       {/* Main Content */}
-      <div className={style.content}>
-        <div className={style.container}>
+      <div className={style.container}>
+        <div className={style.content}>
+          {/* Left: Text Content */}
           <motion.div
-            className={style.card}
-            variants={cardVariants}
-            initial="hidden"
-            animate="visible"
+            className={style.textContent}
+            initial={{ opacity: 0, x: -40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           >
-            <div className={style.cardInner}>
-              {/* Text Column */}
-              <motion.div
-                className={style.textColumn}
-                variants={containerVariants}
-                initial="hidden"
-                animate="visible"
-              >
-                {/* Badge */}
-                <motion.div className={style.badge} variants={itemVariants}>
-                  <span className={style.badgeIcon}>
-                    <i className="fa-solid fa-bolt" aria-hidden="true" />
-                  </span>
-                  <span className={style.badgeText}>
-                    {t("homePage.badge_text") || t("homePage.hero_subtitle")}
-                  </span>
-                </motion.div>
+            {/* Badge */}
+            <motion.div
+              className={style.badge}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.5 }}
+            >
+              <span className={style.badgeDot} />
+              <span>{t("homePage.badge_text") || t("homePage.hero_subtitle")}</span>
+            </motion.div>
 
-                {/* Headline */}
-                <motion.h1 className={style.headline} variants={itemVariants}>
-                  <span className={style.headlineWhite}>
-                    {t("homePage.hero_title")}
-                  </span>
-                  <span className={style.headlineGold}>
-                    {t("homePage.hero_subtitle")}
-                  </span>
-                </motion.h1>
+            {/* Headline */}
+            <motion.h1
+              className={style.headline}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <span className={style.headlinePrimary}>{t("homePage.hero_title")}</span>
+              <span className={style.headlineAccent}>{t("homePage.hero_subtitle")}</span>
+            </motion.h1>
 
-                {/* Description */}
-                <motion.p className={style.description} variants={itemVariants}>
-                  {t("homePage.hero_desc_part1")} {t("homePage.hero_desc_part2")}
-                </motion.p>
+            {/* Description */}
+            <motion.p
+              className={style.description}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+            >
+              {t("homePage.hero_desc_part1")} {t("homePage.hero_desc_part2")}
+            </motion.p>
 
-                {/* CTA Buttons */}
-                <motion.div className={style.ctaGroup} variants={itemVariants}>
-                  <Link to="/support" className={style.ctaPrimary}>
-                    <span>{t("homePage.request-quote-button")}</span>
-                    <i className="fa-solid fa-arrow-left" aria-hidden="true" />
-                  </Link>
-                  <Link to="/services" className={style.ctaSecondary}>
-                    <span>{t("homePage.discover our services")}</span>
-                    <i className="fa-solid fa-arrow-left" aria-hidden="true" />
-                  </Link>
-                </motion.div>
-              </motion.div>
+            {/* CTA Buttons */}
+            <motion.div
+              className={style.ctaGroup}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+            >
+              <Link to="/support" className={style.ctaPrimary}>
+                <span>{t("homePage.request-quote-button")}</span>
+                <i className="fa-solid fa-arrow-left" aria-hidden="true" />
+              </Link>
+              <Link to="/services" className={style.ctaSecondary}>
+                <span>{t("homePage.discover our services")}</span>
+              </Link>
+            </motion.div>
 
-              {/* Visual Column - Stats Grid */}
-              <div className={style.visualColumn}>
-                <div className={style.statsGrid}>
-                  {STATS.map((stat, index) => (
-                    <motion.div
-                      key={stat.valueKey}
-                      className={style.statCard}
-                      custom={index}
-                      variants={statVariants}
-                      initial="hidden"
-                      animate="visible"
-                    >
-                      <div className={style.statIcon}>
-                        <i className={stat.icon} aria-hidden="true" />
-                      </div>
-                      <span className={style.statValue}>
-                        {t(`homePage.stats.${stat.valueKey}`)}
-                      </span>
-                      <span className={style.statLabel}>
-                        {t(`homePage.stats.${stat.labelKey}`)}
-                      </span>
-                    </motion.div>
-                  ))}
-                </div>
+            {/* Trust Indicators */}
+            <motion.div
+              className={style.trustIndicators}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.7, duration: 0.5 }}
+            >
+              <div className={style.trustItem}>
+                <i className="fa-solid fa-shield-check" aria-hidden="true" />
+                <span>ISO 27001</span>
               </div>
+              <div className={style.trustDivider} />
+              <div className={style.trustItem}>
+                <i className="fa-solid fa-clock" aria-hidden="true" />
+                <span>24/7</span>
+              </div>
+              <div className={style.trustDivider} />
+              <div className={style.trustItem}>
+                <i className="fa-solid fa-star" aria-hidden="true" />
+                <span>4.9/5</span>
+              </div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right: Stats Visual */}
+          <motion.div
+            className={style.visualContent}
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.3, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <div className={style.statsContainer}>
+              {/* Central Icon */}
+              <div className={style.centralIcon}>
+                <div className={style.centralIconInner}>
+                  <i className="fa-solid fa-rocket" aria-hidden="true" />
+                </div>
+                <div className={style.centralIconRing} />
+                <div className={style.centralIconRing2} />
+              </div>
+
+              {/* Stats Cards */}
+              {STATS.map((stat, index) => (
+                <motion.div
+                  key={stat.valueKey}
+                  className={`${style.statCard} ${style[`statCard${index + 1}`]}`}
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ delay: 0.5 + index * 0.1, duration: 0.5, type: 'spring' }}
+                  whileHover={{ scale: 1.05, y: -5 }}
+                >
+                  <div className={style.statIconWrapper}>
+                    <i className={stat.icon} aria-hidden="true" />
+                  </div>
+                  <div className={style.statInfo}>
+                    <span className={style.statValue}>
+                      {t(`homePage.stats.${stat.valueKey}`)}
+                    </span>
+                    <span className={style.statLabel}>
+                      {t(`homePage.stats.${stat.labelKey}`)}
+                    </span>
+                  </div>
+                </motion.div>
+              ))}
+
+              {/* Decorative Lines */}
+              <svg className={style.connectionLines} aria-hidden="true">
+                <line x1="50%" y1="50%" x2="20%" y2="20%" className={style.connectionLine} />
+                <line x1="50%" y1="50%" x2="80%" y2="20%" className={style.connectionLine} />
+                <line x1="50%" y1="50%" x2="20%" y2="80%" className={style.connectionLine} />
+                <line x1="50%" y1="50%" x2="80%" y2="80%" className={style.connectionLine} />
+              </svg>
             </div>
           </motion.div>
         </div>
       </div>
 
-      {/* Wave Divider */}
-      <div className={style.waveDivider} aria-hidden="true">
-        <svg viewBox="0 0 1440 120" preserveAspectRatio="none">
-          <path
-            d="M0,120 L0,60 Q360,100 720,60 T1440,60 L1440,120 Z"
-            fill="var(--bg-body)"
-          />
-        </svg>
-      </div>
+      {/* Bottom Gradient Fade */}
+      <div className={style.bottomFade} aria-hidden="true" />
     </section>
   );
 };

@@ -66,10 +66,11 @@
 
 .sliderWrapper {
   margin-bottom: 64px;
+  position: relative;
 }
 
 .swiper {
-  padding: 20px 8px 56px;
+  padding: 20px 8px 80px;
 }
 
 .swiper :global(.swiper-slide) {
@@ -218,19 +219,31 @@ body[dir="ltr"] .card:hover .cardLink i {
 }
 
 /* ============================================
-   SWIPER NAVIGATION
+   SWIPER NAVIGATION - BOTTOM POSITION
    ============================================ */
 
 .section :global(.swiper-button-prev),
 .section :global(.swiper-button-next) {
-  width: 50px;
-  height: 50px;
+  width: 44px;
+  height: 44px;
   background: #ffffff;
-  border-radius: 14px;
+  border-radius: 12px;
   border: 1px solid #e2e8f0;
   color: #2644a2;
   transition: all 0.3s ease;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  top: auto;
+  bottom: 12px;
+}
+
+.section :global(.swiper-button-prev) {
+  left: calc(50% - 100px);
+  right: auto;
+}
+
+.section :global(.swiper-button-next) {
+  right: calc(50% - 100px);
+  left: auto;
 }
 
 .section :global(.swiper-button-prev):hover,
@@ -238,13 +251,16 @@ body[dir="ltr"] .card:hover .cardLink i {
   background: #2644a2;
   border-color: #2644a2;
   color: #ffffff;
-  transform: scale(1.05);
 }
 
 .section :global(.swiper-button-prev)::after,
 .section :global(.swiper-button-next)::after {
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 700;
+}
+
+.section :global(.swiper-pagination) {
+  bottom: 20px !important;
 }
 
 .section :global(.swiper-pagination-bullet) {
@@ -508,7 +524,21 @@ body[dir="ltr"] .contactBtn:hover i {
   }
 
   .swiper {
-    padding: 16px 4px 48px;
+    padding: 16px 4px 70px;
+  }
+
+  .section :global(.swiper-button-prev),
+  .section :global(.swiper-button-next) {
+    width: 38px;
+    height: 38px;
+  }
+
+  .section :global(.swiper-button-prev) {
+    left: calc(50% - 90px);
+  }
+
+  .section :global(.swiper-button-next) {
+    right: calc(50% - 90px);
   }
 
   .cardImage {
@@ -575,6 +605,25 @@ body[dir="ltr"] .contactBtn:hover i {
   .section::before,
   .section::after {
     display: none;
+  }
+
+  .section :global(.swiper-button-prev),
+  .section :global(.swiper-button-next) {
+    width: 34px;
+    height: 34px;
+  }
+
+  .section :global(.swiper-button-prev) {
+    transform: translateX(calc(-50% - 60px));
+  }
+
+  .section :global(.swiper-button-next) {
+    transform: translateX(calc(50% + 60px));
+  }
+
+  .section :global(.swiper-button-prev)::after,
+  .section :global(.swiper-button-next)::after {
+    font-size: 12px;
   }
 
   .card {

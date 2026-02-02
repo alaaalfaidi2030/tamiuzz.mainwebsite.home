@@ -4,14 +4,7 @@
 
 .ArticleHomeContainer {
   padding: var(--space-20) var(--space-4);
-  background: linear-gradient(
-    180deg,
-    var(--bg-body) 0%,
-    var(--bg-surface) 50%,
-    var(--bg-body) 100%
-  );
   position: relative;
-  overflow: hidden;
 }
 
 .ArticleHomeContainer::before {
@@ -20,16 +13,36 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100%;
-  max-width: 1400px;
-  height: 500px;
-  background: radial-gradient(
-    ellipse at center,
-    rgba(var(--primary-rgb, 79, 70, 229), 0.05) 0%,
-    transparent 70%
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    var(--bg-body) 0%,
+    var(--bg-surface) 50%,
+    var(--bg-body) 100%
   );
+  z-index: -2;
+}
+
+.ArticleHomeContainer::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.08) 0%,
+    rgba(var(--secondary-rgb, 139, 92, 246), 0.06) 25%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.05) 50%,
+    rgba(var(--secondary-rgb, 139, 92, 246), 0.06) 75%,
+    rgba(var(--primary-rgb, 79, 70, 229), 0.08) 100%
+  );
+  filter: blur(60px);
   pointer-events: none;
-  z-index: 0;
+  z-index: -1;
 }
 
 .ArticleHomeContainer > * {
@@ -54,7 +67,7 @@
 
 .floatingShape1 {
   top: 10%;
-  right: 5%;
+  right: 5vw;
   width: 420px;
   height: 420px;
   background: radial-gradient(circle, var(--primary-300), transparent);
@@ -62,7 +75,7 @@
 
 .floatingShape2 {
   bottom: 15%;
-  left: 8%;
+  left: 5vw;
   width: 460px;
   height: 460px;
   background: radial-gradient(circle, var(--secondary-400), transparent);
@@ -70,7 +83,7 @@
 
 .floatingShape3 {
   top: 50%;
-  left: 50%;
+  left: 50vw;
   width: 360px;
   height: 360px;
   background: radial-gradient(circle, var(--primary-400), transparent);

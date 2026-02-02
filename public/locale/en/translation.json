@@ -17,7 +17,6 @@
   "mobile_services": "Services",
   "mobile_support": "Support",
   "mobile_main": "Home",
-  "Language_nav": "ع",
 
   "read more": "Read More",
   "noData": {
@@ -150,8 +149,6 @@
   "howWeWork": {
     "title": "How We Work",
     "description": "Steps to Work With Us",
-    "ourAchievements": "Our Achievements",
-    "weIncreaseSuccess": "We Increase Our Clients' Success",
     "clients": "Satisfied Clients",
     "projects": "Completed Projects",
     "experts": "Experts"

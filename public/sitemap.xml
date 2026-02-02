@@ -2,52 +2,92 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Homepage -->
   <url>
     <loc>https://tamiuzz.com/</loc>
+    <lastmod>2025-02-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/" />
   </url>
 
+  <!-- Solutions -->
   <url>
     <loc>https://tamiuzz.com/solutions</loc>
+    <lastmod>2025-02-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/solutions?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/solutions?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/solutions" />
   </url>
 
+  <!-- Services -->
   <url>
     <loc>https://tamiuzz.com/services</loc>
+    <lastmod>2025-02-01</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/services?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/services?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/services" />
   </url>
 
+  <!-- Articles / Blog -->
   <url>
     <loc>https://tamiuzz.com/articles</loc>
+    <lastmod>2025-02-01</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/articles?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/articles?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/articles" />
   </url>
 
+  <!-- About Us -->
   <url>
     <loc>https://tamiuzz.com/about-us</loc>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/about-us?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/about-us?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/about-us" />
   </url>
 
+  <!-- Support / Contact -->
   <url>
     <loc>https://tamiuzz.com/support</loc>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/support?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/support?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/support" />
   </url>
 
+  <!-- FAQ -->
   <url>
     <loc>https://tamiuzz.com/faq</loc>
+    <lastmod>2025-01-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/faq?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/faq?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/faq" />
   </url>
 
+  <!-- Privacy Policy -->
   <url>
     <loc>https://tamiuzz.com/policy</loc>
+    <lastmod>2025-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://tamiuzz.com/policy?lang=ar" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://tamiuzz.com/policy?lang=en" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://tamiuzz.com/policy" />
   </url>
 
 </urlset>
