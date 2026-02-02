@@ -82,6 +82,7 @@
     "phone": "الهاتف",
     "email": "البريد الإلكتروني",
     "whatsapp": "واتساب",
+    "contact": "تواصل",
     "how can we help": "كيف يمكننا مساعدتك؟",
     "send": "إرسال",
     "sending": "جارٍ الإرسال...",
@@ -89,7 +90,9 @@
     "formSubtitle": "سنرد عليك في أقرب وقت ممكن",
     "followUs": "تابعنا على",
     "secureData": "بياناتك آمنة",
-    "secureValue": "حماية 100%"
+    "secureValue": "حماية 100%",
+    "responseTime": "وقت الاستجابة",
+    "responseValue": "خلال 24 ساعة"
   },
 
   "about tamuizz": "عن شركة تميّز",
@@ -157,12 +160,24 @@
     "description": "خطوات العمل معنا",
     "clients": "عملاء راضون",
     "projects": "مشاريع منفّذة",
-    "experts": "خبراء"
+    "experts": "خبراء",
+    "step1_title": "طلب اجتماع",
+    "step1_desc": "تواصل معنا لحجز اجتماع استشاري مجاني",
+    "step2_title": "اختيار الخدمة",
+    "step2_desc": "نساعدك في اختيار الحل المناسب لاحتياجاتك",
+    "step3_title": "تحديد المتطلبات",
+    "step3_desc": "نحدد جميع المتطلبات الفنية والتقنية",
+    "step4_title": "الحل النهائي",
+    "step4_desc": "تسليم الحل النهائي المتكامل"
   },
 
   "projects": {
     "Our Projects": "مشاريعنا",
-    "Description": "أحدث نجاحاتنا"
+    "Description": "أحدث نجاحاتنا",
+    "Portfolio": "أعمالنا",
+    "completedProjects": "مشاريع منجزة",
+    "clientSatisfaction": "رضا العملاء",
+    "support": "دعم متواصل"
   },
 
   "solutionPage": {
@@ -288,7 +303,9 @@
   "close menu": "إغلاق القائمة",
   "open menu": "فتح القائمة",
   "navigation menu": "قائمة التنقل",
+  "bottom navigation": "التنقل السفلي",
   "loading": "جارٍ التحميل...",
+  "loading-aria-label": "جاري التحميل",
   "contact section illustration": "صورة قسم التواصل",
   "All Copyright": "جميع الحقوق محفوظة",
   "View All Articles": "عرض جميع المقالات"

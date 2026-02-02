@@ -237,13 +237,13 @@ body[dir="ltr"] .card:hover .cardLink i {
 }
 
 .section :global(.swiper-button-prev) {
-  left: calc(50% - 100px);
-  right: auto;
+  right: calc(50% - 100px);
+  left: auto;
 }
 
 .section :global(.swiper-button-next) {
-  right: calc(50% - 100px);
-  left: auto;
+  left: calc(50% - 100px);
+  right: auto;
 }
 
 .section :global(.swiper-button-prev):hover,
@@ -534,11 +534,13 @@ body[dir="ltr"] .contactBtn:hover i {
   }
 
   .section :global(.swiper-button-prev) {
-    left: calc(50% - 90px);
+    right: calc(50% - 90px);
+    left: auto;
   }
 
   .section :global(.swiper-button-next) {
-    right: calc(50% - 90px);
+    left: calc(50% - 90px);
+    right: auto;
   }
 
   .cardImage {
@@ -614,11 +616,13 @@ body[dir="ltr"] .contactBtn:hover i {
   }
 
   .section :global(.swiper-button-prev) {
-    left: calc(50% - 80px);
+    right: calc(50% - 80px);
+    left: auto;
   }
 
   .section :global(.swiper-button-next) {
-    right: calc(50% - 80px);
+    left: calc(50% - 80px);
+    right: auto;
   }
 
   .section :global(.swiper-button-prev)::after,

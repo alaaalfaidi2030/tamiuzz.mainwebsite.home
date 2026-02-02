@@ -74,15 +74,25 @@
   "supportPage": {
     "heading": "Always Here — Because Your Success Matters",
     "subheading": "We're here to help you every step of the way, with fast and reliable support 24/7",
+    "heroSubtitle": "We're here to support you around the clock",
+    "getInTouch": "Get In Touch",
     "talk with us": "Talk to Us",
     "contact with us": "Contact Us",
     "contact subtitle": "We're always ready to assist you. Reach out through any of the following channels",
     "phone": "Phone",
     "email": "Email",
     "whatsapp": "WhatsApp",
+    "contact": "Contact",
     "how can we help": "How Can We Help You?",
     "send": "Send",
-    "sending": "Sending..."
+    "sending": "Sending...",
+    "sendMessage": "Send Your Message",
+    "formSubtitle": "We'll get back to you as soon as possible",
+    "followUs": "Follow Us On",
+    "secureData": "Your Data is Secure",
+    "secureValue": "100% Protected",
+    "responseTime": "Response Time",
+    "responseValue": "Within 24 Hours"
   },
 
   "about tamuizz": "About Tamiuzz",
@@ -151,11 +161,23 @@
     "description": "Steps to Work With Us",
     "clients": "Satisfied Clients",
     "projects": "Completed Projects",
-    "experts": "Experts"
+    "experts": "Experts",
+    "step1_title": "Request a Meeting",
+    "step1_desc": "Contact us to book a free consultation meeting",
+    "step2_title": "Choose the Service",
+    "step2_desc": "We help you choose the right solution for your needs",
+    "step3_title": "Define Requirements",
+    "step3_desc": "We identify all technical and functional requirements",
+    "step4_title": "Final Solution",
+    "step4_desc": "Delivery of the complete final solution"
   },
   "projects": {
     "Our Projects": "Our Projects",
-    "Description": "Our Latest Successes"
+    "Description": "Our Latest Successes",
+    "Portfolio": "Portfolio",
+    "completedProjects": "Completed Projects",
+    "clientSatisfaction": "Client Satisfaction",
+    "support": "Continuous Support"
   },
   "solutionPage": {
     "heading": "We Create Solutions That Drive Excellence",
@@ -227,5 +249,63 @@
     "Invalid email address": "Invalid Email Address",
     "Must be 10 characters or more": "Must be 10 characters or more",
     "Something went wrong, please try again later": "Something went wrong. Please try again later."
-  }
+  },
+
+  "policy": {
+    "badge": "Privacy & Security",
+    "title": "Privacy Policy",
+    "subtitle": "We are committed to protecting your privacy and personal data",
+    "lastUpdate": "Last Updated:",
+    "june": "June"
+  },
+
+  "testimonials": {
+    "clientReviews": "Client Reviews"
+  },
+
+  "seo": {
+    "home": {
+      "title": "Tamiuzz - Integrated Software Solutions",
+      "description": "Tamiuzz leading technology solutions company in Saudi Arabia and the Middle East"
+    },
+    "support": {
+      "title": "Support - Tamiuzz",
+      "description": "Contact us for 24/7 technical support"
+    },
+    "about": {
+      "title": "About Us - Tamiuzz",
+      "description": "Learn about Tamiuzz and our exceptional team"
+    },
+    "services": {
+      "title": "Our Services - Tamiuzz",
+      "description": "Discover our comprehensive technology and digital solutions services"
+    },
+    "solutions": {
+      "title": "Our Solutions - Tamiuzz",
+      "description": "Innovative technology solutions tailored to your business needs"
+    },
+    "articles": {
+      "title": "Articles - Tamiuzz",
+      "description": "Read the latest articles and news in the technology world"
+    },
+    "faq": {
+      "title": "FAQs - Tamiuzz",
+      "description": "Answers to the most frequently asked questions about our services"
+    },
+    "policy": {
+      "title": "Privacy Policy - Tamiuzz",
+      "description": "Read our privacy policy and data protection guidelines"
+    }
+  },
+
+  "breadcrumb": "Breadcrumb Navigation",
+  "close menu": "Close Menu",
+  "open menu": "Open Menu",
+  "navigation menu": "Navigation Menu",
+  "bottom navigation": "Bottom Navigation",
+  "loading": "Loading...",
+  "loading-aria-label": "Loading",
+  "contact section illustration": "Contact Section Illustration",
+  "All Copyright": "All Rights Reserved",
+  "View All Articles": "View All Articles"
 }

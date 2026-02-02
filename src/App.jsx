@@ -49,9 +49,6 @@ function App() {
   ])
 
   useEffect(() => {
-    // this code is for the language direction
-    console.log(localStorage.getItem("i18nextLng"));
-
     const i18nextLng = localStorage.getItem("i18nextLng") || "ar";
     if (i18nextLng === "ar") {
       document.body.dir = "rtl";

@@ -31,7 +31,6 @@ export const preloadRoute = (routeImport) => {
   
   return routeImport()
     .then((module) => {
-      console.log('Route preloaded and cached');
       return module;
     })
     .catch((error) => {

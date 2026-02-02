@@ -8,8 +8,11 @@ import style from "./Support.module.css";
 
 const CONTACT_LABELS = {
   "fa-phone": "phone",
+  "fa-solid fa-phone": "phone",
   "fa-envelope": "email",
+  "fa-solid fa-envelope": "email",
   "fa-whatsapp": "whatsapp",
+  "fa-brands fa-whatsapp": "whatsapp",
 };
 
 const Support = () => {
