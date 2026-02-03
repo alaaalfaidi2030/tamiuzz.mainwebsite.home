@@ -192,6 +192,10 @@
    LINKS SECTIONS
    ============================================ */
 
+.linksGrid {
+  display: contents;
+}
+
 .linksSection {
   display: flex;
   flex-direction: column;
@@ -204,17 +208,31 @@
   margin: 0 0 20px;
   position: relative;
   padding-bottom: 12px;
+  list-style: none;
+  cursor: default;
 }
 
-.sectionTitle::after {
+.sectionTitle::-webkit-details-marker {
+  display: none;
+}
+
+.sectionTitle span {
+  position: relative;
+}
+
+.sectionTitle span::after {
   content: '';
   position: absolute;
-  bottom: 0;
+  bottom: -12px;
   inset-inline-start: 0;
   width: 40px;
   height: 3px;
   background: linear-gradient(90deg, #2644a2, #e49d23);
   border-radius: 3px;
+}
+
+.sectionTitle i {
+  display: none;
 }
 
 .linksList {
@@ -582,6 +600,33 @@ body[dir="ltr"] .contactItem:hover {
   color: rgba(0, 0, 0, 0.15);
 }
 
+@media (max-width: 768px) {
+  :global(body:not(.dark)) .brandSection {
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(body:not(.dark)) .linksGrid {
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(body:not(.dark)) .linksSection:first-child {
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(body:not(.dark)) .linksSection {
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+
+  :global(body:not(.dark)) .sectionTitle i {
+    color: rgba(0, 0, 0, 0.4);
+  }
+
+  :global(body:not(.dark)) .newsletter {
+    background: rgba(0, 0, 0, 0.02);
+    border-color: rgba(0, 0, 0, 0.06);
+  }
+}
+
 /* ============================================
    RESPONSIVE
    ============================================ */
@@ -609,54 +654,150 @@ body[dir="ltr"] .contactItem:hover {
 
 @media (max-width: 768px) {
   .footer {
-    padding: 60px 0 0;
+    padding: 48px 0 0;
   }
 
   .footerContent {
     grid-template-columns: 1fr;
-    gap: 40px;
-    padding-bottom: 40px;
+    gap: 0;
+    padding-bottom: 32px;
   }
 
-  .brandSection,
-  .linksSection,
-  .contactSection {
+  /* Brand Section - More compact */
+  .brandSection {
     align-items: center;
     text-align: center;
+    padding-bottom: 28px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   }
 
-  .sectionTitle::after {
-    inset-inline-start: 50%;
-    transform: translateX(-50%);
+  .brandDescription {
+    font-size: 0.9rem;
+    margin-bottom: 20px;
   }
 
-  body[dir="ltr"] .sectionTitle::after {
-    transform: translateX(50%);
+  /* Links Grid - Side by side on tablet/mobile */
+  .linksGrid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    width: 100%;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: 20px;
+  }
+
+  /* Collapsible sections */
+  .linksSection {
+    padding: 16px 0;
+    border-bottom: none;
+  }
+
+  .linksSection:first-child {
+    border-inline-end: 1px solid rgba(255, 255, 255, 0.08);
+    padding-inline-end: 16px;
+  }
+
+  .linksSection:last-child {
+    padding-inline-start: 16px;
+  }
+
+  .sectionTitle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 0;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+
+  .sectionTitle span::after {
+    display: none;
+  }
+
+  .sectionTitle i {
+    display: block;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+    transition: transform 0.3s ease;
+  }
+
+  .linksSection[open] .sectionTitle i {
+    transform: rotate(180deg);
   }
 
   .linksList {
-    align-items: center;
+    gap: 6px;
+    padding-top: 8px;
   }
 
-  .footerLink:hover,
+  .footerLink {
+    padding: 8px 0;
+    font-size: 0.85rem;
+    justify-content: flex-start;
+  }
+
+  .footerLink:hover {
+    transform: none;
+    background: transparent;
+  }
+
+  /* Contact Section - Compact */
+  .contactSection {
+    padding-top: 8px;
+  }
+
+  .contactSection .sectionTitle {
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 16px;
+  }
+
+  .contactList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .contactItem {
+    padding: 12px;
+    flex-direction: column;
+    text-align: center;
+    gap: 8px;
+  }
+
   .contactItem:hover {
     transform: none;
   }
 
-  .contactList {
-    width: 100%;
-    max-width: 320px;
+  .contactItem span {
+    font-size: 0.8rem;
   }
 
+  /* Newsletter - Full width compact */
   .newsletter {
     width: 100%;
-    max-width: 320px;
+    max-width: 100%;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
   }
 
+  .newsletterLabel {
+    text-align: center;
+    font-size: 0.8rem;
+  }
+
+  /* Footer Bottom */
   .footerBottom {
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
     text-align: center;
+    padding: 20px 0;
   }
 
   .bottomRight {
@@ -664,61 +805,90 @@ body[dir="ltr"] .contactItem:hover {
     justify-content: center;
   }
 
+  /* Decorative elements */
   .orb1,
   .orb2,
   .orb3 {
-    width: 300px;
-    height: 300px;
+    width: 250px;
+    height: 250px;
+    filter: blur(80px);
   }
 }
 
 @media (max-width: 480px) {
   .footer {
-    padding: 48px 0 0;
-  }
-
-  .footerContent {
-    gap: 32px;
-    padding-bottom: 32px;
+    padding: 40px 0 0;
   }
 
   .logo img {
-    height: 42px;
+    height: 40px;
   }
 
   .brandDescription {
-    font-size: 0.9rem;
-  }
-
-  .sectionTitle {
-    font-size: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.7;
   }
 
   .socialLink {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
   }
 
   .socialLink i {
     font-size: 1rem;
   }
 
+  /* Links - Stack on small mobile */
+  .linksGrid {
+    grid-template-columns: 1fr;
+    border-bottom: none;
+  }
+
+  .linksSection {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .linksSection:first-child {
+    border-inline-end: none;
+    padding-inline-end: 0;
+  }
+
+  .linksSection:last-child {
+    padding-inline-start: 0;
+  }
+
   .footerLink {
-    font-size: 0.9rem;
-    padding: 6px 10px;
+    padding: 10px 0;
+  }
+
+  /* Contact - Stack on small mobile */
+  .contactList {
+    grid-template-columns: 1fr;
+    gap: 8px;
   }
 
   .contactItem {
-    padding: 10px 12px;
+    flex-direction: row;
+    text-align: start;
+    padding: 12px 14px;
   }
 
   .contactIcon {
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
   }
 
   .contactIcon i {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .contactItem span {
+    font-size: 0.85rem;
+  }
+
+  /* Newsletter */
+  .newsletter {
+    padding: 16px;
   }
 
   .emailInput {
@@ -731,15 +901,13 @@ body[dir="ltr"] .contactItem:hover {
     height: 46px;
   }
 
-  .footerBottom {
-    padding: 20px 0;
-  }
-
+  /* Footer Bottom */
   .copyright,
   .bottomLink {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
+  /* Back to top */
   .backToTop {
     width: 44px;
     height: 44px;
@@ -751,9 +919,8 @@ body[dir="ltr"] .contactItem:hover {
   .orb1,
   .orb2,
   .orb3 {
-    width: 200px;
-    height: 200px;
-    filter: blur(80px);
+    width: 180px;
+    height: 180px;
   }
 
   .gridPattern {
@@ -762,8 +929,17 @@ body[dir="ltr"] .contactItem:hover {
 }
 
 @media (max-width: 360px) {
+  .footer {
+    padding: 32px 0 0;
+  }
+
   .socialIcons {
     gap: 8px;
+  }
+
+  .socialLink {
+    width: 36px;
+    height: 36px;
   }
 
   .inputWrapper {
@@ -772,5 +948,10 @@ body[dir="ltr"] .contactItem:hover {
 
   .submitBtn {
     width: 100%;
+    height: 44px;
+  }
+
+  .contactItem {
+    padding: 10px 12px;
   }
 }

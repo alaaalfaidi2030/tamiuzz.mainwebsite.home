@@ -183,34 +183,43 @@ const Footer = () => {
               </div>
             </motion.div>
 
-            {/* Quick Links */}
-            <motion.div className={style.linksSection} variants={ANIMATION_VARIANTS.item}>
-              <h4 className={style.sectionTitle}>{t("quick_links")}</h4>
-              <ul className={style.linksList}>
-                {quickLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <Link to={link.to} className={style.footerLink}>
-                      <i className="fa-solid fa-chevron-left" aria-hidden="true" />
-                      <span>{link.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
+            {/* Links Grid - Quick Links & Support */}
+            <motion.div className={style.linksGrid} variants={ANIMATION_VARIANTS.item}>
+              {/* Quick Links */}
+              <details className={style.linksSection} open>
+                <summary className={style.sectionTitle}>
+                  <span>{t("quick_links")}</span>
+                  <i className="fa-solid fa-chevron-down" aria-hidden="true" />
+                </summary>
+                <ul className={style.linksList}>
+                  {quickLinks.map((link, idx) => (
+                    <li key={idx}>
+                      <Link to={link.to} className={style.footerLink}>
+                        <i className="fa-solid fa-chevron-left" aria-hidden="true" />
+                        <span>{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
 
-            {/* Support Links */}
-            <motion.div className={style.linksSection} variants={ANIMATION_VARIANTS.item}>
-              <h4 className={style.sectionTitle}>{t("support")}</h4>
-              <ul className={style.linksList}>
-                {supportLinks.map((link, idx) => (
-                  <li key={idx}>
-                    <Link to={link.to} className={style.footerLink}>
-                      <i className="fa-solid fa-chevron-left" aria-hidden="true" />
-                      <span>{link.label}</span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {/* Support Links */}
+              <details className={style.linksSection} open>
+                <summary className={style.sectionTitle}>
+                  <span>{t("support")}</span>
+                  <i className="fa-solid fa-chevron-down" aria-hidden="true" />
+                </summary>
+                <ul className={style.linksList}>
+                  {supportLinks.map((link, idx) => (
+                    <li key={idx}>
+                      <Link to={link.to} className={style.footerLink}>
+                        <i className="fa-solid fa-chevron-left" aria-hidden="true" />
+                        <span>{link.label}</span>
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </details>
             </motion.div>
 
             {/* Contact & Newsletter */}

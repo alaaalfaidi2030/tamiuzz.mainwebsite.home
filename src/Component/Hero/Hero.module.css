@@ -527,9 +527,6 @@ body[dir="ltr"] .ctaPrimary:hover i {
     justify-content: center;
   }
 
-  .visualContent {
-    order: -1;
-  }
 
   .statsContainer {
     max-width: 400px;
