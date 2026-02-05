@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from 'react-router-dom'
 import HomeContentProvider from './Context/homeContentContext'
 import AuthProvider from './Context/authContext'
 import IsThemeModeProvider from './Context/isThemeModeContext'
+import SolutionsProvider from './Context/solutionsContext'
 import RoutLayout from './Component/RoutLayout/RoutLayout'
 import Error404 from './Routes/Error404/Error404'
 import { createLazyLoadingComp, preloadRoute } from './Utilies/LazyLoadingHelper.jsx'
@@ -73,7 +74,9 @@ function App() {
       <AuthProvider>
         <IsMobileProvider>
           <HomeContentProvider>
-            <RouterProvider router={router} />
+            <SolutionsProvider>
+              <RouterProvider router={router} />
+            </SolutionsProvider>
           </HomeContentProvider>
         </IsMobileProvider>
       </AuthProvider>
