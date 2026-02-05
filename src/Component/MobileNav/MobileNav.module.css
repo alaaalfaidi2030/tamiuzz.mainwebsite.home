@@ -357,6 +357,86 @@ body[dir="ltr"] .menuLink:hover .menuChevron {
   color: rgba(255, 255, 255, 0.7);
 }
 
+/* Dropdown Menu Item */
+.menuItemHasDropdown {
+  position: relative;
+}
+
+.menuLinkDropdown {
+  width: 100%;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  text-align: start;
+}
+
+.menuDropdownArrow {
+  font-size: 10px;
+  color: var(--gray-400);
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.menuDropdownArrowOpen {
+  transform: rotate(180deg);
+}
+
+.menuLinkActive .menuDropdownArrow {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Submenu */
+.submenu {
+  overflow: hidden;
+  margin-top: 4px;
+  padding: 4px;
+  background: var(--gray-50);
+  border-radius: 10px;
+}
+
+.submenuLoading {
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary-500);
+  font-size: 14px;
+}
+
+.submenuItem {
+  display: block;
+  padding: 12px 16px;
+  color: var(--gray-600);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: all 0.15s ease;
+}
+
+.submenuItem:hover {
+  background: var(--bg-surface);
+  color: var(--gray-900);
+}
+
+.submenuViewAll {
+  display: block;
+  padding: 12px 16px;
+  margin-top: 4px;
+  color: var(--primary-600);
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 600;
+  border-radius: 8px;
+  border-top: 1px solid var(--gray-100);
+  transition: all 0.15s ease;
+}
+
+.submenuViewAll:hover {
+  background: var(--primary-50);
+  color: var(--primary-700);
+}
+
 /* Sidebar Footer */
 .sidebarFooter {
   padding: 16px;
@@ -481,6 +561,35 @@ body[dir="ltr"] .menuLink:hover .menuChevron {
 :global(body.dark) .menuLinkActive:hover .menuIcon {
   background: rgba(255, 255, 255, 0.25);
   color: #ffffff;
+}
+
+/* Dark Mode - Submenu */
+:global(.dark) .submenu,
+:global(body.dark) .submenu {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+:global(.dark) .submenuItem,
+:global(body.dark) .submenuItem {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+:global(.dark) .submenuItem:hover,
+:global(body.dark) .submenuItem:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+}
+
+:global(.dark) .submenuViewAll,
+:global(body.dark) .submenuViewAll {
+  color: var(--primary-400);
+  border-top-color: rgba(255, 255, 255, 0.08);
+}
+
+:global(.dark) .submenuViewAll:hover,
+:global(body.dark) .submenuViewAll:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--primary-300);
 }
 
 /* ============================================

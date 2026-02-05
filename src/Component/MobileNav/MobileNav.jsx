@@ -4,6 +4,7 @@ import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { IsMobileContext } from "../../Context/isMobileContext";
 import { isThemeModeContext } from "../../Context/isThemeModeContext";
+import { useSolutions } from "../../Context/solutionsContext";
 import LanguageDropdown from "../LanguageDropdown/LanguageDropdown";
 import i18n from "../../i18n";
 import logo from "/logo.svg";
@@ -12,7 +13,7 @@ import style from "./MobileNav.module.css";
 
 const SIDEBAR_LINKS = [
   { id: "home", to: "/home", icon: "fa-house" },
-  { id: "solutions", to: "/solutions", icon: "fa-lightbulb" },
+  { id: "solutions", to: "/solutions", icon: "fa-lightbulb", hasDropdown: true },
   { id: "services", to: "/services", icon: "fa-computer" },
   { id: "articles", to: "/articles", icon: "fa-newspaper" },
   { id: "support", to: "/support", icon: "fa-headset" },
@@ -32,10 +33,12 @@ const MobileNav = () => {
   const { t } = useTranslation();
   const { isMobile } = useContext(IsMobileContext);
   const { isDarkMode } = useContext(isThemeModeContext);
+  const { solutions, isLoading: solutionsLoading } = useSolutions();
   const location = useLocation();
 
   const [activeItem, setActiveItem] = useState("home");
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [expandedDropdown, setExpandedDropdown] = useState(null);
 
   const headerRef = useRef(null);
   const bottomNavRef = useRef(null);
@@ -65,7 +68,12 @@ const MobileNav = () => {
 
   const handleSidebarLinkClick = useCallback((itemId) => {
     setActiveItem(itemId);
+    setExpandedDropdown(null);
     setIsSidebarOpen(false);
+  }, []);
+
+  const toggleDropdown = useCallback((itemId) => {
+    setExpandedDropdown((prev) => (prev === itemId ? null : itemId));
   }, []);
 
   // Set active item based on current route
@@ -256,25 +264,79 @@ const MobileNav = () => {
                 {sidebarLinks.map((item, index) => (
                   <motion.li
                     key={item.id}
-                    className={style.menuItem}
+                    className={`${style.menuItem} ${item.hasDropdown ? style.menuItemHasDropdown : ""}`}
                     role="none"
                     initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 * index, duration: 0.3 }}
                   >
-                    <Link
-                      to={item.to}
-                      className={`${style.menuLink} ${activeItem === item.id ? style.menuLinkActive : ""}`}
-                      onClick={() => handleSidebarLinkClick(item.id)}
-                      role="menuitem"
-                      aria-current={activeItem === item.id ? "page" : undefined}
-                    >
-                      <span className={style.menuIcon}>
-                        <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
-                      </span>
-                      <span className={style.menuText}>{item.label}</span>
-                      <i className={`fa-solid ${isRTL ? "fa-chevron-left" : "fa-chevron-right"} ${style.menuChevron}`} aria-hidden="true" />
-                    </Link>
+                    {item.hasDropdown ? (
+                      <>
+                        <button
+                          type="button"
+                          className={`${style.menuLink} ${style.menuLinkDropdown} ${activeItem === item.id ? style.menuLinkActive : ""}`}
+                          onClick={() => toggleDropdown(item.id)}
+                          aria-expanded={expandedDropdown === item.id}
+                        >
+                          <span className={style.menuIcon}>
+                            <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
+                          </span>
+                          <span className={style.menuText}>{item.label}</span>
+                          <i className={`fa-solid fa-chevron-down ${style.menuDropdownArrow} ${expandedDropdown === item.id ? style.menuDropdownArrowOpen : ""}`} aria-hidden="true" />
+                        </button>
+                        <AnimatePresence>
+                          {expandedDropdown === item.id && (
+                            <motion.div
+                              className={style.submenu}
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              {solutionsLoading ? (
+                                <div className={style.submenuLoading}>
+                                  <i className="fa-solid fa-spinner fa-spin" />
+                                </div>
+                              ) : (
+                                <>
+                                  {solutions.slice(0, 6).map((solution) => (
+                                    <Link
+                                      key={solution.id || solution.urlPath}
+                                      to={`/solutions/${solution.urlPath}`}
+                                      className={style.submenuItem}
+                                      onClick={() => handleSidebarLinkClick(item.id)}
+                                    >
+                                      {solution.title}
+                                    </Link>
+                                  ))}
+                                  <Link
+                                    to="/solutions"
+                                    className={style.submenuViewAll}
+                                    onClick={() => handleSidebarLinkClick(item.id)}
+                                  >
+                                    {t("view all", "View All")}
+                                  </Link>
+                                </>
+                              )}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        to={item.to}
+                        className={`${style.menuLink} ${activeItem === item.id ? style.menuLinkActive : ""}`}
+                        onClick={() => handleSidebarLinkClick(item.id)}
+                        role="menuitem"
+                        aria-current={activeItem === item.id ? "page" : undefined}
+                      >
+                        <span className={style.menuIcon}>
+                          <i className={`fa-solid ${item.icon}`} aria-hidden="true" />
+                        </span>
+                        <span className={style.menuText}>{item.label}</span>
+                        <i className={`fa-solid ${isRTL ? "fa-chevron-left" : "fa-chevron-right"} ${style.menuChevron}`} aria-hidden="true" />
+                      </Link>
+                    )}
                   </motion.li>
                 ))}
               </ul>
