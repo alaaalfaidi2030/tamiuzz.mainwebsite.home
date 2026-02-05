@@ -5,96 +5,56 @@ import styles from "./ServiceCard.module.css";
 
 const ServiceCard = ({ idx = 0, iconUrl, title, path, description }) => {
   const { t } = useTranslation();
-
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50, scale: 0.96 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        type: "spring",
-        stiffness: 90,
-        damping: 16,
-        delay: Math.min(idx * 0.1, 0.5),
-      },
-    },
-  };
-
-  const iconVariants = {
-    rest: { scale: 1, rotate: 0 },
-    hover: {
-      scale: 1.12,
-      rotate: -4,
-      transition: { type: "spring", stiffness: 300, damping: 12 },
-    },
-  };
-
-  const glowVariants = {
-    rest: { opacity: 0, scale: 0.8 },
-    hover: {
-      opacity: 1,
-      scale: 1.2,
-      transition: { duration: 0.5, ease: "easeOut" },
-    },
-  };
-
-  const arrowVariants = {
-    rest: { x: 0 },
-    hover: { x: 5, transition: { type: "spring", stiffness: 400, damping: 15 } },
-  };
-
-  const lineVariants = {
-    rest: { scaleX: 0 },
-    hover: { scaleX: 1, transition: { duration: 0.4, ease: [0.25, 0.46, 0.45, 0.94] } },
-  };
+  const serviceNumber = String(idx + 1).padStart(2, '0');
 
   return (
-    <motion.div
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.15 }}
-      whileHover="hover"
-      animate="rest"
+    <motion.article
+      className={styles.card}
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5, delay: Math.min(idx * 0.1, 0.4) }}
     >
-      <Link className={styles.ServiceCard} to={`/services/${path}`}>
-        {/* Decorative corner accent */}
-        <div className={styles.cornerAccent} />
-
-        {/* Icon section */}
-        <div className={styles.iconSection}>
-          <motion.div className={styles.iconGlow} variants={glowVariants} />
-          <motion.div className={styles.iconWrapper} variants={iconVariants}>
+      <Link className={styles.cardLink} to={`/services/${path}`}>
+        {/* Top Section with Icon */}
+        <div className={styles.header}>
+          <div className={styles.iconBox}>
             <img
               src={iconUrl}
-              alt={`${title} Service Icon`}
-              width="64"
-              height="64"
+              alt=""
+              width="48"
+              height="48"
               loading="lazy"
               decoding="async"
-              className={styles.image}
+              className={styles.icon}
             />
-          </motion.div>
-          <motion.div className={styles.accentLine} variants={lineVariants} />
+          </div>
+          <span className={styles.number}>{serviceNumber}</span>
         </div>
 
-        {/* Content section */}
-        <div className={styles.content}>
-          <h4 className={styles.title}>{title}</h4>
-          <p
+        {/* Accent Line */}
+        <div className={styles.accent} />
+
+        {/* Content */}
+        <div className={styles.body}>
+          <h3 className={styles.title}>{title}</h3>
+          <div
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: description }}
           />
-          <span className={styles.link}>
-            {t("read more")}
-            <motion.span className={styles.linkArrow} variants={arrowVariants}>
-              <i className="fa-solid fa-arrow-left" aria-hidden="true" />
-            </motion.span>
+        </div>
+
+        {/* Footer */}
+        <div className={styles.footer}>
+          <span className={styles.ctaText}>
+            {t("servicesPage.explore-more", "Explore More")}
           </span>
+          <div className={styles.ctaIcon}>
+            <i className="fa-solid fa-arrow-right" aria-hidden="true" />
+          </div>
         </div>
       </Link>
-    </motion.div>
+    </motion.article>
   );
 };
 
