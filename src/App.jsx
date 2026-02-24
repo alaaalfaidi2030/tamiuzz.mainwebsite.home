@@ -127,7 +127,6 @@ export default App
  *  -- 3)  H2
  *  -- 4)  NoDataFounded
  *  -- 5)  ErrorComp
- *  -- 6)  NavbarTop
  *  -- 7)  H3
  *  -- 8)  HomeLoading 
  *  -- 9)  ScrollToTop
