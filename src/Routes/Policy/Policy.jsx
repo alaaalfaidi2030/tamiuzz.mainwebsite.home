@@ -8,60 +8,38 @@ const policyData = [
   {
     icon: "fa-solid fa-database",
     titleKey: "policy.section1.title",
-    titleFallback: "جمع المعلومات",
     contentKey: "policy.section1.content",
-    contentFallback: "نقوم بجمع المعلومات التالية عند استخدامك لموقعنا:",
-    items: [
-      "معلومات اتصال مثل البريد الإلكتروني ورقم الهاتف.",
-      "معلومات تقنية مثل عنوان IP، نوع المتصفح، الصفحات التي تزورها، ومدة الاستخدام.",
-      "أي معلومات تقدمها طوعاً عبر النماذج أو استفسارات الدعم."
-    ]
+    itemsKey: "policy.section1.items",
+    itemsCount: 3
   },
   {
     icon: "fa-solid fa-chart-line",
     titleKey: "policy.section2.title",
-    titleFallback: "استخدام المعلومات",
     contentKey: "policy.section2.content",
-    contentFallback: "نستخدم البيانات التي نجمعها للأغراض التالية:",
-    items: [
-      "تحسين تجربة المستخدم على الموقع.",
-      "الرد على الاستفسارات وتقديم الدعم الفني.",
-      "إرسال التحديثات أو العروض في حال الموافقة على ذلك.",
-      "تحليل أداء الموقع وتطوير خدماتنا."
-    ]
+    itemsKey: "policy.section2.items",
+    itemsCount: 4
   },
   {
     icon: "fa-solid fa-shield-halved",
     titleKey: "policy.section3.title",
-    titleFallback: "حماية البيانات",
-    contentKey: "policy.section3.content",
-    contentFallback: "نتخذ كافة الإجراءات التقنية والتنظيمية المناسبة لحماية بياناتك من الوصول غير المصرح به أو التعديل أو الفقد أو التلف."
+    contentKey: "policy.section3.content"
   },
   {
     icon: "fa-solid fa-share-nodes",
     titleKey: "policy.section4.title",
-    titleFallback: "مشاركة المعلومات",
-    contentKey: "policy.section4.content",
-    contentFallback: "لا نقوم ببيع أو مشاركة بياناتك الشخصية مع أي جهة خارجية، باستثناء الحالات التي يتطلبها القانون أو بموافقتك المسبقة. نستخدم ملفات تعريف الارتباط (Cookies) لتحسين تجربتك."
+    contentKey: "policy.section4.content"
   },
   {
     icon: "fa-solid fa-scale-balanced",
     titleKey: "policy.section5.title",
-    titleFallback: "حقوقك",
     contentKey: "policy.section5.content",
-    contentFallback: "يحق لك:",
-    items: [
-      "طلب الاطلاع على بياناتك الشخصية التي نحتفظ بها.",
-      "طلب تعديل أو حذف معلوماتك.",
-      "سحب موافقتك في أي وقت."
-    ]
+    itemsKey: "policy.section5.items",
+    itemsCount: 3
   },
   {
     icon: "fa-solid fa-rotate",
     titleKey: "policy.section6.title",
-    titleFallback: "التعديلات",
-    contentKey: "policy.section6.content",
-    contentFallback: "قد نقوم بتحديث سياسة الخصوصية من وقت لآخر، وسيتم نشر أي تغييرات على هذه الصفحة مع تحديث تاريخ آخر تعديل."
+    contentKey: "policy.section6.content"
   }
 ];
 
@@ -121,15 +99,15 @@ export default function Policy() {
                   </div>
                 </div>
                 <h3 className={style.cardTitle}>
-                  {t(section.titleKey, section.titleFallback)}
+                  {t(section.titleKey)}
                 </h3>
                 <p className={style.cardContent}>
-                  {t(section.contentKey, section.contentFallback)}
+                  {t(section.contentKey)}
                 </p>
-                {section.items && (
+                {section.itemsKey && (
                   <ul className={style.cardList}>
-                    {section.items.map((item, itemIdx) => (
-                      <li key={itemIdx}>{item}</li>
+                    {Array.from({ length: section.itemsCount }, (_, itemIdx) => (
+                      <li key={itemIdx}>{t(`${section.itemsKey}.${itemIdx}`)}</li>
                     ))}
                   </ul>
                 )}
